@@ -3,10 +3,11 @@
  * Does not replace Mongo `_id`.
  */
 
+import { type HydratedDocument } from 'mongoose';
 import { Job, type IJob } from '../models/index.js';
 import { formatJobReferenceParts } from './jobReference.js';
 
-export async function ensurePublicJobReference(job: IJob): Promise<string> {
+export async function ensurePublicJobReference(job: HydratedDocument<IJob>): Promise<string> {
   if (job.publicJobReference) return job.publicJobReference;
 
   const at = job.createdAt ? new Date(job.createdAt) : new Date();

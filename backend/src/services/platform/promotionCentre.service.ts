@@ -79,7 +79,7 @@ export async function listPromotionQueue(limit = 40): Promise<{
     ...blocks.map((d) => ({
       id: d._id.toString(),
       resourceType: 'ContentBlock',
-      title: String(d.title || d.key || 'Content block'),
+      title: String(d.title || 'Content block'),
       status: String(d.status || 'unknown'),
       dataEnvironment: String((d as { dataEnvironment?: string }).dataEnvironment || 'sandbox'),
       updatedAt: d.updatedAt,

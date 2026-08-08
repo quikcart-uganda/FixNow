@@ -65,6 +65,8 @@ export type SeedMeta = {
   environment: typeof SEED_CONTENT_ENVIRONMENT;
   seedKey?: string;
   fixtureId?: string;
+  purpose?: string;
+  urgency?: string;
   developer?: boolean;
 };
 

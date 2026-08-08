@@ -269,7 +269,7 @@ export const portfolioService = {
     if (existingCount >= ent.limits.maxGalleryItems) {
       throw AppError.badRequest(`Gallery limit reached (${ent.limits.maxGalleryItems}). Upgrade or remove items.`);
     }
-    if (kind === 'photo' || kind === 'image') {
+    if (kind === 'photo') {
       const photos = await PortfolioMedia.countDocuments({
         technicianUserId: oid(userId),
         kind: { $in: ['photo', 'image'] },
@@ -350,17 +350,13 @@ export const portfolioService = {
       doc.kind = kind;
       doc.mediaType = mapKindToMediaType(kind);
     }
-    for (const key of [
-      'url',
-      'thumbnailUrl',
-      'title',
-      'caption',
-      'description',
-      'district',
-      'videoUrl',
-    ] as const) {
-      if (body[key] != null) (doc as Record<string, unknown>)[key] = body[key];
-    }
+    if (typeof body.url === 'string') doc.url = body.url;
+    if (typeof body.thumbnailUrl === 'string') doc.thumbnailUrl = body.thumbnailUrl;
+    if (typeof body.title === 'string') doc.title = body.title;
+    if (typeof body.caption === 'string') doc.caption = body.caption;
+    if (typeof body.description === 'string') doc.description = body.description;
+    if (typeof body.district === 'string') doc.district = body.district;
+    if (typeof body.videoUrl === 'string') doc.videoUrl = body.videoUrl;
     if (Array.isArray(body.tags)) doc.tags = body.tags.map(String).slice(0, 20);
     if (Array.isArray(body.galleryUrls)) doc.galleryUrls = body.galleryUrls.map(String).slice(0, 24);
     if (body.categoryId != null) {
@@ -485,9 +481,12 @@ export const portfolioService = {
 
   async updateCaseStudy(userId: string, id: string, body: Record<string, unknown>) {
     const doc = await loadOwnedCaseStudy(userId, id);
-    for (const key of ['title', 'challenge', 'solution', 'outcome', 'coverImageUrl', 'district'] as const) {
-      if (body[key] != null) (doc as Record<string, unknown>)[key] = body[key];
-    }
+    if (typeof body.title === 'string') doc.title = body.title;
+    if (typeof body.challenge === 'string') doc.challenge = body.challenge;
+    if (typeof body.solution === 'string') doc.solution = body.solution;
+    if (typeof body.outcome === 'string') doc.outcome = body.outcome;
+    if (typeof body.coverImageUrl === 'string') doc.coverImageUrl = body.coverImageUrl;
+    if (typeof body.district === 'string') doc.district = body.district;
     if (Array.isArray(body.tags)) doc.tags = body.tags.map(String).slice(0, 20);
     if (Array.isArray(body.mediaIds)) doc.mediaIds = body.mediaIds.map((m) => oid(String(m)));
     if (body.categoryId != null) {
@@ -566,9 +565,11 @@ export const portfolioService = {
 
   async updateCertificate(userId: string, id: string, body: Record<string, unknown>) {
     const doc = await loadOwnedCertificate(userId, id);
-    for (const key of ['title', 'issuer', 'documentUrl', 'thumbnailUrl', 'description'] as const) {
-      if (body[key] != null) (doc as Record<string, unknown>)[key] = body[key];
-    }
+    if (typeof body.title === 'string') doc.title = body.title;
+    if (typeof body.issuer === 'string') doc.issuer = body.issuer;
+    if (typeof body.documentUrl === 'string') doc.documentUrl = body.documentUrl;
+    if (typeof body.thumbnailUrl === 'string') doc.thumbnailUrl = body.thumbnailUrl;
+    if (typeof body.description === 'string') doc.description = body.description;
     if (body.kind === 'licence' || body.kind === 'certificate') doc.kind = body.kind;
     if (body.issuedAt != null) doc.issuedAt = new Date(String(body.issuedAt));
     if (body.expiresAt != null) doc.expiresAt = new Date(String(body.expiresAt));

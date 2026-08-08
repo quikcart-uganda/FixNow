@@ -9,7 +9,8 @@ import {
   User,
   WorkingHours,
 } from '../../models/index.js';
-import { ACCOUNT_STATUS } from '../../models/shared/enums.js';
+import { ACCOUNT_STATUS, VERIFICATION_STATUS } from '../../models/shared/enums.js';
+import { ROLES } from '../../constants/roles.js';
 import { AppError } from '../../utils/AppError.js';
 import { writeAuditLog } from '../../utils/audit.js';
 import { publicMediaUrl } from '../../utils/mediaUrl.js';
@@ -21,6 +22,10 @@ import {
   getRecommendationSettings,
   scoreTechnician,
 } from './recommendation.service.js';
+import {
+  ensureTechnicianApprovalPolicy,
+  getTechnicianApprovalPolicy,
+} from './technicianApproval.service.js';
 
 async function getOrCreateTechnicianProfile(userId: string) {
   let profile = await TechnicianProfile.findOne({ userId });
@@ -282,6 +287,22 @@ export const technicianMarketplaceService = {
           : documentDataEnvironment(profile),
         'Technician not found',
       );
+      // Customer-facing profiles require account approval when the gate is on.
+      if (viewer?.role !== 'technician' || viewer.userId !== technicianUserId) {
+        const policy = await getTechnicianApprovalPolicy();
+        if (
+          policy.enforceApprovalGate &&
+          profile.verificationStatus !== VERIFICATION_STATUS.APPROVED
+        ) {
+          throw AppError.notFound('Technician not found');
+        }
+        if (
+          profile.accountStatus === ACCOUNT_STATUS.SUSPENDED ||
+          (profile.metadata as { hiddenFromCustomers?: boolean } | undefined)?.hiddenFromCustomers
+        ) {
+          throw AppError.notFound('Technician not found');
+        }
+      }
     }
 
     let includeContact = false;
@@ -323,19 +344,39 @@ export const technicianMarketplaceService = {
     const minTrust = req.query.minTrust ? Number(req.query.minTrust) : undefined;
     const available = req.query.available === 'true';
 
+    await ensureTechnicianApprovalPolicy();
+    const approvalPolicy = await getTechnicianApprovalPolicy();
+
     const filter: Record<string, unknown> = {
       accountStatus: { $in: [ACCOUNT_STATUS.ACTIVE, ACCOUNT_STATUS.PENDING_VERIFICATION] },
       'metadata.hiddenFromCustomers': { $ne: true },
     };
+    // Pending / rejected must never appear in customer discovery when gate is on.
+    if (approvalPolicy.enforceApprovalGate) {
+      filter.verificationStatus = VERIFICATION_STATUS.APPROVED;
+    }
     if (district) filter['location.district'] = district;
     if (categoryId) filter.primaryCategoryId = categoryId;
     if (typeof minTrust === 'number' && !Number.isNaN(minTrust)) filter.trustScore = { $gte: minTrust };
     if (available) filter.isAvailableNow = true;
     if (q) {
+      // Name/company matching uses User.fullName + profile company fields so discovery
+      // is not limited to headline/skills alone (seed + real techs).
+      const nameMatches = await User.find({
+        role: ROLES.TECHNICIAN,
+        fullName: { $regex: escapeRegex(q), $options: 'i' },
+        isDeleted: { $ne: true },
+      })
+        .select('_id')
+        .limit(80)
+        .lean();
+      const nameIds = nameMatches.map((u) => u._id);
       filter.$or = [
         { headline: { $regex: escapeRegex(q), $options: 'i' } },
         { skills: { $regex: escapeRegex(q), $options: 'i' } },
         { searchKeywords: { $regex: escapeRegex(q), $options: 'i' } },
+        { companyName: { $regex: escapeRegex(q), $options: 'i' } },
+        ...(nameIds.length ? [{ userId: { $in: nameIds } }] : []),
       ];
     }
 
@@ -441,7 +482,7 @@ export const technicianMarketplaceService = {
               verificationStatus: p.verificationStatus,
               identityVerified: p.identityVerified,
               skillVerified: p.skillVerified,
-              primaryCategoryId: p.primaryCategoryId?.toString?.() || (p.primaryCategoryId as string),
+              primaryCategoryId: p.primaryCategoryId?.toString(),
               subscriptionPlanCode: p.subscriptionPlanCode,
               subscriptionWeight: weight,
               boostWeight,

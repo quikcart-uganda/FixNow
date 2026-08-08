@@ -13,6 +13,7 @@ import {
   DEV_TX_PLAN_PREFIXES,
   type DevTxPlanCode,
   type IDevelopmentTransaction,
+  type IDevelopmentTransactionUsage,
 } from '../../../models/marketplace/DevelopmentTransaction.js';
 import { User } from '../../../models/index.js';
 import { ROLES } from '../../../constants/roles.js';
@@ -309,7 +310,7 @@ export async function claimDevelopmentTransaction(input: {
         action: 'claimed',
         actorId: input.userId,
         note: `Claimed for ${planCode}`,
-      },
+      } satisfies IDevelopmentTransactionUsage,
     ].slice(-50);
     await doc.save();
   }
@@ -339,7 +340,7 @@ export async function markDevelopmentTransactionConsumed(input: {
       note: 'Auto-verified — entitlements activated via existing subscription engine',
       paymentId: input.paymentId,
       subscriptionId: input.subscriptionId,
-    },
+    } satisfies IDevelopmentTransactionUsage,
   ].slice(-50);
   await doc.save();
 
@@ -377,7 +378,7 @@ export async function revokeDevelopmentTransaction(
       action: 'revoked',
       actorId: actor.userId,
       note: doc.revokeReason,
-    },
+    } satisfies IDevelopmentTransactionUsage,
   ].slice(-50);
   await doc.save();
   await ensureDevelopmentTransactionPool(`admin:${actor.userId}`);

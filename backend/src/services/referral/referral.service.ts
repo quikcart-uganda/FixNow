@@ -1,6 +1,6 @@
 import { createHash, randomBytes } from 'node:crypto';
 import type { Request } from 'express';
-import { Types } from 'mongoose';
+import { type HydratedDocument, Types } from 'mongoose';
 import {
   Referral,
   ReferralCampaign,
@@ -296,7 +296,7 @@ export const referralService = {
     return { recorded: true, referral: serializeReferral(referral), reward };
   },
 
-  async grantReward(referral: IReferral, campaign: IReferralCampaign) {
+  async grantReward(referral: IReferral, campaign: HydratedDocument<IReferralCampaign>) {
     if (campaign.maxRewards != null && campaign.rewardsIssued >= campaign.maxRewards) {
       throw AppError.badRequest('Campaign reward limit reached');
     }
@@ -411,9 +411,9 @@ export const referralService = {
     const doc = await ReferralCampaign.findById(id);
     if (!doc || doc.isDeleted) throw AppError.notFound('Campaign not found');
 
-    for (const key of ['name', 'description', 'currency'] as const) {
-      if (body[key] != null) (doc as Record<string, unknown>)[key] = body[key];
-    }
+    if (typeof body.name === 'string') doc.name = body.name;
+    if (typeof body.description === 'string') doc.description = body.description;
+    if (typeof body.currency === 'string') doc.currency = body.currency;
     if (body.inviteRole === 'technician' || body.inviteRole === 'customer' || body.inviteRole === 'both') {
       doc.inviteRole = body.inviteRole;
     }

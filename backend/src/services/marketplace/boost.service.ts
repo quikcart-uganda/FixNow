@@ -121,7 +121,16 @@ function eligibilityPlanForProfile(profile: {
 }): BoostEligibilityPlan {
   const code = String(profile.subscriptionPlanCode || '').toUpperCase();
   // Entitlement SSOT — grace-aware (same as resolveEntitlements / hasActivePaidAccess).
-  if (!hasActivePaidAccess(profile) || !code) return 'FREE';
+  if (
+    !hasActivePaidAccess({
+      subscriptionStatus: profile.subscriptionStatus ?? undefined,
+      subscriptionPeriodEnd: profile.subscriptionPeriodEnd,
+      monetizationSuspended: profile.monetizationSuspended,
+    }) ||
+    !code
+  ) {
+    return 'FREE';
+  }
   if (code === 'BUSINESS') return 'BUSINESS';
   if (code === 'PROFESSIONAL') return 'PROFESSIONAL';
   if (code === 'STARTER') return 'STARTER';
@@ -455,9 +464,10 @@ export async function submitBoostPurchase(
       bypassQuietHours: true,
     });
     await notifyAdmins({
+      type: 'admin.boost_payment_pending',
       title: 'Boost payment pending',
       body: `${product.name} · ${product.currency} ${product.price.toLocaleString()}`,
-      data: { type: 'boost.payment_pending', id: purchase._id.toString() },
+      data: { type: 'boost.payment_pending', id: purchase._id.toString() } satisfies Record<string, string>,
     });
   } catch {
     /* ignore */

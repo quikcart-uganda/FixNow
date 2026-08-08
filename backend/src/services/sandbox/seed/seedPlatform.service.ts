@@ -3,6 +3,7 @@
  * Distinct from Sandbox Management (which remains for settings + legacy demo dataset).
  */
 
+import { type HydratedDocument } from 'mongoose';
 import {
   CustomerProfile,
   Job,
@@ -14,6 +15,8 @@ import {
   TechnicianOffer,
   TechnicianProfile,
   User,
+  type ITechnicianProfile,
+  type IUser,
 } from '../../../models/index.js';
 import { AppError } from '../../../utils/AppError.js';
 import { writeAuditLog } from '../../../utils/audit.js';
@@ -34,7 +37,7 @@ import {
   type SeedGenerateModule,
   type SeedGenerateResult,
 } from './seedPlatform.generator.js';
-import { ACCOUNT_STATUS } from '../../../models/shared/enums.js';
+import { ACCOUNT_STATUS, VERIFICATION_STATUS } from '../../../models/shared/enums.js';
 import { ROLES } from '../../../constants/roles.js';
 import { DEV_ADMIN } from '../../../constants/adminIdentity.js';
 import { ensureDeveloperCustomerIntegrity } from './seedCustomer.integrity.js';
@@ -181,8 +184,41 @@ export async function ensureDeveloperTechnicianIntegrity(): Promise<{
       environment: 'sandbox',
       governanceRole: 'permanent_development_technician',
       platformRole: 'development_technician',
+      hiddenFromCustomers: false,
     };
+    if ((profile.metadata as { hiddenFromCustomers?: boolean } | undefined)?.hiddenFromCustomers) {
+      profileChanges.push('clearedHiddenFromCustomers');
+    }
     profile.metadata = pMeta;
+    if (profile.accountStatus !== ACCOUNT_STATUS.ACTIVE) {
+      profile.accountStatus = ACCOUNT_STATUS.ACTIVE;
+      profileChanges.push('profileActive');
+    }
+    if (!profile.isAvailableNow) {
+      profile.isAvailableNow = true;
+      profileChanges.push('availableNow');
+    }
+    const expectedKeywords = [
+      DEVELOPER_TECHNICIAN.fullName,
+      DEVELOPER_TECHNICIAN.headline,
+      DEVELOPER_TECHNICIAN.companyName,
+      DEVELOPER_TECHNICIAN.district,
+      ...DEVELOPER_TECHNICIAN.skills,
+      DEVELOPER_TECHNICIAN.email,
+      'development technician',
+      'seed',
+      'jordan mutebi',
+    ]
+      .filter(Boolean)
+      .map((s) => String(s).toLowerCase())
+      .slice(0, 40);
+    const currentKeywords = Array.isArray(profile.searchKeywords)
+      ? profile.searchKeywords.map((s) => String(s).toLowerCase())
+      : [];
+    if (expectedKeywords.some((k) => !currentKeywords.includes(k))) {
+      profile.searchKeywords = expectedKeywords;
+      profileChanges.push('searchKeywords');
+    }
     await profile.save();
     if (profileChanges.length) changes.push(...profileChanges);
     else if (changes.length) changes.push('profileMetadataSynced');
@@ -368,12 +404,77 @@ export const seedPlatformService = {
       };
     }
 
+    let platformMode = 'development';
+    try {
+      const { getCurrentPlatformMode } = await import('../../platform/platformMode.service.js');
+      platformMode = await getCurrentPlatformMode();
+    } catch {
+      platformMode = 'unknown';
+    }
+
+    const [activeSeedJobs, activeSeedUsers, archivedSeedUsers, disabledScenarios] = await Promise.all([
+      Job.countDocuments({
+        'metadata.seedTag': SEED_TAG,
+        isDeleted: { $ne: true },
+        dataEnvironment: SEED_CONTENT_ENVIRONMENT,
+      }),
+      User.countDocuments({
+        'metadata.seedTag': SEED_TAG,
+        isDeleted: { $ne: true },
+        dataEnvironment: SEED_CONTENT_ENVIRONMENT,
+      }),
+      User.countDocuments({
+        'metadata.seedTag': SEED_TAG,
+        dataEnvironment: 'archived',
+      }),
+      seedScenarioService.listDisabledScenarioIds().catch(() => [] as string[]),
+    ]);
+
+    const warnings: string[] = [];
+    if (!settings.enableSandbox) warnings.push('Sandbox tooling disabled — Seed generate/lifecycle blocked');
+    if (String(platformMode).toLowerCase() === 'production') {
+      warnings.push('Platform Mode is Production — scenarios, Dev TX, and sandbox tooling are disabled');
+    }
+    if (!seedAligned) warnings.push('Permanent Development Technician missing or not seed-aligned');
+    if (!customerSeedAligned) warnings.push('Permanent Seed Customer missing or not seed-aligned');
+    if (subscriptionSimulator && (subscriptionSimulator as { available?: boolean }).available === false) {
+      warnings.push(
+        String((subscriptionSimulator as { reason?: string }).reason || 'Subscription simulator unavailable'),
+      );
+    }
+
+    const health = {
+      status:
+        warnings.length === 0
+          ? 'healthy'
+          : String(platformMode).toLowerCase() === 'production'
+            ? 'production_protected'
+            : 'attention',
+      singleSourceOfTruth: 'seed-platform',
+      authoritativePath: '/admin/settings/seed-platform',
+      legacyDemoPath: '/admin/settings/sandbox',
+      platformMode,
+      sandboxEnabled: settings.enableSandbox,
+      scenarioEngineEnabled:
+        settings.enableSandbox && String(platformMode).toLowerCase() !== 'production',
+      developmentTransactionsEnabled:
+        String(platformMode).toLowerCase() !== 'production' && seedAligned,
+      permanentTechnicianReady: seedAligned,
+      permanentCustomerReady: customerSeedAligned,
+      activeSeedUsers,
+      activeSeedJobs,
+      archivedSeedUsers,
+      disabledScenarioCount: disabledScenarios.length,
+      warnings,
+    };
+
     return {
       version: SEED_PLATFORM_VERSION,
       seedTag: SEED_TAG,
       environment: SEED_CONTENT_ENVIRONMENT,
       sandboxEnabled: settings.enableSandbox,
       counts: c,
+      health,
       identityNote:
         `${DEVELOPER_TECHNICIAN.email} is the Seed Platform developer technician (marketplace QA); ` +
         `${DEVELOPER_CUSTOMER.email} is the Permanent Seed Customer. Neither is the Development Administrator (${DEV_ADMIN.email}).`,
@@ -533,28 +634,121 @@ export const seedPlatformService = {
 
   async archiveSeeds(actor: Actor) {
     await assertSandboxEnabled();
-    const users = await User.find(seedUserFilter()).select('_id');
+    const permanentEmails = [
+      DEVELOPER_TECHNICIAN.email.toLowerCase(),
+      DEVELOPER_CUSTOMER.email.toLowerCase(),
+    ];
+    const archiveUserFilter = {
+      ...seedUserFilter(),
+      email: { $nin: permanentEmails },
+      'metadata.permanentDevelopmentTechnician': { $ne: true },
+      'metadata.permanentDevelopmentCustomer': { $ne: true },
+    };
+    const users = await User.find(archiveUserFilter).select('_id');
     const ids = users.map((u) => u._id);
+    const contentFilter = {
+      'metadata.seedTag': SEED_TAG,
+      // Keep fixture jobs tied to permanent actors archivable, but never archive permanent user rows.
+    };
     await Promise.all([
-      User.updateMany(seedUserFilter(), { $set: { dataEnvironment: 'archived' } }),
-      CustomerProfile.updateMany({ 'metadata.seedTag': SEED_TAG }, { $set: { dataEnvironment: 'archived' } }),
-      TechnicianProfile.updateMany({ 'metadata.seedTag': SEED_TAG }, { $set: { dataEnvironment: 'archived' } }),
-      Job.updateMany({ 'metadata.seedTag': SEED_TAG }, { $set: { dataEnvironment: 'archived' } }),
-      JobApplication.updateMany({ 'metadata.seedTag': SEED_TAG }, { $set: { dataEnvironment: 'archived' } }),
-      TechnicianOffer.updateMany({ 'metadata.seedTag': SEED_TAG }, { $set: { dataEnvironment: 'archived' } }),
-      Review.updateMany({ 'metadata.seedTag': SEED_TAG }, { $set: { dataEnvironment: 'archived' } }),
-      Portfolio.updateMany({ 'metadata.seedTag': SEED_TAG }, { $set: { dataEnvironment: 'archived' } }),
-      PlatformPromotion.updateMany({ 'metadata.seedTag': SEED_TAG }, { $set: { dataEnvironment: 'archived' } }),
-      SponsoredContent.updateMany({ 'metadata.seedTag': SEED_TAG }, { $set: { dataEnvironment: 'archived' } }),
+      User.updateMany(archiveUserFilter, { $set: { dataEnvironment: 'archived' } }),
+      CustomerProfile.updateMany(
+        { userId: { $in: ids }, 'metadata.seedTag': SEED_TAG },
+        { $set: { dataEnvironment: 'archived' } },
+      ),
+      TechnicianProfile.updateMany(
+        { userId: { $in: ids }, 'metadata.seedTag': SEED_TAG },
+        { $set: { dataEnvironment: 'archived' } },
+      ),
+      Job.updateMany(contentFilter, { $set: { dataEnvironment: 'archived' } }),
+      JobApplication.updateMany(contentFilter, { $set: { dataEnvironment: 'archived' } }),
+      TechnicianOffer.updateMany(contentFilter, { $set: { dataEnvironment: 'archived' } }),
+      Review.updateMany(contentFilter, { $set: { dataEnvironment: 'archived' } }),
+      Portfolio.updateMany(contentFilter, { $set: { dataEnvironment: 'archived' } }),
+      PlatformPromotion.updateMany(contentFilter, { $set: { dataEnvironment: 'archived' } }),
+      SponsoredContent.updateMany(contentFilter, { $set: { dataEnvironment: 'archived' } }),
     ]);
     await writeAuditLog({
       actorId: actor.userId,
       actorRole: 'admin',
       action: 'seed.platform.archive',
       resourceType: 'SeedPlatform',
+      meta: { users: ids.length, permanentsPreserved: permanentEmails },
+    });
+    return {
+      archivedUsers: ids.length,
+      environment: 'archived' as const,
+      permanentsPreserved: permanentEmails,
+    };
+  },
+
+  /** Restore archived Seed Platform catalogue rows back to sandbox (permanents untouched). */
+  async restoreSeeds(actor: Actor) {
+    await assertSandboxEnabled();
+    const permanentEmails = [
+      DEVELOPER_TECHNICIAN.email.toLowerCase(),
+      DEVELOPER_CUSTOMER.email.toLowerCase(),
+    ];
+    const restoreUserFilter = {
+      ...seedUserFilter(),
+      dataEnvironment: 'archived',
+      email: { $nin: permanentEmails },
+      'metadata.permanentDevelopmentTechnician': { $ne: true },
+      'metadata.permanentDevelopmentCustomer': { $ne: true },
+    };
+    const users = await User.find(restoreUserFilter).select('_id');
+    const ids = users.map((u) => u._id);
+    const contentFilter = { 'metadata.seedTag': SEED_TAG, dataEnvironment: 'archived' };
+    await Promise.all([
+      User.updateMany(restoreUserFilter, {
+        $set: { dataEnvironment: SEED_CONTENT_ENVIRONMENT, accountStatus: ACCOUNT_STATUS.ACTIVE, isDeleted: false },
+        $unset: { deletedAt: 1 },
+      }),
+      CustomerProfile.updateMany(
+        { userId: { $in: ids } },
+        { $set: { dataEnvironment: SEED_CONTENT_ENVIRONMENT, isDeleted: false }, $unset: { deletedAt: 1 } },
+      ),
+      TechnicianProfile.updateMany(
+        { userId: { $in: ids } },
+        { $set: { dataEnvironment: SEED_CONTENT_ENVIRONMENT, isDeleted: false }, $unset: { deletedAt: 1 } },
+      ),
+      Job.updateMany(contentFilter, {
+        $set: { dataEnvironment: SEED_CONTENT_ENVIRONMENT, isDeleted: false },
+        $unset: { deletedAt: 1 },
+      }),
+      JobApplication.updateMany(contentFilter, {
+        $set: { dataEnvironment: SEED_CONTENT_ENVIRONMENT, isDeleted: false },
+        $unset: { deletedAt: 1 },
+      }),
+      TechnicianOffer.updateMany(contentFilter, {
+        $set: { dataEnvironment: SEED_CONTENT_ENVIRONMENT, isDeleted: false },
+        $unset: { deletedAt: 1 },
+      }),
+      Review.updateMany(contentFilter, {
+        $set: { dataEnvironment: SEED_CONTENT_ENVIRONMENT, isDeleted: false },
+        $unset: { deletedAt: 1 },
+      }),
+      Portfolio.updateMany(contentFilter, {
+        $set: { dataEnvironment: SEED_CONTENT_ENVIRONMENT, isDeleted: false },
+        $unset: { deletedAt: 1 },
+      }),
+      PlatformPromotion.updateMany(contentFilter, {
+        $set: { dataEnvironment: SEED_CONTENT_ENVIRONMENT, isDeleted: false },
+        $unset: { deletedAt: 1 },
+      }),
+      SponsoredContent.updateMany(contentFilter, {
+        $set: { dataEnvironment: SEED_CONTENT_ENVIRONMENT, isDeleted: false },
+        $unset: { deletedAt: 1 },
+      }),
+    ]);
+    await writeAuditLog({
+      actorId: actor.userId,
+      actorRole: 'admin',
+      action: 'seed.platform.restore',
+      resourceType: 'SeedPlatform',
       meta: { users: ids.length },
     });
-    return { archivedUsers: ids.length, environment: 'archived' as const };
+    return { restoredUsers: ids.length, environment: SEED_CONTENT_ENVIRONMENT };
   },
 
   async exportSeeds() {
@@ -679,7 +873,7 @@ export const seedPlatformService = {
 
     const profiles = await TechnicianProfile.find({ 'metadata.seedTag': SEED_TAG })
       .select(
-        'userId headline companyName accountStatus isAvailableNow metadata photoUrl ratingAverage reviewCount jobsCompleted subscriptionPlanCode',
+        'userId headline companyName accountStatus isAvailableNow metadata photoUrl ratingAverage reviewCount jobsCompleted subscriptionPlanCode verificationStatus approvalSource approvalSubmittedAt',
       )
       .lean();
     const userIds = profiles.map((p) => p.userId);
@@ -703,6 +897,9 @@ export const seedPlatformService = {
           fullName: u?.fullName || '',
           companyName: p.companyName || '',
           accountStatus,
+          verificationStatus: p.verificationStatus || 'unverified',
+          approvalSource: p.approvalSource || null,
+          approvalSubmittedAt: p.approvalSubmittedAt || null,
           isAvailableNow: Boolean(p.isAvailableNow),
           hiddenFromCustomers: hidden,
           inActiveCatalogue: retainedKeys.has(seedKey),
@@ -730,22 +927,47 @@ export const seedPlatformService = {
    * activate → ACTIVE + visible
    * hide / show → metadata.hiddenFromCustomers (discovery filter)
    * available / unavailable → isAvailableNow
+   * approve / reject / reset_approval → account-level approval workflow
+   * reset_profile → clear progressive profile fields (keeps identity)
    */
   async setSeedTechnicianLifecycle(
     actor: Actor,
     body: {
       userId?: string;
       seedKey?: string;
-      action: 'suspend' | 'activate' | 'hide' | 'show' | 'available' | 'unavailable';
+      action:
+        | 'suspend'
+        | 'activate'
+        | 'hide'
+        | 'show'
+        | 'available'
+        | 'unavailable'
+        | 'approve'
+        | 'reject'
+        | 'reset_approval'
+        | 'reset_profile';
     },
   ) {
     await assertSandboxEnabled();
     const action = body.action;
-    if (!['suspend', 'activate', 'hide', 'show', 'available', 'unavailable'].includes(action)) {
+    if (
+      ![
+        'suspend',
+        'activate',
+        'hide',
+        'show',
+        'available',
+        'unavailable',
+        'approve',
+        'reject',
+        'reset_approval',
+        'reset_profile',
+      ].includes(action)
+    ) {
       throw AppError.badRequest('Invalid lifecycle action');
     }
 
-    let profile = null as Awaited<ReturnType<typeof TechnicianProfile.findOne>> | null;
+    let profile: HydratedDocument<ITechnicianProfile> | null = null;
     if (body.userId) {
       profile = await TechnicianProfile.findOne({ userId: body.userId, 'metadata.seedTag': SEED_TAG });
     } else if (body.seedKey) {
@@ -758,6 +980,11 @@ export const seedPlatformService = {
 
     const user = await User.findById(profile.userId);
     if (!user) throw AppError.notFound('Seed technician user not found');
+
+    const isPermanentDev = Boolean(
+      (user.metadata as { permanentDevelopmentTechnician?: boolean } | undefined)
+        ?.permanentDevelopmentTechnician,
+    );
 
     const meta = { ...(profile.metadata as Record<string, unknown> | undefined) };
     if (action === 'suspend') {
@@ -783,6 +1010,53 @@ export const seedPlatformService = {
       meta.hiddenFromCustomers = false;
     } else if (action === 'unavailable') {
       profile.isAvailableNow = false;
+    } else if (action === 'approve') {
+      profile.verificationStatus = VERIFICATION_STATUS.APPROVED;
+      profile.approvalSource = 'seed';
+      profile.approvalReviewedAt = new Date();
+      profile.approvalReviewedBy = actor.userId as never;
+      profile.approvalDeadlineAt = undefined;
+      profile.accountStatus = ACCOUNT_STATUS.ACTIVE;
+      user.accountStatus = ACCOUNT_STATUS.ACTIVE;
+      meta.hiddenFromCustomers = false;
+    } else if (action === 'reject') {
+      if (isPermanentDev) {
+        throw AppError.badRequest('Cannot reject the permanent Development Technician');
+      }
+      profile.verificationStatus = VERIFICATION_STATUS.REJECTED;
+      profile.approvalSource = 'seed';
+      profile.approvalReviewedAt = new Date();
+      profile.approvalDeadlineAt = undefined;
+      profile.isAvailableNow = false;
+    } else if (action === 'reset_approval') {
+      if (isPermanentDev) {
+        throw AppError.badRequest('Cannot reset approval for the permanent Development Technician');
+      }
+      profile.verificationStatus = VERIFICATION_STATUS.UNVERIFIED;
+      profile.approvalSubmittedAt = undefined;
+      profile.approvalDeadlineAt = undefined;
+      profile.approvalMode = undefined;
+      profile.approvalSource = undefined;
+      profile.approvalPolicyVersion = undefined;
+      profile.approvalReviewedAt = undefined;
+      profile.approvalReviewedBy = undefined;
+      profile.approvalAdminNote = undefined;
+      profile.approvalRemindersSent = [];
+    } else if (action === 'reset_profile') {
+      if (isPermanentDev) {
+        throw AppError.badRequest('Cannot reset the permanent Development Technician profile');
+      }
+      profile.bio = undefined;
+      profile.photoUrl = undefined;
+      profile.skills = [];
+      profile.experienceYears = 0;
+      profile.headline = undefined;
+      profile.verificationStatus = VERIFICATION_STATUS.UNVERIFIED;
+      profile.approvalSubmittedAt = undefined;
+      profile.approvalDeadlineAt = undefined;
+      profile.approvalMode = undefined;
+      profile.approvalSource = undefined;
+      profile.approvalRemindersSent = [];
     }
 
     profile.metadata = meta as typeof profile.metadata;
@@ -924,7 +1198,7 @@ export const seedPlatformService = {
       throw AppError.badRequest('Invalid customer lifecycle action');
     }
 
-    let user = null as Awaited<ReturnType<typeof User.findOne>> | null;
+    let user: HydratedDocument<IUser> | null = null;
     if (body.userId) {
       user = await User.findOne({ _id: body.userId, role: ROLES.CUSTOMER, 'metadata.seedTag': SEED_TAG });
     } else if (body.seedKey) {
@@ -964,8 +1238,15 @@ export const seedPlatformService = {
     return this.listSeedCustomers();
   },
 
-  listSeedScenarios() {
+  async listSeedScenarios() {
     return seedScenarioService.listScenarios();
+  },
+
+  async setSeedScenarioEnabled(
+    actor: Actor,
+    body: { scenarioId: string; enabled: boolean },
+  ) {
+    return seedScenarioService.setScenarioEnabled(actor, body);
   },
 
   async generateSeedScenarios(

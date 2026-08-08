@@ -313,6 +313,21 @@ export const technicianController = {
     await user.save();
     sendSuccess(res, { dismissed: true }, 200, 'Reminder dismissed');
   }),
+  getApprovalStatus: asyncHandler(async (req, res) => {
+    const { getApprovalStatusForTechnician } = await import(
+      '../services/marketplace/technicianApproval.service.js'
+    );
+    sendSuccess(res, await getApprovalStatusForTechnician(req.auth!.userId));
+  }),
+  submitForApproval: asyncHandler(async (req, res) => {
+    const { submitForApproval } = await import('../services/marketplace/technicianApproval.service.js');
+    sendSuccess(
+      res,
+      await submitForApproval({ userId: req.auth!.userId, role: req.auth!.role }),
+      200,
+      'Application submitted',
+    );
+  }),
 };
 
 export const adminController = {
@@ -587,6 +602,47 @@ export const adminController = {
       await updateProfileCompletionConfig(req.auth!.userId, req.body),
       200,
       'Profile completion settings updated',
+    );
+  }),
+  getTechnicianApprovalPolicy: asyncHandler(async (req, res) => {
+    const { ensureTechnicianApprovalPolicy } = await import(
+      '../services/marketplace/technicianApproval.service.js'
+    );
+    sendSuccess(res, await ensureTechnicianApprovalPolicy(req.auth!.userId));
+  }),
+  updateTechnicianApprovalPolicy: asyncHandler(async (req, res) => {
+    const { updateTechnicianApprovalPolicy } = await import(
+      '../services/marketplace/technicianApproval.service.js'
+    );
+    sendSuccess(
+      res,
+      await updateTechnicianApprovalPolicy(req.auth!.userId, req.body),
+      200,
+      'Technician approval settings updated',
+    );
+  }),
+  listPendingTechnicianApprovals: asyncHandler(async (req, res) => {
+    const { listPendingApprovals } = await import('../services/marketplace/technicianApproval.service.js');
+    sendSuccess(
+      res,
+      await listPendingApprovals({
+        q: typeof req.query.q === 'string' ? req.query.q : undefined,
+        limit: req.query.limit ? Number(req.query.limit) : undefined,
+      }),
+    );
+  }),
+  reviewTechnicianApproval: asyncHandler(async (req, res) => {
+    const { reviewApproval } = await import('../services/marketplace/technicianApproval.service.js');
+    sendSuccess(
+      res,
+      await reviewApproval({ userId: req.auth!.userId }, paramId(req), {
+        action: req.body?.action,
+        note: typeof req.body?.note === 'string' ? req.body.note : undefined,
+        extendMinutes:
+          req.body?.extendMinutes !== undefined ? Number(req.body.extendMinutes) : undefined,
+      }),
+      200,
+      'Approval review saved',
     );
   }),
   listJobs: asyncHandler(async (req, res) => {
@@ -1023,13 +1079,18 @@ export const portfolioController = {
   }),
   adminModerate: asyncHandler(async (req, res) => {
     const targetType = String(req.body?.targetType || 'media') as 'media' | 'certificate' | 'case_study';
+    const action =
+      ['approve', 'reject', 'feature', 'archive'].find(
+        (value): value is 'approve' | 'reject' | 'feature' | 'archive' =>
+          value === String(req.body?.action || 'approve'),
+      ) ?? 'approve';
     sendSuccess(
       res,
       await portfolioService.adminModerate(
         req.auth!.userId,
         targetType,
         paramId(req),
-        String(req.body?.action || 'approve'),
+        action,
         req.body?.note ? String(req.body.note) : undefined,
       ),
     );
@@ -1562,7 +1623,7 @@ export const platformModeController = {
     const [view, state, history] = await Promise.all([
       platformModeService.getPublicView(req.auth!.userId),
       platformModeService.getState(),
-      platformModeService.listModeTransitions(30),
+      platformModeService.listTransitions(30),
     ]);
     sendSuccess(res, { ...view, state, history });
   }),
@@ -1613,7 +1674,7 @@ export const platformModeController = {
   history: asyncHandler(async (req, res) => {
     const { platformModeService } = await import('../services/platform/platformMode.service.js');
     sendSuccess(res, {
-      items: await platformModeService.listModeTransitions(Number(req.query.limit) || 50),
+      items: await platformModeService.listTransitions(Number(req.query.limit) || 50),
     });
   }),
   createProductionOwner: asyncHandler(async (req, res) => {
@@ -1696,6 +1757,15 @@ export const seedPlatformController = {
       await seedPlatformService.archiveSeeds({ userId: req.auth!.userId }),
       200,
       'Seed Platform archived',
+    );
+  }),
+  restore: asyncHandler(async (req, res) => {
+    const { seedPlatformService } = await import('../services/sandbox/seed/seedPlatform.service.js');
+    sendSuccess(
+      res,
+      await seedPlatformService.restoreSeeds({ userId: req.auth!.userId }),
+      200,
+      'Seed Platform restored',
     );
   }),
   exportData: asyncHandler(async (_req, res) => {
@@ -1829,6 +1899,21 @@ export const seedPlatformController = {
     const { seedPlatformService } = await import('../services/sandbox/seed/seedPlatform.service.js');
     sendSuccess(res, await seedPlatformService.listSeedScenarios());
   }),
+  setSeedScenarioEnabled: asyncHandler(async (req, res) => {
+    const { seedPlatformService } = await import('../services/sandbox/seed/seedPlatform.service.js');
+    sendSuccess(
+      res,
+      await seedPlatformService.setSeedScenarioEnabled(
+        { userId: req.auth!.userId },
+        {
+          scenarioId: String(req.body?.scenarioId || ''),
+          enabled: Boolean(req.body?.enabled),
+        },
+      ),
+      200,
+      'Seed scenario updated',
+    );
+  }),
   generateSeedScenarios: asyncHandler(async (req, res) => {
     const { seedPlatformService } = await import('../services/sandbox/seed/seedPlatform.service.js');
     sendSuccess(
@@ -1844,7 +1929,7 @@ export const seedPlatformController = {
       'Seed scenarios generated via production job pipeline',
     );
   }),
-  developmentTransactions: asyncHandler(async (req, res) => {
+  developmentTransactions: asyncHandler(async (_req, res) => {
     const { getDevelopmentTransactionOverview } = await import(
       '../services/sandbox/seed/developmentTransaction.service.js'
     );
@@ -2032,9 +2117,14 @@ export const referralController = {
     sendSuccess(res, await referralService.adminUpdateCampaign(req.auth!.userId, paramId(req), req.body));
   }),
   adminSetCampaignStatus: asyncHandler(async (req, res) => {
+    const status =
+      ['draft', 'active', 'paused', 'expired', 'archived'].find(
+        (value): value is 'draft' | 'active' | 'paused' | 'expired' | 'archived' =>
+          value === String(req.body?.status || 'paused'),
+      ) ?? 'paused';
     sendSuccess(
       res,
-      await referralService.adminSetCampaignStatus(req.auth!.userId, paramId(req), String(req.body?.status || 'paused')),
+      await referralService.adminSetCampaignStatus(req.auth!.userId, paramId(req), status),
     );
   }),
   adminListReferrals: asyncHandler(async (req, res) => sendSuccess(res, await referralService.adminListReferrals(req))),

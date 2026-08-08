@@ -50,15 +50,6 @@ export type PlatformModeState = {
   lastReason: string | null;
 };
 
-const DEFAULT_STATE: PlatformModeState = {
-  mode: 'development',
-  updatedAt: null,
-  updatedBy: null,
-  snapshot: null,
-  lockUntil: null,
-  lastReason: null,
-};
-
 let cache: { value: PlatformModeState; loadedAt: number } | null = null;
 const CACHE_TTL_MS = 5_000;
 
@@ -563,5 +554,7 @@ export const platformModeService = {
   enterProductionMode,
   returnToDevelopmentMode,
   listTransitions: listModeTransitions,
+  /** Alias used by admin controllers */
+  listModeTransitions,
   invalidateCache: invalidatePlatformModeCache,
 };

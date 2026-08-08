@@ -24,6 +24,7 @@ export interface SafeAiRoleContext {
   previewActive: boolean;
   previewPlanCode?: string;
   seedPlatform?: boolean;
+  sandboxAccount: boolean;
   /** Platform operating mode — Development | Production (not dataEnvironment). */
   platformMode: 'development' | 'production';
   developerUxVisible: boolean;

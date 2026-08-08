@@ -417,7 +417,9 @@ export const trackingService = {
           : { status };
     const q = typeof reqQuery.q === 'string' ? reqQuery.q.trim() : '';
     const sessions = await LiveTrackingSession.find(filter).sort({ updatedAt: -1 }).limit(100);
-    let items = sessions.map((s) => toDto(s));
+    let items: Array<
+      ReturnType<typeof toDto> & { publicJobReference?: string; jobTitle?: string }
+    > = sessions.map((s) => toDto(s));
 
     // Attach public job references for admin UI (Mongo jobId remains canonical).
     const jobIds = [...new Set(items.map((s) => s.jobId).filter(Boolean))];

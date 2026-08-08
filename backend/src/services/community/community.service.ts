@@ -1,5 +1,5 @@
 import type { Request } from 'express';
-import { Types } from 'mongoose';
+import { type HydratedDocument, Types } from 'mongoose';
 import {
   CommunityBookmark,
   CommunityFollow,
@@ -146,7 +146,7 @@ function serializeReply(doc: ICommunityReply, authorName?: string) {
   };
 }
 
-async function getDiscussionOrThrow(id: string): Promise<IDiscussion & { _id: Types.ObjectId }> {
+async function getDiscussionOrThrow(id: string): Promise<HydratedDocument<IDiscussion>> {
   const discussion = await Discussion.findById(id);
   if (!discussion) throw AppError.notFound('Discussion not found');
   return discussion;
@@ -187,8 +187,11 @@ async function incrementTargetCount(
   delta: 1 | -1,
 ): Promise<void> {
   const field = kind === 'like' ? 'likeCount' : 'helpfulCount';
-  const Model = targetType === 'discussion' ? Discussion : CommunityReply;
-  await Model.updateOne({ _id: targetId }, { $inc: { [field]: delta } });
+  if (targetType === 'discussion') {
+    await Discussion.updateOne({ _id: targetId }, { $inc: { [field]: delta } });
+  } else {
+    await CommunityReply.updateOne({ _id: targetId }, { $inc: { [field]: delta } });
+  }
 }
 
 async function getViewerFlags(userId: string | undefined, discussionId: string) {
@@ -275,9 +278,9 @@ export const communityService = {
       filter.$text = { $search: q };
     }
 
-    const sort = q
-      ? ({ score: { $meta: 'textScore' }, pinned: -1, lastActivityAt: -1 } as const)
-      : ({ pinned: -1, lastActivityAt: -1 } as const);
+    const sort: Record<string, 1 | -1 | { $meta: 'textScore' }> = q
+      ? { score: { $meta: 'textScore' }, pinned: -1, lastActivityAt: -1 }
+      : { pinned: -1, lastActivityAt: -1 };
 
     const [total, rows] = await Promise.all([
       Discussion.countDocuments(filter),
@@ -596,8 +599,10 @@ export const communityService = {
       active = true;
     }
 
-    const Model = targetType === 'discussion' ? Discussion : CommunityReply;
-    const updated = await Model.findById(targetId).select('likeCount helpfulCount');
+    const updated =
+      targetType === 'discussion'
+        ? await Discussion.findById(targetId).select('likeCount helpfulCount')
+        : await CommunityReply.findById(targetId).select('likeCount helpfulCount');
     const counts = {
       likeCount: updated?.likeCount ?? 0,
       helpfulCount: updated?.helpfulCount ?? 0,

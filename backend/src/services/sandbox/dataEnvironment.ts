@@ -105,7 +105,7 @@ export async function resolveViewerDataEnvironment(
     return resolveUserDataEnvironment(input);
   }
   if (input.explicit === 'combined') return 'combined';
-  if (input.explicit && input.explicit !== 'combined') {
+  if (input.explicit) {
     return normalizeDataEnvironment(input.explicit, 'production');
   }
   if (!input.userId) return 'production';
@@ -119,8 +119,10 @@ export async function resolveViewerDataEnvironment(
 }
 
 /** Read dataEnvironment from a lean/doc-like object. */
-export function documentDataEnvironment(doc: { dataEnvironment?: unknown } | null | undefined): DataEnvironment {
-  return normalizeDataEnvironment(doc?.dataEnvironment, 'production');
+export function documentDataEnvironment(doc: object | null | undefined): DataEnvironment {
+  if (!doc) return 'production';
+  const value = Reflect.get(doc, 'dataEnvironment');
+  return normalizeDataEnvironment(value, 'production');
 }
 
 /**

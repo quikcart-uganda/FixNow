@@ -31,6 +31,24 @@ export type SeedScenarioId =
   | 'emergency_booking'
   | 'business_booking'
   | 'repeat_customer'
+  | 'new_customer'
+  | 'scheduled_booking'
+  | 'cancelled_booking'
+  | 'rejected_application'
+  | 'accepted_technician'
+  | 'late_technician'
+  | 'completed_work'
+  | 'disputed_work'
+  | 'professional_booking'
+  | 'starter_booking'
+  | 'expired_subscription'
+  | 'subscription_renewal'
+  | 'failed_payment'
+  | 'approved_payment'
+  | 'admin_intervention'
+  | 'marketing_campaign'
+  | 'heavy_workload'
+  | 'quiet_marketplace'
 
 export type SeedScenarioDef = {
   id: SeedScenarioId
@@ -44,6 +62,8 @@ export type SeedScenarioDef = {
   urgency?: 'normal' | 'priority' | 'emergency'
   tags?: string[]
 }
+
+export const SCENARIO_SETTINGS_KEY = 'seed_scenario_disabled_ids'
 
 export const SEED_SCENARIOS: SeedScenarioDef[] = [
   {
@@ -239,6 +259,222 @@ export const SEED_SCENARIOS: SeedScenarioDef[] = [
     urgency: 'normal',
     tags: ['repeat'],
   },
+  {
+    id: 'new_customer',
+    label: 'New customer',
+    description: 'First-time booking style job',
+    categoryName: 'Home Maintenance',
+    title: 'First booking: general home maintenance check',
+    descriptionText: 'New customer first job — general inspection and small fixes around the house.',
+    budgetMin: 50000,
+    budgetMax: 120000,
+    urgency: 'normal',
+    tags: ['new_customer'],
+  },
+  {
+    id: 'scheduled_booking',
+    label: 'Scheduled booking',
+    description: 'Planned non-urgent visit',
+    categoryName: 'Painting',
+    title: 'Scheduled weekend interior touch-up',
+    descriptionText: 'Prefer Saturday morning. Not urgent — schedule a crew for a planned visit.',
+    budgetMin: 200000,
+    budgetMax: 450000,
+    urgency: 'normal',
+    tags: ['scheduled'],
+  },
+  {
+    id: 'cancelled_booking',
+    label: 'Cancelled booking',
+    description: 'Posted job intended for cancel-flow QA',
+    categoryName: 'Cleaning',
+    title: 'Deep clean — may cancel if dates slip',
+    descriptionText: 'Seed scenario for cancel flow. Customer may cancel after posting.',
+    budgetMin: 80000,
+    budgetMax: 160000,
+    urgency: 'normal',
+    tags: ['cancel'],
+  },
+  {
+    id: 'rejected_application',
+    label: 'Rejected application',
+    description: 'Job for reject-applicant QA',
+    categoryName: 'Plumbing',
+    title: 'Sink install — review applicants carefully',
+    descriptionText: 'Seed scenario for rejecting an unsuitable applicant while keeping the job open.',
+    budgetMin: 90000,
+    budgetMax: 180000,
+    urgency: 'normal',
+    tags: ['reject_application'],
+  },
+  {
+    id: 'accepted_technician',
+    label: 'Accepted technician',
+    description: 'Job for accept-applicant QA',
+    categoryName: 'Electrical',
+    title: 'Socket replacement — ready to accept a technician',
+    descriptionText: 'Seed scenario for accepting a technician application and starting work.',
+    budgetMin: 60000,
+    budgetMax: 130000,
+    urgency: 'normal',
+    tags: ['accept'],
+  },
+  {
+    id: 'late_technician',
+    label: 'Late technician',
+    description: 'Job for late-arrival / delay messaging QA',
+    categoryName: 'Air Conditioning',
+    title: 'AC service — arrival window sensitive',
+    descriptionText: 'Customer expects on-time arrival. Use for late technician messaging QA.',
+    budgetMin: 120000,
+    budgetMax: 220000,
+    urgency: 'priority',
+    tags: ['late'],
+  },
+  {
+    id: 'completed_work',
+    label: 'Completed work',
+    description: 'Job intended to run through completion + review',
+    categoryName: 'Carpentry',
+    title: 'Wardrobe hinge repair — complete end-to-end',
+    descriptionText: 'Seed scenario for full completion and review after work is done.',
+    budgetMin: 70000,
+    budgetMax: 140000,
+    urgency: 'normal',
+    tags: ['complete'],
+  },
+  {
+    id: 'disputed_work',
+    label: 'Disputed work',
+    description: 'Job for dispute / quality complaint QA',
+    categoryName: 'Painting',
+    title: 'Touch-up paint — quality dispute candidate',
+    descriptionText: 'Seed scenario for disputed completion / quality complaint flows.',
+    budgetMin: 150000,
+    budgetMax: 300000,
+    urgency: 'normal',
+    tags: ['dispute'],
+  },
+  {
+    id: 'professional_booking',
+    label: 'Professional booking',
+    description: 'Mid-tier professional plan style job',
+    categoryName: 'Electrical',
+    title: 'Office board inspection — professional tier',
+    descriptionText: 'SME office electrical inspection suitable for Professional-plan technician QA.',
+    budgetMin: 200000,
+    budgetMax: 400000,
+    urgency: 'normal',
+    tags: ['professional'],
+  },
+  {
+    id: 'starter_booking',
+    label: 'Starter booking',
+    description: 'Small job suitable for Starter-plan QA',
+    categoryName: 'Home Maintenance',
+    title: 'Replace door handle — small starter job',
+    descriptionText: 'Small ticket job for Starter-plan technician free-job / entitlement QA.',
+    budgetMin: 30000,
+    budgetMax: 70000,
+    urgency: 'normal',
+    tags: ['starter'],
+  },
+  {
+    id: 'expired_subscription',
+    label: 'Expired subscription',
+    description: 'Job visible while testing expired-plan technician limits',
+    categoryName: 'Plumbing',
+    title: 'Tap leak — expired subscription edge case',
+    descriptionText: 'Use with an expired/simulated plan to verify entitlement gates on apply.',
+    budgetMin: 50000,
+    budgetMax: 100000,
+    urgency: 'normal',
+    tags: ['subscription', 'expired'],
+  },
+  {
+    id: 'subscription_renewal',
+    label: 'Subscription renewal',
+    description: 'Job after renewal / Dev TX activation',
+    categoryName: 'Solar',
+    title: 'Solar inverter check after plan renewal',
+    descriptionText: 'Exercise marketplace access after subscription renewal or Dev TX activation.',
+    budgetMin: 150000,
+    budgetMax: 350000,
+    urgency: 'normal',
+    tags: ['subscription', 'renewal'],
+  },
+  {
+    id: 'failed_payment',
+    label: 'Failed payment',
+    description: 'Context job while testing failed payment UX',
+    categoryName: 'Electrical',
+    title: 'Lighting fix — payment failure companion',
+    descriptionText: 'Companion job while QA exercises failed subscription payment paths (real payment APIs).',
+    budgetMin: 80000,
+    budgetMax: 150000,
+    urgency: 'normal',
+    tags: ['payment', 'failed'],
+  },
+  {
+    id: 'approved_payment',
+    label: 'Approved payment',
+    description: 'Context job after approved payment / Dev TX',
+    categoryName: 'Plumbing',
+    title: 'Water heater service — after approved payment',
+    descriptionText: 'Companion job after an approved payment or Development Transaction activation.',
+    budgetMin: 100000,
+    budgetMax: 220000,
+    urgency: 'normal',
+    tags: ['payment', 'approved'],
+  },
+  {
+    id: 'admin_intervention',
+    label: 'Admin intervention',
+    description: 'Job for admin moderate / intervene QA',
+    categoryName: 'Civil Works',
+    title: 'Boundary wall crack — admin review candidate',
+    descriptionText: 'Seed scenario for admin intervention, moderation, or support ticket linkage.',
+    budgetMin: 500000,
+    budgetMax: 1200000,
+    urgency: 'priority',
+    tags: ['admin'],
+  },
+  {
+    id: 'marketing_campaign',
+    label: 'Marketing campaign',
+    description: 'Job coinciding with marketing/offer campaign QA',
+    categoryName: 'Cleaning',
+    title: 'Promo week: spring clean package',
+    descriptionText: 'Use alongside Seed offers/marketing modules to verify campaign ↔ job discovery.',
+    budgetMin: 90000,
+    budgetMax: 200000,
+    urgency: 'normal',
+    tags: ['marketing'],
+  },
+  {
+    id: 'heavy_workload',
+    label: 'Heavy workload',
+    description: 'Large multi-room job for busy marketplace QA',
+    categoryName: 'Painting',
+    title: 'Full house exterior + interior paint',
+    descriptionText: 'Large scope job to stress matching, applications, and technician capacity.',
+    budgetMin: 1500000,
+    budgetMax: 4000000,
+    urgency: 'normal',
+    tags: ['heavy'],
+  },
+  {
+    id: 'quiet_marketplace',
+    label: 'Quiet marketplace',
+    description: 'Low-urgency niche job for empty-state / sparse matching QA',
+    categoryName: 'Appliance Repair',
+    title: 'Niche: vintage radio repair (low urgency)',
+    descriptionText: 'Sparse matching candidate — verify empty applicant states and quiet marketplace UX.',
+    budgetMin: 40000,
+    budgetMax: 90000,
+    urgency: 'normal',
+    tags: ['quiet'],
+  },
 ]
 
 async function findCategoryId(name: string) {
@@ -248,8 +484,43 @@ async function findCategoryId(name: string) {
   return fuzzy
 }
 
+async function loadDisabledIds(): Promise<Set<string>> {
+  const { PlatformSetting } = await import('../../../models/platform/AuditSettings.js')
+  const doc = await PlatformSetting.findOne({
+    key: SCENARIO_SETTINGS_KEY,
+    isDeleted: { $ne: true },
+  })
+    .select('value')
+    .lean()
+  const ids = Array.isArray((doc?.value as { ids?: unknown } | undefined)?.ids)
+    ? ((doc!.value as { ids: string[] }).ids || []).map(String)
+    : []
+  return new Set(ids)
+}
+
+async function saveDisabledIds(ids: string[], actorId: string) {
+  const { PlatformSetting } = await import('../../../models/platform/AuditSettings.js')
+  await PlatformSetting.findOneAndUpdate(
+    { key: SCENARIO_SETTINGS_KEY },
+    {
+      $set: {
+        key: SCENARIO_SETTINGS_KEY,
+        value: { ids, updatedAt: new Date().toISOString(), updatedBy: actorId },
+        isDeleted: false,
+      },
+      $unset: { deletedAt: 1 },
+    },
+    { upsert: true },
+  )
+}
+
 export const seedScenarioService = {
-  listScenarios() {
+  async listDisabledScenarioIds() {
+    return [...(await loadDisabledIds())]
+  },
+
+  async listScenarios() {
+    const disabled = await loadDisabledIds()
     return {
       scenarios: SEED_SCENARIOS.map((s) => ({
         id: s.id,
@@ -258,10 +529,39 @@ export const seedScenarioService = {
         categoryName: s.categoryName,
         urgency: s.urgency || 'normal',
         tags: s.tags || [],
+        enabled: !disabled.has(s.id),
       })),
       customerEmail: DEVELOPER_CUSTOMER.email,
-      pipeline: 'jobMarketplaceService.create → matching → applications → chat → completion → review',
+      pipeline:
+        'jobMarketplaceService.create → matching → applications → chat → completion → review (manual stages via real apps)',
+      note: 'Scenarios create real POSTED jobs. Downstream stages use production customer/technician/admin UIs — no fake shortcuts.',
+      disabledCount: disabled.size,
     }
+  },
+
+  async setScenarioEnabled(
+    actor: { userId: string },
+    body: { scenarioId: string; enabled: boolean },
+  ) {
+    await assertSandboxEnabled()
+    const id = String(body.scenarioId || '')
+    if (!SEED_SCENARIOS.some((s) => s.id === id)) {
+      throw AppError.badRequest('Unknown scenario id')
+    }
+    const disabled = await loadDisabledIds()
+    if (body.enabled) disabled.delete(id)
+    else disabled.add(id)
+    const ids = [...disabled]
+    await saveDisabledIds(ids, actor.userId)
+    await writeAuditLog({
+      actorId: actor.userId,
+      actorRole: 'admin',
+      action: body.enabled ? 'seed.scenarios.enable' : 'seed.scenarios.disable',
+      resourceType: 'SeedPlatform',
+      resourceId: id,
+      meta: { scenarioId: id, enabled: body.enabled },
+    })
+    return this.listScenarios()
   },
 
   /**
@@ -286,14 +586,22 @@ export const seedScenarioService = {
       )
     }
 
-    const selected = body.all
+    const disabled = await loadDisabledIds()
+    const selected = (body.all
       ? SEED_SCENARIOS
       : SEED_SCENARIOS.filter((s) => (body.scenarioIds || []).includes(s.id))
+    ).filter((s) => !disabled.has(s.id))
+
     if (!selected.length) {
-      throw AppError.badRequest('Select at least one scenario (or pass all: true)')
+      throw AppError.badRequest(
+        body.all
+          ? 'All scenarios are disabled — enable at least one in Seed Management'
+          : 'Select at least one enabled scenario (or pass all: true)',
+      )
     }
 
     const created: Array<{ scenarioId: string; jobId: string; title: string; status: string }> = []
+    const skippedDisabled = (body.scenarioIds || []).filter((id) => disabled.has(id))
 
     for (const scenario of selected) {
       const category = await findCategoryId(scenario.categoryName)
@@ -323,7 +631,7 @@ export const seedScenarioService = {
 
       const jobDoc = (createdJob as { job?: { _id?: unknown; id?: string; status?: string; title?: string } }).job
       const jobId = String(jobDoc?.id || jobDoc?._id || '')
-      if (!jobId) throw AppError.internal('Seed scenario job create did not return a job id')
+      if (!jobId) throw new AppError('Seed scenario job create did not return a job id')
 
       await Job.updateOne(
         { _id: jobId },
@@ -357,17 +665,19 @@ export const seedScenarioService = {
         customerUserId: integrity.userId,
         count: created.length,
         scenarioIds: created.map((c) => c.scenarioId),
+        skippedDisabled,
       },
     })
 
     return {
       created,
+      skippedDisabled,
       customerEmail: DEVELOPER_CUSTOMER.email,
       customerUserId: integrity.userId,
       passwordPreserved: true,
       usedProductionJobPipeline: true,
       seedTag: SEED_TAG,
-      note: 'Jobs created via jobMarketplaceService.create and stamped sandbox for Seed Platform isolation.',
+      note: 'Jobs created via jobMarketplaceService.create and stamped sandbox for Seed Platform isolation. Continue matching/chat/completion in real apps.',
     }
   },
 }

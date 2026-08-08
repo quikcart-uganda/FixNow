@@ -1,4 +1,9 @@
-import { Schema, type Document, type SchemaDefinition, type SchemaOptions } from 'mongoose';
+import {
+  Schema,
+  type Document,
+  type SchemaDefinition,
+  type SchemaOptions,
+} from 'mongoose';
 import {
   DATA_ENVIRONMENTS,
   type DataEnvironment,
@@ -7,6 +12,12 @@ import {
 export interface SoftDeleteFields {
   isDeleted: boolean;
   deletedAt?: Date | null;
+  /**
+   * Added by metadataPlugin / dataEnvironmentPlugin on every createSchema model.
+   * Declared here so HydratedDocument&lt;T&gt; exposes the fields without Document&lt;unknown&gt;.
+   */
+  metadata?: Record<string, unknown> | null;
+  dataEnvironment?: DataEnvironment;
 }
 
 export interface TimestampFields {
@@ -14,9 +25,13 @@ export interface TimestampFields {
   updatedAt: Date;
 }
 
-/** Content environment — orthogonal to process APP_ENV. */
+/**
+ * Content environment — orthogonal to process APP_ENV.
+ * Optional so domain interfaces remain compatible with `model&lt;IDomain&gt;(...)`.
+ * The plugin still persists the field at runtime.
+ */
 export interface DataEnvironmentFields {
-  dataEnvironment: DataEnvironment;
+  dataEnvironment?: DataEnvironment;
 }
 
 export type BaseDocument = Document & SoftDeleteFields & TimestampFields & DataEnvironmentFields;
@@ -84,14 +99,48 @@ export const ugandaLocationSchema = new Schema<UgandaLocation>(
   { _id: false },
 );
 
-export function softDeletePlugin(schema: Schema): void {
-  schema.add({
+type SoftDeleteQuery = {
+  getOptions?: () => { withDeleted?: boolean };
+  getFilter?: () => { isDeleted?: unknown };
+  where: (criteria: { isDeleted: boolean }) => unknown;
+};
+
+const softDeleteFieldsSchema = new Schema(
+  {
     isDeleted: { type: Boolean, default: false, index: true },
     deletedAt: { type: Date, default: null, index: true },
-  });
+  },
+  { _id: false },
+);
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const filterDeleted = function (this: any) {
+const dataEnvironmentFieldsSchema = new Schema(
+  {
+    dataEnvironment: {
+      type: String,
+      enum: DATA_ENVIRONMENTS,
+      default: 'production',
+      index: true,
+    },
+  },
+  { _id: false },
+);
+
+const metadataFieldsSchema = new Schema(
+  {
+    metadata: { type: Schema.Types.Mixed },
+  },
+  { _id: false },
+);
+
+/**
+ * Soft-delete query helper.
+ * Bare `Schema` is the Mongoose plugin convention; createSchema still constructs
+ * `Schema&lt;T&gt;` so InferSchemaType keeps DocType = T.
+ */
+export function softDeletePlugin(schema: Schema): void {
+  schema.add(softDeleteFieldsSchema);
+
+  const filterDeleted = function (this: SoftDeleteQuery) {
     const options = this.getOptions?.() ?? {};
     if (options.withDeleted) return;
     const filter = this.getFilter?.() ?? {};
@@ -108,22 +157,13 @@ export function softDeletePlugin(schema: Schema): void {
 
 /** Tags every marketplace/platform document with a data environment (default production). */
 export function dataEnvironmentPlugin(schema: Schema): void {
-  schema.add({
-    dataEnvironment: {
-      type: String,
-      enum: DATA_ENVIRONMENTS,
-      default: 'production',
-      index: true,
-    },
-  });
+  schema.add(dataEnvironmentFieldsSchema);
 }
 
 /** Optional provenance bag (Seed Platform, demo tags, feature flags). */
 export function metadataPlugin(schema: Schema): void {
   if (!schema.path('metadata')) {
-    schema.add({
-      metadata: { type: Schema.Types.Mixed },
-    });
+    schema.add(metadataFieldsSchema);
   }
 }
 
@@ -134,19 +174,40 @@ export const baseSchemaOptions = {
   toObject: { virtuals: true },
 } as const;
 
-export function createSchema<T>(definition: SchemaDefinition, options: SchemaOptions = {}) {
-  const schema = new Schema(
-    definition,
-    {
-      timestamps: true,
-      versionKey: false,
-      toJSON: { virtuals: true },
-      toObject: { virtuals: true },
-      ...options,
-    },
-  );
+/**
+ * Create a typed Schema for FixNow models.
+ *
+ * Root cause of Render `Document&lt;unknown&gt;` failures (Mongoose 8.24 + TS 5.9):
+ * `mongoose.model(name, schema)` resolves via
+ * `Model&lt;InferSchemaType&lt;typeof schema&gt;&gt;`. InferSchemaType reads the Schema
+ * DocType generic. The previous helper did `new Schema(definition)` (untyped)
+ * and only asserted the return as `Schema&lt;T&gt;`, so DocType stayed unknown.
+ *
+ * Fix: construct `new Schema&lt;T&gt;(...)` so RawDocType/DocType are the domain
+ * interface (e.g. IWallet). Domain interfaces already include SoftDelete + timestamps.
+ */
+export function createSchema<T extends object>(
+  definition: SchemaDefinition<T>,
+  options: SchemaOptions<T> = {},
+) {
+  const schema = new Schema<T>(definition, {
+    timestamps: true,
+    versionKey: false,
+  });
+
+  schema.set('toJSON', { virtuals: true });
+  schema.set('toObject', { virtuals: true });
+
+  if (options.collection) schema.set('collection', options.collection);
+  if (options.autoIndex !== undefined) schema.set('autoIndex', options.autoIndex);
+  if (options.minimize !== undefined) schema.set('minimize', options.minimize);
+  if (options.strict !== undefined) schema.set('strict', options.strict);
+  if (options.selectPopulatedPaths !== undefined) {
+    schema.set('selectPopulatedPaths', options.selectPopulatedPaths);
+  }
+
   softDeletePlugin(schema);
   dataEnvironmentPlugin(schema);
   metadataPlugin(schema);
-  return schema as Schema<T & SoftDeleteFields & TimestampFields & DataEnvironmentFields>;
+  return schema;
 }

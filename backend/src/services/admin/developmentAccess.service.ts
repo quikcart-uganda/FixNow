@@ -49,7 +49,7 @@ let cache: { value: DevelopmentAccessConfig; loadedAt: number } | null = null;
 const CACHE_TTL_MS = 5_000;
 
 function normalize(raw: Partial<DevelopmentAccessConfig> | null | undefined): DevelopmentAccessConfig {
-  const v = raw ?? {};
+  const v = { ...DEFAULT_CONFIG, ...(raw ?? {}) };
   return {
     transitionCompleted: Boolean(v.transitionCompleted),
     allowDevLogin: v.allowDevLogin !== false,
@@ -225,7 +225,7 @@ export async function ensureTransitionSelfHeal(): Promise<DevelopmentAccessConfi
             action: 'enable',
             reason:
               'Healed premature Development Admin lockout — Platform Mode is still Development',
-          },
+          } satisfies DevelopmentAccessHistoryEntry,
         ].slice(-50),
       };
       await saveConfig(next, null);
@@ -259,7 +259,7 @@ export async function ensureTransitionSelfHeal(): Promise<DevelopmentAccessConfi
         action: 'transition_completed',
         reason:
           'Real Super Admin detected — Development Admin remains available until Platform Mode is Production',
-      },
+      } satisfies DevelopmentAccessHistoryEntry,
     ].slice(-50),
   };
   await saveConfig(next, null);
@@ -438,7 +438,7 @@ export async function applyDevelopmentAccessFlagForPlatformMode(
         actorId: actor.userId,
         action: allowDevLogin ? 'enable' : 'disable',
         reason: actor.reason,
-      },
+      } satisfies DevelopmentAccessHistoryEntry,
     ].slice(-50),
   };
   await saveConfig(next, actor.userId);

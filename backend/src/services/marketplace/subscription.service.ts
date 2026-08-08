@@ -172,7 +172,7 @@ const STARTER_FEATURE_LIST = [
 
 function priceFor(plan: ISubscriptionPlanDoc, period: BillingPeriod): number {
   if (period === 'yearly') return Number(plan.priceYearly ?? plan.price ?? 0);
-  if (period === 'half_yearly') return Number(plan.priceHalfYear ?? plan.priceQuarterly * 2 ?? plan.price ?? 0);
+  if (period === 'half_yearly') return Number(plan.priceHalfYear ?? plan.priceQuarterly * 2);
   if (period === 'quarterly') return Number(plan.priceQuarterly ?? plan.price ?? 0);
   return Number(plan.priceMonthly ?? plan.price ?? 0);
 }

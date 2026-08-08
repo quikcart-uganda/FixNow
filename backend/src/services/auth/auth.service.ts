@@ -516,12 +516,14 @@ export const authService = {
     if (input.referralCode) {
       try {
         const { referralService } = await import('../referral/referral.service.js');
-        await referralService.onUserRegistered(user._id.toString(), user.role, {
+        if (user.role === 'technician' || user.role === 'customer') {
+          await referralService.onUserRegistered(user._id.toString(), user.role, {
           referralCode: String(input.referralCode),
           deviceFingerprint: meta.deviceId,
           phone: user.phone || undefined,
           email: user.email,
-        });
+          });
+        }
       } catch {
         /* non-blocking — registration must succeed even if referral fails */
       }

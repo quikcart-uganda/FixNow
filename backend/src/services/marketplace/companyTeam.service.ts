@@ -3,7 +3,7 @@
  * Gated by existing entitlements (canUseTeamPlaceholders / teamManagement / dispatcher).
  */
 import crypto from 'node:crypto';
-import mongoose, { Types } from 'mongoose';
+import mongoose, { type HydratedDocument, Types } from 'mongoose';
 import {
   Assignment,
   Company,
@@ -32,6 +32,7 @@ import { assertCapability } from './entitlements.service.js';
 import { emitTechnicianAssigned } from '../../sockets/realtime.js';
 
 type Meta = { ip?: string };
+type CompanyDocument = HydratedDocument<ICompany>;
 
 function pushStatus(
   job: InstanceType<typeof Job>,
@@ -62,9 +63,9 @@ async function assertTeamAccess(userId: string) {
   );
 }
 
-export async function ensureCompanyForOwner(userId: string): Promise<ICompany> {
+export async function ensureCompanyForOwner(userId: string): Promise<CompanyDocument> {
   await assertTeamAccess(userId);
-  let company = (await Company.findOne({ ownerUserId: userId, deletedAt: null })) as ICompany | null;
+  let company: CompanyDocument | null = await Company.findOne({ ownerUserId: userId, deletedAt: null });
   if (company) {
     await CompanyMember.findOneAndUpdate(
       { companyId: company._id, userId },
@@ -86,20 +87,20 @@ export async function ensureCompanyForOwner(userId: string): Promise<ICompany> {
     location?: { district?: string };
     _id?: Types.ObjectId;
   } | null;
-  const user = (await User.findById(userId).select('name email')) as {
-    name?: string;
+  const user = (await User.findById(userId).select('fullName email')) as {
+    fullName?: string;
     email?: string;
   } | null;
-  company = (await Company.create({
+  company = await Company.create({
     ownerUserId: userId,
-    name: profile?.companyName || `${user?.name || 'Business'} Company`,
+    name: profile?.companyName || `${user?.fullName || 'Business'} Company`,
     slogan: profile?.businessSlogan,
     logoUrl: profile?.businessLogoUrl,
     primaryColor: profile?.brandPrimaryColor,
     secondaryColor: profile?.brandSecondaryColor,
     district: profile?.location?.district,
     settings: { autoAssignEnabled: false, notifyOnDispatch: true },
-  })) as ICompany;
+  });
 
   await CompanyMember.create({
     companyId: company._id,
@@ -116,10 +117,10 @@ export async function ensureCompanyForOwner(userId: string): Promise<ICompany> {
 
 async function requireOwnerOrDispatcher(userId: string) {
   await assertTeamAccess(userId);
-  let company: ICompany | null = (await Company.findOne({
+  let company: CompanyDocument | null = await Company.findOne({
     ownerUserId: userId,
     deletedAt: null,
-  })) as ICompany | null;
+  });
   let member: ICompanyMember | null = null;
 
   if (company) {
@@ -149,7 +150,7 @@ async function requireOwnerOrDispatcher(userId: string) {
     return { company, member, isOwner: true };
   }
 
-  company = (await Company.findOne({ _id: member.companyId, deletedAt: null })) as ICompany | null;
+  company = await Company.findOne({ _id: member.companyId, deletedAt: null });
   if (!company) throw AppError.notFound('Company not found');
   const isOwner = company.ownerUserId.toString() === userId;
   if (!isOwner && member.role !== 'dispatcher') {
@@ -174,7 +175,7 @@ function serializeCompany(company: ICompany) {
 
 async function serializeMember(member: ICompanyMember) {
   const [user, profile, activeJobs] = await Promise.all([
-    User.findById(member.userId).select('name email phone photoUrl'),
+    User.findById(member.userId).select('fullName email phone'),
     TechnicianProfile.findOne({ userId: member.userId }),
     Job.countDocuments({
       assignedTechnicianId: member.userId,
@@ -199,10 +200,10 @@ async function serializeMember(member: ICompanyMember) {
     joinedAt: member.joinedAt || null,
     suspendedAt: member.suspendedAt || null,
     notes: member.notes || null,
-    name: user?.name || profile?.headline || 'Technician',
+    name: user?.fullName || profile?.headline || 'Technician',
     email: user?.email || null,
     phone: user?.phone || null,
-    photoUrl: user?.photoUrl || profile?.photoUrl || null,
+    photoUrl: profile?.photoUrl || null,
     skills: profile?.skills || [],
     rating: Number(profile?.ratingAverage || 0),
     reviewCount: Number(profile?.reviewCount || 0),
@@ -408,7 +409,7 @@ export async function acceptInvite(userId: string, token: string, meta: Meta = {
     userId: company.ownerUserId.toString(),
     type: 'company.invite_accepted',
     title: 'Team invite accepted',
-    body: `${user.name || user.email} joined ${company.name}.`,
+    body: `${user.fullName || user.email} joined ${company.name}.`,
     bypassQuietHours: true,
   });
 
@@ -499,7 +500,7 @@ async function buildRecommendations(
   const scored = await Promise.all(
     active.map(async (m) => {
       const profile = await TechnicianProfile.findOne({ userId: m.userId });
-      const user = await User.findById(m.userId).select('name');
+      const user = await User.findById(m.userId).select('fullName');
       const workload = await Job.countDocuments({
         assignedTechnicianId: m.userId,
         status: {
@@ -539,7 +540,7 @@ async function buildRecommendations(
         memberId: m._id.toString(),
         userId: m.userId.toString(),
         role: m.role,
-        name: user?.name || profile?.headline || 'Technician',
+        name: user?.fullName || profile?.headline || 'Technician',
         available,
         workload,
         rating,
@@ -853,7 +854,7 @@ export async function teamPerformance(userId: string) {
     members.map(async (m) => {
       const [profile, user, completed, cancelled, active] = await Promise.all([
         TechnicianProfile.findOne({ userId: m.userId }),
-        User.findById(m.userId).select('name'),
+        User.findById(m.userId).select('fullName'),
         Job.countDocuments({
           assignedTechnicianId: m.userId,
           status: JOB_STATUS.COMPLETED,
@@ -876,7 +877,7 @@ export async function teamPerformance(userId: string) {
       return {
         userId: m.userId.toString(),
         memberId: m._id.toString(),
-        name: user?.name || profile?.headline || 'Technician',
+        name: user?.fullName || profile?.headline || 'Technician',
         role: m.role,
         status: m.status,
         jobsCompleted: completed,
@@ -927,14 +928,14 @@ export async function teamAvailability(userId: string) {
     members.map(async (m) => {
       const [profile, user, hours] = await Promise.all([
         TechnicianProfile.findOne({ userId: m.userId }),
-        User.findById(m.userId).select('name'),
+        User.findById(m.userId).select('fullName'),
         WorkingHours.find({ technicianUserId: m.userId, deletedAt: null }).limit(14),
       ]);
       const status = profile?.isAvailableNow ? 'available' : 'offline';
       return {
         userId: m.userId.toString(),
         memberId: m._id.toString(),
-        name: user?.name || profile?.headline || 'Technician',
+        name: user?.fullName || profile?.headline || 'Technician',
         role: m.role,
         status,
         isAvailableNow: Boolean(profile?.isAvailableNow),

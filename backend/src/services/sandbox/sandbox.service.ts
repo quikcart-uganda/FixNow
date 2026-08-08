@@ -28,8 +28,69 @@ import { applyDataEnvironment, dataEnvironmentFilter, listAllDataEnvironments } 
 import { generateDemoDataset, DEMO_PASSWORD, DEMO_TAG } from './demoData.generator.js';
 import { assertSandboxEnabled, getSandboxSettings, updateSandboxSettings } from './sandboxSettings.service.js';
 import { listAvatars, getAvatarById } from './avatarLibrary.js';
+import { SEED_TAG } from './seed/constants.js';
 
 type Actor = { userId: string };
+
+/** Demo-only users — never Seed Platform permanent or seed-tagged identities. */
+function demoOnlyUserFilter(extra: Record<string, unknown> = {}): Record<string, unknown> {
+  return {
+    $and: [
+      {
+        $or: [{ email: /@fixnow\.demo$/i }, { 'metadata.demoTag': DEMO_TAG }],
+      },
+      { 'metadata.seedTag': { $ne: SEED_TAG } },
+      { 'metadata.permanentDevelopmentTechnician': { $ne: true } },
+      { 'metadata.permanentDevelopmentCustomer': { $ne: true } },
+      extra,
+    ],
+  };
+}
+
+function demoOnlyContentFilter(environment: DataEnvironment): Record<string, unknown> {
+  return {
+    dataEnvironment: environment,
+    'metadata.demoTag': DEMO_TAG,
+    'metadata.seedTag': { $ne: SEED_TAG },
+  };
+}
+
+/** Strip internal seed/demo governance keys before cloning into production. */
+function stripInternalGovernanceMetadata(src: Record<string, unknown>): Record<string, unknown> {
+  const { _id, createdAt, updatedAt, __v, metadata, ...rest } = src;
+  void _id;
+  void createdAt;
+  void updatedAt;
+  void __v;
+  const blocked = new Set([
+    'seedTag',
+    'seedKey',
+    'demoTag',
+    'demoKey',
+    'developer',
+    'seed',
+    'sandbox',
+    'permanentDevelopmentTechnician',
+    'permanentDevelopmentCustomer',
+    'governanceRole',
+    'platformRole',
+    'fixtureId',
+    'generatedBy',
+    'generatedOn',
+    'seedVersion',
+    'environment',
+    'scenarioPermissions',
+    'developmentTestingEnabled',
+  ]);
+  let nextMeta: Record<string, unknown> | undefined;
+  if (metadata && typeof metadata === 'object' && !Array.isArray(metadata)) {
+    nextMeta = Object.fromEntries(
+      Object.entries(metadata as Record<string, unknown>).filter(([k]) => !blocked.has(k)),
+    );
+    if (!Object.keys(nextMeta).length) nextMeta = undefined;
+  }
+  return nextMeta ? { ...rest, metadata: nextMeta } : { ...rest, metadata: undefined };
+}
 
 async function countsFor(env: DataEnvironment | 'combined') {
   const filter = dataEnvironmentFilter(env);
@@ -66,6 +127,18 @@ export const sandboxService = {
         : null,
       neverPromote: NEVER_PROMOTE_RESOURCE_TYPES,
       promotable: PROMOTABLE_RESOURCE_TYPES,
+      /**
+       * Single source of truth for permanent QA fixtures is Seed Platform
+       * (`/admin/settings/seed-platform`). This page manages the legacy
+       * `@fixnow.demo` dataset only; demo lifecycle never touches Seed identities.
+       */
+      authoritativeSeedCentre: {
+        path: '/admin/settings/seed-platform',
+        label: 'Seed Platform',
+        demoDatasetStatus: 'legacy',
+        demoOpsScope: 'demo-only (@fixnow.demo / metadata.demoTag)',
+        seedPlatformExcluded: true,
+      },
       /** Phase 4.3 — Promotion Centre clone handlers. */
       promoteImplemented: [
         'TechnicianOffer',
@@ -107,29 +180,27 @@ export const sandboxService = {
 
   async deleteDemoData(actor: Actor, environment: DataEnvironment = 'sandbox') {
     await assertSandboxEnabled();
-    const users = await User.find({
-      dataEnvironment: environment,
-      $or: [{ email: /@fixnow\.demo$/i }, { 'metadata.demoTag': DEMO_TAG }],
-    })
+    const users = await User.find(demoOnlyUserFilter({ dataEnvironment: environment }))
       .select('_id')
       .lean();
     const ids = users.map((u) => u._id);
     const now = new Date();
     if (ids.length) {
+      const contentFilter = demoOnlyContentFilter(environment);
       await Promise.all([
         User.updateMany({ _id: { $in: ids } }, { $set: { isDeleted: true, deletedAt: now, accountStatus: 'suspended' } }),
         CustomerProfile.updateMany({ userId: { $in: ids } }, { $set: { isDeleted: true, deletedAt: now } }),
         TechnicianProfile.updateMany({ userId: { $in: ids } }, { $set: { isDeleted: true, deletedAt: now } }),
         Job.updateMany(
-          { $or: [{ customerId: { $in: ids } }, { dataEnvironment: environment, 'metadata.demoTag': DEMO_TAG }] },
+          { $or: [{ customerId: { $in: ids } }, contentFilter] },
           { $set: { isDeleted: true, deletedAt: now } },
         ),
         JobApplication.updateMany(
-          { $or: [{ technicianId: { $in: ids } }, { dataEnvironment: environment }] },
+          { $or: [{ technicianId: { $in: ids } }, contentFilter] },
           { $set: { isDeleted: true, deletedAt: now } },
         ),
         TechnicianOffer.updateMany(
-          { $or: [{ technicianId: { $in: ids } }, { dataEnvironment: environment }] },
+          { $or: [{ technicianId: { $in: ids } }, contentFilter] },
           { $set: { isDeleted: true, deletedAt: now } },
         ),
       ]);
@@ -140,20 +211,23 @@ export const sandboxService = {
       action: 'sandbox.demo.delete',
       resourceType: 'Sandbox',
       resourceId: environment,
-      meta: { deletedUsers: ids.length },
+      meta: { deletedUsers: ids.length, scopedTo: 'demo-only', seedPlatformExcluded: true },
     });
-    return { deletedUsers: ids.length, environment };
+    return { deletedUsers: ids.length, environment, seedPlatformExcluded: true };
   },
 
   async archiveDemoData(actor: Actor, environment: DataEnvironment = 'sandbox') {
     await assertSandboxEnabled();
-    const filter = dataEnvironmentFilter(environment);
+    const userFilter = demoOnlyUserFilter({ dataEnvironment: environment });
+    const contentFilter = demoOnlyContentFilter(environment);
+    const users = await User.find(userFilter).select('_id').lean();
+    const ids = users.map((u) => u._id);
     await Promise.all([
-      User.updateMany(filter, { $set: { dataEnvironment: 'archived' } }),
-      CustomerProfile.updateMany(filter, { $set: { dataEnvironment: 'archived' } }),
-      TechnicianProfile.updateMany(filter, { $set: { dataEnvironment: 'archived' } }),
-      Job.updateMany(filter, { $set: { dataEnvironment: 'archived' } }),
-      TechnicianOffer.updateMany(filter, { $set: { dataEnvironment: 'archived' } }),
+      User.updateMany(userFilter, { $set: { dataEnvironment: 'archived' } }),
+      CustomerProfile.updateMany({ userId: { $in: ids } }, { $set: { dataEnvironment: 'archived' } }),
+      TechnicianProfile.updateMany({ userId: { $in: ids } }, { $set: { dataEnvironment: 'archived' } }),
+      Job.updateMany(contentFilter, { $set: { dataEnvironment: 'archived' } }),
+      TechnicianOffer.updateMany(contentFilter, { $set: { dataEnvironment: 'archived' } }),
     ]);
     await writeAuditLog({
       actorId: actor.userId,
@@ -161,14 +235,15 @@ export const sandboxService = {
       action: 'sandbox.demo.archive',
       resourceType: 'Sandbox',
       resourceId: environment,
+      meta: { scopedTo: 'demo-only', seedPlatformExcluded: true, users: ids.length },
     });
-    return { environment: 'archived' as const };
+    return { environment: 'archived' as const, seedPlatformExcluded: true, archivedUsers: ids.length };
   },
 
   async suspendDemoData(actor: Actor) {
     await assertSandboxEnabled();
     const res = await User.updateMany(
-      { dataEnvironment: { $in: ['sandbox', 'development', 'demo'] } },
+      demoOnlyUserFilter({ dataEnvironment: { $in: ['sandbox', 'development', 'demo'] } }),
       { $set: { accountStatus: 'suspended' } },
     );
     await writeAuditLog({
@@ -176,19 +251,19 @@ export const sandboxService = {
       actorRole: 'admin',
       action: 'sandbox.demo.suspend',
       resourceType: 'Sandbox',
-      meta: { matched: res.matchedCount },
+      meta: { matched: res.matchedCount, scopedTo: 'demo-only', seedPlatformExcluded: true },
     });
-    return { suspended: res.modifiedCount };
+    return { suspended: res.modifiedCount, seedPlatformExcluded: true };
   },
 
   async reactivateDemoData(actor: Actor) {
     await assertSandboxEnabled();
     const res = await User.updateMany(
-      {
+      demoOnlyUserFilter({
         dataEnvironment: { $in: ['sandbox', 'development', 'demo'] },
         accountStatus: 'suspended',
         isDeleted: { $ne: true },
-      },
+      }),
       { $set: { accountStatus: 'active' } },
     );
     await writeAuditLog({
@@ -196,9 +271,9 @@ export const sandboxService = {
       actorRole: 'admin',
       action: 'sandbox.demo.reactivate',
       resourceType: 'Sandbox',
-      meta: { matched: res.matchedCount },
+      meta: { matched: res.matchedCount, scopedTo: 'demo-only', seedPlatformExcluded: true },
     });
-    return { reactivated: res.modifiedCount };
+    return { reactivated: res.modifiedCount, seedPlatformExcluded: true };
   },
 
   async resetDemoEnvironment(actor: Actor) {
@@ -209,17 +284,26 @@ export const sandboxService = {
 
   async exportDemoData(environment: DataEnvironment = 'sandbox') {
     await assertSandboxEnabled();
-    const filter = dataEnvironmentFilter(environment);
-    const [users, customers, technicians, jobs, offers] = await Promise.all([
-      User.find(applyDataEnvironment({}, environment)).select('-passwordHash').lean(),
-      CustomerProfile.find(filter).lean(),
-      TechnicianProfile.find(filter).lean(),
-      Job.find(filter).lean(),
-      TechnicianOffer.find(filter).lean(),
+    const userFilter = demoOnlyUserFilter(
+      environment === 'sandbox'
+        ? { dataEnvironment: { $in: ['sandbox', 'development', 'demo'] } }
+        : { dataEnvironment: environment },
+    );
+    const contentFilter = demoOnlyContentFilter(environment);
+    const users = await User.find(userFilter).select('-passwordHash').lean();
+    const ids = users.map((u) => u._id);
+    const [customers, technicians, jobs, offers] = await Promise.all([
+      CustomerProfile.find({ userId: { $in: ids } }).lean(),
+      TechnicianProfile.find({ userId: { $in: ids } }).lean(),
+      Job.find(contentFilter).lean(),
+      TechnicianOffer.find(contentFilter).lean(),
     ]);
     return {
       exportedAt: new Date().toISOString(),
       environment,
+      scopedTo: 'demo-only',
+      seedPlatformExcluded: true,
+      note: 'Legacy @fixnow.demo dataset only. Prefer Seed Platform for permanent QA fixtures.',
       users,
       customers,
       technicians,
@@ -279,16 +363,9 @@ export const sandboxService = {
       throw AppError.badRequest(`${type} is not a promotable resource.`);
     }
 
-    let clone: Record<string, unknown> | null = null;
+    let clone: object | null = null;
 
-    const stripMeta = (src: Record<string, unknown>) => {
-      const { _id, createdAt, updatedAt, __v, ...rest } = src;
-      void _id;
-      void createdAt;
-      void updatedAt;
-      void __v;
-      return rest;
-    };
+    const stripMeta = (src: Record<string, unknown>) => stripInternalGovernanceMetadata(src);
 
     if (type === 'TechnicianOffer') {
       const src = await TechnicianOffer.findById(input.resourceId).lean();
@@ -386,7 +463,7 @@ export const sandboxService = {
       action: 'sandbox.promote',
       resourceType: type,
       resourceId: input.resourceId,
-      meta: { cloneId: clone?._id, note: 'cloned — original unchanged' },
+      meta: { cloneId: clone ? Reflect.get(clone, '_id') : undefined, note: 'cloned — original unchanged' },
     });
 
     return { originalId: input.resourceId, clone, note: 'Cloned into production; sandbox original unchanged.' };

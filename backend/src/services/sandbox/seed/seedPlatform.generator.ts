@@ -265,6 +265,19 @@ async function upsertTechnician(
         photoUrl: avatar?.url,
         avatarId: t.avatarId,
         skills: t.skills,
+        searchKeywords: [
+          t.fullName,
+          t.headline,
+          t.companyName,
+          t.district,
+          ...t.skills,
+          ...(t.isDeveloper
+            ? [DEVELOPER_TECHNICIAN.email, 'development technician', 'seed', 'jordan mutebi']
+            : []),
+        ]
+          .filter(Boolean)
+          .map((s) => String(s).toLowerCase())
+          .slice(0, 40),
         languages: ['en', 'lg'],
         experienceYears: t.isDeveloper ? 15 : Math.max(3, Math.round(t.jobsCompleted / 15)),
         experienceLevel: t.isDeveloper ? 'expert' : 'intermediate',
@@ -296,7 +309,10 @@ async function upsertTechnician(
           geo: { type: 'Point', coordinates: [t.lng, t.lat] },
         },
         dataEnvironment,
-        metadata: buildSeedMeta(metaExtra),
+        metadata: {
+          ...buildSeedMeta(metaExtra),
+          hiddenFromCustomers: false,
+        },
         accountStatus: ACCOUNT_STATUS.ACTIVE,
         isDeleted: false,
         deletedAt: null,
@@ -319,7 +335,7 @@ async function upsertJobFixture(
   const categoryId = await findCategoryId(fixture.categoryName);
   const customerProfile = await CustomerProfile.findOne({ userId: customerId }).select('_id');
 
-  const assignedStatuses = new Set([
+  const assignedStatuses: Set<string> = new Set([
     JOB_STATUS.ASSIGNED,
     JOB_STATUS.TECHNICIAN_EN_ROUTE,
     JOB_STATUS.IN_PROGRESS,
@@ -467,34 +483,43 @@ async function upsertJobFixture(
 }
 
 async function seedJobChat(jobId: string, customerId: string, technicianId: string, fixtureId: string) {
-  let conversation = await Conversation.findOne({ jobId, type: 'job' });
-  if (!conversation) {
-    conversation = await Conversation.create({
-      jobId,
-      type: 'job',
-      title: `Seed chat ${fixtureId}`,
-      participantUserIds: [customerId, technicianId],
-      messageCount: 0,
-      isLocked: false,
-      dataEnvironment,
-      metadata: buildSeedMeta({ seedKey: `chat-${fixtureId}`, fixtureId }),
-    });
-  } else {
-    await Conversation.updateOne(
-      { _id: conversation._id },
-      {
-        $set: {
-          dataEnvironment,
-          metadata: buildSeedMeta({ seedKey: `chat-${fixtureId}`, fixtureId }),
-          isLocked: false,
-        },
-      },
-    );
+  // Prefer production messaging SoT so unread, sockets, and notifications stay accurate.
+  const { messagingService, ensureJobConversation } = await import('../../messaging/message.service.js');
+
+  let conversation;
+  try {
+    conversation = await ensureJobConversation(jobId);
+  } catch {
+    conversation = await Conversation.findOne({ jobId, type: 'job' });
+    if (!conversation) {
+      conversation = await Conversation.create({
+        jobId,
+        type: 'job',
+        title: `Seed chat ${fixtureId}`,
+        participantUserIds: [customerId, technicianId],
+        messageCount: 0,
+        isLocked: false,
+        dataEnvironment,
+        metadata: buildSeedMeta({ seedKey: `chat-${fixtureId}`, fixtureId }),
+      });
+    }
   }
 
+  await Conversation.updateOne(
+    { _id: conversation._id },
+    {
+      $set: {
+        dataEnvironment,
+        metadata: buildSeedMeta({ seedKey: `chat-${fixtureId}`, fixtureId }),
+        isLocked: false,
+        participantUserIds: [customerId, technicianId],
+      },
+    },
+  );
+
   for (const p of [
-    { userId: customerId, role: 'customer' },
-    { userId: technicianId, role: 'technician' },
+    { userId: customerId, role: 'customer' as const },
+    { userId: technicianId, role: 'technician' as const },
   ]) {
     await ConversationParticipant.findOneAndUpdate(
       { conversationId: conversation._id, userId: p.userId },
@@ -503,44 +528,63 @@ async function seedJobChat(jobId: string, customerId: string, technicianId: stri
           conversationId: conversation._id,
           userId: p.userId,
           role: p.role,
+          unreadCount: 0,
           dataEnvironment,
           metadata: buildSeedMeta({ fixtureId }),
         },
+        $unset: { leftAt: 1 },
       },
       { upsert: true },
     );
   }
 
-  await Message.deleteMany({ conversationId: conversation._id, 'meta.seedTag': SEED_TAG });
+  await Message.deleteMany({
+    conversationId: conversation._id,
+    $or: [{ 'meta.seedTag': SEED_TAG }, { clientMessageId: new RegExp(`^seed-${fixtureId}-`) }],
+  });
+  await Conversation.updateOne({ _id: conversation._id }, { $set: { messageCount: 0 } });
+
   const lines = [
-    { senderId: customerId, body: 'Hi — I am locked out of the shop. How soon can you reach Bugolobi?' },
-    { senderId: technicianId, body: 'I can be there in about 25 minutes. Please confirm the shopfront colour.' },
-    { senderId: customerId, body: 'Green door next to the bakery. I will wait outside.' },
-    { senderId: technicianId, body: 'On my way. Bringing a spare euro cylinder just in case.' },
+    { senderId: customerId, role: ROLES.CUSTOMER, body: 'Hi — I am locked out of the shop. How soon can you reach Bugolobi?' },
+    { senderId: technicianId, role: ROLES.TECHNICIAN, body: 'I can be there in about 25 minutes. Please confirm the shopfront colour.' },
+    { senderId: customerId, role: ROLES.CUSTOMER, body: 'Green door next to the bakery. I will wait outside.' },
+    { senderId: technicianId, role: ROLES.TECHNICIAN, body: 'On my way. Bringing a spare euro cylinder just in case.' },
   ];
+
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i]!;
-    await Message.create({
-      conversationId: conversation._id,
-      senderId: line.senderId,
-      body: line.body,
-      type: MESSAGE_TYPE.TEXT,
-      clientMessageId: `seed-${fixtureId}-${i}`,
-      dataEnvironment,
-      meta: buildSeedMeta({ seedKey: `msg-${fixtureId}-${i}`, fixtureId }),
-      metadata: buildSeedMeta({ seedKey: `msg-${fixtureId}-${i}`, fixtureId }),
-    });
+    try {
+      await messagingService.send(
+        { userId: line.senderId, role: line.role },
+        {
+          conversationId: conversation._id.toString(),
+          body: line.body,
+          type: MESSAGE_TYPE.TEXT,
+          clientMessageId: `seed-${fixtureId}-${i}`,
+        },
+      );
+    } catch {
+      await Message.create({
+        conversationId: conversation._id,
+        senderId: line.senderId,
+        body: line.body,
+        type: MESSAGE_TYPE.TEXT,
+        clientMessageId: `seed-${fixtureId}-${i}`,
+        dataEnvironment,
+        meta: buildSeedMeta({ seedKey: `msg-${fixtureId}-${i}`, fixtureId }),
+        metadata: buildSeedMeta({ seedKey: `msg-${fixtureId}-${i}`, fixtureId }),
+      });
+    }
   }
-  await Conversation.updateOne(
-    { _id: conversation._id },
-    {
-      $set: {
-        messageCount: lines.length,
-        lastMessageAt: new Date(),
-        lastMessagePreview: lines[lines.length - 1]!.body.slice(0, 280),
-        lastMessageSenderId: lines[lines.length - 1]!.senderId,
-      },
-    },
+
+  // Leave unread on the customer after technician's last reply (realistic unread scenario).
+  await ConversationParticipant.updateOne(
+    { conversationId: conversation._id, userId: customerId },
+    { $set: { unreadCount: 1 } },
+  );
+  await ConversationParticipant.updateOne(
+    { conversationId: conversation._id, userId: technicianId },
+    { $set: { unreadCount: 0 } },
   );
 }
 

@@ -1,7 +1,6 @@
 import type { Server as HttpServer } from 'node:http';
 import { Server } from 'socket.io';
 import { isAllowedRequestOrigin } from '../config/cors.js';
-import { env } from '../config/env.js';
 import { logger } from '../config/logger.js';
 import { ROLES } from '../constants/roles.js';
 import { Conversation, Job, User } from '../models/index.js';

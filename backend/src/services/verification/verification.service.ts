@@ -170,7 +170,9 @@ export const verificationMarketplaceService = {
     ];
     const names = await nameMap(userIds);
 
-    type QueueItem = ReturnType<typeof mapIdentity> & {
+    type QueueItem = Omit<ReturnType<typeof mapIdentity>, 'kind' | 'lc1Reference'> & {
+      kind: 'identity' | 'skill' | 'certification';
+      lc1Reference?: string;
       evidenceUrls?: string[];
       categoryId?: string;
       name?: string;
