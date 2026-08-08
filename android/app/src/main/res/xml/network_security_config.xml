@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Release / production network policy: cleartext HTTP is blocked.
+  Debug builds overlay this file from src/debug/res/xml/ so emulator and
+  LAN backends (http://10.0.2.2, http://192.168.x.x) still work.
+-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="false">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+</network-security-config>

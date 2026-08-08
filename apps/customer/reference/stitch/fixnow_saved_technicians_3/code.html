@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FixNow - Saved Technicians</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "on-error": "#ffffff",
+                "inverse-on-surface": "#f1f0ef",
+                "border-subtle": "#e5e7eb",
+                "error-container": "#ffdad6",
+                "surface": "#faf9f8",
+                "primary-container": "#5645d4",
+                "on-secondary-fixed-variant": "#314865",
+                "on-primary": "#ffffff",
+                "on-background": "#1a1c1c",
+                "on-primary-fixed-variant": "#3e28bd",
+                "surface-container-low": "#f4f3f2",
+                "inverse-primary": "#c6bfff",
+                "on-error-container": "#93000a",
+                "on-tertiary-container": "#ffcdb1",
+                "on-tertiary-fixed-variant": "#763300",
+                "primary-fixed": "#e4dfff",
+                "on-secondary-fixed": "#001c37",
+                "surface-dim": "#dadad9",
+                "on-surface-variant": "#474554",
+                "trust-blue": "#b2d5ff",
+                "surface-container": "#efeeed",
+                "secondary-fixed-dim": "#b0c8eb",
+                "on-primary-fixed": "#150066",
+                "tertiary-fixed": "#ffdbc9",
+                "surface-container-high": "#e9e8e7",
+                "surface-bright": "#faf9f8",
+                "outline": "#787586",
+                "primary-fixed-dim": "#c6bfff",
+                "surface-variant": "#e3e2e1",
+                "secondary-fixed": "#d2e4ff",
+                "ink-black": "#000000",
+                "surface-container-highest": "#e3e2e1",
+                "tertiary": "#743300",
+                "secondary": "#49607e",
+                "on-primary-container": "#d7d2ff",
+                "on-tertiary": "#ffffff",
+                "on-secondary-container": "#49617f",
+                "on-surface": "#1a1c1c",
+                "background": "#faf9f8",
+                "surface-tint": "#5746d5",
+                "surface-gray": "#f6f5f4",
+                "tertiary-fixed-dim": "#ffb68d",
+                "surface-container-lowest": "#ffffff",
+                "inverse-surface": "#2f3130",
+                "tertiary-container": "#994500",
+                "on-tertiary-fixed": "#321200",
+                "on-secondary": "#ffffff",
+                "error": "#ba1a1a",
+                "primary": "#3d27bc",
+                "success-green": "#1aae39",
+                "secondary-container": "#c4dcff",
+                "outline-variant": "#c8c4d7",
+                "canvas-white": "#ffffff"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "base": "4px",
+                "gutter-desktop": "24px",
+                "gutter-mobile": "16px",
+                "section-gap": "64px",
+                "margin-safe": "20px"
+            },
+            "fontFamily": {
+                "body-sm": ["Inter"],
+                "body-lg": ["Inter"],
+                "display-lg": ["Inter"],
+                "title-md": ["Inter"],
+                "label-caps": ["Inter"],
+                "headline-lg-mobile": ["Inter"],
+                "mono-label": ["Inter"],
+                "headline-lg": ["Inter"]
+            },
+            "fontSize": {
+                "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                "title-md": ["20px", {"lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                "mono-label": ["13px", {"lineHeight": "1.0", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .filled-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+        body {
+            background-color: #faf9f8;
+            font-family: 'Inter', sans-serif;
+            color: #1a1c1c;
+        }
+        .technician-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .technician-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0px 8px 30px rgba(0,0,0,0.06);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen pb-20">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-50 flex justify-between items-center px-gutter-mobile md:px-gutter-desktop h-14 md:h-16 w-full max-w-7xl mx-auto bg-canvas-white dark:bg-background border-b border-border-subtle dark:border-outline-variant flat no shadows">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary dark:text-inverse-primary cursor-pointer">menu</span>
+<h1 class="font-display-lg-mobile text-display-lg-mobile font-bold text-primary dark:text-inverse-primary">Saved</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex items-center gap-6 px-4">
+<span class="text-on-surface-variant dark:text-outline font-label-caps text-label-caps cursor-pointer hover:text-primary transition-colors">Home</span>
+<span class="text-on-surface-variant dark:text-outline font-label-caps text-label-caps cursor-pointer hover:text-primary transition-colors">Search</span>
+<span class="text-on-surface-variant dark:text-outline font-label-caps text-label-caps cursor-pointer hover:text-primary transition-colors">Jobs</span>
+<span class="text-primary dark:text-inverse-primary font-bold border-b-2 border-primary font-label-caps text-label-caps cursor-pointer">Saved</span>
+</div>
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold overflow-hidden">
+<img alt="User" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPS-tURKZIDfkk0AueIXgdcVOxuzwWiU-b0YtQDQYtSK7XAZVWsWVhgFV5F8wV5aVMxyl4gVk69fiV54ZLLn4bwpGypkW2YKarFxd7GDY4GMQKqnYiCiXCmLMNItjFENdEHQopJfvg4eUghJuPy3PWRrHCOS_YgXxElqZcSGaYhsJjI87njmrPd3sYJNSglkLysNgeqMAXHXS1wlUrhjAXwyGnzgSGd4uqhLSXNx-GbkmkCBzQ8Bh9VklCOhys1JBtLx-xNxWT8ww"/>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-gutter-mobile md:px-gutter-desktop pt-6">
+<!-- Search & Filter Area -->
+<div class="mb-8">
+<div class="relative max-w-2xl">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full h-14 pl-12 pr-4 bg-canvas-white border border-border-subtle rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all font-body-lg text-body-lg outline-none shadow-sm" placeholder="Filter saved technicians..." type="text"/>
+</div>
+</div>
+<!-- Section Title -->
+<div class="flex items-center justify-between mb-6">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-on-surface">Favorite Professionals</h2>
+<span class="font-label-caps text-label-caps text-outline">3 SAVED</span>
+</div>
+<!-- Grid Layout for Saved Technicians -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Technician Card 1: Moses Okello -->
+<div class="technician-card bg-canvas-white rounded-xl border border-border-subtle p-5 flex flex-col gap-4 shadow-[0px_4px_20px_rgba(0,0,0,0.04)]">
+<div class="flex items-start justify-between">
+<div class="flex gap-4">
+<div class="relative">
+<img class="w-16 h-16 rounded-lg object-cover" data-alt="A professional portrait of a senior African male electrician in his 40s wearing a clean blue polo shirt. He has a friendly, confident expression and is standing in a well-lit workshop environment. The lighting is crisp and modern, reflecting a premium service platform aesthetic with clean lines and soft shadows. Professional studio photography style with a shallow depth of field." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoYYWmejqxYhx69vrG7KgDQz9m9m2MIMEL7K_nzHRXNiJcRCqH5Sa1jXasjR3CNdeP9k5ew6bqrmqFCDPwre3YnyirZPwsr1Foat69I9TA1oG6v_3kEGJrtKFD6McEpVNcL8Jhz95UjodQrQZ_Brx0zk59-gcplloerux1O8c1w2XDYGIcC0COtu8FL8GfO82f1yPiVuLvuQ7UhM0zV1Mm0Q5tGqVEFvIau4Rz4vQQQDsjCv9GbPdKO-G_4oHJO0DI2mExwrz-eJw"/>
+<div class="absolute -bottom-1 -right-1 bg-success-green rounded-full p-0.5 border-2 border-white">
+<span class="material-symbols-outlined text-[12px] text-white filled-icon">check</span>
+</div>
+</div>
+<div>
+<div class="flex items-center gap-1">
+<h3 class="font-title-md text-title-md text-ink-black">Moses Okello</h3>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Master Electrician</p>
+<div class="flex items-center gap-2 mt-1">
+<div class="flex items-center">
+<span class="material-symbols-outlined text-tertiary text-sm filled-icon">star</span>
+<span class="font-mono-label text-mono-label ml-1">4.9</span>
+</div>
+<div class="w-1 h-1 rounded-full bg-outline-variant"></div>
+<span class="bg-primary-fixed text-on-primary-fixed-variant px-2 py-0.5 rounded-full font-label-caps text-[10px]">98/100 TRUST</span>
+</div>
+</div>
+</div>
+<button class="p-2 rounded-full hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-primary filled-icon">favorite</span>
+</button>
+</div>
+<div class="grid grid-cols-2 gap-3 mt-2">
+<button class="flex items-center justify-center gap-2 py-2 px-4 rounded-lg border border-border-subtle hover:bg-surface-container transition-colors font-label-caps text-label-caps">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+                        Message
+                    </button>
+<button class="flex items-center justify-center gap-2 py-2 px-4 rounded-lg border border-border-subtle hover:bg-surface-container transition-colors font-label-caps text-label-caps">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+                        Profile
+                    </button>
+</div>
+<button class="w-full bg-primary text-white py-3 rounded-lg font-title-md text-body-lg font-bold hover:opacity-90 active:scale-95 transition-all">
+                    Re-book Now
+                </button>
+</div>
+<!-- Technician Card 2: Sarah Namuli -->
+<div class="technician-card bg-canvas-white rounded-xl border border-border-subtle p-5 flex flex-col gap-4 shadow-[0px_4px_20px_rgba(0,0,0,0.04)]">
+<div class="flex items-start justify-between">
+<div class="flex gap-4">
+<div class="relative">
+<img class="w-16 h-16 rounded-lg object-cover" data-alt="A high-quality professional portrait of a young African female plumber in her early 30s. She is smiling warmly and wearing a professional gray uniform with a subtle brand logo. The background is a bright, modern interior setting with a focus on clean architectural lines. Soft, natural daylighting emphasizes her approachable and professional demeanor. The style is minimalist and corporate modern." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoSvnBmFkqLWn-af6p5-mT3N7Y7WWoE6FubLWrW37JVB9oVS4kgAYG6AHywGb7Ln0qzrrN2Y3f0eY3Al4LzZpYhZmguKEi06I5QM7bXnCzZj5NHglBKQljMltJsH13NpHrcX4ZI6k28PggenTARfEUQsbpn6ejsIH2IwXyHIEuWfNnKa2sRYdX1rwVZeWpLVU3B0vAXICex1hfVTvjEDX8VPc7KhZAUfL-uvjjRBY-i2dbywY9H_U8JVrOhks6eAOJPPE0pzHkr1s"/>
+<div class="absolute -bottom-1 -right-1 bg-success-green rounded-full p-0.5 border-2 border-white">
+<span class="material-symbols-outlined text-[12px] text-white filled-icon">check</span>
+</div>
+</div>
+<div>
+<div class="flex items-center gap-1">
+<h3 class="font-title-md text-title-md text-ink-black">Sarah Namuli</h3>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Senior Plumber</p>
+<div class="flex items-center gap-2 mt-1">
+<div class="flex items-center">
+<span class="material-symbols-outlined text-tertiary text-sm filled-icon">star</span>
+<span class="font-mono-label text-mono-label ml-1">4.8</span>
+</div>
+<div class="w-1 h-1 rounded-full bg-outline-variant"></div>
+<span class="bg-primary-fixed text-on-primary-fixed-variant px-2 py-0.5 rounded-full font-label-caps text-[10px]">96/100 TRUST</span>
+</div>
+</div>
+</div>
+<button class="p-2 rounded-full hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-primary filled-icon">favorite</span>
+</button>
+</div>
+<div class="grid grid-cols-2 gap-3 mt-2">
+<button class="flex items-center justify-center gap-2 py-2 px-4 rounded-lg border border-border-subtle hover:bg-surface-container transition-colors font-label-caps text-label-caps">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+                        Message
+                    </button>
+<button class="flex items-center justify-center gap-2 py-2 px-4 rounded-lg border border-border-subtle hover:bg-surface-container transition-colors font-label-caps text-label-caps">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+                        Profile
+                    </button>
+</div>
+<button class="w-full bg-primary text-white py-3 rounded-lg font-title-md text-body-lg font-bold hover:opacity-90 active:scale-95 transition-all">
+                    Re-book Now
+                </button>
+</div>
+<!-- Technician Card 3: Ivan Kato -->
+<div class="technician-card bg-canvas-white rounded-xl border border-border-subtle p-5 flex flex-col gap-4 shadow-[0px_4px_20px_rgba(0,0,0,0.04)]">
+<div class="flex items-start justify-between">
+<div class="flex gap-4">
+<div class="relative">
+<img class="w-16 h-16 rounded-lg object-cover" data-alt="A professional studio portrait of a male HVAC specialist in his late 20s. He is wearing a clean dark navy uniform and holding a digital thermometer tool. The lighting is professional, high-contrast but soft, creating a reliable and technical appearance. The background is a neutral, light-gray gradient that matches the corporate modern design aesthetic. He looks knowledgeable and ready for service." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0AkQ0K49p8jwwc4gbnYKbmDnQNibTPhYWudUA76Gt9IrzbWKZCvUjd64xaB2n-me2WvYDSA55-dzIWmXUsypZiGGhRmOK5WGIhUaEw1_HYFR0OMZTJp1WBYWcj-8cIQ5Rr3To6hcMQpClA10vgZtufVr5snQBtP338hTTYW1FkEvaqnpxYczZqn7arrMmd-q19BayZom_NYY-xPSzvM0qdBBuRNViyWwGg1q4uVA0MEpq734MNRc3BBsEMnKK9u1wIMHCDn5bpqw"/>
+<div class="absolute -bottom-1 -right-1 bg-success-green rounded-full p-0.5 border-2 border-white">
+<span class="material-symbols-outlined text-[12px] text-white filled-icon">check</span>
+</div>
+</div>
+<div>
+<div class="flex items-center gap-1">
+<h3 class="font-title-md text-title-md text-ink-black">Ivan Kato</h3>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">HVAC Specialist</p>
+<div class="flex items-center gap-2 mt-1">
+<div class="flex items-center">
+<span class="material-symbols-outlined text-tertiary text-sm filled-icon">star</span>
+<span class="font-mono-label text-mono-label ml-1">4.7</span>
+</div>
+<div class="w-1 h-1 rounded-full bg-outline-variant"></div>
+<span class="bg-primary-fixed text-on-primary-fixed-variant px-2 py-0.5 rounded-full font-label-caps text-[10px]">94/100 TRUST</span>
+</div>
+</div>
+</div>
+<button class="p-2 rounded-full hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-primary filled-icon">favorite</span>
+</button>
+</div>
+<div class="grid grid-cols-2 gap-3 mt-2">
+<button class="flex items-center justify-center gap-2 py-2 px-4 rounded-lg border border-border-subtle hover:bg-surface-container transition-colors font-label-caps text-label-caps">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+                        Message
+                    </button>
+<button class="flex items-center justify-center gap-2 py-2 px-4 rounded-lg border border-border-subtle hover:bg-surface-container transition-colors font-label-caps text-label-caps">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+                        Profile
+                    </button>
+</div>
+<button class="w-full bg-primary text-white py-3 rounded-lg font-title-md text-body-lg font-bold hover:opacity-90 active:scale-95 transition-all">
+                    Re-book Now
+                </button>
+</div>
+</div>
+<!-- Suggestion / Call to Action Empty State (Subtle) -->
+<div class="mt-16 text-center py-12 px-6 border-2 border-dashed border-border-subtle rounded-2xl bg-surface-container-low">
+<span class="material-symbols-outlined text-4xl text-outline mb-4">search_spark</span>
+<h4 class="font-title-md text-title-md mb-2">Looking for someone else?</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-6 max-w-sm mx-auto">Explore our directory of highly rated, vetted technicians ready to help you with your next fix.</p>
+<button class="px-8 py-3 bg-secondary text-white rounded-lg font-bold hover:opacity-90 transition-all">
+                Find New Technicians
+            </button>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only Logic via md:hidden) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 pb-safe h-16 md:hidden bg-canvas-white dark:bg-background border-t border-border-subtle dark:border-outline-variant shadow-sm">
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-container-low transition-colors px-4 py-1">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-caps text-[10px] mt-1">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-container-low transition-colors px-4 py-1">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-caps text-[10px] mt-1">Search</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-container-low transition-colors px-4 py-1">
+<span class="material-symbols-outlined">build</span>
+<span class="font-label-caps text-[10px] mt-1">Jobs</span>
+</div>
+<!-- ACTIVE TAB: Saved/Favorites -->
+<div class="flex flex-col items-center justify-center text-primary dark:text-inverse-primary font-semibold hover:bg-surface-container-low transition-colors px-4 py-1">
+<span class="material-symbols-outlined filled-icon">favorite</span>
+<span class="font-label-caps text-[10px] mt-1">Saved</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-container-low transition-colors px-4 py-1">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-caps text-[10px] mt-1">Profile</span>
+</div>
+</nav>
+<script>
+        // Simple Interaction logic for heart toggle (visual only)
+        document.querySelectorAll('.technician-card button .material-symbols-outlined').forEach(btn => {
+            if (btn.innerText === 'favorite') {
+                btn.parentElement.addEventListener('click', function() {
+                    const isFilled = btn.classList.contains('filled-icon');
+                    if (isFilled) {
+                        btn.classList.remove('filled-icon');
+                        btn.classList.add('text-outline');
+                        btn.classList.remove('text-primary');
+                    } else {
+                        btn.classList.add('filled-icon');
+                        btn.classList.add('text-primary');
+                        btn.classList.remove('text-outline');
+                    }
+                });
+            }
+        });
+    </script>
+</body></html>

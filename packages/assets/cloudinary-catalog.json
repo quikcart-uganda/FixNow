@@ -1,0 +1,1132 @@
+{
+  "generatedAt": "2026-07-28T12:38:35.934Z",
+  "cloudName": "nkcltsv9",
+  "folderRoot": "fixnow",
+  "count": 65,
+  "assets": {
+    "categories.electrical": {
+      "key": "categories.electrical",
+      "publicId": "fixnow/categories/electrical",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/categories/electrical",
+      "folder": "fixnow/categories",
+      "alt": "Electrician installing wiring in a residential panel",
+      "tags": [
+        "category",
+        "electrical",
+        "technician"
+      ],
+      "width": 1600,
+      "height": 1068,
+      "bytes": 246646,
+      "format": "jpg",
+      "attribution": "Unsplash",
+      "kind": "categories"
+    },
+    "categories.generator": {
+      "key": "categories.generator",
+      "publicId": "fixnow/categories/generator",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/categories/generator",
+      "folder": "fixnow/categories",
+      "alt": "Technician servicing a backup generator",
+      "tags": [
+        "category",
+        "generator"
+      ],
+      "width": 1600,
+      "height": 1067,
+      "bytes": 171138,
+      "format": "jpg",
+      "attribution": "Unsplash",
+      "kind": "categories"
+    },
+    "categories.emergency": {
+      "key": "categories.emergency",
+      "publicId": "fixnow/emergency/emergency-repairs",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/emergency/emergency-repairs",
+      "folder": "fixnow/emergency",
+      "alt": "Emergency home repair response with professional tools",
+      "tags": [
+        "category",
+        "emergency"
+      ],
+      "width": 1600,
+      "height": 1067,
+      "bytes": 251405,
+      "format": "jpg",
+      "attribution": "Unsplash",
+      "kind": "categories"
+    },
+    "categories.plumbing": {
+      "key": "categories.plumbing",
+      "publicId": "fixnow/categories/plumbing",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/categories/plumbing",
+      "folder": "fixnow/categories",
+      "alt": "Plumber repairing pipes under a sink",
+      "tags": [
+        "category",
+        "plumbing"
+      ],
+      "width": 1600,
+      "height": 1200,
+      "bytes": 505848,
+      "format": "jpg",
+      "attribution": "Unsplash",
+      "kind": "categories"
+    },
+    "categories.carpentry": {
+      "key": "categories.carpentry",
+      "publicId": "fixnow/categories/carpentry",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/categories/carpentry",
+      "folder": "fixnow/categories",
+      "alt": "Carpenter cutting wood with professional tools",
+      "tags": [
+        "category",
+        "carpentry"
+      ],
+      "width": 1600,
+      "height": 949,
+      "bytes": 438450,
+      "format": "jpg",
+      "attribution": "Unsplash",
+      "kind": "categories"
+    },
+    "categories.painting": {
+      "key": "categories.painting",
+      "publicId": "fixnow/categories/painting",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/categories/painting",
+      "folder": "fixnow/categories",
+      "alt": "Painter applying fresh white paint to an interior wall",
+      "tags": [
+        "category",
+        "painting"
+      ],
+      "width": 1600,
+      "height": 1067,
+      "bytes": 165287,
+      "format": "jpg",
+      "attribution": "Pexels",
+      "kind": "categories"
+    },
+    "categories.roofing": {
+      "key": "categories.roofing",
+      "publicId": "fixnow/categories/roofing",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/categories/roofing",
+      "folder": "fixnow/categories",
+      "alt": "Roofing technicians working on a residential roof",
+      "tags": [
+        "category",
+        "roofing"
+      ],
+      "width": 1600,
+      "height": 1067,
+      "bytes": 169574,
+      "format": "jpg",
+      "attribution": "Pexels",
+      "kind": "categories"
+    },
+    "categories.cleaning": {
+      "key": "categories.cleaning",
+      "publicId": "fixnow/categories/cleaning",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/categories/cleaning",
+      "folder": "fixnow/categories",
+      "alt": "Professional cleaner mopping a bright modern floor",
+      "tags": [
+        "category",
+        "cleaning"
+      ],
+      "width": 1600,
+      "height": 1067,
+      "bytes": 184234,
+      "format": "jpg",
+      "attribution": "Unsplash",
+      "kind": "categories"
+    },
+    "categories.pest-control": {
+      "key": "categories.pest-control",
+      "publicId": "fixnow/categories/pest-control",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/categories/pest-control",
+      "folder": "fixnow/categories",
+      "alt": "Pest control technician preparing treatment equipment",
+      "tags": [
+        "category",
+        "pest-control"
+      ],
+      "width": 1600,
+      "height": 2400,
+      "bytes": 292277,
+      "format": "jpg",
+      "attribution": "Pexels",
+      "kind": "categories"
+    },
+    "categories.appliance-repair": {
+      "key": "categories.appliance-repair",
+      "publicId": "fixnow/categories/appliance-repair",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/categories/appliance-repair",
+      "folder": "fixnow/categories",
+      "alt": "Technician repairing a home kitchen appliance",
+      "tags": [
+        "category",
+        "appliance"
+      ],
+      "width": 1600,
+      "height": 959,
+      "bytes": 198340,
+      "format": "jpg",
+      "attribution": "Unsplash",
+      "kind": "categories"
+    },
+    "categories.hvac": {
+      "key": "categories.hvac",
+      "publicId": "fixnow/categories/hvac",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/categories/hvac",
+      "folder": "fixnow/categories",
+      "alt": "HVAC technician servicing an air conditioning unit",
+      "tags": [
+        "category",
+        "hvac"
+      ],
+      "width": 1600,
+      "height": 1068,
+      "bytes": 258523,
+      "format": "jpg",
+      "attribution": "Unsplash",
+      "kind": "categories"
+    },
+    "categories.solar": {
+      "key": "categories.solar",
+      "publicId": "fixnow/categories/solar",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/categories/solar",
+      "folder": "fixnow/categories",
+      "alt": "Solar panels installed on a modern rooftop",
+      "tags": [
+        "category",
+        "solar"
+      ],
+      "width": 1600,
+      "height": 1065,
+      "bytes": 342951,
+      "format": "jpg",
+      "attribution": "Unsplash",
+      "kind": "categories"
+    },
+    "categories.internet-cctv": {
+      "key": "categories.internet-cctv",
+      "publicId": "fixnow/categories/internet-cctv",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/categories/internet-cctv",
+      "folder": "fixnow/categories",
+      "alt": "Security camera and networking equipment installed outdoors",
+      "tags": [
+        "category",
+        "cctv",
+        "internet"
+      ],
+      "width": 1600,
+      "height": 1076,
+      "bytes": 378383,
+      "format": "jpg",
+      "attribution": "Unsplash",
+      "kind": "categories"
+    },
+    "categories.locksmith": {
+      "key": "categories.locksmith",
+      "publicId": "fixnow/categories/locksmith",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/categories/locksmith",
+      "folder": "fixnow/categories",
+      "alt": "Locksmith working on a residential door lock",
+      "tags": [
+        "category",
+        "locksmith"
+      ],
+      "width": 1600,
+      "height": 1067,
+      "bytes": 245593,
+      "format": "jpg",
+      "attribution": "Unsplash",
+      "kind": "categories"
+    },
+    "categories.landscaping": {
+      "key": "categories.landscaping",
+      "publicId": "fixnow/categories/landscaping",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/categories/landscaping",
+      "folder": "fixnow/categories",
+      "alt": "Gardener maintaining a lush residential garden",
+      "tags": [
+        "category",
+        "landscaping"
+      ],
+      "width": 1600,
+      "height": 1067,
+      "bytes": 373281,
+      "format": "jpg",
+      "attribution": "Unsplash",
+      "kind": "categories"
+    },
+    "categories.moving": {
+      "key": "categories.moving",
+      "publicId": "fixnow/categories/moving",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/categories/moving",
+      "folder": "fixnow/categories",
+      "alt": "Movers carrying boxes during a household relocation",
+      "tags": [
+        "category",
+        "moving"
+      ],
+      "width": 1600,
+      "height": 675,
+      "bytes": 276154,
+      "format": "jpg",
+      "attribution": "Unsplash",
+      "kind": "categories"
+    },
+    "categories.handyman": {
+      "key": "categories.handyman",
+      "publicId": "fixnow/categories/handyman",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/categories/handyman",
+      "folder": "fixnow/categories",
+      "alt": "Handyman using tools for a general home repair",
+      "tags": [
+        "category",
+        "handyman"
+      ],
+      "width": 1600,
+      "height": 1067,
+      "bytes": 201569,
+      "format": "jpg",
+      "attribution": "Pexels",
+      "kind": "categories"
+    },
+    "categories.welding": {
+      "key": "categories.welding",
+      "publicId": "fixnow/categories/welding",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/categories/welding",
+      "folder": "fixnow/categories",
+      "alt": "Welder fabricating metal with protective gear",
+      "tags": [
+        "category",
+        "welding"
+      ],
+      "width": 1600,
+      "height": 1067,
+      "bytes": 251405,
+      "format": "jpg",
+      "attribution": "Unsplash",
+      "kind": "categories"
+    },
+    "categories.masonry": {
+      "key": "categories.masonry",
+      "publicId": "fixnow/categories/masonry",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/categories/masonry",
+      "folder": "fixnow/categories",
+      "alt": "Bricklayer building a masonry wall",
+      "tags": [
+        "category",
+        "masonry"
+      ],
+      "width": 1600,
+      "height": 1060,
+      "bytes": 486699,
+      "format": "jpg",
+      "attribution": "Unsplash",
+      "kind": "categories"
+    },
+    "categories.tiling": {
+      "key": "categories.tiling",
+      "publicId": "fixnow/categories/tiling",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/categories/tiling",
+      "folder": "fixnow/categories",
+      "alt": "Tile installer laying floor tiles",
+      "tags": [
+        "category",
+        "tiling"
+      ],
+      "width": 1600,
+      "height": 2397,
+      "bytes": 184529,
+      "format": "jpg",
+      "attribution": "Pexels",
+      "kind": "categories"
+    },
+    "categories.ceiling": {
+      "key": "categories.ceiling",
+      "publicId": "fixnow/categories/ceiling",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/categories/ceiling",
+      "folder": "fixnow/categories",
+      "alt": "Ceiling installation with gypsum boards in progress",
+      "tags": [
+        "category",
+        "ceiling"
+      ],
+      "width": 1600,
+      "height": 1068,
+      "bytes": 274876,
+      "format": "jpg",
+      "attribution": "Unsplash",
+      "kind": "categories"
+    },
+    "categories.furniture": {
+      "key": "categories.furniture",
+      "publicId": "fixnow/categories/furniture",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/categories/furniture",
+      "folder": "fixnow/categories",
+      "alt": "Furniture assembly with flat-pack parts and tools",
+      "tags": [
+        "category",
+        "furniture"
+      ],
+      "width": 1600,
+      "height": 1067,
+      "bytes": 156501,
+      "format": "jpg",
+      "attribution": "Unsplash",
+      "kind": "categories"
+    },
+    "categories.glass": {
+      "key": "categories.glass",
+      "publicId": "fixnow/categories/glass",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/categories/glass",
+      "folder": "fixnow/categories",
+      "alt": "Glass and aluminium window installation on a modern building",
+      "tags": [
+        "category",
+        "glass"
+      ],
+      "width": 1600,
+      "height": 1068,
+      "bytes": 266552,
+      "format": "jpg",
+      "attribution": "Unsplash",
+      "kind": "categories"
+    },
+    "categories.interior-design": {
+      "key": "categories.interior-design",
+      "publicId": "fixnow/categories/interior-design",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/categories/interior-design",
+      "folder": "fixnow/categories",
+      "alt": "Styled modern interior living space after design work",
+      "tags": [
+        "category",
+        "interior-design"
+      ],
+      "width": 1600,
+      "height": 900,
+      "bytes": 236802,
+      "format": "jpg",
+      "attribution": "Unsplash",
+      "kind": "categories"
+    },
+    "categories.borehole": {
+      "key": "categories.borehole",
+      "publicId": "fixnow/categories/borehole",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/categories/borehole",
+      "folder": "fixnow/categories",
+      "alt": "Water pump and tank system for borehole supply",
+      "tags": [
+        "category",
+        "borehole",
+        "water"
+      ],
+      "width": 1600,
+      "height": 1067,
+      "bytes": 162424,
+      "format": "jpg",
+      "attribution": "Unsplash",
+      "kind": "categories"
+    },
+    "heroes.customer": {
+      "key": "heroes.customer",
+      "publicId": "fixnow/hero/customer",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/hero/customer",
+      "folder": "fixnow/hero",
+      "alt": "Verified technician assisting a homeowner in a modern living space",
+      "tags": [
+        "hero",
+        "customer",
+        "marketing"
+      ],
+      "width": 1600,
+      "height": 1201,
+      "bytes": 169357,
+      "format": "jpg",
+      "attribution": "Unsplash",
+      "kind": "heroes"
+    },
+    "heroes.technician": {
+      "key": "heroes.technician",
+      "publicId": "fixnow/hero/technician",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/hero/technician",
+      "folder": "fixnow/hero",
+      "alt": "Professional technician with tools ready for a service call",
+      "tags": [
+        "hero",
+        "technician",
+        "marketing"
+      ],
+      "width": 1600,
+      "height": 1068,
+      "bytes": 258544,
+      "format": "jpg",
+      "attribution": "Unsplash",
+      "kind": "heroes"
+    },
+    "promotions.first-booking": {
+      "key": "promotions.first-booking",
+      "publicId": "fixnow/offers/first-booking",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/offers/first-booking",
+      "folder": "fixnow/offers",
+      "alt": "Happy homeowner welcoming a FixNow technician for a first booking",
+      "tags": [
+        "promotion",
+        "offer",
+        "first-booking"
+      ],
+      "width": 1600,
+      "height": 2400,
+      "bytes": 471497,
+      "format": "jpg",
+      "attribution": "Unsplash",
+      "kind": "promotions"
+    },
+    "promotions.weekend": {
+      "key": "promotions.weekend",
+      "publicId": "fixnow/offers/weekend",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/offers/weekend",
+      "folder": "fixnow/offers",
+      "alt": "Weekend home maintenance with tools laid out ready for work",
+      "tags": [
+        "promotion",
+        "weekend"
+      ],
+      "width": 1600,
+      "height": 1029,
+      "bytes": 222543,
+      "format": "jpg",
+      "attribution": "Pexels",
+      "kind": "promotions"
+    },
+    "promotions.emergency": {
+      "key": "promotions.emergency",
+      "publicId": "fixnow/emergency/emergency-repair",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/emergency/emergency-repair",
+      "folder": "fixnow/emergency",
+      "alt": "Emergency electrician responding to an urgent repair call",
+      "tags": [
+        "promotion",
+        "emergency"
+      ],
+      "width": 1600,
+      "height": 1068,
+      "bytes": 246646,
+      "format": "jpg",
+      "attribution": "Unsplash",
+      "kind": "promotions"
+    },
+    "promotions.rainy-season": {
+      "key": "promotions.rainy-season",
+      "publicId": "fixnow/offers/rainy-season",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/offers/rainy-season",
+      "folder": "fixnow/offers",
+      "alt": "Roof inspection during rainy season maintenance",
+      "tags": [
+        "promotion",
+        "seasonal",
+        "roofing"
+      ],
+      "width": 1600,
+      "height": 1060,
+      "bytes": 486699,
+      "format": "jpg",
+      "attribution": "Unsplash",
+      "kind": "promotions"
+    },
+    "promotions.safety-month": {
+      "key": "promotions.safety-month",
+      "publicId": "fixnow/safety/safety-month",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/safety/safety-month",
+      "folder": "fixnow/safety",
+      "alt": "Home safety inspection with protective equipment",
+      "tags": [
+        "promotion",
+        "safety"
+      ],
+      "width": 1600,
+      "height": 1067,
+      "bytes": 251405,
+      "format": "jpg",
+      "attribution": "Unsplash",
+      "kind": "promotions"
+    },
+    "promotions.referral": {
+      "key": "promotions.referral",
+      "publicId": "fixnow/offers/referral",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/offers/referral",
+      "folder": "fixnow/offers",
+      "alt": "Two professionals shaking hands after a successful referral",
+      "tags": [
+        "promotion",
+        "referral"
+      ],
+      "width": 1600,
+      "height": 1068,
+      "bytes": 221534,
+      "format": "jpg",
+      "attribution": "Unsplash",
+      "kind": "promotions"
+    },
+    "advertisements.bank": {
+      "key": "advertisements.bank",
+      "publicId": "fixnow/partners/bank",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/partners/bank",
+      "folder": "fixnow/partners",
+      "alt": "Modern bank and finance partnership imagery",
+      "tags": [
+        "partner",
+        "bank",
+        "ad"
+      ],
+      "width": 1600,
+      "height": 1067,
+      "bytes": 235885,
+      "format": "jpg",
+      "attribution": "Unsplash",
+      "kind": "advertisements"
+    },
+    "advertisements.insurance": {
+      "key": "advertisements.insurance",
+      "publicId": "fixnow/partners/insurance",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/partners/insurance",
+      "folder": "fixnow/partners",
+      "alt": "Family home representing home insurance partnership",
+      "tags": [
+        "partner",
+        "insurance",
+        "ad"
+      ],
+      "width": 1600,
+      "height": 1201,
+      "bytes": 169357,
+      "format": "jpg",
+      "attribution": "Unsplash",
+      "kind": "advertisements"
+    },
+    "advertisements.building-materials": {
+      "key": "advertisements.building-materials",
+      "publicId": "fixnow/partners/building-materials",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/partners/building-materials",
+      "folder": "fixnow/partners",
+      "alt": "Stacks of building materials at a construction supply yard",
+      "tags": [
+        "partner",
+        "materials",
+        "ad"
+      ],
+      "width": 1600,
+      "height": 1060,
+      "bytes": 486699,
+      "format": "jpg",
+      "attribution": "Unsplash",
+      "kind": "advertisements"
+    },
+    "advertisements.solar": {
+      "key": "advertisements.solar",
+      "publicId": "fixnow/partners/solar",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/partners/solar",
+      "folder": "fixnow/partners",
+      "alt": "Solar energy partnership with rooftop panel installation",
+      "tags": [
+        "partner",
+        "solar",
+        "ad"
+      ],
+      "width": 1600,
+      "height": 1065,
+      "bytes": 342951,
+      "format": "jpg",
+      "attribution": "Unsplash",
+      "kind": "advertisements"
+    },
+    "advertisements.tools": {
+      "key": "advertisements.tools",
+      "publicId": "fixnow/tools/power-tools",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/tools/power-tools",
+      "folder": "fixnow/tools",
+      "alt": "Professional power tools arranged for trade work",
+      "tags": [
+        "partner",
+        "tools",
+        "ad"
+      ],
+      "width": 1600,
+      "height": 900,
+      "bytes": 69721,
+      "format": "jpg",
+      "attribution": "Unsplash",
+      "kind": "advertisements"
+    },
+    "advertisements.vehicle": {
+      "key": "advertisements.vehicle",
+      "publicId": "fixnow/partners/vehicle",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/partners/vehicle",
+      "folder": "fixnow/partners",
+      "alt": "Service vehicle ready for technician field work",
+      "tags": [
+        "partner",
+        "vehicle",
+        "ad"
+      ],
+      "width": 1600,
+      "height": 1067,
+      "bytes": 164161,
+      "format": "jpg",
+      "attribution": "Unsplash",
+      "kind": "advertisements"
+    },
+    "advertisements.training": {
+      "key": "advertisements.training",
+      "publicId": "fixnow/academy/pro-training",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/academy/pro-training",
+      "folder": "fixnow/academy",
+      "alt": "Technicians in a professional training workshop",
+      "tags": [
+        "partner",
+        "academy",
+        "training",
+        "ad"
+      ],
+      "width": 1600,
+      "height": 1067,
+      "bytes": 234582,
+      "format": "jpg",
+      "attribution": "Unsplash",
+      "kind": "advertisements"
+    },
+    "advertisements.telecom": {
+      "key": "advertisements.telecom",
+      "publicId": "fixnow/partners/telecom",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/partners/telecom",
+      "folder": "fixnow/partners",
+      "alt": "Telecom and connectivity partnership imagery",
+      "tags": [
+        "partner",
+        "telecom",
+        "ad"
+      ],
+      "width": 1600,
+      "height": 1067,
+      "bytes": 210983,
+      "format": "jpg",
+      "attribution": "Unsplash",
+      "kind": "advertisements"
+    },
+    "campaigns.safety": {
+      "key": "campaigns.safety",
+      "publicId": "fixnow/safety/home-safety",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/safety/home-safety",
+      "folder": "fixnow/safety",
+      "alt": "Home safety awareness campaign photography",
+      "tags": [
+        "campaign",
+        "safety"
+      ],
+      "width": 1600,
+      "height": 1067,
+      "bytes": 245593,
+      "format": "jpg",
+      "attribution": "Unsplash",
+      "kind": "campaigns"
+    },
+    "campaigns.choose-tech": {
+      "key": "campaigns.choose-tech",
+      "publicId": "fixnow/technicians/choose-tech",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/technicians/choose-tech",
+      "folder": "fixnow/technicians",
+      "alt": "Trusted verified technician greeting a customer",
+      "tags": [
+        "campaign",
+        "technician",
+        "trust"
+      ],
+      "width": 1600,
+      "height": 1068,
+      "bytes": 258544,
+      "format": "jpg",
+      "attribution": "Unsplash",
+      "kind": "campaigns"
+    },
+    "campaigns.seasonal": {
+      "key": "campaigns.seasonal",
+      "publicId": "fixnow/marketing/seasonal",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/marketing/seasonal",
+      "folder": "fixnow/marketing",
+      "alt": "Seasonal home maintenance checklist in progress",
+      "tags": [
+        "campaign",
+        "seasonal"
+      ],
+      "width": 1600,
+      "height": 1063,
+      "bytes": 204135,
+      "format": "jpg",
+      "attribution": "Unsplash",
+      "kind": "campaigns"
+    },
+    "campaigns.earnings": {
+      "key": "campaigns.earnings",
+      "publicId": "fixnow/marketing/earnings",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/marketing/earnings",
+      "folder": "fixnow/marketing",
+      "alt": "Technician reviewing earnings on a mobile device",
+      "tags": [
+        "campaign",
+        "earnings",
+        "technician"
+      ],
+      "width": 1600,
+      "height": 918,
+      "bytes": 180670,
+      "format": "jpg",
+      "attribution": "Unsplash",
+      "kind": "campaigns"
+    },
+    "campaigns.verification": {
+      "key": "campaigns.verification",
+      "publicId": "fixnow/technicians/verification",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/technicians/verification",
+      "folder": "fixnow/technicians",
+      "alt": "Technician completing identity verification documents",
+      "tags": [
+        "campaign",
+        "verification"
+      ],
+      "width": 1600,
+      "height": 1068,
+      "bytes": 205747,
+      "format": "jpg",
+      "attribution": "Unsplash",
+      "kind": "campaigns"
+    },
+    "knowledge.electrical-safety": {
+      "key": "knowledge.electrical-safety",
+      "publicId": "fixnow/knowledge/electrical-safety",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/knowledge/electrical-safety",
+      "folder": "fixnow/knowledge",
+      "alt": "Electrical safety cover — circuit breaker panel inspection",
+      "tags": [
+        "knowledge",
+        "electrical",
+        "safety"
+      ],
+      "width": 1600,
+      "height": 1068,
+      "bytes": 246646,
+      "format": "jpg",
+      "attribution": "Unsplash",
+      "kind": "knowledge"
+    },
+    "knowledge.water-leaks": {
+      "key": "knowledge.water-leaks",
+      "publicId": "fixnow/knowledge/water-leaks",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/knowledge/water-leaks",
+      "folder": "fixnow/knowledge",
+      "alt": "Water leak prevention cover — plumbing inspection",
+      "tags": [
+        "knowledge",
+        "plumbing"
+      ],
+      "width": 1600,
+      "height": 1200,
+      "bytes": 505848,
+      "format": "jpg",
+      "attribution": "Unsplash",
+      "kind": "knowledge"
+    },
+    "knowledge.fire-prevention": {
+      "key": "knowledge.fire-prevention",
+      "publicId": "fixnow/knowledge/fire-prevention",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/knowledge/fire-prevention",
+      "folder": "fixnow/knowledge",
+      "alt": "Fire prevention cover — smoke detector and safety check",
+      "tags": [
+        "knowledge",
+        "fire",
+        "safety"
+      ],
+      "width": 1600,
+      "height": 1067,
+      "bytes": 245593,
+      "format": "jpg",
+      "attribution": "Unsplash",
+      "kind": "knowledge"
+    },
+    "knowledge.generator-maintenance": {
+      "key": "knowledge.generator-maintenance",
+      "publicId": "fixnow/knowledge/generator-maintenance",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/knowledge/generator-maintenance",
+      "folder": "fixnow/knowledge",
+      "alt": "Generator maintenance cover — backup power servicing",
+      "tags": [
+        "knowledge",
+        "generator"
+      ],
+      "width": 1600,
+      "height": 1067,
+      "bytes": 171138,
+      "format": "jpg",
+      "attribution": "Unsplash",
+      "kind": "knowledge"
+    },
+    "knowledge.roof-inspection": {
+      "key": "knowledge.roof-inspection",
+      "publicId": "fixnow/knowledge/roof-inspection",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/knowledge/roof-inspection",
+      "folder": "fixnow/knowledge",
+      "alt": "Roof inspection cover — technician checking roof sheets",
+      "tags": [
+        "knowledge",
+        "roofing"
+      ],
+      "width": 1600,
+      "height": 1067,
+      "bytes": 169574,
+      "format": "jpg",
+      "attribution": "Pexels",
+      "kind": "knowledge"
+    },
+    "knowledge.pest-prevention": {
+      "key": "knowledge.pest-prevention",
+      "publicId": "fixnow/knowledge/pest-prevention",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/knowledge/pest-prevention",
+      "folder": "fixnow/knowledge",
+      "alt": "Pest prevention cover — home pest control preparation",
+      "tags": [
+        "knowledge",
+        "pest"
+      ],
+      "width": 1600,
+      "height": 2400,
+      "bytes": 292277,
+      "format": "jpg",
+      "attribution": "Pexels",
+      "kind": "knowledge"
+    },
+    "knowledge.home-maintenance": {
+      "key": "knowledge.home-maintenance",
+      "publicId": "fixnow/knowledge/home-maintenance",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/knowledge/home-maintenance",
+      "folder": "fixnow/knowledge",
+      "alt": "Home maintenance cover — tools for routine household care",
+      "tags": [
+        "knowledge",
+        "maintenance"
+      ],
+      "width": 1600,
+      "height": 1063,
+      "bytes": 204135,
+      "format": "jpg",
+      "attribution": "Unsplash",
+      "kind": "knowledge"
+    },
+    "knowledge.energy-saving": {
+      "key": "knowledge.energy-saving",
+      "publicId": "fixnow/knowledge/energy-saving",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/knowledge/energy-saving",
+      "folder": "fixnow/knowledge",
+      "alt": "Energy saving cover — solar and efficient home power",
+      "tags": [
+        "knowledge",
+        "energy"
+      ],
+      "width": 1600,
+      "height": 1065,
+      "bytes": 342951,
+      "format": "jpg",
+      "attribution": "Unsplash",
+      "kind": "knowledge"
+    },
+    "knowledge.emergency-response": {
+      "key": "knowledge.emergency-response",
+      "publicId": "fixnow/emergency/emergency-response",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/emergency/emergency-response",
+      "folder": "fixnow/emergency",
+      "alt": "Emergency response cover — urgent home repair readiness",
+      "tags": [
+        "knowledge",
+        "emergency"
+      ],
+      "width": 1600,
+      "height": 1067,
+      "bytes": 251405,
+      "format": "jpg",
+      "attribution": "Unsplash",
+      "kind": "knowledge"
+    },
+    "academy.workshop": {
+      "key": "academy.workshop",
+      "publicId": "fixnow/academy/workshop",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/academy/workshop",
+      "folder": "fixnow/academy",
+      "alt": "FixNow Academy workshop with technicians in training",
+      "tags": [
+        "academy",
+        "training"
+      ],
+      "width": 1600,
+      "height": 1067,
+      "bytes": 234582,
+      "format": "jpg",
+      "attribution": "Unsplash",
+      "kind": "academy"
+    },
+    "academy.certification": {
+      "key": "academy.certification",
+      "publicId": "fixnow/academy/certification",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/academy/certification",
+      "folder": "fixnow/academy",
+      "alt": "Technician receiving professional certification",
+      "tags": [
+        "academy",
+        "certification"
+      ],
+      "width": 1600,
+      "height": 1067,
+      "bytes": 197194,
+      "format": "jpg",
+      "attribution": "Pexels",
+      "kind": "academy"
+    },
+    "academy.premium": {
+      "key": "academy.premium",
+      "publicId": "fixnow/academy/premium",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/academy/premium",
+      "folder": "fixnow/academy",
+      "alt": "Premium technician workspace and professional setup",
+      "tags": [
+        "academy",
+        "premium"
+      ],
+      "width": 1600,
+      "height": 1068,
+      "bytes": 206362,
+      "format": "jpg",
+      "attribution": "Unsplash",
+      "kind": "academy"
+    },
+    "technicians.portfolio": {
+      "key": "technicians.portfolio",
+      "publicId": "fixnow/technicians/portfolio",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/technicians/portfolio",
+      "folder": "fixnow/technicians",
+      "alt": "Completed professional home repair work for a portfolio",
+      "tags": [
+        "technician",
+        "portfolio",
+        "completed"
+      ],
+      "width": 1600,
+      "height": 1063,
+      "bytes": 204135,
+      "format": "jpg",
+      "attribution": "Unsplash",
+      "kind": "technicians"
+    },
+    "technicians.workspace": {
+      "key": "technicians.workspace",
+      "publicId": "fixnow/technicians/workspace",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/technicians/workspace",
+      "folder": "fixnow/technicians",
+      "alt": "Organised technician workspace with tools and materials",
+      "tags": [
+        "technician",
+        "workspace"
+      ],
+      "width": 1600,
+      "height": 900,
+      "bytes": 69721,
+      "format": "jpg",
+      "attribution": "Unsplash",
+      "kind": "technicians"
+    },
+    "technicians.marketplace": {
+      "key": "technicians.marketplace",
+      "publicId": "fixnow/technicians/marketplace",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/technicians/marketplace",
+      "folder": "fixnow/technicians",
+      "alt": "Technician marketplace — professionals ready for jobs",
+      "tags": [
+        "technician",
+        "marketplace"
+      ],
+      "width": 1600,
+      "height": 1068,
+      "bytes": 221534,
+      "format": "jpg",
+      "attribution": "Unsplash",
+      "kind": "technicians"
+    },
+    "technicians.achievements": {
+      "key": "technicians.achievements",
+      "publicId": "fixnow/technicians/achievements",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/technicians/achievements",
+      "folder": "fixnow/technicians",
+      "alt": "Achievement celebration for a high-performing technician",
+      "tags": [
+        "technician",
+        "achievements"
+      ],
+      "width": 1600,
+      "height": 918,
+      "bytes": 180670,
+      "format": "jpg",
+      "attribution": "Unsplash",
+      "kind": "technicians"
+    },
+    "equipment.field": {
+      "key": "equipment.field",
+      "publicId": "fixnow/equipment/field-kit",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/equipment/field-kit",
+      "folder": "fixnow/equipment",
+      "alt": "Professional field equipment kit for home service calls",
+      "tags": [
+        "equipment"
+      ],
+      "width": 1600,
+      "height": 1067,
+      "bytes": 162424,
+      "format": "jpg",
+      "attribution": "Unsplash",
+      "kind": "equipment"
+    },
+    "tools.hand-tools": {
+      "key": "tools.hand-tools",
+      "publicId": "fixnow/tools/hand-tools",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/tools/hand-tools",
+      "folder": "fixnow/tools",
+      "alt": "Organised hand tools for professional maintenance work",
+      "tags": [
+        "tools"
+      ],
+      "width": 1600,
+      "height": 900,
+      "bytes": 69721,
+      "format": "jpg",
+      "attribution": "Unsplash",
+      "kind": "tools"
+    },
+    "testimonials.placeholder": {
+      "key": "testimonials.placeholder",
+      "publicId": "fixnow/marketing/customer-story",
+      "url": "https://res.cloudinary.com/nkcltsv9/image/upload/f_auto,q_auto/v1/fixnow/marketing/customer-story",
+      "folder": "fixnow/marketing",
+      "alt": "Customer story — satisfied homeowner after a successful repair",
+      "tags": [
+        "testimonial",
+        "marketing"
+      ],
+      "width": 1600,
+      "height": 2400,
+      "bytes": 471497,
+      "format": "jpg",
+      "attribution": "Unsplash",
+      "kind": "testimonials"
+    }
+  }
+}

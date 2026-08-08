@@ -1,0 +1,15 @@
+{
+  "startedAt": "2026-07-28T10:24:36.047Z",
+  "dryRun": false,
+  "scanned": 96,
+  "migrated": 0,
+  "skippedAlreadyCloudinary": 0,
+  "skippedAssetOrExternal": 88,
+  "skippedMissingFile": 0,
+  "remappedToAsset": 8,
+  "failed": [],
+  "verified": 0,
+  "localFilesFound": 0,
+  "deletedLocal": 0,
+  "finishedAt": "2026-07-28T10:24:36.835Z"
+}

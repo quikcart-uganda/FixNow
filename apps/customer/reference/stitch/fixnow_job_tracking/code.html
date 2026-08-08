@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>FixNow | Active Job Tracking</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Config Verbatim -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed": "#d2e4ff",
+                    "on-tertiary-fixed": "#321200",
+                    "surface-tint": "#5746d5",
+                    "error-container": "#ffdad6",
+                    "surface-container-highest": "#e3e2e1",
+                    "on-surface-variant": "#474554",
+                    "trust-blue": "#b2d5ff",
+                    "primary-container": "#5645d4",
+                    "surface-variant": "#e3e2e1",
+                    "canvas-white": "#ffffff",
+                    "secondary-fixed-dim": "#b0c8eb",
+                    "on-primary-container": "#d7d2ff",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary": "#743300",
+                    "surface-dim": "#dadad9",
+                    "on-secondary-container": "#49617f",
+                    "on-primary-fixed": "#150066",
+                    "secondary-container": "#c4dcff",
+                    "background": "#faf9f8",
+                    "surface-container": "#efeeed",
+                    "on-tertiary-fixed-variant": "#763300",
+                    "surface-gray": "#f6f5f4",
+                    "primary-fixed": "#e4dfff",
+                    "surface-container-high": "#e9e8e7",
+                    "tertiary-fixed": "#ffdbc9",
+                    "outline": "#787586",
+                    "on-primary": "#ffffff",
+                    "inverse-primary": "#c6bfff",
+                    "border-subtle": "#e5e7eb",
+                    "surface": "#faf9f8",
+                    "tertiary-fixed-dim": "#ffb68d",
+                    "on-secondary-fixed": "#001c37",
+                    "inverse-on-surface": "#f1f0ef",
+                    "outline-variant": "#c8c4d7",
+                    "on-error": "#ffffff",
+                    "inverse-surface": "#2f3130",
+                    "tertiary-container": "#994500",
+                    "on-error-container": "#93000a",
+                    "primary-fixed-dim": "#c6bfff",
+                    "on-primary-fixed-variant": "#3e28bd",
+                    "on-background": "#1a1c1c",
+                    "on-tertiary-container": "#ffcdb1",
+                    "on-tertiary": "#ffffff",
+                    "ink-black": "#000000",
+                    "error": "#ba1a1a",
+                    "surface-bright": "#faf9f8",
+                    "secondary": "#49607e",
+                    "primary": "#3d27bc",
+                    "on-secondary-fixed-variant": "#314865",
+                    "surface-container-low": "#f4f3f2",
+                    "on-secondary": "#ffffff",
+                    "on-surface": "#1a1c1c",
+                    "success-green": "#1aae39"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-safe": "20px",
+                    "section-gap": "64px",
+                    "gutter-mobile": "16px",
+                    "gutter-desktop": "24px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Inter"],
+                    "mono-label": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "title-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-caps": ["Inter"]
+            },
+            "fontSize": {
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                    "mono-label": ["13px", {"lineHeight": "1.0", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "title-md": ["20px", {"lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }
+body {
+    font-family: "Inter", sans-serif
+    }
+.map-bg {
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 60%, rgba(255, 255, 255, 1) 95%), url(https://lh3.googleusercontent.com/aida-public/AB6AXuA36_ozr8rgE_XzC_JfW_0bGzbCanRgiFuPyem4h3bBaplUQBfF7cqhNj_J6IYTvHaEKmIMACgH1vNdo7a-CBKW1WvRtJYfkiSoaNrz-j6u2G04EYQFymbcp9Xi6NXOw6e1ksKcPkOU8351wbXLLSBDiPu_xfKRgnEPZBNP3A7IQpyVpkulnknGxYfHY1qovbFCCQMriq-lsr1Z9KZRjd98-DppNHMrOpt_-Rn8Vzwqa1a2oJSrQopwtt8uFlB-FfX-7-YvckD_3_k);
+    background-size: cover;
+    background-position: center
+    }
+.animate-pulse-subtle {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite
+    }
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+        } 50% {
+        opacity: 0.7;
+        }
+    }</style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased overflow-hidden">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-50 flex justify-between items-center px-gutter-mobile md:px-gutter-desktop h-14 md:h-16 w-full max-w-7xl mx-auto bg-canvas-white dark:bg-background border-b border-border-subtle dark:border-outline-variant">
+<div class="flex items-center gap-4">
+<button class="p-2 -ml-2 rounded-full hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-primary">menu</span>
+</button>
+<h1 class="font-display-lg-mobile text-display-lg-mobile font-bold text-primary dark:text-inverse-primary">FixNow</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex items-center gap-6 mr-6">
+<a class="font-title-md text-title-md text-primary dark:text-inverse-primary font-bold border-b-2 border-primary" href="#">Jobs</a>
+<a class="font-title-md text-title-md text-on-surface-variant dark:text-outline hover:text-primary transition-colors" href="#">Messages</a>
+</div>
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A professional headshot of a young African man with a friendly expression, captured in high-key studio lighting. The aesthetic is clean and modern, reflecting a premium service platform's user profile. The background is a soft, neutral grey, ensuring the focus remains on the individual's approachable and professional demeanor." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLqNrPhFiNoykdNPAxgtGwB-OVt5sWr1qCwX4DbXCyoudyuTR6CCfkrF58PjY-LB8_3vAyFvZ7oJKybTKv_WukStfegWR2YDO-OEMFkoDC9fyG5OlRxhCAd2nTSgYiEuvNia_3Zfcq6ZB8x3_9cmxUAbMc9d8cp3SNwaDw3eT6s6dWMWUjUjmOm0ka6QnDMg5Q00nemz1Sg560b4fXH2FnQaS1xOqt5pKM0PlUMCgua3iD2OOaqH1xbqNeM6jqNDU61eMzs0-0faE"/>
+</div>
+</div>
+</header>
+<main class="relative h-[calc(100vh-56px)] md:h-[calc(100vh-64px)] w-full overflow-hidden">
+<!-- Map Background (Uber-inspired View) -->
+<div class="absolute inset-0 z-0 map-bg" data-location="Kampala" style="">
+<!-- Map Markers Overlay -->
+<div class="absolute top-1/3 left-1/4 transform -translate-x-1/2 -translate-y-1/2">
+<!-- Technician Marker -->
+<div class="relative">
+<div class="absolute -inset-4 bg-primary/20 rounded-full animate-ping"></div>
+<div class="relative bg-primary text-white p-2 rounded-full shadow-lg border-2 border-white flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">engineering</span>
+</div>
+<div class="absolute top-10 left-1/2 -translate-x-1/2 whitespace-nowrap bg-white px-3 py-1 rounded-full shadow-sm border border-border-subtle">
+<span class="text-label-caps font-label-caps text-primary">Suna Ivan (Elite)</span>
+</div>
+</div>
+</div>
+<div class="absolute top-1/2 right-1/3 transform translate-x-1/2 translate-y-1/2">
+<!-- User Home Marker -->
+<div class="bg-ink-black text-white p-2 rounded-lg shadow-lg border-2 border-white flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">home</span>
+</div>
+</div>
+<!-- Route Line (Simplified SVG) -->
+<svg class="absolute inset-0 w-full h-full pointer-events-none opacity-40">
+<path d="M 25% 33% Q 40% 45% 66% 50%" fill="none" stroke="#3d27bc" stroke-dasharray="8 8" stroke-width="4"></path>
+</svg>
+</div>
+<!-- Status Bar -->
+<div class="absolute top-4 left-1/2 -translate-x-1/2 z-20 w-[90%] max-w-md">
+<div class="bg-primary text-on-primary px-6 py-3 rounded-full shadow-lg flex items-center justify-between animate-pulse-subtle">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[20px]">local_shipping</span>
+<span class="font-label-caps text-label-caps uppercase tracking-widest">Technician En Route</span>
+</div>
+<span class="font-title-md text-title-md">8 mins</span>
+</div>
+</div>
+<!-- Floating Card Overlay (Bottom) -->
+<div class="absolute bottom-0 left-0 right-0 z-30 px-gutter-mobile pb-6 md:pb-12 pointer-events-none">
+<div class="max-w-xl mx-auto w-full pointer-events-auto flex flex-col gap-4">
+<!-- Main Details Card -->
+<div class="bg-canvas-white rounded-xl shadow-[0px_8px_30px_rgba(0,0,0,0.08)] border border-border-subtle p-5">
+<div class="flex items-center justify-between mb-4 pb-4 border-b border-border-subtle">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 rounded-full overflow-hidden bg-surface-container relative">
+<img alt="Suna Ivan" class="w-full h-full object-cover" data-alt="A portrait of a highly skilled African technician wearing a clean, professional navy blue utility shirt. He has a warm, confident smile and is standing in a brightly lit, modern workshop environment. The lighting is crisp and detailed, emphasizing his professional reliability. The overall aesthetic is one of corporate modern professionalism with a trust-focused vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpl8H0Y6QwMuOKJdLjoY77VddT8voO9JTLjKijOg9eP1VspmcZPQ5fkZ5l8zWEkLcxqginTRIAxf9KlQruwuzBKXPejvNacwARlj7HzTGGoB-4sgJssdrVUJLl0m9KE9F7biIxsv3LebA2y_vqpk1xRxRZk_96G8muTYNhYJZHBKg4qTJanXGDC-1A4IZnVEDMeskb6-KmidVBQOsXDvUc7SCaohLINvPrmoSdRte90DgT2JTpMADwwTyy-bArqWHaN6gJLJOqmME"/>
+<div class="absolute bottom-0 right-0 bg-success-green border-2 border-white w-4 h-4 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-[10px] text-white" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<div>
+<h2 class="font-title-md text-title-md text-on-surface">Suna Ivan</h2>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="bg-secondary-fixed text-on-secondary-fixed text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-tight">Elite Member</span>
+<div class="flex items-center text-success-green">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-caps text-label-caps ml-0.5">4.9</span>
+</div>
+</div>
+</div>
+</div>
+<div class="text-right">
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase">Job Type</p>
+<p class="font-title-md text-title-md text-primary">Electrical Repair</p>
+</div>
+</div>
+<!-- Safety & Features Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
+<button class="flex items-center gap-3 p-3 rounded-lg border border-border-subtle hover:bg-surface-container-low transition-all group">
+<div class="w-10 h-10 rounded-full bg-trust-blue/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">share</span>
+</div>
+<div class="text-left">
+<p class="font-label-caps text-label-caps text-on-surface leading-none mb-1">Share Visit</p>
+<p class="text-[11px] text-on-surface-variant">Update your family</p>
+</div>
+</button>
+<div class="flex items-center gap-3 p-3 rounded-lg bg-surface-container-low border border-dashed border-outline-variant">
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center text-primary font-bold text-lg">
+                                4
+                            </div>
+<div class="text-left">
+<p class="font-label-caps text-label-caps text-on-surface leading-none mb-1">Verification Code</p>
+<p class="text-[11px] text-on-surface-variant tracking-[0.2em] font-bold">FX-8291</p>
+</div>
+</div>
+</div>
+<!-- Action Row -->
+<div class="flex gap-3">
+<button class="flex-1 bg-primary text-on-primary py-3.5 rounded-lg font-bold flex items-center justify-center gap-2 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[20px]">chat_bubble</span>
+                            Quick Message
+                        </button>
+<button class="w-14 h-14 rounded-lg border border-error text-error flex items-center justify-center active:bg-error-container transition-colors" title="Emergency Support">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">emergency_home</span>
+</button>
+</div>
+</div>
+<!-- Secondary Safety Banner -->
+<div class="bg-surface-bright/90 backdrop-blur-md rounded-xl border border-border-subtle p-3 flex items-center gap-4 justify-center">
+<span class="material-symbols-outlined text-success-green">verified_user</span>
+<p class="text-body-sm font-body-sm text-on-surface-variant italic">All technicians are vetted and background-checked for your safety.</p>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 pb-safe h-16 md:hidden bg-canvas-white dark:bg-background border-t border-border-subtle dark:border-outline-variant shadow-sm">
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-caps text-label-caps">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-caps text-label-caps">Search</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary dark:text-inverse-primary font-semibold active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">build</span>
+<span class="font-label-caps text-label-caps">Jobs</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined">chat</span>
+<span class="font-label-caps text-label-caps">Messages</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-caps text-label-caps">Profile</span>
+</button>
+</nav>
+<script>
+        // Simple micro-interaction for the verification code
+        const codeBox = document.querySelector('.tracking-\\[0\\.2em\\]');
+        if (codeBox) {
+            codeBox.addEventListener('click', () => {
+                const originalText = codeBox.innerText;
+                codeBox.innerText = 'COPIED!';
+                setTimeout(() => {
+                    codeBox.innerText = originalText;
+                }, 1500);
+            });
+        }
+    </script>
+</body></html>

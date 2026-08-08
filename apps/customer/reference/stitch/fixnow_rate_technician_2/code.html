@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Rate Your Experience - FixNow</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "success-green": "#1aae39",
+                    "secondary-fixed-dim": "#b0c8eb",
+                    "on-surface-variant": "#474554",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary": "#49607e",
+                    "on-secondary-fixed": "#001c37",
+                    "surface-tint": "#5746d5",
+                    "primary": "#3d27bc",
+                    "tertiary-container": "#994500",
+                    "primary-container": "#5645d4",
+                    "ink-black": "#000000",
+                    "tertiary-fixed-dim": "#ffb68d",
+                    "surface-dim": "#dadad9",
+                    "secondary-container": "#c4dcff",
+                    "primary-fixed-dim": "#c6bfff",
+                    "on-tertiary-fixed": "#321200",
+                    "on-error": "#ffffff",
+                    "on-tertiary-container": "#ffcdb1",
+                    "surface-container-highest": "#e3e2e1",
+                    "surface-variant": "#e3e2e1",
+                    "tertiary": "#743300",
+                    "secondary-fixed": "#d2e4ff",
+                    "error": "#ba1a1a",
+                    "on-primary-fixed-variant": "#3e28bd",
+                    "on-primary": "#ffffff",
+                    "surface": "#faf9f8",
+                    "background": "#faf9f8",
+                    "border-subtle": "#e5e7eb",
+                    "on-secondary-container": "#49617f",
+                    "tertiary-fixed": "#ffdbc9",
+                    "surface-gray": "#f6f5f4",
+                    "outline-variant": "#c8c4d7",
+                    "on-primary-container": "#d7d2ff",
+                    "on-secondary-fixed-variant": "#314865",
+                    "on-error-container": "#93000a",
+                    "surface-container-low": "#f4f3f2",
+                    "primary-fixed": "#e4dfff",
+                    "on-tertiary": "#ffffff",
+                    "inverse-surface": "#2f3130",
+                    "error-container": "#ffdad6",
+                    "on-background": "#1a1c1c",
+                    "inverse-on-surface": "#f1f0ef",
+                    "surface-container-high": "#e9e8e7",
+                    "on-tertiary-fixed-variant": "#763300",
+                    "on-surface": "#1a1c1c",
+                    "outline": "#787586",
+                    "inverse-primary": "#c6bfff",
+                    "on-secondary": "#ffffff",
+                    "surface-bright": "#faf9f8",
+                    "canvas-white": "#ffffff",
+                    "surface-container": "#efeeed",
+                    "on-primary-fixed": "#150066",
+                    "trust-blue": "#b2d5ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-safe": "20px",
+                    "gutter-desktop": "24px",
+                    "section-gap": "64px",
+                    "gutter-mobile": "16px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Inter"],
+                    "title-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "mono-label": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-caps": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "title-md": ["20px", {"lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "mono-label": ["13px", {"lineHeight": "1.0", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .star-active {
+            font-variation-settings: 'FILL' 1;
+            color: #3d27bc;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body-lg text-on-background min-h-screen pb-24">
+<!-- Header (TopAppBar Contextual Logic: Suppressed for Transactional Focus) -->
+<header class="fixed top-0 w-full z-50 bg-canvas-white shadow-sm border-b border-border-subtle h-14 flex items-center px-gutter-mobile justify-between md:px-gutter-desktop">
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-low transition-colors active:scale-90" onclick="history.back()">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-title-md text-title-md text-on-background">Rate Your Experience</h1>
+<div class="w-10"></div> <!-- Spacer for balance -->
+</header>
+<main class="pt-20 px-gutter-mobile max-w-2xl mx-auto space-y-8">
+<!-- Technician Summary Card -->
+<section class="bg-canvas-white rounded-xl border border-border-subtle shadow-[0px_4px_20px_rgba(0,0,0,0.04)] p-4 flex items-center space-x-4">
+<div class="relative">
+<img alt="Moses Okello" class="w-16 h-16 rounded-full object-cover" data-alt="A professional headshot of a friendly middle-aged male electrician with a warm, confident smile. He is wearing a clean, branded navy blue work polo. The background is a soft-focus modern workshop with organized tools. The lighting is bright and natural, reflecting a trustworthy and reliable professional aesthetic consistent with a premium service app like FixNow." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6hzYLPmqqmMvEnj4I1mpmAmibUkxuKgEGA-hWOYJuXN8SHG8pa8bxwfyZlC71xZ0fExtSwBnx5B1sRWXcJfZCtk2ycgFZmPccuWFU80tjPJa4sesqCPr0IdpTz8YbnffWbHYKetthAOP_pLHyeLq-cpAgBjGLPQus2WTLNg6JwDozLsPx6dtDtF_JzhNXkpJxD01kz82av_oQgWh8SuNcB9EXfVGS5ey9OwjbfwEIMwota8tnAwCpK-xSA6l0iC7kQU3DpKo8M2A"/>
+<div class="absolute -bottom-1 -right-1 bg-success-green w-5 h-5 rounded-full flex items-center justify-center border-2 border-white">
+<span class="material-symbols-outlined text-[12px] text-white" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-2">
+<h2 class="font-title-md text-title-md text-on-background">Moses Okello</h2>
+<span class="bg-trust-blue/20 text-on-secondary-fixed-variant font-label-caps text-label-caps px-2 py-0.5 rounded-full">Elite Tier</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Master Electrician</p>
+<p class="font-mono-label text-mono-label text-primary mt-1">Full House Wiring • Completed Today</p>
+</div>
+</section>
+<!-- Rating Section -->
+<section class="text-center space-y-4">
+<h3 class="font-title-md text-title-md text-on-background">Overall Satisfaction</h3>
+<div class="flex justify-center space-x-2" id="star-container">
+<button class="star-btn active:scale-90 duration-150" onclick="setRating(1)"><span class="material-symbols-outlined text-4xl text-outline-variant hover:text-primary transition-colors" data-star="1">star</span></button>
+<button class="star-btn active:scale-90 duration-150" onclick="setRating(2)"><span class="material-symbols-outlined text-4xl text-outline-variant hover:text-primary transition-colors" data-star="2">star</span></button>
+<button class="star-btn active:scale-90 duration-150" onclick="setRating(3)"><span class="material-symbols-outlined text-4xl text-outline-variant hover:text-primary transition-colors" data-star="3">star</span></button>
+<button class="star-btn active:scale-90 duration-150" onclick="setRating(4)"><span class="material-symbols-outlined text-4xl text-outline-variant hover:text-primary transition-colors" data-star="4">star</span></button>
+<button class="star-btn active:scale-90 duration-150" onclick="setRating(5)"><span class="material-symbols-outlined text-4xl text-outline-variant hover:text-primary transition-colors" data-star="5">star</span></button>
+</div>
+<p class="font-title-md text-primary h-8 opacity-0 transition-opacity duration-300" id="rating-label">Great!</p>
+</section>
+<!-- Recommendation Section -->
+<section class="space-y-4">
+<h3 class="font-title-md text-title-md text-on-background text-center">Would you recommend Moses to others?</h3>
+<div class="flex gap-3">
+<button class="flex-1 flex items-center justify-center gap-2 py-4 rounded-xl border border-border-subtle bg-canvas-white hover:bg-surface-container-low transition-all active:scale-95 group" id="rec-yes" onclick="toggleRec('yes')">
+<span class="material-symbols-outlined text-on-surface-variant group-[.active]:text-primary" id="icon-yes">thumb_up</span>
+<span class="font-title-md text-body-lg text-on-background">Yes, Recommend</span>
+</button>
+<button class="flex-1 flex items-center justify-center gap-2 py-4 rounded-xl border border-border-subtle bg-canvas-white hover:bg-surface-container-low transition-all active:scale-95 group" id="rec-no" onclick="toggleRec('no')">
+<span class="material-symbols-outlined text-on-surface-variant group-[.active]:text-error" id="icon-no">thumb_down</span>
+<span class="font-title-md text-body-lg text-on-background">No</span>
+</button>
+</div>
+</section>
+<!-- Feedback Section -->
+<section class="space-y-6">
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant block uppercase tracking-wider" for="praise">Specific comments or praise</label>
+<textarea class="w-full p-4 rounded-xl border border-border-subtle bg-white focus:ring-2 focus:ring-primary focus:border-primary transition-all resize-none font-body-lg text-body-lg" id="praise" placeholder="What did Moses do well?" rows="3"></textarea>
+</div>
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant block uppercase tracking-wider" for="improvement">Suggestions for improvement (Optional)</label>
+<textarea class="w-full p-4 rounded-xl border border-border-subtle bg-white focus:ring-2 focus:ring-primary focus:border-primary transition-all resize-none font-body-lg text-body-lg" id="improvement" placeholder="How can we make the service better?" rows="3"></textarea>
+</div>
+</section>
+</main>
+<!-- Footer Action -->
+<footer class="fixed bottom-0 left-0 right-0 p-gutter-mobile bg-canvas-white/80 backdrop-blur-md border-t border-border-subtle">
+<div class="max-w-2xl mx-auto">
+<button class="w-full bg-primary text-white py-4 rounded-xl font-title-md text-title-md shadow-lg hover:bg-primary-container transition-colors active:scale-[0.98] duration-150" onclick="submitReview()">
+                Submit Review
+            </button>
+</div>
+</footer>
+<script>
+        let currentRating = 0;
+        const labels = {
+            1: "Disappointing",
+            2: "Could be better",
+            3: "Good experience",
+            4: "Great!",
+            5: "Excellent!"
+        };
+
+        function setRating(rating) {
+            currentRating = rating;
+            const stars = document.querySelectorAll('[data-star]');
+            const label = document.getElementById('rating-label');
+            
+            stars.forEach(star => {
+                const starVal = parseInt(star.getAttribute('data-star'));
+                if (starVal <= rating) {
+                    star.classList.add('star-active');
+                    star.style.fontVariationSettings = "'FILL' 1";
+                } else {
+                    star.classList.remove('star-active');
+                    star.style.fontVariationSettings = "'FILL' 0";
+                }
+            });
+
+            label.textContent = labels[rating];
+            label.classList.remove('opacity-0');
+        }
+
+        function toggleRec(choice) {
+            const yesBtn = document.getElementById('rec-yes');
+            const noBtn = document.getElementById('rec-no');
+            const yesIcon = document.getElementById('icon-yes');
+            const noIcon = document.getElementById('icon-no');
+
+            if (choice === 'yes') {
+                yesBtn.classList.add('active', 'border-primary', 'bg-primary-fixed');
+                noBtn.classList.remove('active', 'border-error', 'bg-error-container/20');
+                yesIcon.style.fontVariationSettings = "'FILL' 1";
+                noIcon.style.fontVariationSettings = "'FILL' 0";
+            } else {
+                noBtn.classList.add('active', 'border-error', 'bg-error-container/20');
+                yesBtn.classList.remove('active', 'border-primary', 'bg-primary-fixed');
+                noIcon.style.fontVariationSettings = "'FILL' 1";
+                yesIcon.style.fontVariationSettings = "'FILL' 0";
+            }
+        }
+
+        function submitReview() {
+            if (currentRating === 0) {
+                alert('Please select a rating before submitting.');
+                return;
+            }
+            
+            const btn = event.currentTarget;
+            btn.disabled = true;
+            btn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> Submitting...';
+            
+            setTimeout(() => {
+                btn.classList.replace('bg-primary', 'bg-success-green');
+                btn.innerHTML = 'Review Submitted!';
+                setTimeout(() => {
+                    // Logic for redirection or showing a success state
+                }, 1000);
+            }, 1500);
+        }
+    </script>
+</body></html>

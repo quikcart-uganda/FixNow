@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<title>Browse Categories | FixNow</title>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "canvas-white": "#ffffff",
+                      "on-tertiary": "#ffffff",
+                      "on-secondary-container": "#49617f",
+                      "primary": "#3d27bc",
+                      "surface-tint": "#5746d5",
+                      "surface-dim": "#dadad9",
+                      "primary-fixed-dim": "#c6bfff",
+                      "surface-container": "#efeeed",
+                      "secondary-container": "#c4dcff",
+                      "primary-fixed": "#e4dfff",
+                      "surface-gray": "#f6f5f4",
+                      "outline-variant": "#c8c4d7",
+                      "error-container": "#ffdad6",
+                      "on-secondary-fixed": "#001c37",
+                      "on-primary-container": "#d7d2ff",
+                      "on-primary-fixed": "#150066",
+                      "on-error-container": "#93000a",
+                      "tertiary-fixed": "#ffdbc9",
+                      "tertiary-container": "#994500",
+                      "surface-container-low": "#f4f3f2",
+                      "on-error": "#ffffff",
+                      "surface-container-highest": "#e3e2e1",
+                      "on-primary-fixed-variant": "#3e28bd",
+                      "on-tertiary-fixed": "#321200",
+                      "secondary-fixed": "#d2e4ff",
+                      "on-surface-variant": "#474554",
+                      "on-tertiary-fixed-variant": "#763300",
+                      "on-tertiary-container": "#ffcdb1",
+                      "surface-bright": "#faf9f8",
+                      "surface-container-lowest": "#ffffff",
+                      "surface": "#faf9f8",
+                      "success-green": "#1aae39",
+                      "border-subtle": "#e5e7eb",
+                      "tertiary-fixed-dim": "#ffb68d",
+                      "surface-container-high": "#e9e8e7",
+                      "outline": "#787586",
+                      "primary-container": "#5645d4",
+                      "ink-black": "#000000",
+                      "inverse-primary": "#c6bfff",
+                      "tertiary": "#743300",
+                      "error": "#ba1a1a",
+                      "on-secondary": "#ffffff",
+                      "secondary-fixed-dim": "#b0c8eb",
+                      "on-background": "#1a1c1c",
+                      "inverse-on-surface": "#f1f0ef",
+                      "secondary": "#49607e",
+                      "background": "#faf9f8",
+                      "surface-variant": "#e3e2e1",
+                      "on-secondary-fixed-variant": "#314865",
+                      "on-surface": "#1a1c1c",
+                      "inverse-surface": "#2f3130",
+                      "trust-blue": "#b2d5ff",
+                      "on-primary": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter-mobile": "16px",
+                      "section-gap": "64px",
+                      "margin-safe": "20px",
+                      "gutter-desktop": "24px",
+                      "base": "4px"
+              },
+              "fontFamily": {
+                      "body-lg": ["Inter"],
+                      "label-caps": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "title-md": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "body-sm": ["Inter"],
+                      "mono-label": ["Inter"],
+                      "headline-lg-mobile": ["Inter"]
+              },
+              "fontSize": {
+                      "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                      "title-md": ["20px", {"lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "mono-label": ["13px", {"lineHeight": "1.0", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-50 flex justify-between items-center px-gutter-mobile md:px-gutter-desktop h-14 md:h-16 w-full max-w-7xl mx-auto bg-canvas-white dark:bg-background border-b border-border-subtle dark:border-outline-variant flat no shadows">
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container transition-colors active:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-primary dark:text-inverse-primary" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-title-md text-title-md text-primary dark:text-inverse-primary">Browse Categories</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="search">search</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-border-subtle bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-outline text-sm" data-icon="person">person</span>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow w-full max-w-7xl mx-auto px-gutter-mobile md:px-gutter-desktop py-8 mb-20">
+<!-- Hero Section / Intro -->
+<div class="mb-8">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-2">Find what you need</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Select a category to connect with our network of elite, vetted technicians in your area.</p>
+</div>
+<!-- Categories Grid -->
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+<!-- Category Card: Electricians -->
+<button class="flex flex-col items-center justify-center p-6 bg-surface-container-high rounded-xl hover:bg-surface-container-highest transition-all duration-300 group hover:-translate-y-1 hover:shadow-lg active:scale-95">
+<div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-on-primary transition-colors duration-300">
+<span class="material-symbols-outlined text-primary group-hover:text-white" data-icon="electric_bolt" style="font-size: 32px;">electric_bolt</span>
+</div>
+<span class="font-title-md text-title-md text-on-surface text-center">Electricians</span>
+</button>
+<!-- Category Card: Plumbers -->
+<button class="flex flex-col items-center justify-center p-6 bg-surface-container-high rounded-xl hover:bg-surface-container-highest transition-all duration-300 group hover:-translate-y-1 hover:shadow-lg active:scale-95">
+<div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-on-primary transition-colors duration-300">
+<span class="material-symbols-outlined text-primary group-hover:text-white" data-icon="plumbing" style="font-size: 32px;">plumbing</span>
+</div>
+<span class="font-title-md text-title-md text-on-surface text-center">Plumbers</span>
+</button>
+<!-- Category Card: TV Repair -->
+<button class="flex flex-col items-center justify-center p-6 bg-surface-container-high rounded-xl hover:bg-surface-container-highest transition-all duration-300 group hover:-translate-y-1 hover:shadow-lg active:scale-95">
+<div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-on-primary transition-colors duration-300">
+<span class="material-symbols-outlined text-primary group-hover:text-white" data-icon="tv" style="font-size: 32px;">tv</span>
+</div>
+<span class="font-title-md text-title-md text-on-surface text-center">TV Repair</span>
+</button>
+<!-- Category Card: Fridge Repair -->
+<button class="flex flex-col items-center justify-center p-6 bg-surface-container-high rounded-xl hover:bg-surface-container-highest transition-all duration-300 group hover:-translate-y-1 hover:shadow-lg active:scale-95">
+<div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-on-primary transition-colors duration-300">
+<span class="material-symbols-outlined text-primary group-hover:text-white" data-icon="kitchen" style="font-size: 32px;">kitchen</span>
+</div>
+<span class="font-title-md text-title-md text-on-surface text-center">Fridge Repair</span>
+</button>
+<!-- Category Card: Carpenters -->
+<button class="flex flex-col items-center justify-center p-6 bg-surface-container-high rounded-xl hover:bg-surface-container-highest transition-all duration-300 group hover:-translate-y-1 hover:shadow-lg active:scale-95">
+<div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-on-primary transition-colors duration-300">
+<span class="material-symbols-outlined text-primary group-hover:text-white" data-icon="carpenter" style="font-size: 32px;">carpenter</span>
+</div>
+<span class="font-title-md text-title-md text-on-surface text-center">Carpenters</span>
+</button>
+<!-- Category Card: Mechanics -->
+<button class="flex flex-col items-center justify-center p-6 bg-surface-container-high rounded-xl hover:bg-surface-container-highest transition-all duration-300 group hover:-translate-y-1 hover:shadow-lg active:scale-95">
+<div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-on-primary transition-colors duration-300">
+<span class="material-symbols-outlined text-primary group-hover:text-white" data-icon="build" style="font-size: 32px;">build</span>
+</div>
+<span class="font-title-md text-title-md text-on-surface text-center">Mechanics</span>
+</button>
+<!-- Category Card: CCTV Installers -->
+<button class="flex flex-col items-center justify-center p-6 bg-surface-container-high rounded-xl hover:bg-surface-container-highest transition-all duration-300 group hover:-translate-y-1 hover:shadow-lg active:scale-95">
+<div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-on-primary transition-colors duration-300">
+<span class="material-symbols-outlined text-primary group-hover:text-white" data-icon="videocam" style="font-size: 32px;">videocam</span>
+</div>
+<span class="font-title-md text-title-md text-on-surface text-center">CCTV Installers</span>
+</button>
+<!-- Category Card: Home Cleaning -->
+<button class="flex flex-col items-center justify-center p-6 bg-surface-container-high rounded-xl hover:bg-surface-container-highest transition-all duration-300 group hover:-translate-y-1 hover:shadow-lg active:scale-95">
+<div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-on-primary transition-colors duration-300">
+<span class="material-symbols-outlined text-primary group-hover:text-white" data-icon="cleaning_services" style="font-size: 32px;">cleaning_services</span>
+</div>
+<span class="font-title-md text-title-md text-on-surface text-center">Home Cleaning</span>
+</button>
+<!-- Category Card: AC Repair -->
+<button class="flex flex-col items-center justify-center p-6 bg-surface-container-high rounded-xl hover:bg-surface-container-highest transition-all duration-300 group hover:-translate-y-1 hover:shadow-lg active:scale-95">
+<div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-on-primary transition-colors duration-300">
+<span class="material-symbols-outlined text-primary group-hover:text-white" data-icon="ac_unit" style="font-size: 32px;">ac_unit</span>
+</div>
+<span class="font-title-md text-title-md text-on-surface text-center">AC Repair</span>
+</button>
+<!-- Category Card: Painters -->
+<button class="flex flex-col items-center justify-center p-6 bg-surface-container-high rounded-xl hover:bg-surface-container-highest transition-all duration-300 group hover:-translate-y-1 hover:shadow-lg active:scale-95">
+<div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-on-primary transition-colors duration-300">
+<span class="material-symbols-outlined text-primary group-hover:text-white" data-icon="format_paint" style="font-size: 32px;">format_paint</span>
+</div>
+<span class="font-title-md text-title-md text-on-surface text-center">Painters</span>
+</button>
+<!-- Category Card: Others -->
+<button class="flex flex-col items-center justify-center p-6 bg-surface-container-high rounded-xl hover:bg-surface-container-highest transition-all duration-300 group hover:-translate-y-1 hover:shadow-lg active:scale-95">
+<div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-on-primary transition-colors duration-300">
+<span class="material-symbols-outlined text-primary group-hover:text-white" data-icon="more_horiz" style="font-size: 32px;">more_horiz</span>
+</div>
+<span class="font-title-md text-title-md text-on-surface text-center">Others</span>
+</button>
+</div>
+<!-- Promotional Banner -->
+<section class="mt-12 overflow-hidden rounded-xl bg-primary text-on-primary p-8 relative flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
+<div class="flex-1 space-y-4">
+<span class="bg-primary-container text-on-primary-container px-3 py-1 rounded-full font-label-caps text-label-caps inline-block">FIXNOW PROTECTION</span>
+<h3 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg">Don't see your service?</h3>
+<p class="font-body-lg text-body-lg opacity-90 max-w-md">Contact our 24/7 concierge. We have verified partners for over 150 different specialized home and industrial technical services across Uganda.</p>
+<button class="bg-white text-primary px-6 py-3 rounded-lg font-title-md text-title-md hover:bg-surface-container-low transition-colors duration-200">Contact Support</button>
+</div>
+<div class="flex-1 w-full max-w-xs aspect-square bg-primary-container/20 rounded-xl overflow-hidden hidden md:block border border-on-primary/10">
+<img alt="Customer support technician" class="w-full h-full object-cover grayscale brightness-110 contrast-110 mix-blend-overlay opacity-80" data-alt="A professional technician wearing a sleek FixNow branded uniform, holding a digital tablet and smiling warmly at the camera. The background is a brightly lit, modern industrial workspace with high ceilings and clean surfaces. The color palette features deep FixNow indigo and pristine whites with a warm, professional lighting mood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3Azqoaz1mLRKpjXNQyDVNttlO6ksbrv1XuXByI11IqFXwPnEg_nIxzhqGALauvBb7qGs596LBBwrZbmZBfyyfQOYRZYxqL0HClFF38Ivd_p8waXjpVlR54ekjJ60Nay1zPHyflwqfx7TIikUnTFwtLYX6v9UId5QjaWNz9pfgNq_GaIYXM6om1oEFbZi7TAnlvlf6Rj0NzJZuCb7HrvTtTt_KoqDEaBjtXZULMDOKIDoYXxZeC-xr09iZXAgtstySNtC0UfhG5mw"/>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 pb-safe h-16 md:hidden bg-canvas-white dark:bg-background border-t border-border-subtle dark:border-outline-variant shadow-sm">
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-container-low dark:hover:bg-surface-variant transition-colors group">
+<span class="material-symbols-outlined group-active:scale-95 transition-transform" data-icon="home">home</span>
+<span class="font-label-caps text-label-caps mt-1">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary dark:text-inverse-primary font-semibold hover:bg-surface-container-low dark:hover:bg-surface-variant transition-colors group">
+<span class="material-symbols-outlined group-active:scale-95 transition-transform" data-icon="search">search</span>
+<span class="font-label-caps text-label-caps mt-1">Search</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-container-low dark:hover:bg-surface-variant transition-colors group">
+<span class="material-symbols-outlined group-active:scale-95 transition-transform" data-icon="build">build</span>
+<span class="font-label-caps text-label-caps mt-1">Jobs</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-container-low dark:hover:bg-surface-variant transition-colors group">
+<span class="material-symbols-outlined group-active:scale-95 transition-transform" data-icon="chat">chat</span>
+<span class="font-label-caps text-label-caps mt-1">Messages</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-container-low dark:hover:bg-surface-variant transition-colors group">
+<span class="material-symbols-outlined group-active:scale-95 transition-transform" data-icon="person">person</span>
+<span class="font-label-caps text-label-caps mt-1">Profile</span>
+</button>
+</nav>
+<!-- Desktop Navigation Side Rail (Optional addition for full responsive experience) -->
+<div class="hidden md:flex fixed left-0 top-16 h-[calc(100vh-64px)] w-20 flex-col items-center py-8 gap-8 border-r border-border-subtle bg-canvas-white z-40">
+<button class="p-3 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+</button>
+<button class="p-3 text-primary bg-primary/5 rounded-xl border border-primary/20 transition-colors">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<button class="p-3 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="build">build</span>
+</button>
+<button class="p-3 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="chat">chat</span>
+</button>
+<div class="mt-auto p-3 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</div>
+</div>
+<script>
+        // Micro-interaction for category cards
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('touchstart', function() {
+                this.classList.add('scale-95');
+            });
+            btn.addEventListener('touchend', function() {
+                this.classList.remove('scale-95');
+            });
+        });
+
+        // Simple scroll observer for top bar shadow
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                header.classList.add('shadow-md');
+                header.classList.remove('border-b-transparent');
+            } else {
+                header.classList.remove('shadow-md');
+            }
+        });
+    </script>
+</body></html>

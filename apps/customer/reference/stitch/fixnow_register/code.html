@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FixNow | Create Account</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed-dim": "#c6bfff",
+                    "on-primary-fixed-variant": "#3e28bd",
+                    "tertiary-container": "#994500",
+                    "on-error-container": "#93000a",
+                    "inverse-surface": "#2f3130",
+                    "on-error": "#ffffff",
+                    "outline-variant": "#c8c4d7",
+                    "on-tertiary-container": "#ffcdb1",
+                    "on-background": "#1a1c1c",
+                    "surface-bright": "#faf9f8",
+                    "error": "#ba1a1a",
+                    "ink-black": "#000000",
+                    "on-tertiary": "#ffffff",
+                    "success-green": "#1aae39",
+                    "on-surface": "#1a1c1c",
+                    "on-secondary": "#ffffff",
+                    "surface-container-low": "#f4f3f2",
+                    "on-secondary-fixed-variant": "#314865",
+                    "secondary": "#49607e",
+                    "primary": "#3d27bc",
+                    "outline": "#787586",
+                    "border-subtle": "#e5e7eb",
+                    "inverse-primary": "#c6bfff",
+                    "on-primary": "#ffffff",
+                    "tertiary-fixed-dim": "#ffb68d",
+                    "surface": "#faf9f8",
+                    "inverse-on-surface": "#f1f0ef",
+                    "on-secondary-fixed": "#001c37",
+                    "background": "#faf9f8",
+                    "secondary-container": "#c4dcff",
+                    "surface-gray": "#f6f5f4",
+                    "on-tertiary-fixed-variant": "#763300",
+                    "surface-container": "#efeeed",
+                    "tertiary-fixed": "#ffdbc9",
+                    "surface-container-high": "#e9e8e7",
+                    "primary-fixed": "#e4dfff",
+                    "on-surface-variant": "#474554",
+                    "surface-container-highest": "#e3e2e1",
+                    "surface-tint": "#5746d5",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-fixed": "#321200",
+                    "secondary-fixed": "#d2e4ff",
+                    "canvas-white": "#ffffff",
+                    "surface-variant": "#e3e2e1",
+                    "primary-container": "#5645d4",
+                    "trust-blue": "#b2d5ff",
+                    "on-primary-fixed": "#150066",
+                    "on-secondary-container": "#49617f",
+                    "tertiary": "#743300",
+                    "surface-dim": "#dadad9",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-container": "#d7d2ff",
+                    "secondary-fixed-dim": "#b0c8eb"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter-desktop": "24px",
+                    "base": "4px",
+                    "gutter-mobile": "16px",
+                    "margin-safe": "20px",
+                    "section-gap": "64px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "title-md": ["Inter"],
+                    "mono-label": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "display-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "title-md": ["20px", {"lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "mono-label": ["13px", {"lineHeight": "1.0", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .form-input-shadow {
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+        .registration-card-shadow {
+            box-shadow: 0px 4px 20px rgba(0,0,0,0.04);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-canvas-white text-on-background min-h-screen flex flex-col">
+<!-- Top Navigation Bar (Simplified for Transactional Flow) -->
+<header class="sticky top-0 z-50 flex justify-between items-center px-gutter-mobile md:px-gutter-desktop h-14 md:h-16 w-full max-w-7xl mx-auto bg-canvas-white border-b border-border-subtle">
+<div class="flex items-center gap-2">
+<span class="font-display-lg-mobile text-display-lg-mobile font-bold text-primary">FixNow</span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="#">How it works</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="#">Browse Pros</a>
+<a class="font-label-caps text-label-caps text-primary font-bold" href="#">Sign In</a>
+</div>
+<div class="md:hidden">
+<span class="material-symbols-outlined text-primary" data-icon="close">close</span>
+</div>
+</header>
+<main class="flex-grow flex items-center justify-center py-12 px-gutter-mobile">
+<div class="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<!-- Left Side: Value Proposition & Visuals -->
+<div class="hidden lg:flex flex-col space-y-8">
+<div>
+<h2 class="font-display-lg text-display-lg text-on-surface mb-4">Quality fixes, just a tap away.</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-md">Join thousands of homeowners in Kampala who trust FixNow for reliable, vetted, and professional home services.</p>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="p-6 bg-surface-container-low rounded-xl flex flex-col gap-3">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="verified_user">verified_user</span>
+<p class="font-title-md text-title-md text-on-surface">Vetted Pros</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Every technician undergoes a rigorous multi-step background check.</p>
+</div>
+<div class="p-6 bg-surface-container-low rounded-xl flex flex-col gap-3">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="speed">speed</span>
+<p class="font-title-md text-title-md text-on-surface">Fast Arrival</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Average response time of under 45 minutes across the city.</p>
+</div>
+</div>
+<!-- Featured Image -->
+<div class="relative h-64 rounded-xl overflow-hidden registration-card-shadow">
+<img class="w-full h-full object-cover" data-alt="A professional technician in a clean indigo uniform using a digital tablet to review service details inside a modern, sunlit Ugandan home. The scene is bright and airy with a focus on trust and technological precision, featuring high-key lighting and a crisp, minimalist aesthetic that reflects corporate professionalism." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFExcja8KwlS4R_398SSG8F3JpueRhBJiMMStP8No0YezMf7wTcN4OtslHwNIEkaY1Ansc9nmfV12uKOHm1lVP8RyOe-NlvSqHgd0qMCnAvmSxO9Juxv2xOO3fsrAtOuCYfrYZI-Kbu39mMsnCoMeWvxhQ6Z2k_Xf8Zw0EOrhm21jlE1K0r8RfhuyLrIqnk8gv8wXGVbU_JsLVQyLldUGhqH-UVFNmL2UyR7gE35WIyS_JqPkMuQr7yCQ6xyQxD4v34AmE8zZYzI0"/>
+<div class="absolute bottom-4 left-4 bg-canvas-white/90 backdrop-blur px-4 py-2 rounded-lg border border-border-subtle">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-success-green text-sm" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-label-caps text-label-caps text-on-surface">Trusted by 5,000+ Customers</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Side: Registration Form -->
+<div class="bg-canvas-white border border-border-subtle p-8 md:p-10 rounded-xl registration-card-shadow">
+<div class="mb-8">
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface">Create Account</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2">Already have an account? <a class="text-primary font-semibold hover:underline" href="#">Log In</a></p>
+</div>
+<form class="space-y-5" onsubmit="return false;">
+<!-- Full Name -->
+<div class="space-y-1.5">
+<label class="font-label-caps text-label-caps text-on-surface-variant ml-1" for="name">Full Name</label>
+<div class="relative">
+<input class="w-full h-14 px-4 bg-surface-gray border border-border-subtle rounded-lg font-body-lg text-body-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none form-input-shadow" id="name" placeholder="John Doe" type="text"/>
+<span class="absolute right-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline" data-icon="person">person</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Phone Number -->
+<div class="space-y-1.5">
+<label class="font-label-caps text-label-caps text-on-surface-variant ml-1" for="phone">Phone Number</label>
+<div class="relative">
+<input class="w-full h-14 px-4 bg-surface-gray border border-border-subtle rounded-lg font-body-lg text-body-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none form-input-shadow" id="phone" placeholder="0700 000 000" type="tel"/>
+<span class="absolute right-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline" data-icon="call">call</span>
+</div>
+</div>
+<!-- Email Address -->
+<div class="space-y-1.5">
+<label class="font-label-caps text-label-caps text-on-surface-variant ml-1" for="email">Email Address</label>
+<div class="relative">
+<input class="w-full h-14 px-4 bg-surface-gray border border-border-subtle rounded-lg font-body-lg text-body-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none form-input-shadow" id="email" placeholder="john@example.com" type="email"/>
+<span class="absolute right-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline" data-icon="mail">mail</span>
+</div>
+</div>
+</div>
+<!-- Location -->
+<div class="space-y-1.5">
+<label class="font-label-caps text-label-caps text-on-surface-variant ml-1" for="location">Location (District/Parish)</label>
+<div class="relative">
+<input class="w-full h-14 px-4 bg-surface-gray border border-border-subtle rounded-lg font-body-lg text-body-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none form-input-shadow" id="location" placeholder="Kampala, Nakawa" type="text"/>
+<span class="absolute right-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline" data-icon="location_on">location_on</span>
+</div>
+</div>
+<!-- Password -->
+<div class="space-y-1.5">
+<label class="font-label-caps text-label-caps text-on-surface-variant ml-1" for="password">Password</label>
+<div class="relative">
+<input class="w-full h-14 px-4 bg-surface-gray border border-border-subtle rounded-lg font-body-lg text-body-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none form-input-shadow" id="password" placeholder="••••••••" type="password"/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline hover:text-primary transition-colors" data-icon="visibility" type="button">visibility</button>
+</div>
+</div>
+<!-- Terms & Conditions -->
+<div class="flex items-start gap-3 py-2">
+<div class="flex items-center h-5">
+<input class="w-5 h-5 text-primary border-border-subtle rounded focus:ring-primary" id="terms" type="checkbox"/>
+</div>
+<label class="font-body-sm text-body-sm text-on-surface-variant leading-tight" for="terms">
+                            I agree to the <a class="text-primary font-semibold hover:underline" href="#">Terms and Conditions</a> and the <a class="text-primary font-semibold hover:underline" href="#">Privacy Policy</a> of FixNow.
+                        </label>
+</div>
+<!-- Submit Button -->
+<button class="w-full h-14 bg-primary text-on-primary font-title-md text-title-md rounded-lg hover:bg-primary-container transition-all active:scale-[0.98] shadow-md hover:shadow-lg flex items-center justify-center gap-2" type="submit">
+<span>Create Account</span>
+<span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</form>
+<!-- Social Divider -->
+<div class="relative my-8">
+<div class="absolute inset-0 flex items-center"><div class="w-full border-t border-border-subtle"></div></div>
+<div class="relative flex justify-center text-label-caps uppercase bg-canvas-white px-4 text-outline">Or register with</div>
+</div>
+<!-- Social Buttons -->
+<div class="grid grid-cols-2 gap-4">
+<button class="flex items-center justify-center gap-3 h-12 border border-border-subtle rounded-lg hover:bg-surface-gray transition-colors">
+<img alt="Google" class="w-5 h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJfb2sNkV2fDXaoysTAOKK5LVkVaVqCsv4fkK5jHKcUv2npla24F4K1Dyn2r8btR6uUVu4mLeCpKLQ4kPR0WKRpjz41tCOVXw6zFCbE-Y7cuXAtvsV7MUm_4qJ1LVh7uXYrOdMsL426NqxPa1zNWh5XRVKVl5cf6LelTz3iL8isoijMO8Dpzco_H8BJWSqdgqU73oLOcX4MpAQd1X8SDF5xVfuJJdl_DaKn8-Bf9LT9ADlw0f7_Es-EigVRiyMLkyavVzQhPjTf3w"/>
+<span class="font-label-caps text-label-caps">Google</span>
+</button>
+<button class="flex items-center justify-center gap-3 h-12 border border-border-subtle rounded-lg hover:bg-surface-gray transition-colors">
+<span class="material-symbols-outlined text-[#1877F2]" data-icon="facebook" style="font-variation-settings: 'FILL' 1;">social_leaderboard</span>
+<span class="font-label-caps text-label-caps">Facebook</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Area (Minimalist) -->
+<footer class="mt-auto py-8 border-t border-border-subtle text-center">
+<div class="flex flex-col md:flex-row justify-center items-center gap-6 px-gutter-mobile">
+<span class="font-body-sm text-body-sm text-outline">© 2024 FixNow Inc. All rights reserved.</span>
+<div class="flex gap-6">
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary" href="#">Support</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary" href="#">Terms</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary" href="#">Privacy</a>
+</div>
+</div>
+</footer>
+<script>
+        // Simple micro-interaction for password visibility
+        const visibilityBtn = document.querySelector('button[data-icon="visibility"]');
+        const passwordInput = document.getElementById('password');
+        
+        if(visibilityBtn && passwordInput) {
+            visibilityBtn.addEventListener('click', () => {
+                const isPassword = passwordInput.type === 'password';
+                passwordInput.type = isPassword ? 'text' : 'password';
+                visibilityBtn.textContent = isPassword ? 'visibility_off' : 'visibility';
+            });
+        }
+
+        // Form focus effect
+        const inputs = document.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.querySelector('.material-symbols-outlined').style.color = '#3d27bc';
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.querySelector('.material-symbols-outlined').style.color = '#787586';
+            });
+        });
+    </script>
+</body></html>

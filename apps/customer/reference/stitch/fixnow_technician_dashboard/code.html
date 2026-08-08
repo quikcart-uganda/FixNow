@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FixNow Technician Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#b0c8eb",
+                        "surface-gray": "#f6f5f4",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "surface-container-low": "#f4f3f2",
+                        "on-primary": "#ffffff",
+                        "outline-variant": "#c8c4d7",
+                        "background": "#faf9f8",
+                        "canvas-white": "#ffffff",
+                        "on-tertiary-fixed": "#321200",
+                        "tertiary-fixed": "#ffdbc9",
+                        "primary-fixed-dim": "#c6bfff",
+                        "error-container": "#ffdad6",
+                        "on-secondary-container": "#49617f",
+                        "primary-fixed": "#e4dfff",
+                        "surface-container-highest": "#e3e2e1",
+                        "tertiary": "#743300",
+                        "error": "#ba1a1a",
+                        "secondary-container": "#c4dcff",
+                        "on-surface-variant": "#474554",
+                        "success-green": "#1aae39",
+                        "on-surface": "#1a1c1c",
+                        "secondary-fixed": "#d2e4ff",
+                        "surface-container": "#efeeed",
+                        "tertiary-fixed-dim": "#ffb68d",
+                        "trust-blue": "#b2d5ff",
+                        "on-background": "#1a1c1c",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#994500",
+                        "surface-container-high": "#e9e8e7",
+                        "on-error-container": "#93000a",
+                        "surface-bright": "#faf9f8",
+                        "surface": "#faf9f8",
+                        "on-tertiary-container": "#ffcdb1",
+                        "ink-black": "#000000",
+                        "on-primary-fixed-variant": "#3e28bd",
+                        "inverse-surface": "#2f3130",
+                        "surface-tint": "#5746d5",
+                        "on-secondary-fixed-variant": "#314865",
+                        "on-primary-container": "#d7d2ff",
+                        "primary-container": "#5645d4",
+                        "primary": "#3d27bc",
+                        "inverse-on-surface": "#f1f0ef",
+                        "surface-dim": "#dadad9",
+                        "surface-variant": "#e3e2e1",
+                        "on-secondary-fixed": "#001c37",
+                        "on-tertiary-fixed-variant": "#763300",
+                        "secondary": "#49607e",
+                        "outline": "#787586",
+                        "on-primary-fixed": "#150066",
+                        "inverse-primary": "#c6bfff",
+                        "border-subtle": "#e5e7eb"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter-mobile": "16px",
+                        "margin-safe": "20px",
+                        "gutter-desktop": "24px",
+                        "section-gap": "64px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "title-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "mono-label": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "title-md": ["20px", {"lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "mono-label": ["13px", {"lineHeight": "1.0", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .active-tab-indicator { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-24">
+<!-- Top App Bar -->
+<header class="w-full top-0 sticky z-40 bg-canvas-white dark:bg-surface border-b border-border-subtle dark:border-outline-variant flex justify-between items-center px-gutter-mobile h-14">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full overflow-hidden border border-border-subtle">
+<img alt="Technician profile photo" class="w-full h-full object-cover" data-alt="A professional close-up portrait of a friendly Ugandan male technician in his late 30s. He is wearing a clean, branded navy blue polo shirt against a bright, minimalist studio background. The lighting is soft and high-key, emphasizing trust and professionalism. The overall aesthetic is clean, modern, and aligned with a premium service marketplace." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxPfGvvt5KLihdFSq40Nf5H4ZkCVDgtAa2AJvgMSkdvPX8FtzdFAXVkMZhh5obVO87kHwv2ssFvOjoynnfsoP2SwwDBvJw7PPYuFzI4OVhK-dr8dAO2GPnuBXaS4bDtiGutaGZXwJ20FE3H0F2iFiJarxVydhyDEDDAPhAy7Ekbi4apIQtNUwsvX6r2otCLBQ1uuGUKjeCVvq4DD032I2R63itwKJgwU2sa7jYzOTrb7b9S1f7MID5NlBVQXrTDjIg7tbz1oOHJIY"/>
+</div>
+<span class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary">FixNow</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-low transition-colors p-2 rounded-full">notifications</button>
+</div>
+</header>
+<main class="px-gutter-mobile py-6 max-w-2xl mx-auto">
+<!-- Greeting & Toggle -->
+<section class="flex items-center justify-between mb-8">
+<div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Hello, Moses</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Ready for today's fixes?</p>
+</div>
+<div class="flex flex-col items-end gap-1">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" id="online-toggle" type="checkbox"/>
+<div class="w-14 h-8 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:start-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-success-green"></div>
+</label>
+<span class="font-label-caps text-label-caps text-success-green font-bold">ONLINE</span>
+</div>
+</section>
+<!-- Performance Overview: Bento Grid -->
+<section class="grid grid-cols-2 gap-4 mb-8">
+<div class="col-span-2 bg-canvas-white p-5 rounded-lg border border-border-subtle shadow-[0px_4px_20px_rgba(0,0,0,0.04)]">
+<div class="flex justify-between items-start">
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-1">WEEKLY EARNINGS</p>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-primary font-extrabold">UGX 450,000</h2>
+</div>
+<div class="bg-secondary-container p-2 rounded-lg">
+<span class="material-symbols-outlined text-on-secondary-container">payments</span>
+</div>
+</div>
+<div class="mt-4 flex items-center gap-2 text-success-green">
+<span class="material-symbols-outlined text-[18px]">trending_up</span>
+<span class="font-body-sm text-body-sm font-semibold">+12% from last week</span>
+</div>
+</div>
+<div class="bg-canvas-white p-4 rounded-lg border border-border-subtle shadow-[0px_4px_20px_rgba(0,0,0,0.04)] flex flex-col justify-between">
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-2">TRUST SCORE</p>
+<div class="flex items-baseline gap-1">
+<span class="font-title-md text-title-md text-on-surface">98</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">/100</span>
+</div>
+</div>
+<div class="mt-2 inline-flex items-center px-2 py-0.5 rounded-full bg-trust-blue/20 text-on-secondary-fixed-variant text-[10px] font-bold uppercase tracking-wider">
+                    ELITE TIER
+                </div>
+</div>
+<div class="bg-canvas-white p-4 rounded-lg border border-border-subtle shadow-[0px_4px_20px_rgba(0,0,0,0.04)]">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-2">JOBS DONE</p>
+<div class="flex items-center gap-3">
+<span class="font-title-md text-title-md text-on-surface">12</span>
+<div class="w-full bg-surface-container h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[80%] rounded-full"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Active Job Card -->
+<section class="mb-8">
+<div class="flex justify-between items-center mb-4">
+<h3 class="font-title-md text-title-md text-on-surface">Active Job</h3>
+<span class="flex h-2 w-2 rounded-full bg-primary animate-pulse"></span>
+</div>
+<div class="bg-primary-container p-5 rounded-lg border border-primary/20 shadow-lg relative overflow-hidden">
+<!-- Abstract visual element -->
+<div class="absolute -right-4 -top-4 w-24 h-24 bg-white/10 rounded-full blur-2xl"></div>
+<div class="flex justify-between items-start mb-4 relative z-10">
+<div>
+<h4 class="font-title-md text-title-md text-on-primary-fixed font-bold">Full House Wiring</h4>
+<p class="font-body-sm text-body-sm text-on-primary-fixed/80">Nsambya Estate, Plot 24</p>
+</div>
+<div class="bg-white/20 backdrop-blur-md px-3 py-1 rounded-full">
+<span class="font-label-caps text-label-caps text-on-primary-fixed">IN PROGRESS</span>
+</div>
+</div>
+<div class="flex gap-3 relative z-10">
+<button class="flex-1 bg-white text-primary font-bold py-3 rounded-lg font-body-sm text-body-sm transition-transform active:scale-95">
+                        View Details
+                    </button>
+<button class="w-12 h-12 flex items-center justify-center bg-white/20 rounded-lg text-white">
+<span class="material-symbols-outlined">directions</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Job Requests -->
+<section class="mb-8">
+<h3 class="font-title-md text-title-md text-on-surface mb-4">Job Requests (2)</h3>
+<div class="space-y-4">
+<!-- Request Item 1 -->
+<div class="bg-canvas-white p-4 rounded-lg border border-border-subtle shadow-[0px_4px_20px_rgba(0,0,0,0.04)] flex flex-col gap-4">
+<div class="flex justify-between">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[32px]">electrical_services</span>
+</div>
+<div>
+<h5 class="font-body-lg text-body-lg font-semibold text-on-surface">Generator Repair</h5>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Kansanga • 2.4 km away</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-title-md text-title-md text-on-surface">UGX 85k</p>
+<p class="font-label-caps text-label-caps text-on-surface-variant">ESTIMATED</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 bg-primary text-white font-bold py-2.5 rounded-lg font-body-sm text-body-sm transition-opacity active:opacity-80">
+                            Accept Job
+                        </button>
+<button class="flex-1 bg-white border border-border-subtle text-on-surface font-semibold py-2.5 rounded-lg font-body-sm text-body-sm">
+                            Decline
+                        </button>
+</div>
+</div>
+<!-- Request Item 2 -->
+<div class="bg-canvas-white p-4 rounded-lg border border-border-subtle shadow-[0px_4px_20px_rgba(0,0,0,0.04)] flex flex-col gap-4">
+<div class="flex justify-between">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[32px]">plumbing</span>
+</div>
+<div>
+<h5 class="font-body-lg text-body-lg font-semibold text-on-surface">Leaking Pipe Fix</h5>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Munyonyo • 4.1 km away</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-title-md text-title-md text-on-surface">UGX 45k</p>
+<p class="font-label-caps text-label-caps text-on-surface-variant">ESTIMATED</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 bg-primary text-white font-bold py-2.5 rounded-lg font-body-sm text-body-sm transition-opacity active:opacity-80">
+                            Accept Job
+                        </button>
+<button class="flex-1 bg-white border border-border-subtle text-on-surface font-semibold py-2.5 rounded-lg font-body-sm text-body-sm">
+                            Decline
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Quick Actions -->
+<section class="mb-8">
+<h3 class="font-title-md text-title-md text-on-surface mb-4">Quick Actions</h3>
+<div class="grid grid-cols-3 gap-3">
+<button class="flex flex-col items-center justify-center p-4 bg-canvas-white border border-border-subtle rounded-lg hover:bg-surface-container-low transition-colors gap-2">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="font-label-caps text-label-caps text-center">VERIFICATION</span>
+</button>
+<button class="flex flex-col items-center justify-center p-4 bg-canvas-white border border-border-subtle rounded-lg hover:bg-surface-container-low transition-colors gap-2">
+<span class="material-symbols-outlined text-primary">gallery_thumbnail</span>
+<span class="font-label-caps text-label-caps text-center">PORTFOLIO</span>
+</button>
+<button class="flex flex-col items-center justify-center p-4 bg-canvas-white border border-border-subtle rounded-lg hover:bg-surface-container-low transition-colors gap-2">
+<span class="material-symbols-outlined text-primary">history</span>
+<span class="font-label-caps text-label-caps text-center">EARNINGS</span>
+</button>
+</div>
+</section>
+</main>
+<!-- Bottom Nav Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-canvas-white dark:bg-surface border-t border-border-subtle dark:border-outline-variant flex justify-around items-center px-2 pb-4 pt-2 shadow-lg md:hidden">
+<a class="flex flex-col items-center justify-center bg-secondary-container dark:bg-on-primary-container text-on-secondary-container dark:text-primary rounded-xl px-3 py-1.5 active:scale-95 duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-caps text-label-caps mt-0.5">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-3 py-1.5 hover:bg-surface-container-lowest transition-colors active:scale-95 duration-200" href="#">
+<span class="material-symbols-outlined">work</span>
+<span class="font-label-caps text-label-caps mt-0.5">Jobs</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-3 py-1.5 hover:bg-surface-container-lowest transition-colors active:scale-95 duration-200" href="#">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-label-caps text-label-caps mt-0.5">Messages</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-3 py-1.5 hover:bg-surface-container-lowest transition-colors active:scale-95 duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-caps text-label-caps mt-0.5">Profile</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interaction for the online toggle
+        const toggle = document.getElementById('online-toggle');
+        const statusLabel = toggle.closest('div').querySelector('span');
+        
+        toggle.addEventListener('change', function() {
+            if(this.checked) {
+                statusLabel.textContent = 'ONLINE';
+                statusLabel.className = 'font-label-caps text-label-caps text-success-green font-bold';
+            } else {
+                statusLabel.textContent = 'OFFLINE';
+                statusLabel.className = 'font-label-caps text-label-caps text-on-surface-variant font-bold';
+            }
+        });
+
+        // Add touch feedback ripple effect simulation
+        document.querySelectorAll('button, a').forEach(elem => {
+            elem.addEventListener('mousedown', function(e) {
+                this.style.opacity = "0.7";
+            });
+            elem.addEventListener('mouseup', function(e) {
+                this.style.opacity = "1";
+            });
+            elem.addEventListener('mouseleave', function(e) {
+                this.style.opacity = "1";
+            });
+        });
+    </script>
+</body></html>

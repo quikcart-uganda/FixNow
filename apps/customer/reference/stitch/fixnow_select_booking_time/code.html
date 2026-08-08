@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Book Technician | FixNow</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-slot {
+            background-color: #3d27bc !important;
+            color: #ffffff !important;
+            border-color: #3d27bc !important;
+        }
+        .calendar-day-active {
+            background-color: #3d27bc;
+            color: white;
+            border-radius: 9999px;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "border-subtle": "#e5e7eb",
+                        "inverse-primary": "#c6bfff",
+                        "on-primary-fixed": "#150066",
+                        "on-tertiary-fixed-variant": "#763300",
+                        "secondary": "#49607e",
+                        "outline": "#787586",
+                        "on-secondary-fixed": "#001c37",
+                        "surface-dim": "#dadad9",
+                        "surface-variant": "#e3e2e1",
+                        "primary": "#3d27bc",
+                        "inverse-on-surface": "#f1f0ef",
+                        "primary-container": "#5645d4",
+                        "on-primary-container": "#d7d2ff",
+                        "surface-tint": "#5746d5",
+                        "on-secondary-fixed-variant": "#314865",
+                        "on-primary-fixed-variant": "#3e28bd",
+                        "inverse-surface": "#2f3130",
+                        "ink-black": "#000000",
+                        "on-tertiary-container": "#ffcdb1",
+                        "surface-bright": "#faf9f8",
+                        "surface": "#faf9f8",
+                        "on-error-container": "#93000a",
+                        "surface-container-high": "#e9e8e7",
+                        "tertiary-container": "#994500",
+                        "on-background": "#1a1c1c",
+                        "on-tertiary": "#ffffff",
+                        "trust-blue": "#b2d5ff",
+                        "tertiary-fixed-dim": "#ffb68d",
+                        "surface-container": "#efeeed",
+                        "secondary-fixed": "#d2e4ff",
+                        "success-green": "#1aae39",
+                        "on-surface": "#1a1c1c",
+                        "on-surface-variant": "#474554",
+                        "secondary-container": "#c4dcff",
+                        "error": "#ba1a1a",
+                        "tertiary": "#743300",
+                        "surface-container-highest": "#e3e2e1",
+                        "primary-fixed": "#e4dfff",
+                        "on-secondary-container": "#49617f",
+                        "tertiary-fixed": "#ffdbc9",
+                        "primary-fixed-dim": "#c6bfff",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#321200",
+                        "canvas-white": "#ffffff",
+                        "background": "#faf9f8",
+                        "surface-container-low": "#f4f3f2",
+                        "on-primary": "#ffffff",
+                        "outline-variant": "#c8c4d7",
+                        "on-secondary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "surface-gray": "#f6f5f4",
+                        "secondary-fixed-dim": "#b0c8eb"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter-desktop": "24px",
+                        "section-gap": "64px",
+                        "base": "4px",
+                        "gutter-mobile": "16px",
+                        "margin-safe": "20px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "mono-label": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "title-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "mono-label": ["13px", {"lineHeight": "1.0", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "title-md": ["20px", {"lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body-lg">
+<!-- Top AppBar (from JSON - Manual Implementation for back-focused journey) -->
+<header class="sticky top-0 z-50 flex justify-between items-center px-gutter-mobile md:px-gutter-desktop h-14 md:h-16 w-full max-w-7xl mx-auto bg-canvas-white border-b border-border-subtle">
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-on-surface">arrow_back</span>
+</button>
+<h1 class="font-title-md text-title-md text-primary">Book Technician</h1>
+</div>
+<div class="flex items-center gap-3">
+<div class="text-right hidden sm:block">
+<p class="font-bold text-sm">Moses Okello</p>
+<div class="flex items-center justify-end gap-1">
+<span class="material-symbols-outlined text-xs text-success-green" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs text-on-surface-variant">4.9 (124 reviews)</span>
+</div>
+</div>
+<div class="relative">
+<img alt="Moses Okello" class="w-10 h-10 rounded-full object-cover border border-border-subtle" data-alt="A professional headshot of a Ugandan master electrician in his early 40s. He wears a clean, navy blue collared work shirt with a subtle technical logo. His expression is confident and friendly, set against a blurred background of a modern architectural interior with clean lines and soft, natural daylight. The lighting is crisp and professional, emphasizing a trustworthy and expert aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvAnzTQOZUD16GPf4ajk-ky448X9pmqTSmxdya2QvkhWAHwKhAQrUXlGcHyFJtWgJQ9Y00B4DKW3jw6I_quTwPFvZgcDOFLvjZeKnRsCyD4Ob8YPYg4wbbB1tmg106DutkYSBa4qkvL7Iw6X5OAmpimOAIZBo2tHtBUV630jBcfBmDomXp_PWIH7N96eb6s4FhFR2i9w9LDbXnf4iPvsS12Ix8slNG9cGUHvSR6ySCRZiPVFyR3V2vWY_w-sOtNQoBkeCD_J9vUQc"/>
+<span class="absolute -bottom-1 -right-1 bg-success-green text-white rounded-full p-0.5 border-2 border-canvas-white">
+<span class="material-symbols-outlined text-[10px]" style="font-variation-settings: 'wght' 700;">check</span>
+</span>
+</div>
+</div>
+</header>
+<main class="max-w-3xl mx-auto px-gutter-mobile md:px-gutter-desktop py-8 pb-32">
+<!-- Profile Summary Mobile -->
+<div class="md:hidden flex items-center justify-between mb-8 p-4 bg-surface-container-low rounded-xl">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="font-bold text-on-surface">Moses Okello</span>
+<span class="bg-primary-fixed text-primary px-2 py-0.5 rounded-full font-label-caps text-[10px]">ELITE</span>
+</div>
+<p class="text-sm text-on-surface-variant font-medium">Master Electrician</p>
+</div>
+<div class="flex items-center gap-1 bg-canvas-white px-3 py-1 rounded-lg border border-border-subtle">
+<span class="material-symbols-outlined text-sm text-success-green" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-sm">4.9</span>
+</div>
+</div>
+<!-- Section 1: Service Selection -->
+<section class="mb-section-gap">
+<div class="flex items-center justify-between mb-4">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg">Select Service</h2>
+<span class="font-label-caps text-label-caps text-primary">REQUIRED</span>
+</div>
+<div class="grid grid-cols-1 gap-3">
+<!-- Service Item 1 -->
+<button class="flex items-center justify-between p-4 bg-canvas-white border border-border-subtle rounded-xl hover:border-primary transition-all group" onclick="toggleService(this)">
+<div class="flex items-center gap-4 text-left">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-2xl">home_repair_service</span>
+</div>
+<div>
+<p class="font-bold text-on-surface group-hover:text-primary transition-colors">Full House Wiring</p>
+<p class="text-sm text-on-surface-variant">Estimated: UGX 150k - 400k</p>
+</div>
+</div>
+<div class="w-6 h-6 rounded-full border-2 border-border-subtle group-[.selected]:border-primary group-[.selected]:bg-primary flex items-center justify-center transition-all">
+<span class="material-symbols-outlined text-white text-sm opacity-0 group-[.selected]:opacity-100">check</span>
+</div>
+</button>
+<!-- Service Item 2 -->
+<button class="flex items-center justify-between p-4 bg-canvas-white border border-border-subtle rounded-xl hover:border-primary transition-all group" onclick="toggleService(this)">
+<div class="flex items-center gap-4 text-left">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-2xl">ac_unit</span>
+</div>
+<div>
+<p class="font-bold text-on-surface group-hover:text-primary transition-colors">AC Repair &amp; Maintenance</p>
+<p class="text-sm text-on-surface-variant">Estimated: UGX 80k - 120k</p>
+</div>
+</div>
+<div class="w-6 h-6 rounded-full border-2 border-border-subtle group-[.selected]:border-primary group-[.selected]:bg-primary flex items-center justify-center transition-all">
+<span class="material-symbols-outlined text-white text-sm opacity-0 group-[.selected]:opacity-100">check</span>
+</div>
+</button>
+<!-- Service Item 3 -->
+<button class="flex items-center justify-between p-4 bg-canvas-white border border-border-subtle rounded-xl hover:border-primary transition-all group" onclick="toggleService(this)">
+<div class="flex items-center gap-4 text-left">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-2xl">bolt</span>
+</div>
+<div>
+<p class="font-bold text-on-surface group-hover:text-primary transition-colors">Circuit Board Fix</p>
+<p class="text-sm text-on-surface-variant">Estimated: UGX 45k - 90k</p>
+</div>
+</div>
+<div class="w-6 h-6 rounded-full border-2 border-border-subtle group-[.selected]:border-primary group-[.selected]:bg-primary flex items-center justify-center transition-all">
+<span class="material-symbols-outlined text-white text-sm opacity-0 group-[.selected]:opacity-100">check</span>
+</div>
+</button>
+</div>
+</section>
+<!-- Section 2: Availability Calendar -->
+<section class="mb-section-gap">
+<div class="flex items-center justify-between mb-6">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg">Select a Time</h2>
+<span class="font-label-caps text-label-caps text-primary">REQUIRED</span>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<button class="p-4 border border-border-subtle rounded-xl font-bold bg-canvas-white hover:border-primary transition-all" onclick="selectTime(this)">09:00 AM</button>
+<button class="p-4 border border-border-subtle rounded-xl font-bold bg-canvas-white hover:border-primary transition-all active-slot" onclick="selectTime(this)">11:30 AM</button>
+<button class="p-4 border border-border-subtle rounded-xl font-bold bg-canvas-white hover:border-primary transition-all" onclick="selectTime(this)">02:00 PM</button>
+<button class="p-4 border border-border-subtle rounded-xl font-bold bg-canvas-white hover:border-primary transition-all" onclick="selectTime(this)">04:30 PM</button>
+<button class="p-4 border border-transparent rounded-xl font-bold bg-surface-container text-outline opacity-50 cursor-not-allowed">06:00 PM</button>
+<button class="p-4 border border-border-subtle rounded-xl font-bold bg-canvas-white hover:border-primary transition-all" onclick="selectTime(this)">08:30 PM</button>
+</div>
+</section>
+<!-- Section 3: Time Slot Selection -->
+<section class="mb-section-gap">
+<div class="flex items-center justify-between mb-6">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg">Select a Time</h2>
+<span class="font-label-caps text-label-caps text-primary">REQUIRED</span>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<button class="p-4 border border-border-subtle rounded-xl font-bold bg-canvas-white hover:border-primary transition-all" onclick="selectTime(this)">09:00 AM</button>
+<button class="p-4 border border-border-subtle rounded-xl font-bold bg-canvas-white hover:border-primary transition-all active-slot" onclick="selectTime(this)">11:30 AM</button>
+<button class="p-4 border border-border-subtle rounded-xl font-bold bg-canvas-white hover:border-primary transition-all" onclick="selectTime(this)">02:00 PM</button>
+<button class="p-4 border border-border-subtle rounded-xl font-bold bg-canvas-white hover:border-primary transition-all" onclick="selectTime(this)">04:30 PM</button>
+<button class="p-4 border border-transparent rounded-xl font-bold bg-surface-container text-outline opacity-50 cursor-not-allowed">06:00 PM</button>
+<button class="p-4 border border-border-subtle rounded-xl font-bold bg-canvas-white hover:border-primary transition-all" onclick="selectTime(this)">08:30 PM</button>
+</div>
+</section>
+<!-- Section 4: Job Details Form -->
+<section class="mb-section-gap">
+<div class="flex items-center justify-between mb-6">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg">Select a Time</h2>
+<span class="font-label-caps text-label-caps text-primary">REQUIRED</span>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<button class="p-4 border border-border-subtle rounded-xl font-bold bg-canvas-white hover:border-primary transition-all" onclick="selectTime(this)">09:00 AM</button>
+<button class="p-4 border border-border-subtle rounded-xl font-bold bg-canvas-white hover:border-primary transition-all active-slot" onclick="selectTime(this)">11:30 AM</button>
+<button class="p-4 border border-border-subtle rounded-xl font-bold bg-canvas-white hover:border-primary transition-all" onclick="selectTime(this)">02:00 PM</button>
+<button class="p-4 border border-border-subtle rounded-xl font-bold bg-canvas-white hover:border-primary transition-all" onclick="selectTime(this)">04:30 PM</button>
+<button class="p-4 border border-transparent rounded-xl font-bold bg-surface-container text-outline opacity-50 cursor-not-allowed">06:00 PM</button>
+<button class="p-4 border border-border-subtle rounded-xl font-bold bg-canvas-white hover:border-primary transition-all" onclick="selectTime(this)">08:30 PM</button>
+</div>
+</section>
+</main>
+<!-- Footer: Confirm Booking -->
+<footer class="fixed bottom-0 left-0 w-full bg-canvas-white border-t border-border-subtle p-gutter-mobile z-50">
+<div class="max-w-3xl mx-auto flex items-center justify-between gap-4">
+<div class="flex flex-col">
+<span class="text-xs text-outline font-label-caps">SERVICE FEE</span>
+<span class="text-lg font-bold text-on-surface">UGX 25,000</span>
+</div>
+<button class="flex-1 max-w-[240px] bg-primary text-white py-4 px-6 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-primary-container active:scale-95 transition-all shadow-md">
+<span>Confirm Booking</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</footer>
+<script>
+        function toggleService(el) {
+            // Check if already selected to deselect
+            if (el.classList.contains('selected')) {
+                el.classList.remove('selected', 'border-primary', 'bg-primary/5');
+            } else {
+                // For this UI, allow single selection (toggle logic)
+                document.querySelectorAll('button.selected').forEach(btn => {
+                    btn.classList.remove('selected', 'border-primary', 'bg-primary/5');
+                });
+                el.classList.add('selected', 'border-primary', 'bg-primary/5');
+            }
+        }
+
+        function selectTime(el) {
+            document.querySelectorAll('.active-slot').forEach(slot => {
+                slot.classList.remove('active-slot');
+            });
+            el.classList.add('active-slot');
+        }
+
+        // Apply initial selection
+        document.querySelectorAll('button')[1].classList.add('selected', 'border-primary', 'bg-primary/5');
+    </script>
+</body></html>

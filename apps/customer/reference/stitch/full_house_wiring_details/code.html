@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Service Details - Full House Wiring</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#787586",
+                        "inverse-primary": "#c6bfff",
+                        "border-subtle": "#e5e7eb",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb68d",
+                        "surface": "#faf9f8",
+                        "inverse-on-surface": "#f1f0ef",
+                        "on-secondary-fixed": "#001c37",
+                        "inverse-surface": "#2f3130",
+                        "primary-fixed-dim": "#c6bfff",
+                        "on-primary-fixed-variant": "#3e28bd",
+                        "tertiary-container": "#994500",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "outline-variant": "#c8c4d7",
+                        "on-tertiary-container": "#ffcdb1",
+                        "on-background": "#1a1c1c",
+                        "error": "#ba1a1a",
+                        "surface-bright": "#faf9f8",
+                        "on-tertiary": "#ffffff",
+                        "ink-black": "#000000",
+                        "success-green": "#1aae39",
+                        "on-surface": "#1a1c1c",
+                        "on-secondary": "#ffffff",
+                        "secondary": "#49607e",
+                        "primary": "#3d27bc",
+                        "surface-container-low": "#f4f3f2",
+                        "on-secondary-fixed-variant": "#314865",
+                        "surface-container-highest": "#e3e2e1",
+                        "on-surface-variant": "#474554",
+                        "secondary-fixed": "#d2e4ff",
+                        "surface-tint": "#5746d5",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#321200",
+                        "surface-variant": "#e3e2e1",
+                        "canvas-white": "#ffffff",
+                        "trust-blue": "#b2d5ff",
+                        "primary-container": "#5645d4",
+                        "on-secondary-container": "#49617f",
+                        "on-primary-fixed": "#150066",
+                        "on-primary-container": "#d7d2ff",
+                        "secondary-fixed-dim": "#b0c8eb",
+                        "tertiary": "#743300",
+                        "surface-dim": "#dadad9",
+                        "surface-container-lowest": "#ffffff",
+                        "background": "#faf9f8",
+                        "secondary-container": "#c4dcff",
+                        "surface-gray": "#f6f5f4",
+                        "on-tertiary-fixed-variant": "#763300",
+                        "surface-container": "#efeeed",
+                        "tertiary-fixed": "#ffdbc9",
+                        "surface-container-high": "#e9e8e7",
+                        "primary-fixed": "#e4dfff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-safe": "20px",
+                        "section-gap": "64px",
+                        "gutter-mobile": "16px",
+                        "gutter-desktop": "24px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "title-md": ["Inter"],
+                        "mono-label": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "title-md": ["20px", {"lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "mono-label": ["13px", {"lineHeight": "1.0", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- Top AppBar (Mobile/Desktop) -->
+<header class="sticky top-0 z-50 flex justify-between items-center px-gutter-mobile md:px-gutter-desktop h-14 md:h-16 w-full max-w-7xl mx-auto bg-canvas-white border-b border-border-subtle">
+<div class="flex items-center gap-4">
+<button class="p-2 -ml-2 hover:bg-surface-container rounded-full transition-colors active:scale-95">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-title-md text-title-md text-primary">Service Details</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 hover:bg-surface-container rounded-full transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">share</span>
+</button>
+<button class="p-2 hover:bg-surface-container rounded-full transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">favorite</span>
+</button>
+</div>
+</header>
+<main class="max-w-7xl mx-auto pb-32">
+<!-- Hero Section -->
+<section class="relative w-full aspect-[4/3] md:aspect-[21/9] overflow-hidden">
+<img alt="Full House Wiring" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-mnIxjD3YdJ3DKvjzTVB-1RdvbvjSQ4RJ2a2OVKjfED4C3rYlvFqJvyNQW4iqOEZayEbJAg5_39mPFTMai3DppR3Deq94H1QxPkO15YYNEI4t2dEvcjvIzVoU7HbVGNE1QiZpfKx4lwWIKSipm4l8harEfiVcRci8prY3D6NW9JxdXTJQ3C0_EhERhtyFpzCVxDSrq0IQWXGvU5qySq9t-g2_sHQYHnjtLs8YXGGRe_FdbGkQT_-uHRBQrmt9b3PeVo2El9G3Iyk"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+</section>
+<!-- Content Area -->
+<div class="px-gutter-mobile md:px-gutter-desktop -mt-8 relative z-10">
+<div class="bg-canvas-white rounded-xl shadow-sm p-6 md:p-8 border border-border-subtle">
+<!-- Badges & Title -->
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full font-label-caps text-[10px] tracking-wider uppercase">Elite Technician</span>
+<div class="flex items-center bg-surface-container px-3 py-1 rounded-full gap-1">
+<span class="material-symbols-outlined text-yellow-500 text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-mono-label text-mono-label">4.9 (124 reviews)</span>
+</div>
+</div>
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg mb-6 text-primary">Full House Wiring</h2>
+<!-- Technician Card -->
+<div class="flex items-center gap-4 p-4 mb-8 bg-surface-container-low rounded-xl border border-border-subtle">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-outline-variant flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">person</span>
+</div>
+<div>
+<h4 class="font-title-md text-body-lg font-bold">Moses Okello</h4>
+<p class="font-body-sm text-on-surface-variant">Certified Master Electrician</p>
+</div>
+<button class="ml-auto p-2 bg-canvas-white rounded-full border border-border-subtle shadow-sm active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-primary">chat</span>
+</button>
+</div>
+<!-- Description -->
+<div class="mb-10">
+<h3 class="font-title-md text-title-md mb-3 text-ink-black">Description</h3>
+<p class="font-body-lg text-on-surface-variant leading-relaxed">
+                        Professional full house wiring service adhering to international safety standards (IEC) and local regulations. Our process ensures zero-fault electrical installations designed for longevity, preventing power surges and fire hazards. We use premium-grade copper cables and high-precision circuit breakers to ensure your family's safety and appliance durability.
+                    </p>
+</div>
+<!-- What's Included -->
+<div class="mb-10">
+<h3 class="font-title-md text-title-md mb-4 text-ink-black">What's Included</h3>
+<div class="space-y-3">
+<div class="flex items-center gap-4 p-4 rounded-xl border border-border-subtle bg-canvas-white hover:border-primary transition-colors">
+<div class="w-10 h-10 rounded-lg bg-primary/5 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">architecture</span>
+</div>
+<span class="font-body-lg font-medium">Circuit Design &amp; Mapping</span>
+</div>
+<div class="flex items-center gap-4 p-4 rounded-xl border border-border-subtle bg-canvas-white hover:border-primary transition-colors">
+<div class="w-10 h-10 rounded-lg bg-primary/5 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">plumbing</span>
+</div>
+<span class="font-body-lg font-medium">Conduit Pipe Laying</span>
+</div>
+<div class="flex items-center gap-4 p-4 rounded-xl border border-border-subtle bg-canvas-white hover:border-primary transition-colors">
+<div class="w-10 h-10 rounded-lg bg-primary/5 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">bolt</span>
+</div>
+<span class="font-body-lg font-medium">Wire Pulling &amp; Load Balancing</span>
+</div>
+<div class="flex items-center gap-4 p-4 rounded-xl border border-border-subtle bg-canvas-white hover:border-primary transition-colors">
+<div class="w-10 h-10 rounded-lg bg-primary/5 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">toggle_on</span>
+</div>
+<span class="font-body-lg font-medium">Final Fittings &amp; Accessories</span>
+</div>
+<div class="flex items-center gap-4 p-4 rounded-xl border border-border-subtle bg-canvas-white hover:border-primary transition-colors">
+<div class="w-10 h-10 rounded-lg bg-primary/5 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">assignment_turned_in</span>
+</div>
+<span class="font-body-lg font-medium">Final Testing &amp; Certification</span>
+</div>
+</div>
+</div>
+<!-- Estimated Labor -->
+<div class="mb-10">
+<h3 class="font-title-md text-title-md mb-4 text-ink-black">Estimated Labor</h3>
+<div class="bg-surface-gray rounded-xl p-6 border border-border-subtle">
+<div class="flex justify-between items-baseline mb-6">
+<span class="font-label-caps text-on-surface-variant">RANGE</span>
+<span class="font-display-lg text-title-md md:text-headline-lg font-bold text-primary">UGX 150k - 400k</span>
+</div>
+<div class="space-y-4 mb-6">
+<div class="flex justify-between border-b border-border-subtle pb-2">
+<span class="font-body-sm text-on-surface-variant">1-2 Rooms (Standard)</span>
+<span class="font-body-sm font-semibold">UGX 150,000</span>
+</div>
+<div class="flex justify-between border-b border-border-subtle pb-2">
+<span class="font-body-sm text-on-surface-variant">3+ Rooms (Complex)</span>
+<span class="font-body-sm font-semibold">UGX 400,000+</span>
+</div>
+</div>
+<div class="flex gap-3 p-3 bg-secondary-container/20 rounded-lg border border-secondary-container/40">
+<span class="material-symbols-outlined text-secondary text-xl">info</span>
+<p class="font-body-sm text-on-secondary-container">Material costs are not included in the labor estimate. Quotes for materials will be provided after inspection.</p>
+</div>
+</div>
+</div>
+<!-- Main CTA -->
+<button class="w-full bg-primary text-on-primary py-4 rounded-xl font-title-md text-title-md shadow-lg active:scale-95 transition-transform mb-12">
+                    Book This Service
+                </button>
+<!-- Proof of Work -->
+<div class="mb-12">
+<h3 class="font-title-md text-title-md mb-4 text-ink-black">Proof of Work</h3>
+<div class="flex gap-4 overflow-x-auto hide-scrollbar -mx-2 px-2">
+<div class="flex-none w-72 h-72 rounded-xl overflow-hidden border border-border-subtle shadow-sm">
+<img alt="Wired DB Board" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCw9TeGFsn-xniqYC0cX5rIacfX7z5KvNnuT_0MW182EqASh_iwGszmPGBvXhrIEvqgFsbTLQvzBKJdimO1yIyMc81roKvNqiQU3MVL4wEos7RLhjEcws2iZEMGig7iPdjkStGA505_tmYeX70RFLpWacTY9uFoWog7LXP1Q8sKjUCBaNDzQB3nHyv9RvYDcxrRIpdVAywMrMJpZOSQikZVvawKIIzJ_3jua98w5OUMM0thOUCwYezjD47v5frTleUsk0wWLNNeecM"/>
+</div>
+<div class="flex-none w-72 h-72 rounded-xl bg-surface-container-highest flex items-center justify-center border border-border-subtle shadow-sm">
+<span class="material-symbols-outlined text-4xl text-outline-variant">image</span>
+</div>
+<div class="flex-none w-72 h-72 rounded-xl bg-surface-container-highest flex items-center justify-center border border-border-subtle shadow-sm">
+<span class="material-symbols-outlined text-4xl text-outline-variant">image</span>
+</div>
+</div>
+</div>
+<!-- FixNow Guarantee -->
+<div class="mb-6">
+<h3 class="font-title-md text-title-md mb-4 text-ink-black">FixNow Guarantee</h3>
+<div class="space-y-4">
+<div class="flex gap-4">
+<div class="w-8 h-8 rounded-full bg-success-green/10 flex items-center justify-center text-success-green flex-shrink-0">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</div>
+<div>
+<p class="font-body-lg font-semibold">Insured Work up to UGX 5M</p>
+<p class="font-body-sm text-on-surface-variant">Your property is protected by our comprehensive service insurance.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-8 h-8 rounded-full bg-success-green/10 flex items-center justify-center text-success-green flex-shrink-0">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">schedule</span>
+</div>
+<div>
+<p class="font-body-lg font-semibold">On-Time Guarantee</p>
+<p class="font-body-sm text-on-surface-variant">We arrive within 30 minutes of our scheduled time or get a discount.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-8 h-8 rounded-full bg-success-green/10 flex items-center justify-center text-success-green flex-shrink-0">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">new_releases</span>
+</div>
+<div>
+<p class="font-body-lg font-semibold">1-Year Warranty</p>
+<p class="font-body-sm text-on-surface-variant">Free re-fix if any installation issue arises within 12 months.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Sticky Bar -->
+<div class="fixed bottom-0 left-0 w-full z-50 bg-canvas-white border-t border-border-subtle shadow-lg px-gutter-mobile md:px-gutter-desktop py-4 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-caps text-on-surface-variant">STARTING FROM</span>
+<span class="font-title-md text-primary font-bold">UGX 150,000</span>
+</div>
+<button class="bg-primary text-on-primary px-8 py-3 rounded-xl font-title-md font-semibold active:scale-95 transition-transform">
+            Book Service
+        </button>
+</div>
+<!-- Background Decorative Micro-Interactions -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    let x = e.clientX - e.target.offsetLeft;
+                    let y = e.clientY - e.target.offsetTop;
+                    let ripple = document.createElement('span');
+                    ripple.style.left = x + 'px';
+                    ripple.style.top = y + 'px';
+                    this.appendChild(ripple);
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                });
+            });
+        });
+    </script>
+</body></html>

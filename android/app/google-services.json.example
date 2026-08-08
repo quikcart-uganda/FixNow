@@ -1,0 +1,24 @@
+{
+  "_comment": "Place the real google-services.json from Firebase Console next to this file as android/app/google-services.json. Required for FCM on Android. The Capacitor build.gradle already applies the Google Services plugin when that file exists.",
+  "project_info": {
+    "project_number": "000000000000",
+    "project_id": "fixnow-REPLACE",
+    "storage_bucket": "fixnow-REPLACE.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:000000000000:android:REPLACE",
+        "android_client_info": {
+          "package_name": "com.fixnow.app"
+        }
+      },
+      "api_key": [
+        {
+          "current_key": "REPLACE_ME"
+        }
+      ]
+    }
+  ],
+  "configuration_version": "1"
+}

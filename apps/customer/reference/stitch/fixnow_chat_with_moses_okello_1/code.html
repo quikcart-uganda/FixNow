@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline-variant": "#c8c4d7",
+                    "on-surface": "#1a1c1c",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-container": "#ffcdb1",
+                    "border-subtle": "#e5e7eb",
+                    "on-tertiary-fixed": "#321200",
+                    "primary": "#3d27bc",
+                    "inverse-on-surface": "#f1f0ef",
+                    "surface-bright": "#faf9f8",
+                    "surface-container-low": "#f4f3f2",
+                    "outline": "#787586",
+                    "tertiary-fixed": "#ffdbc9",
+                    "secondary": "#49607e",
+                    "surface-gray": "#f6f5f4",
+                    "inverse-surface": "#2f3130",
+                    "error": "#ba1a1a",
+                    "ink-black": "#000000",
+                    "tertiary": "#743300",
+                    "on-tertiary": "#ffffff",
+                    "secondary-fixed-dim": "#b0c8eb",
+                    "trust-blue": "#b2d5ff",
+                    "surface-container-highest": "#e3e2e1",
+                    "secondary-container": "#c4dcff",
+                    "on-surface-variant": "#474554",
+                    "inverse-primary": "#c6bfff",
+                    "surface-dim": "#dadad9",
+                    "surface-container-high": "#e9e8e7",
+                    "tertiary-container": "#994500",
+                    "tertiary-fixed-dim": "#ffb68d",
+                    "on-error": "#ffffff",
+                    "primary-container": "#5645d4",
+                    "surface-variant": "#e3e2e1",
+                    "background": "#faf9f8",
+                    "on-primary-container": "#d7d2ff",
+                    "secondary-fixed": "#d2e4ff",
+                    "on-background": "#1a1c1c",
+                    "surface-container": "#efeeed",
+                    "success-green": "#1aae39",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-tint": "#5746d5",
+                    "on-secondary-fixed": "#001c37",
+                    "on-primary-fixed": "#150066",
+                    "on-secondary-container": "#49617f",
+                    "on-secondary": "#ffffff",
+                    "primary-fixed-dim": "#c6bfff",
+                    "primary-fixed": "#e4dfff",
+                    "surface": "#faf9f8",
+                    "on-tertiary-fixed-variant": "#763300",
+                    "on-primary": "#ffffff",
+                    "canvas-white": "#ffffff",
+                    "on-secondary-fixed-variant": "#314865",
+                    "on-primary-fixed-variant": "#3e28bd",
+                    "on-error-container": "#93000a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-safe": "20px",
+                    "base": "4px",
+                    "section-gap": "64px",
+                    "gutter-desktop": "24px",
+                    "gutter-mobile": "16px"
+            },
+            "fontFamily": {
+                    "mono-label": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "title-md": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "headline-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "mono-label": ["13px", {"lineHeight": "1.0", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "title-md": ["20px", {"lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .chat-container {
+            height: calc(100vh - 128px);
+            overflow-y: auto;
+            scrollbar-width: none;
+        }
+        .chat-container::-webkit-scrollbar { display: none; }
+        .message-bubble { max-width: 80%; }
+        .glass-effect {
+            backdrop-filter: blur(12px);
+            background-color: rgba(255, 255, 255, 0.85);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background">
+<!-- Top AppBar (Sticky Chat Header) -->
+<header class="sticky top-0 z-50 glass-effect border-b border-border-subtle h-16 flex items-center px-4 justify-between">
+<div class="flex items-center gap-3">
+<button class="p-2 -ml-2 hover:bg-surface-container rounded-full transition-colors">
+<span class="material-symbols-outlined text-on-surface">arrow_back</span>
+</button>
+<div class="flex items-center gap-3">
+<div class="relative">
+<img alt="Moses Okello" class="w-10 h-10 rounded-full object-cover border-2 border-primary-fixed" data-alt="A professional portrait of a confident middle-aged Ugandan man with a friendly smile, short black hair, wearing a clean navy blue polo shirt. The lighting is bright and natural, suggesting a professional studio environment. The image is crisp with high technical precision, maintaining a corporate yet approachable aesthetic consistent with a premium service marketplace platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2uUyN94NwXFFZtIl30Zm6cUNTOWmdDHOgp8lUhOnqISsIGvZBl-mTL6R9xHvIA6_zzLUvJc2IE9YUKlv_LNAp7dSGnRLgAKPvYALoqvnA9AqUBbvnUqUoRbhKX1iKVnAxx1f-en7eYcTz5BpFcSKIQmbf9u8Jkd1JHRIhYElyS-MREd9QalWiXS7l6JGJxh8hbqNPc4xRMwRqRI_guHppMNCJ5p_5-1KpFKKlRHP3rxZsbNQOumgIVk0En23PXkgTecUiIqovndU"/>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-success-green border-2 border-canvas-white rounded-full shadow-sm"></div>
+</div>
+<div>
+<div class="flex items-center gap-1">
+<h1 class="font-title-md text-body-lg font-bold text-on-surface leading-tight">Moses Okello</h1>
+<span class="material-symbols-outlined text-primary text-[16px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<div class="flex items-center">
+<span class="bg-trust-blue/20 text-on-secondary-fixed-variant font-label-caps text-[10px] px-1.5 py-0.5 rounded uppercase tracking-wider">Elite Technician</span>
+</div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-1">
+<button class="p-2 hover:bg-surface-container rounded-full transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">call</span>
+</button>
+<button class="p-2 hover:bg-surface-container rounded-full transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">more_vert</span>
+</button>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="chat-container px-4 py-4 space-y-6">
+<!-- FixNow Guarantee Banner -->
+<div class="flex justify-center">
+<div class="bg-surface-container-low border border-border-subtle rounded-xl px-4 py-3 flex items-start gap-3 max-w-sm">
+<span class="material-symbols-outlined text-primary mt-0.5" style="font-variation-settings: 'FILL' 1;">gpp_good</span>
+<div>
+<p class="font-label-caps text-on-surface font-bold text-[11px] uppercase">FixNow Guarantee</p>
+<p class="font-body-sm text-on-surface-variant text-[12px] leading-snug">Your payments are secure. We only release funds once you confirm the fix is complete.</p>
+</div>
+</div>
+</div>
+<div class="text-center">
+<span class="font-label-caps text-outline text-[11px] bg-surface-container px-3 py-1 rounded-full">Today, 10:45 AM</span>
+</div>
+<!-- Message History -->
+<div class="space-y-4">
+<!-- Tech Message -->
+<div class="flex flex-col items-start gap-1">
+<div class="message-bubble bg-surface-container-highest text-on-surface px-4 py-3 rounded-tr-xl rounded-br-xl rounded-bl-xl shadow-sm">
+<p class="font-body-lg text-body-sm">Hello Suna! I'm about 15 minutes away from your location in Kampala. Are you still okay for the 11:00 AM appointment?</p>
+</div>
+<div class="flex items-center gap-1 ml-1">
+<span class="font-label-caps text-outline text-[10px]">10:46 AM</span>
+</div>
+</div>
+<!-- User Message -->
+<div class="flex flex-col items-end gap-1">
+<div class="message-bubble bg-primary text-on-primary px-4 py-3 rounded-tl-xl rounded-bl-xl rounded-br-xl shadow-md">
+<p class="font-body-lg text-body-sm">Yes, Moses. I'll be here. The sink is in the main kitchen area on the ground floor.</p>
+</div>
+<div class="flex items-center gap-1 mr-1">
+<span class="font-label-caps text-outline text-[10px]">10:48 AM</span>
+<span class="material-symbols-outlined text-primary text-[14px]" style="font-variation-settings: 'FILL' 1;">done_all</span>
+</div>
+</div>
+<!-- Tech Message -->
+<div class="flex flex-col items-start gap-1">
+<div class="message-bubble bg-surface-container-highest text-on-surface px-4 py-3 rounded-tr-xl rounded-br-xl rounded-bl-xl shadow-sm">
+<p class="font-body-lg text-body-sm">Perfect. I have all the spare parts we discussed. See you soon!</p>
+</div>
+<div class="flex items-center gap-1 ml-1">
+<span class="font-label-caps text-outline text-[10px]">10:50 AM</span>
+</div>
+</div>
+<!-- User Message with image attachment -->
+<div class="flex flex-col items-end gap-1">
+<div class="message-bubble bg-primary text-on-primary p-1 rounded-tl-xl rounded-bl-xl rounded-br-xl shadow-md">
+<img alt="Kitchen Sink Leak" class="w-full aspect-square object-cover rounded-lg mb-1" data-alt="A close-up high-resolution photograph of a chrome kitchen faucet leaking water into a white porcelain sink. The lighting is bright and clean, highlighting the water droplets with precision. The background is a minimalist, modern kitchen with light gray tiling, maintaining a high-end architectural photography aesthetic focused on technical detail and domestic fix-it scenarios." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVlyaTdNHA1As0dD4_uwbIcj1-GhPchC3Fb0elOtAdxYuZJni12C-CHi8coZz2PceMJHCDEt1gwgo0ZhE9H9UoyTThXo9Jh2Q0sXUHnHq0m3ScHX_dBDnbEYstZLcsv0VXJqjjV5OpSryQ0YTySn8PupvbgI0-CPa7VEpXfbaKpqmfKAreV0TywqwbcpvdyDiAxVl0cZKHHqr9PpFEwVdo2f7U1hz1B-QwQhB9yzcGmr9pulyx_yKd3KALKsEJ1hvdSE2-FCbVboA"/>
+<div class="px-3 py-2">
+<p class="font-body-lg text-body-sm">Just to be sure, this is the exact part leaking. Hope the spares match!</p>
+</div>
+</div>
+<div class="flex items-center gap-1 mr-1">
+<span class="font-label-caps text-outline text-[10px]">10:52 AM</span>
+<span class="material-symbols-outlined text-primary text-[14px]" style="font-variation-settings: 'FILL' 1;">done_all</span>
+</div>
+</div>
+<!-- Tech Message -->
+<div class="flex flex-col items-start gap-1">
+<div class="message-bubble bg-surface-container-highest text-on-surface px-4 py-3 rounded-tr-xl rounded-br-xl rounded-bl-xl shadow-sm">
+<p class="font-body-lg text-body-sm">Yes, that's a standard FixNow-compliant washer. I have exactly what we need. I'm parking now.</p>
+</div>
+<div class="flex items-center gap-1 ml-1">
+<span class="font-label-caps text-outline text-[10px]">10:55 AM</span>
+</div>
+</div>
+<!-- Placeholder for scrolling -->
+<div class="h-4" id="anchor"></div>
+</div>
+</main>
+<!-- Footer Input Area -->
+<footer class="fixed bottom-0 left-0 w-full glass-effect border-t border-border-subtle p-3 z-50">
+<div class="max-w-7xl mx-auto flex items-center gap-2">
+<button class="flex items-center justify-center w-10 h-10 rounded-full bg-surface-container text-on-surface-variant hover:bg-surface-container-high transition-transform active:scale-90">
+<span class="material-symbols-outlined">add</span>
+</button>
+<div class="flex-1 relative">
+<input class="w-full bg-surface-container-low border-none focus:ring-2 focus:ring-primary/20 rounded-full px-5 py-2.5 text-body-sm text-on-surface placeholder:text-outline h-11 transition-all" placeholder="Type a message..." type="text"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-primary">
+<span class="material-symbols-outlined">sentiment_satisfied</span>
+</button>
+</div>
+<button class="flex items-center justify-center w-11 h-11 rounded-full bg-primary text-on-primary shadow-lg shadow-primary/30 hover:bg-primary-container transition-all active:scale-95 group">
+<span class="material-symbols-outlined group-hover:translate-x-0.5 transition-transform" style="font-variation-settings: 'FILL' 1;">send</span>
+</button>
+</div>
+<!-- Safe area padding for iPhones -->
+<div class="h-4 md:hidden"></div>
+</footer>
+<script>
+        // Auto-scroll to bottom of chat
+        window.onload = function() {
+            const container = document.querySelector('.chat-container');
+            container.scrollTop = container.scrollHeight;
+        };
+
+        // Micro-interaction for the send button
+        const sendBtn = document.querySelector('button.bg-primary');
+        const inputField = document.querySelector('input');
+
+        sendBtn.addEventListener('click', () => {
+            if(inputField.value.trim() !== "") {
+                // Here we would normally handle the message sending logic
+                console.log("Message sent:", inputField.value);
+                inputField.value = "";
+                inputField.focus();
+            }
+        });
+
+        // Handle Enter key for sending
+        inputField.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendBtn.click();
+            }
+        });
+    </script>
+</body></html>

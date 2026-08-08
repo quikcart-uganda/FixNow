@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Edit Profile - FixNow</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#e3e2e1",
+                        "surface-variant": "#e3e2e1",
+                        "on-tertiary-container": "#ffcdb1",
+                        "on-error": "#ffffff",
+                        "primary-fixed-dim": "#c6bfff",
+                        "on-tertiary-fixed": "#321200",
+                        "tertiary-fixed": "#ffdbc9",
+                        "surface-gray": "#f6f5f4",
+                        "outline-variant": "#c8c4d7",
+                        "on-primary-container": "#d7d2ff",
+                        "on-secondary-container": "#49617f",
+                        "border-subtle": "#e5e7eb",
+                        "surface": "#faf9f8",
+                        "background": "#faf9f8",
+                        "on-primary-fixed-variant": "#3e28bd",
+                        "on-primary": "#ffffff",
+                        "tertiary": "#743300",
+                        "secondary-fixed": "#d2e4ff",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed": "#001c37",
+                        "surface-tint": "#5746d5",
+                        "secondary": "#49607e",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface-variant": "#474554",
+                        "secondary-fixed-dim": "#b0c8eb",
+                        "success-green": "#1aae39",
+                        "surface-dim": "#dadad9",
+                        "secondary-container": "#c4dcff",
+                        "tertiary-fixed-dim": "#ffb68d",
+                        "ink-black": "#000000",
+                        "primary-container": "#5645d4",
+                        "primary": "#3d27bc",
+                        "tertiary-container": "#994500",
+                        "surface-bright": "#faf9f8",
+                        "on-secondary": "#ffffff",
+                        "inverse-primary": "#c6bfff",
+                        "outline": "#787586",
+                        "on-surface": "#1a1c1c",
+                        "surface-container-high": "#e9e8e7",
+                        "on-tertiary-fixed-variant": "#763300",
+                        "trust-blue": "#b2d5ff",
+                        "surface-container": "#efeeed",
+                        "on-primary-fixed": "#150066",
+                        "canvas-white": "#ffffff",
+                        "inverse-surface": "#2f3130",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#e4dfff",
+                        "surface-container-low": "#f4f3f2",
+                        "on-secondary-fixed-variant": "#314865",
+                        "on-error-container": "#93000a",
+                        "inverse-on-surface": "#f1f0ef",
+                        "on-background": "#1a1c1c",
+                        "error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-safe": "20px",
+                        "gutter-mobile": "16px",
+                        "base": "4px",
+                        "section-gap": "64px",
+                        "gutter-desktop": "24px"
+                    },
+                    "fontFamily": {
+                        "mono-label": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "title-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-caps": ["Inter"]
+                    },
+                    "fontSize": {
+                        "mono-label": ["13px", {"lineHeight": "1.0", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "title-md": ["20px", {"lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            vertical-align: middle;
+        }
+        .profile-avatar-shadow {
+            box-shadow: 0px 4px 20px rgba(0,0,0,0.08);
+        }
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #3d27bc;
+            box-shadow: 0 0 0 1px #3d27bc;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface selection:bg-primary/10">
+<!-- Top App Bar -->
+<header class="fixed top-0 w-full z-50 bg-canvas-white shadow-sm border-b border-border-subtle h-14 flex items-center justify-between px-gutter-mobile">
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined text-on-surface">arrow_back</span>
+</button>
+<h1 class="font-title-md text-title-md text-on-surface">Edit Profile</h1>
+</div>
+<button class="px-4 py-1.5 rounded-xl text-primary font-semibold hover:bg-primary-fixed transition-colors active:scale-95">
+            Save
+        </button>
+</header>
+<main class="pt-24 pb-32 max-w-2xl mx-auto px-gutter-mobile">
+<!-- Profile Photo Section -->
+<section class="flex flex-col items-center mb-section-gap">
+<div class="relative group">
+<div class="w-32 h-32 rounded-full overflow-hidden profile-avatar-shadow border-4 border-canvas-white bg-surface-container">
+<img alt="Suna Ivan" class="w-full h-full object-cover" data-alt="A professional close-up portrait of Suna Ivan, a confident young Ugandan man with a friendly smile. He is set against a clean, soft-lit studio background that emphasizes a high-end, corporate aesthetic. The lighting is warm and balanced, highlighting his features with crisp clarity, maintaining the minimalist and professional atmosphere of the FixNow platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFB0y6ylhgdMYnUGz9BWn-bNIEOjFPYUZXzLSEsQqVcwwOqSjmf0mJpVMlqYuu0KlNKm2_1pAr5tmS4Abz42WuWTAzA8JBN53JihmIYSLldx-_CMY-Mt-TmdrP828R0m-PeY_ZhXhR3_LiCI3oUGP2iYJVqOpNXZoPdpcd3CPm6CqA4_IM2j-TprGwGHUbOt0tHkddGqhgbt7int9jxq9-VQSSKzVmyHh4-R9X1u6rbUNTm59zOsz4H7_fLAaacqMmlmgqosY5kOM"/>
+</div>
+<button class="absolute bottom-0 right-0 w-10 h-10 bg-primary text-on-primary rounded-full flex items-center justify-center border-2 border-canvas-white shadow-lg active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[20px]">photo_camera</span>
+</button>
+</div>
+<div class="mt-4 flex items-center gap-1.5">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Profile Identity</span>
+</div>
+</section>
+<!-- Form Fields -->
+<form class="space-y-6">
+<!-- Full Name -->
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant block" for="full-name">Full Name</label>
+<div class="relative">
+<input class="w-full h-14 px-4 bg-canvas-white border border-border-subtle rounded-xl font-body-lg text-body-lg text-on-surface placeholder:text-outline transition-all" id="full-name" type="text" value="Suna Ivan"/>
+</div>
+</div>
+<!-- Email Address -->
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant block" for="email">Email Address</label>
+<div class="relative">
+<input class="w-full h-14 px-4 bg-canvas-white border border-border-subtle rounded-xl font-body-lg text-body-lg text-on-surface placeholder:text-outline transition-all" id="email" type="email" value="suna.ivan@example.ug"/>
+</div>
+</div>
+<!-- Phone Number -->
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant block" for="phone">Phone Number</label>
+<div class="relative">
+<input class="w-full h-14 px-4 bg-canvas-white border border-border-subtle rounded-xl font-body-lg text-body-lg text-on-surface placeholder:text-outline transition-all" id="phone" type="tel" value="+256 700 000 000"/>
+</div>
+</div>
+<!-- Bio -->
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant block" for="bio">Professional Bio</label>
+<div class="relative">
+<textarea class="w-full p-4 bg-canvas-white border border-border-subtle rounded-xl font-body-lg text-body-lg text-on-surface placeholder:text-outline transition-all resize-none" id="bio" rows="4">Certified electrical technician with over 5 years of experience in domestic and industrial installations across Kampala. Committed to safety and precision.</textarea>
+</div>
+</div>
+<!-- Secondary Section -->
+<div class="pt-4 space-y-4">
+<div class="flex items-center justify-between p-4 bg-surface-container-low rounded-xl border border-border-subtle">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-success-green" style="font-variation-settings: 'FILL' 1;">verified</span>
+<div>
+<p class="font-body-sm text-body-sm font-semibold text-on-surface">Verified Identity</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Your account is fully secured</p>
+</div>
+</div>
+<span class="px-2 py-1 bg-success-green/10 text-success-green font-label-caps text-[10px] rounded-md uppercase">Active</span>
+</div>
+<button class="w-full flex items-center justify-between p-4 hover:bg-surface-container-high transition-colors rounded-xl group" type="button">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant">lock_reset</span>
+<span class="font-body-lg text-body-lg font-medium text-on-surface">Change Password</span>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform">chevron_right</span>
+</button>
+</div>
+</form>
+</main>
+<!-- Fixed Bottom Save Button -->
+<div class="fixed bottom-0 left-0 w-full bg-canvas-white p-gutter-mobile border-t border-border-subtle md:hidden z-50">
+<button class="w-full h-14 bg-primary text-on-primary rounded-xl font-title-md text-title-md shadow-lg active:scale-[0.98] transition-all hover:bg-primary-container">
+            Save Changes
+        </button>
+</div>
+<!-- Desktop Save Button (Centered Max-Width) -->
+<div class="hidden md:block fixed bottom-8 left-1/2 -translate-x-1/2 w-full max-w-2xl px-gutter-mobile z-50">
+<button class="w-full h-14 bg-primary text-on-primary rounded-xl font-title-md text-title-md shadow-xl active:scale-[0.98] transition-all hover:bg-primary-container">
+            Save Changes
+        </button>
+</div>
+<script>
+        // Simple micro-interaction for camera icon
+        const cameraBtn = document.querySelector('button .material-symbols-outlined');
+        if (cameraBtn) {
+            cameraBtn.parentElement.addEventListener('mousedown', () => {
+                cameraBtn.style.transform = 'scale(0.9)';
+            });
+            cameraBtn.parentElement.addEventListener('mouseup', () => {
+                cameraBtn.style.transform = 'scale(1)';
+            });
+        }
+
+        // Form field focus effects handled by Tailwind focus: classes
+    </script>
+</body></html>

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<title>FixNow | Find Local Technicians</title>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#c6bfff",
+                        "success-green": "#1aae39",
+                        "surface-container-highest": "#e3e2e1",
+                        "on-background": "#1a1c1c",
+                        "secondary-container": "#c4dcff",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed": "#d2e4ff",
+                        "on-secondary": "#ffffff",
+                        "inverse-surface": "#2f3130",
+                        "surface-bright": "#faf9f8",
+                        "inverse-primary": "#c6bfff",
+                        "tertiary": "#743300",
+                        "surface-tint": "#5746d5",
+                        "tertiary-container": "#994500",
+                        "on-tertiary-fixed-variant": "#763300",
+                        "on-tertiary-container": "#ffcdb1",
+                        "on-error": "#ffffff",
+                        "on-surface": "#1a1c1c",
+                        "trust-blue": "#b2d5ff",
+                        "surface-dim": "#dadad9",
+                        "ink-black": "#000000",
+                        "primary-container": "#5645d4",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#321200",
+                        "on-tertiary": "#ffffff",
+                        "canvas-white": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "surface": "#faf9f8",
+                        "on-surface-variant": "#474554",
+                        "surface-variant": "#e3e2e1",
+                        "on-primary-fixed": "#150066",
+                        "on-primary-container": "#d7d2ff",
+                        "surface-container": "#efeeed",
+                        "outline-variant": "#c8c4d7",
+                        "outline": "#787586",
+                        "surface-container-low": "#f4f3f2",
+                        "on-secondary-fixed": "#001c37",
+                        "inverse-on-surface": "#f1f0ef",
+                        "tertiary-fixed-dim": "#ffb68d",
+                        "background": "#faf9f8",
+                        "on-primary-fixed-variant": "#3e28bd",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary": "#49607e",
+                        "on-error-container": "#93000a",
+                        "surface-gray": "#f6f5f4",
+                        "on-secondary-container": "#49617f",
+                        "primary-fixed": "#e4dfff",
+                        "secondary-fixed-dim": "#b0c8eb",
+                        "border-subtle": "#e5e7eb",
+                        "tertiary-fixed": "#ffdbc9",
+                        "primary": "#3d27bc",
+                        "surface-container-high": "#e9e8e7",
+                        "on-secondary-fixed-variant": "#314865"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-safe": "20px",
+                        "base": "4px",
+                        "gutter-desktop": "24px",
+                        "section-gap": "64px",
+                        "gutter-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "mono-label": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "title-md": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "mono-label": ["13px", {"lineHeight": "1.0", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "title-md": ["20px", {"lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .active-chip { @apply bg-primary text-on-primary shadow-md; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-lg min-h-screen pb-24">
+<!-- Top Navigation Shell -->
+<header class="fixed top-0 w-full z-50 bg-canvas-white dark:bg-on-background shadow-sm border-b border-border-subtle dark:border-outline-variant h-14 flex items-center justify-between px-gutter-mobile">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed">menu</span>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary dark:text-primary-fixed">FixNow</h1>
+</div>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-border-subtle">
+<img alt="User Profile" data-alt="A professional headshot of a smiling young adult with clear skin and approachable eyes. The lighting is soft and natural, coming from a window in a contemporary, brightly lit office environment. The overall aesthetic is clean and high-fidelity, representing a professional user profile in a premium service marketplace. The background is slightly blurred to emphasize the subject." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKdWAQWlQOTWoJGCJsTfZ9hBYhS-3_J8LtFiGcFKeHKUmkCGo4NOnKIGQhFQRjAu_QydyEct0eIXPkkQX0KuHXVWtU6K7qmRv76FlgNkCs4xm5aFSo1rwAWNjCTPStbJkvG3LSSh3R504i5yaVnFN5LmRI8ZorgYz96pBTp2z-vGcJU45QnayuuxjdxP6HMzlAOK8f1525-bb06ecFkE9RjbXDJOuj4ndf_Q660Z7UHwbBTNKp7GCb9VKQMUYkYA6e3dqp3jjN3bA"/>
+</div>
+</header>
+<main class="mt-14 pt-4">
+<!-- Search and Filter Section -->
+<section class="px-gutter-mobile mb-6">
+<div class="relative flex items-center gap-3">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full h-14 pl-12 pr-4 bg-surface-container-low border-none rounded-xl focus:ring-2 focus:ring-primary/20 font-body-lg text-on-surface" placeholder="Search for electricians, plumbers..." type="text"/>
+</div>
+<button class="h-14 w-14 flex items-center justify-center bg-canvas-white border border-border-subtle rounded-xl active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-on-surface-variant">tune</span>
+</button>
+</div>
+</section>
+<!-- Category Chips -->
+<section class="mb-8">
+<div class="flex overflow-x-auto no-scrollbar gap-3 px-gutter-mobile">
+<button class="flex items-center gap-2 px-4 py-2.5 bg-primary text-on-primary rounded-full font-label-caps text-label-caps whitespace-nowrap shadow-sm">
+<span class="material-symbols-outlined text-[18px]">bolt</span>
+                    Electricians
+                </button>
+<button class="flex items-center gap-2 px-4 py-2.5 bg-canvas-white border border-border-subtle text-on-surface-variant rounded-full font-label-caps text-label-caps whitespace-nowrap hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[18px]">plumbing</span>
+                    Plumbers
+                </button>
+<button class="flex items-center gap-2 px-4 py-2.5 bg-canvas-white border border-border-subtle text-on-surface-variant rounded-full font-label-caps text-label-caps whitespace-nowrap hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[18px]">tv</span>
+                    TV Repair
+                </button>
+<button class="flex items-center gap-2 px-4 py-2.5 bg-canvas-white border border-border-subtle text-on-surface-variant rounded-full font-label-caps text-label-caps whitespace-nowrap hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[18px]">ac_unit</span>
+                    AC Techs
+                </button>
+<button class="flex items-center gap-2 px-4 py-2.5 bg-canvas-white border border-border-subtle text-on-surface-variant rounded-full font-label-caps text-label-caps whitespace-nowrap hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[18px]">format_paint</span>
+                    Painters
+                </button>
+</div>
+</section>
+<!-- Search Results List -->
+<section class="px-gutter-mobile space-y-4">
+<div class="flex items-center justify-between mb-2">
+<h2 class="font-title-md text-title-md text-on-surface">Top Rated in Kampala</h2>
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-widest">128 Results</span>
+</div>
+<!-- Technician Card 1 -->
+<div class="bg-canvas-white border border-border-subtle rounded-xl p-4 shadow-[0_4px_20px_rgba(0,0,0,0.04)] relative overflow-hidden group">
+<div class="flex gap-4">
+<!-- Profile Section -->
+<div class="relative w-20 h-20 shrink-0">
+<img alt="Technician Profile" class="w-full h-full object-cover rounded-xl" data-alt="A detailed portrait of a professional African male technician wearing a clean navy blue uniform. He has a friendly and confident expression, set against a workshop background with organized tools and bright daylight. The image conveys high reliability, technical expertise, and a premium service quality, with soft shadows and a high-resolution finish." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0sgJ-8kQi-PIBjHgYfXDVlKHNgKF_OOTTHFDCTJkEHgoOv6kBbZFewCkVF8nGz5FSBe_SG7dwiea7Bwcuz7qK0ld56wz0isTfqWGuEzryMJCyiLMjJghl9WvJkcz--rUW7bAy4JUIf0ZfN6aS3MBdbl_zTU4eESp2B_DzDFQo3Zc1I2SBaktMY2QcotyZIfgvBPW_UTvEYmsl_ydVjnQeA1EZvQWAlmRUGk0PPzb8GRDpM-vY0xJJmQYlLNtrbmKPKpiH9IosTpk"/>
+<div class="absolute bottom-0 right-0 w-4 h-4 bg-success-green border-2 border-canvas-white rounded-full"></div>
+</div>
+<!-- Content Section -->
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-2 mb-0.5">
+<h3 class="font-title-md text-title-md text-on-surface truncate">Moses Ssekandi</h3>
+<div class="flex items-center gap-1 shrink-0">
+<span class="material-symbols-outlined text-[16px] text-tertiary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-mono-label text-mono-label text-on-surface">4.9</span>
+</div>
+</div>
+<div class="flex items-center gap-2 mb-1">
+<span class="px-2 py-0.5 bg-primary-fixed text-on-primary-fixed-variant rounded-md font-label-caps text-[10px] uppercase tracking-wider">Elite</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">Certified Master Electrician</p>
+</div>
+<!-- Trust Metrics -->
+<div class="flex items-center gap-4 mb-3">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-trust-blue">verified_user</span>
+<span class="font-mono-label text-[11px] text-on-surface-variant">Trust Score: <span class="text-on-surface font-semibold">98/100</span></span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-outline">history</span>
+<span class="font-mono-label text-[11px] text-on-surface-variant"><span class="text-on-surface font-semibold">150+</span> Jobs</span>
+</div>
+</div>
+<!-- Social Proof Pill -->
+<div class="inline-flex items-center gap-1.5 px-2 py-1 bg-surface-container rounded-lg mb-4">
+<div class="flex -space-x-2">
+<div class="w-4 h-4 rounded-full border border-canvas-white bg-surface-dim"></div>
+<div class="w-4 h-4 rounded-full border border-canvas-white bg-outline"></div>
+</div>
+<span class="text-[10px] font-medium text-secondary">Hired by 4 neighbors recently</span>
+</div>
+</div>
+</div>
+<!-- Footer Action Area -->
+<div class="mt-2 pt-4 border-t border-border-subtle flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-caps text-[10px] text-outline uppercase">Starting from</span>
+<span class="font-title-md text-title-md text-primary font-bold">UGX 25k</span>
+</div>
+<button class="px-6 py-2.5 bg-primary text-on-primary rounded-lg font-label-caps text-label-caps active:scale-95 transition-all shadow-sm">
+                        View Profile
+                    </button>
+</div>
+</div>
+<!-- Technician Card 2 -->
+<div class="bg-canvas-white border border-border-subtle rounded-xl p-4 shadow-[0_4px_20px_rgba(0,0,0,0.04)] relative overflow-hidden group">
+<div class="flex gap-4">
+<div class="relative w-20 h-20 shrink-0">
+<img alt="Technician Profile" class="w-full h-full object-cover rounded-xl" data-alt="A close-up professional headshot of an African female technician with a warm smile. She is wearing a grey technical vest with a subtle FixNow logo. The background is a clean, modern interior space with soft, cinematic lighting. The visual style is premium, corporate modern, and evokes a sense of trust and meticulous professionalism." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaUe_NRWzUeMwi8d03obqQ_IyeXf6c617d2CWDl60dE7ewuezBJbBpUM6EBL8SpIkD46eY9xen4TGIhQOPJT69XKIb-5VEzyZS2e719R-ZI7uBT3C1W4xQuSOeD5ScIfFQlaibLPx4zJqwF8LPcIgyilm5NU86LJhKZtp0k1HomAkSdeBRpVWQt0qaFql09yQWkZ6u7nsM3YF9xfaZTOns31a1_1b5GVgg8bsjx_iuvq3Ur_4N4tT_njcHKkil_eTAJDC_nGPTyDo"/>
+<div class="absolute bottom-0 right-0 w-4 h-4 bg-surface-dim border-2 border-canvas-white rounded-full"></div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-2 mb-0.5">
+<h3 class="font-title-md text-title-md text-on-surface truncate">Aisha Nakato</h3>
+<div class="flex items-center gap-1 shrink-0">
+<span class="material-symbols-outlined text-[16px] text-tertiary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-mono-label text-mono-label text-on-surface">4.8</span>
+</div>
+</div>
+<div class="flex items-center gap-2 mb-1">
+<span class="px-2 py-0.5 bg-secondary-container text-on-secondary-container rounded-md font-label-caps text-[10px] uppercase tracking-wider">Pro</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">Appliance Repair Specialist</p>
+</div>
+<div class="flex items-center gap-4 mb-3">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-trust-blue">verified_user</span>
+<span class="font-mono-label text-[11px] text-on-surface-variant">Trust Score: <span class="text-on-surface font-semibold">95/100</span></span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-outline">history</span>
+<span class="font-mono-label text-[11px] text-on-surface-variant"><span class="text-on-surface font-semibold">85+</span> Jobs</span>
+</div>
+</div>
+<div class="inline-flex items-center gap-1.5 px-2 py-1 bg-surface-container rounded-lg mb-4">
+<div class="flex -space-x-2">
+<div class="w-4 h-4 rounded-full border border-canvas-white bg-outline"></div>
+<div class="w-4 h-4 rounded-full border border-canvas-white bg-primary-fixed-dim"></div>
+</div>
+<span class="text-[10px] font-medium text-secondary">Hired by 12 neighbors recently</span>
+</div>
+</div>
+</div>
+<div class="mt-2 pt-4 border-t border-border-subtle flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-caps text-[10px] text-outline uppercase">Starting from</span>
+<span class="font-title-md text-title-md text-primary font-bold">UGX 35k</span>
+</div>
+<button class="px-6 py-2.5 bg-primary text-on-primary rounded-lg font-label-caps text-label-caps active:scale-95 transition-all shadow-sm">
+                        View Profile
+                    </button>
+</div>
+</div>
+<!-- Technician Card 3 -->
+<div class="bg-canvas-white border border-border-subtle rounded-xl p-4 shadow-[0_4px_20px_rgba(0,0,0,0.04)] relative overflow-hidden group">
+<div class="flex gap-4">
+<div class="relative w-20 h-20 shrink-0">
+<img alt="Technician Profile" class="w-full h-full object-cover rounded-xl" data-alt="A professional studio portrait of a mature male plumber in a high-quality grey work shirt. He has a calm, experienced demeanor. The lighting is bright and even, casting soft shadows to emphasize texture and professionalism. The color palette consists of neutral tones and professional blues, fitting a corporate modern service platform aesthetic. Highly detailed skin textures and sharp focus." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnAx3cW6xgJJ_YnhxedSoPQJgXxi0jUBzYOhZ59TaBn1a4LaTqVxBsVyqcA37Ew70KbztHrHtKuwUBO28RsNRfoXrn-PTB0chNKlJ2pKfCIYf6HTVMAvg7KI40PmbRBa6XpSLCGy5NdaBK_FZv_D2icEH72rDdEaZUL6fx7iQMTGTeZ8gWD7tLEU5iP7H_WYP3ywjIqH_dAZFhKh1YbKGXaLoY_haWAEXK2QRkOw_6y_U-FmKqpWXXUUBro-BsBoD3GTSIcTf_YF4"/>
+<div class="absolute bottom-0 right-0 w-4 h-4 bg-success-green border-2 border-canvas-white rounded-full"></div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-2 mb-0.5">
+<h3 class="font-title-md text-title-md text-on-surface truncate">John Katende</h3>
+<div class="flex items-center gap-1 shrink-0">
+<span class="material-symbols-outlined text-[16px] text-tertiary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-mono-label text-mono-label text-on-surface">5.0</span>
+</div>
+</div>
+<div class="flex items-center gap-2 mb-1">
+<span class="px-2 py-0.5 bg-primary-fixed text-on-primary-fixed-variant rounded-md font-label-caps text-[10px] uppercase tracking-wider">Elite</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">Master Plumber &amp; Pipe Fitter</p>
+</div>
+<div class="flex items-center gap-4 mb-3">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-trust-blue">verified_user</span>
+<span class="font-mono-label text-[11px] text-on-surface-variant">Trust Score: <span class="text-on-surface font-semibold">100/100</span></span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-outline">history</span>
+<span class="font-mono-label text-[11px] text-on-surface-variant"><span class="text-on-surface font-semibold">320+</span> Jobs</span>
+</div>
+</div>
+<div class="inline-flex items-center gap-1.5 px-2 py-1 bg-surface-container rounded-lg mb-4">
+<div class="flex -space-x-2">
+<div class="w-4 h-4 rounded-full border border-canvas-white bg-on-primary-container"></div>
+<div class="w-4 h-4 rounded-full border border-canvas-white bg-secondary-fixed"></div>
+</div>
+<span class="text-[10px] font-medium text-secondary">Top choice in Kololo district</span>
+</div>
+</div>
+</div>
+<div class="mt-2 pt-4 border-t border-border-subtle flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-caps text-[10px] text-outline uppercase">Starting from</span>
+<span class="font-title-md text-title-md text-primary font-bold">UGX 40k</span>
+</div>
+<button class="px-6 py-2.5 bg-primary text-on-primary rounded-lg font-label-caps text-label-caps active:scale-95 transition-all shadow-sm">
+                        View Profile
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 bg-canvas-white dark:bg-on-background border-t border-border-subtle dark:border-outline-variant shadow-[0_-4px_20px_rgba(0,0,0,0.04)] h-16 flex justify-around items-center px-2 pb-safe">
+<div class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim px-3 py-1 hover:opacity-80 transition-opacity active:scale-90 duration-200">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-caps text-label-caps">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed bg-primary-fixed dark:bg-primary-container rounded-xl px-3 py-1 hover:opacity-80 transition-opacity active:scale-90 duration-200">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-caps text-label-caps">Search</span>
+</div>
+<div class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim px-3 py-1 hover:opacity-80 transition-opacity active:scale-90 duration-200">
+<span class="material-symbols-outlined">build</span>
+<span class="font-label-caps text-label-caps">Jobs</span>
+</div>
+<div class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim px-3 py-1 hover:opacity-80 transition-opacity active:scale-90 duration-200 relative">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-label-caps text-label-caps">Messages</span>
+<span class="absolute top-1 right-3 w-2 h-2 bg-error rounded-full"></span>
+</div>
+<div class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim px-3 py-1 hover:opacity-80 transition-opacity active:scale-90 duration-200">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-caps text-label-caps">Profile</span>
+</div>
+</nav>
+<script>
+        // Simple Interaction logic for chips
+        document.querySelectorAll('section button[class*="rounded-full"]').forEach(chip => {
+            chip.addEventListener('click', function() {
+                // Remove active classes from all chips in the same section
+                this.parentElement.querySelectorAll('button').forEach(c => {
+                    c.classList.remove('bg-primary', 'text-on-primary');
+                    c.classList.add('bg-canvas-white', 'border', 'border-border-subtle', 'text-on-surface-variant');
+                });
+                // Add active classes to clicked chip
+                this.classList.remove('bg-canvas-white', 'border', 'border-border-subtle', 'text-on-surface-variant');
+                this.classList.add('bg-primary', 'text-on-primary');
+            });
+        });
+    </script>
+</body></html>

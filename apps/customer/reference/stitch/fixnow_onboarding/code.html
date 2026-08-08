@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FixNow - Onboarding</title>
+<!-- Material Symbols Link -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#c6bfff",
+                        "on-primary-fixed-variant": "#3e28bd",
+                        "tertiary-container": "#994500",
+                        "on-error-container": "#93000a",
+                        "inverse-surface": "#2f3130",
+                        "on-error": "#ffffff",
+                        "outline-variant": "#c8c4d7",
+                        "on-tertiary-container": "#ffcdb1",
+                        "on-background": "#1a1c1c",
+                        "surface-bright": "#faf9f8",
+                        "error": "#ba1a1a",
+                        "ink-black": "#000000",
+                        "on-tertiary": "#ffffff",
+                        "success-green": "#1aae39",
+                        "on-surface": "#1a1c1c",
+                        "on-secondary": "#ffffff",
+                        "surface-container-low": "#f4f3f2",
+                        "on-secondary-fixed-variant": "#314865",
+                        "secondary": "#49607e",
+                        "primary": "#3d27bc",
+                        "outline": "#787586",
+                        "border-subtle": "#e5e7eb",
+                        "inverse-primary": "#c6bfff",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb68d",
+                        "surface": "#faf9f8",
+                        "inverse-on-surface": "#f1f0ef",
+                        "on-secondary-fixed": "#001c37",
+                        "background": "#faf9f8",
+                        "secondary-container": "#c4dcff",
+                        "surface-gray": "#f6f5f4",
+                        "on-tertiary-fixed-variant": "#763300",
+                        "surface-container": "#efeeed",
+                        "tertiary-fixed": "#ffdbc9",
+                        "surface-container-high": "#e9e8e7",
+                        "primary-fixed": "#e4dfff",
+                        "on-surface-variant": "#474554",
+                        "surface-container-highest": "#e3e2e1",
+                        "surface-tint": "#5746d5",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#321200",
+                        "secondary-fixed": "#d2e4ff",
+                        "canvas-white": "#ffffff",
+                        "surface-variant": "#e3e2e1",
+                        "primary-container": "#5645d4",
+                        "trust-blue": "#b2d5ff",
+                        "on-primary-fixed": "#150066",
+                        "on-secondary-container": "#49617f",
+                        "tertiary": "#743300",
+                        "surface-dim": "#dadad9",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#d7d2ff",
+                        "secondary-fixed-dim": "#b0c8eb"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter-desktop": "24px",
+                        "base": "4px",
+                        "gutter-mobile": "16px",
+                        "margin-safe": "20px",
+                        "section-gap": "64px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "title-md": ["Inter"],
+                        "mono-label": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "title-md": ["20px", {"lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "mono-label": ["13px", {"lineHeight": "1.0", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .onboarding-slide {
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;
+        }
+        .step-indicator {
+            transition: width 0.3s ease, background-color 0.3s ease;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-canvas-white text-on-background font-body-lg overflow-hidden">
+<!-- Header / Navigation (Suppressed per "The Destination Rule" - Only keeping Branding) -->
+<header class="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-gutter-mobile md:px-gutter-desktop h-14 md:h-16 max-w-7xl mx-auto">
+<div class="font-display-lg-mobile text-display-lg-mobile font-bold text-primary">FixNow</div>
+<button class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors py-2 px-4" id="skipBtn">SKIP</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="relative h-screen w-full flex items-center justify-center overflow-hidden">
+<!-- Step 1 -->
+<section class="onboarding-slide absolute inset-0 flex flex-col items-center justify-center px-gutter-mobile opacity-100 translate-x-0" id="step1">
+<div class="w-full max-w-md aspect-square mb-12 relative">
+<div class="absolute inset-0 bg-primary-container opacity-5 rounded-full scale-110 blur-3xl"></div>
+<img alt="Technician helping customer" class="w-full h-full object-cover rounded-xl shadow-sm" data-alt="A professional technician in a clean navy uniform shaking hands with a smiling homeowner in a bright, modern living room. The scene is bathed in natural morning light, emphasizing a high-end corporate minimalist aesthetic. The color palette is dominated by soft whites and cool grays, with vibrant indigo accents that reflect the FixNow brand identity. The atmosphere is warm, professional, and built on trust." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBzoOC91B9tBfd578uWWM2hvyaFwui3V9_Y59wQDJJYM77D31h5FjasDzJCfEmAt5LtoRdYd9DnN5Z5v5UHiKTZkurmfc8rJPa0l1dJYxyWZFMwvVuY91NNfnxD8GDzFCIKJHDt0BvTsrrY-TM9gMb5b1sQqkRM8gk2-JVt2rBLJmietP--txT6Xmkj9nOFcgmirOTgCdDZ4jCadvOysJIeCpJyZmLzQAMb5ZOzvHbXNPUqH63gD6EO1rrcop84dXEULgCMiX344Y"/>
+<!-- Decorative Badge -->
+<div class="absolute -bottom-4 -right-4 bg-canvas-white p-4 rounded-xl shadow-lg border border-border-subtle flex items-center space-x-3">
+<div class="bg-success-green/10 p-2 rounded-full">
+<span class="material-symbols-outlined text-success-green" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<div>
+<div class="font-label-caps text-label-caps text-on-surface">VERIFIED</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Top-Rated Expert</div>
+</div>
+</div>
+</div>
+<div class="text-center max-w-sm">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-on-surface mb-4">Find Trusted Technicians</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Connect with verified experts for electrical, plumbing, and home repairs.</p>
+</div>
+</section>
+<!-- Step 2 -->
+<section class="onboarding-slide absolute inset-0 flex flex-col items-center justify-center px-gutter-mobile opacity-0 translate-x-full" id="step2">
+<div class="w-full max-w-md aspect-square mb-12 relative">
+<div class="absolute inset-0 bg-secondary-container opacity-5 rounded-full scale-110 blur-3xl"></div>
+<img alt="Mobile phone showing listings" class="w-full h-full object-cover rounded-xl shadow-sm" data-alt="A high-angle shot of a hand holding a modern smartphone displaying a clean, professional app interface with job listings for home repairs. The background is a minimalist, white-walled office with soft shadows and natural lighting. The UI on the screen uses the FixNow indigo color for primary actions. The image conveys speed, efficiency, and a high-tech service marketplace aesthetic with crisp clarity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3KAgNIydg3cWkvccKAPXz5ZVgMYYdg7IulkOB9H1btTuujJ6M9Lj5wwhQiGWwOF6A-awllxKzkpJdu4WrG7XsTa6rfOV98zx_YRgUDpaBd60KwFRXPfvZwGqk4sbS_S1aKR0c-e93uaxK0ZrOm-PCjh2pqnrnPDgOW3iHT2F6BRFKRwu7fpXOGeYLLnW1yXVt4A7bp2DNzl__e9BlpFA7MUbYEBCJBrus7Ps87Ew9ih8Jc_iX0X8SB3TcmSIIYdYl5-amoi0BiBU"/>
+<!-- Floating Task Pill -->
+<div class="absolute top-1/2 -left-8 bg-canvas-white py-3 px-6 rounded-full shadow-lg border border-border-subtle flex items-center space-x-3 -rotate-3">
+<span class="material-symbols-outlined text-primary">plumbing</span>
+<span class="font-title-md text-title-md text-on-surface">Leaking Pipe Fix</span>
+</div>
+</div>
+<div class="text-center max-w-sm">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-on-surface mb-4">Post Jobs Instantly</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Describe your problem, upload photos, and get matches in minutes.</p>
+</div>
+</section>
+<!-- Step 3 -->
+<section class="onboarding-slide absolute inset-0 flex flex-col items-center justify-center px-gutter-mobile opacity-0 translate-x-full" id="step3">
+<div class="w-full max-w-md aspect-square mb-12 relative">
+<div class="absolute inset-0 bg-primary-container opacity-10 rounded-full scale-110 blur-3xl"></div>
+<div class="w-full h-full bg-canvas-white rounded-xl shadow-sm flex flex-col items-center justify-center border border-border-subtle p-8 overflow-hidden relative">
+<img alt="Safety and checkmark" class="absolute inset-0 w-full h-full object-cover opacity-20" data-alt="A clean, minimalist composition featuring a glowing metallic safety shield and a checkmark symbol set against a pristine white architectural background. The lighting is bright and airy, typical of high-end tech branding like Apple or Airbnb. Subtle Indigo light leaks from the corners provide a professional FixNow brand touch. The visual style is polished, conveying maximum security, reliability, and peace of mind." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxk6ca5wBPjy_FRgUZ4ssIqmOknkHoP4tTN3IgBr-MP6uLWdMoVJn4wX7DCbm3erV4w4kvHz0wolRot6-F-FNmDdrJkKn7n8GX7wZ8CHgKHvb5VcbdCbNpmT0-ewwhR-4ywTSIUZSNK4A1kof72MVUxpwoQNgp5ZxtcwAyNYYA5zeFr5qiQqlPN4EgFhffMGLxuvX0OexD_u0arzJIP7mEvrx9EKVvD58za4AZQr4yp2c8GhsCnuJqBzXtgbkosyUBjoAy4DyVhTg"/>
+<div class="relative z-10 flex flex-col items-center">
+<div class="w-24 h-24 bg-primary rounded-full flex items-center justify-center mb-6 shadow-xl shadow-primary/20">
+<span class="material-symbols-outlined text-canvas-white text-5xl" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</div>
+<div class="font-display-lg text-display-lg text-primary">100%</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant tracking-widest mt-2 uppercase">Secure Guarantee</div>
+</div>
+</div>
+</div>
+<div class="text-center max-w-sm">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-on-surface mb-4">Hire with Confidence</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Track your technician in real-time and pay securely after the job is done.</p>
+</div>
+</section>
+</main>
+<!-- Footer Controls -->
+<footer class="fixed bottom-0 left-0 right-0 p-gutter-mobile md:p-gutter-desktop z-50">
+<div class="max-w-7xl mx-auto flex flex-col items-center">
+<!-- Indicators -->
+<div class="flex space-x-2 mb-8">
+<div class="step-indicator h-1 w-8 rounded-full bg-primary" id="dot1"></div>
+<div class="step-indicator h-1 w-2 rounded-full bg-outline-variant" id="dot2"></div>
+<div class="step-indicator h-1 w-2 rounded-full bg-outline-variant" id="dot3"></div>
+</div>
+<!-- Buttons Wrapper -->
+<div class="w-full flex justify-between items-center h-14 relative">
+<!-- Prev (Hidden on first) -->
+<button class="invisible font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors py-4 px-6" id="prevBtn">BACK</button>
+<!-- Next / Get Started -->
+<button class="bg-primary text-on-primary font-title-md text-title-md px-8 h-14 rounded-lg shadow-sm hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center min-w-[140px]" id="nextBtn">
+<span id="nextText">Next</span>
+<span class="material-symbols-outlined ml-2" id="nextIcon">arrow_forward</span>
+</button>
+</div>
+</div>
+</footer>
+<script>
+        let currentStep = 1;
+        const totalSteps = 3;
+
+        const slides = {
+            1: document.getElementById('step1'),
+            2: document.getElementById('step2'),
+            3: document.getElementById('step3')
+        };
+
+        const dots = {
+            1: document.getElementById('dot1'),
+            2: document.getElementById('dot2'),
+            3: document.getElementById('dot3')
+        };
+
+        const nextBtn = document.getElementById('nextBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        const skipBtn = document.getElementById('skipBtn');
+        const nextText = document.getElementById('nextText');
+        const nextIcon = document.getElementById('nextIcon');
+
+        function updateOnboarding(step) {
+            // Update Slides
+            Object.keys(slides).forEach(key => {
+                const s = slides[key];
+                s.classList.remove('opacity-100', 'translate-x-0', 'opacity-0', '-translate-x-full', 'translate-x-full');
+                if (key == step) {
+                    s.classList.add('opacity-100', 'translate-x-0');
+                } else if (key < step) {
+                    s.classList.add('opacity-0', '-translate-x-full');
+                } else {
+                    s.classList.add('opacity-0', 'translate-x-full');
+                }
+            });
+
+            // Update Indicators
+            Object.keys(dots).forEach(key => {
+                const d = dots[key];
+                if (key == step) {
+                    d.classList.replace('bg-outline-variant', 'bg-primary');
+                    d.classList.replace('w-2', 'w-8');
+                } else {
+                    d.classList.replace('bg-primary', 'bg-outline-variant');
+                    d.classList.replace('w-8', 'w-2');
+                }
+            });
+
+            // Update Buttons
+            if (step === 1) {
+                prevBtn.classList.add('invisible');
+                skipBtn.classList.remove('invisible');
+            } else {
+                prevBtn.classList.remove('invisible');
+            }
+
+            if (step === totalSteps) {
+                nextText.textContent = 'Get Started';
+                nextIcon.style.display = 'none';
+                skipBtn.classList.add('invisible');
+            } else {
+                nextText.textContent = 'Next';
+                nextIcon.style.display = 'inline-block';
+            }
+        }
+
+        nextBtn.addEventListener('click', () => {
+            if (currentStep < totalSteps) {
+                currentStep++;
+                updateOnboarding(currentStep);
+            } else {
+                // Final Action: Redirect or Animation
+                nextBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">progress_activity</span>';
+                setTimeout(() => {
+                    alert('Redirecting to Registration...');
+                }, 800);
+            }
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (currentStep > 1) {
+                currentStep--;
+                updateOnboarding(currentStep);
+            }
+        });
+
+        skipBtn.addEventListener('click', () => {
+            currentStep = totalSteps;
+            updateOnboarding(currentStep);
+        });
+
+        // Initialize
+        updateOnboarding(currentStep);
+    </script>
+</body></html>

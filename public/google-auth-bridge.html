@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light">
+  <title>FixNow · Google Sign-In</title>
+  <style>
+    :root {
+      --fn-blue: #004ac6;
+      --fn-ink: #0f172a;
+      --fn-muted: #64748b;
+      --fn-bg: #f1f5f9;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      color: var(--fn-ink);
+      background:
+        radial-gradient(120% 80% at 50% -10%, rgba(0, 74, 198, 0.14), transparent 55%),
+        linear-gradient(180deg, #e8eefc 0%, var(--fn-bg) 42%, #fff 100%);
+      display: grid;
+      place-items: center;
+      padding: 1.5rem;
+    }
+    main {
+      width: min(100%, 26rem);
+      text-align: center;
+    }
+    h1 {
+      margin: 0 0 0.4rem;
+      font-size: 1.35rem;
+      font-weight: 700;
+    }
+    p {
+      margin: 0 0 1.25rem;
+      color: var(--fn-muted);
+      line-height: 1.45;
+      font-size: 0.95rem;
+    }
+    #status {
+      min-height: 1.25rem;
+      margin: 1rem 0 0;
+      font-size: 0.9rem;
+      color: var(--fn-muted);
+    }
+    #status[data-tone="error"] { color: #b42318; }
+    #gsiMount {
+      min-height: 44px;
+      display: grid;
+      place-items: center;
+    }
+    .spinner {
+      width: 1.35rem;
+      height: 1.35rem;
+      margin: 0 auto 0.85rem;
+      border: 2px solid rgba(0, 74, 198, 0.2);
+      border-top-color: var(--fn-blue);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="spinner" id="spinner" aria-hidden="true"></div>
+    <h1>Continue with Google</h1>
+    <p id="copy">Opening a secure Google sign-in for FixNow…</p>
+    <div id="gsiMount"></div>
+    <p id="status" role="status"></p>
+  </main>
+  <script>
+(function () {
+  "use strict";
+
+  const params = new URLSearchParams(window.location.search);
+  const clientId = String(params.get("client_id") || "").trim();
+  const role = String(params.get("role") || "customer").trim().toLowerCase();
+  const returnUrl = String(params.get("return_url") || "fixnow://google-auth").trim();
+  const apiOrigin = String(params.get("api_origin") || window.location.origin).replace(/\/+$/, "");
+  const apiPrefix = String(params.get("api_prefix") || "/api/v1").replace(/\/+$/, "") || "/api/v1";
+  const statusEl = document.getElementById("status");
+  const copyEl = document.getElementById("copy");
+  const spinnerEl = document.getElementById("spinner");
+  const mountEl = document.getElementById("gsiMount");
+
+  function setStatus(message, tone) {
+    statusEl.textContent = message || "";
+    if (tone) statusEl.dataset.tone = tone;
+    else delete statusEl.dataset.tone;
+  }
+
+  function fail(message) {
+    spinnerEl.hidden = true;
+    copyEl.textContent = "Google sign-in could not continue.";
+    setStatus(message || "Unable to connect to Google. Close this window and try again.", "error");
+  }
+
+  function buildReturn(code, errorCode) {
+    try {
+      const target = new URL(returnUrl);
+      if (code) target.searchParams.set("code", code);
+      if (errorCode) target.searchParams.set("error", errorCode);
+      target.searchParams.set("role", role);
+      return target.toString();
+    } catch (_) {
+      const base = returnUrl.split("?")[0] || "fixnow://google-auth";
+      const query = new URLSearchParams({ role: role });
+      if (code) query.set("code", code);
+      if (errorCode) query.set("error", errorCode);
+      return base + "?" + query.toString();
+    }
+  }
+
+  async function handoffCredential(credential) {
+    setStatus("Finishing secure sign-in…");
+    const response = await fetch(apiOrigin + apiPrefix + "/auth/google/native-handoff", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({ credential: credential, role: role })
+    });
+    const payload = await response.json().catch(function () { return {}; });
+    const code = payload && payload.data && payload.data.code;
+    if (!response.ok || !code) {
+      var errMsg =
+        (payload && payload.error && payload.error.message) ||
+        (payload && payload.message) ||
+        "HANDOFF_FAILED";
+      throw new Error(errMsg);
+    }
+    window.location.href = buildReturn(code);
+  }
+
+  function loadGsi() {
+    return new Promise(function (resolve, reject) {
+      if (window.google && window.google.accounts && window.google.accounts.id) {
+        resolve();
+        return;
+      }
+      var existing = document.querySelector('script[src="https://accounts.google.com/gsi/client"]');
+      if (existing) {
+        existing.addEventListener("load", function () { resolve(); }, { once: true });
+        existing.addEventListener("error", function () { reject(new Error("GSI_SCRIPT_LOAD_FAILED")); }, { once: true });
+        return;
+      }
+      var script = document.createElement("script");
+      script.src = "https://accounts.google.com/gsi/client";
+      script.async = true;
+      script.defer = true;
+      script.onload = function () { resolve(); };
+      script.onerror = function () { reject(new Error("GSI_SCRIPT_LOAD_FAILED")); };
+      document.head.appendChild(script);
+      window.setTimeout(function () { reject(new Error("GSI_SCRIPT_TIMEOUT")); }, 15000);
+    });
+  }
+
+  async function start() {
+    if (!clientId) {
+      fail("Google sign-in is not configured.");
+      window.setTimeout(function () { window.location.href = buildReturn("", "GOOGLE_NOT_CONFIGURED"); }, 1200);
+      return;
+    }
+    if (role !== "customer" && role !== "technician") {
+      fail("Invalid account role.");
+      window.setTimeout(function () { window.location.href = buildReturn("", "GOOGLE_ROLE_INVALID"); }, 1200);
+      return;
+    }
+
+    try {
+      await loadGsi();
+      if (!(window.google && window.google.accounts && window.google.accounts.id)) {
+        throw new Error("GOOGLE_GOOGLE_OBJECT_MISSING");
+      }
+
+      window.google.accounts.id.initialize({
+        client_id: clientId,
+        callback: async function (response) {
+          var credential = String((response && response.credential) || "").trim();
+          if (!credential) {
+            fail("Google sign-in was cancelled.");
+            window.setTimeout(function () { window.location.href = buildReturn("", "GOOGLE_SIGNIN_CANCELLED"); }, 800);
+            return;
+          }
+          try {
+            await handoffCredential(credential);
+          } catch (error) {
+            fail((error && error.message) || "Could not finish Google sign-in.");
+            window.setTimeout(function () { window.location.href = buildReturn("", "GOOGLE_HANDOFF_FAILED"); }, 1000);
+          }
+        },
+        auto_select: false,
+        ux_mode: "popup",
+        context: "signin",
+        itp_support: true,
+        cancel_on_tap_outside: true
+      });
+
+      spinnerEl.hidden = true;
+      copyEl.textContent = "Choose your Google account to continue.";
+      setStatus("");
+      window.google.accounts.id.renderButton(mountEl, {
+        type: "standard",
+        theme: "outline",
+        size: "large",
+        text: "continue_with",
+        width: Math.min(320, Math.floor(window.innerWidth - 48))
+      });
+
+      window.setTimeout(function () {
+        var button = mountEl.querySelector('[role="button"], button, div[tabindex]');
+        if (button) button.click();
+      }, 250);
+    } catch (error) {
+      fail((error && error.message) || "Unable to connect to Google.");
+      window.setTimeout(function () {
+        window.location.href = buildReturn(
+          "",
+          error && error.message === "GSI_SCRIPT_TIMEOUT" ? "GOOGLE_SCRIPT_TIMEOUT" : "GOOGLE_SCRIPT_LOAD_FAILED"
+        );
+      }, 1000);
+    }
+  }
+
+  start();
+})();
+  </script>
+</body>
+</html>

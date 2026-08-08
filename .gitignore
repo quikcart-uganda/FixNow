@@ -1,0 +1,54 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Native secrets / signing
+android/keystore.properties
+android/*.jks
+android/*.keystore
+android/app/google-services.json
+ios/App/App/GoogleService-Info.plist
+.env
+!.env.example
+!.env.development.example
+!.env.production.example
+
+# Capacitor generated / local
+.capacitor
+*.mobileprovision
+*.p12
+.gradle-home
+gradle-out*.txt
+aapt-info.txt
+build-out.txt
+sync-out.txt
+scripts/.web-android-parity-latest.json
+
+# Local environment files
+.env
+.env.*
+
+backend/.env*
+
+backend/.env*

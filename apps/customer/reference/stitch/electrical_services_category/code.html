@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FixNow - Electrical Services</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-lowest": "#ffffff",
+                    "surface-tint": "#5746d5",
+                    "on-secondary-fixed": "#001c37",
+                    "on-primary-fixed": "#150066",
+                    "on-secondary-container": "#49617f",
+                    "surface-container-high": "#e9e8e7",
+                    "tertiary-container": "#994500",
+                    "tertiary-fixed-dim": "#ffb68d",
+                    "on-error": "#ffffff",
+                    "primary-container": "#5645d4",
+                    "surface-variant": "#e3e2e1",
+                    "background": "#faf9f8",
+                    "on-primary-container": "#d7d2ff",
+                    "secondary-fixed": "#d2e4ff",
+                    "on-background": "#1a1c1c",
+                    "surface-container": "#efeeed",
+                    "success-green": "#1aae39",
+                    "on-tertiary-fixed-variant": "#763300",
+                    "on-primary": "#ffffff",
+                    "canvas-white": "#ffffff",
+                    "on-secondary-fixed-variant": "#314865",
+                    "on-primary-fixed-variant": "#3e28bd",
+                    "on-error-container": "#93000a",
+                    "on-secondary": "#ffffff",
+                    "primary-fixed-dim": "#c6bfff",
+                    "primary-fixed": "#e4dfff",
+                    "surface": "#faf9f8",
+                    "on-tertiary-fixed": "#321200",
+                    "primary": "#3d27bc",
+                    "inverse-on-surface": "#f1f0ef",
+                    "surface-bright": "#faf9f8",
+                    "surface-container-low": "#f4f3f2",
+                    "outline": "#787586",
+                    "tertiary-fixed": "#ffdbc9",
+                    "secondary": "#49607e",
+                    "surface-gray": "#f6f5f4",
+                    "inverse-surface": "#2f3130",
+                    "outline-variant": "#c8c4d7",
+                    "on-surface": "#1a1c1c",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-container": "#ffcdb1",
+                    "border-subtle": "#e5e7eb",
+                    "trust-blue": "#b2d5ff",
+                    "surface-container-highest": "#e3e2e1",
+                    "secondary-container": "#c4dcff",
+                    "on-surface-variant": "#474554",
+                    "inverse-primary": "#c6bfff",
+                    "surface-dim": "#dadad9",
+                    "error": "#ba1a1a",
+                    "ink-black": "#000000",
+                    "tertiary": "#743300",
+                    "on-tertiary": "#ffffff",
+                    "secondary-fixed-dim": "#b0c8eb"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "section-gap": "64px",
+                    "gutter-mobile": "16px",
+                    "gutter-desktop": "24px",
+                    "margin-safe": "20px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Inter"],
+                    "mono-label": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "title-md": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "body-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "mono-label": ["13px", {"lineHeight": "1.0", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "title-md": ["20px", {"lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        body { font-family: 'Inter', sans-serif; background-color: #faf9f8; }
+        .glass-effect { backdrop-filter: blur(8px); background: rgba(255, 255, 255, 0.8); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-surface">
+<!-- Top Navigation Shell -->
+<header class="fixed top-0 w-full z-50 bg-canvas-white shadow-sm border-b border-border-subtle flex items-center justify-between px-gutter-mobile h-14 w-full">
+<div class="flex items-center gap-4">
+<button class="text-primary hover:bg-surface-container-low transition-colors rounded-full p-1 active:scale-95">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="font-title-md text-title-md text-primary">Electrical Services</h1>
+</div>
+<div class="h-8 w-8 rounded-full bg-surface-container-high overflow-hidden border border-outline-variant">
+<img alt="Profile" class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7kpfnNr30xHJ_2QJ9TFcyek69TMPDYDkLLR-gxxL6-yBRjEnBzbsA_MJDUNj8lyed1p1uqAJmWQ9ofarZ3symcQHWarUHARpsEA24He1RxjzLLHf56FspgBE_pdxYkHZ10PwE1vSvG82uJk-uwkRLIwe0W3EyzlpxPmADkTzQ6mtUF-fyNDVYNROXNHd7C-A5QlghIFjfxsiqirGAjhbGBarRbAP2NyKPbqlAUiloKDIg0aBQj5U5HBXEh8axUiLAmyD5gDco650"/>
+</div>
+</header>
+<main class="pt-14 pb-20">
+<!-- Hero Section -->
+<section class="relative h-64 w-full overflow-hidden bg-primary-container">
+<img class="w-full h-full object-cover mix-blend-overlay opacity-60" data-alt="A professional electrician in a blue polo shirt meticulously working on a complex residential electrical circuit breaker panel. The scene is bathed in clean, bright daylight from a nearby window, emphasizing a high-end corporate minimalist aesthetic. The image features sharp technical details of copper wiring and high-quality tools, reflecting a mood of extreme reliability and expert precision within a modern Ugandan home setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFBk-f68HxIyBSVFz-aWs4VbXnM_OF2DDui-g2OdhiYlL1t-Tgh_JZh9Sq8TCnfAfSb_LezlRwjlGq7OT_VEGFhVUFO94TaaFq0Sn2szMLyOTMQzS74aNOJ-jllLl4UWavMPXqwMJ7DSg1WWOc7SlavVHlM11uydE5PBlBL3CMDPurGmGUkmU5_EpLVD4vDtHWVjOfW7RNcZsqcUFF77jWV0DIKil7_U7O4zVW0My9P81ZS7Z9rZLcrlqbjyIzxjblTRORaCcWTNA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/90 to-transparent flex flex-col justify-end p-6">
+<span class="font-label-caps text-label-caps text-on-primary-container mb-2 tracking-widest uppercase">Verified Experts Only</span>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-white mb-2">Electrical Services</h2>
+<p class="font-body-sm text-body-sm text-primary-fixed max-w-md">Professional wiring, repairs, and installations by certified experts for your home or office.</p>
+</div>
+</section>
+<!-- Sub-Services Bento Grid/List -->
+<section class="mt-8 px-gutter-mobile">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-title-md text-title-md text-on-surface">Specific Solutions</h3>
+<span class="font-label-caps text-label-caps text-primary cursor-pointer">View All</span>
+</div>
+<div class="flex overflow-x-auto gap-3 pb-4 hide-scrollbar">
+<!-- Service Item -->
+<div class="flex-shrink-0 w-36 p-4 bg-canvas-white rounded-xl border border-border-subtle shadow-sm hover:border-primary transition-all active:scale-95 group">
+<div class="h-10 w-10 bg-primary-fixed rounded-lg flex items-center justify-center text-primary mb-3 group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined">bolt</span>
+</div>
+<p class="font-label-caps text-label-caps text-on-surface-variant leading-tight">Full House Wiring</p>
+</div>
+<!-- Service Item -->
+<div class="flex-shrink-0 w-36 p-4 bg-canvas-white rounded-xl border border-border-subtle shadow-sm hover:border-primary transition-all active:scale-95 group">
+<div class="h-10 w-10 bg-primary-fixed rounded-lg flex items-center justify-center text-primary mb-3 group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined">search_check</span>
+</div>
+<p class="font-label-caps text-label-caps text-on-surface-variant leading-tight">Fault Finding</p>
+</div>
+<!-- Service Item -->
+<div class="flex-shrink-0 w-36 p-4 bg-canvas-white rounded-xl border border-border-subtle shadow-sm hover:border-primary transition-all active:scale-95 group">
+<div class="h-10 w-10 bg-primary-fixed rounded-lg flex items-center justify-center text-primary mb-3 group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined">power</span>
+</div>
+<p class="font-label-caps text-label-caps text-on-surface-variant leading-tight">Generator Service</p>
+</div>
+<!-- Service Item -->
+<div class="flex-shrink-0 w-36 p-4 bg-canvas-white rounded-xl border border-border-subtle shadow-sm hover:border-primary transition-all active:scale-95 group">
+<div class="h-10 w-10 bg-primary-fixed rounded-lg flex items-center justify-center text-primary mb-3 group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined">ac_unit</span>
+</div>
+<p class="font-label-caps text-label-caps text-on-surface-variant leading-tight">AC Installation</p>
+</div>
+<!-- Service Item -->
+<div class="flex-shrink-0 w-36 p-4 bg-canvas-white rounded-xl border border-border-subtle shadow-sm hover:border-primary transition-all active:scale-95 group">
+<div class="h-10 w-10 bg-primary-fixed rounded-lg flex items-center justify-center text-primary mb-3 group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined">home_iot_device</span>
+</div>
+<p class="font-label-caps text-label-caps text-on-surface-variant leading-tight">Smart Home Setup</p>
+</div>
+</div>
+</section>
+<!-- Featured Technicians -->
+<section class="mt-8 px-gutter-mobile">
+<h3 class="font-title-md text-title-md text-on-surface mb-6">Master Technicians</h3>
+<div class="space-y-4">
+<!-- Tech Card 1 -->
+<div class="bg-canvas-white rounded-xl border border-border-subtle shadow-[0_4px_20px_rgba(0,0,0,0.04)] overflow-hidden">
+<div class="flex p-4 gap-4">
+<div class="relative w-24 h-24 rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A portrait of Moses Okello, a professional master electrician with a friendly and confident expression. He is wearing a clean, branded navy blue polo shirt. The background is a slightly blurred, modern office environment with warm, natural lighting. The image style is sharp, professional corporate photography with a clean minimalist aesthetic and premium quality finish." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeSrsRzUCHG6pN6IkGANVWK3R83lfEvQHmlKpj3_CxTAiaVZGDo5Ptx1MhxmF5vwieXHKyLU0msIHBU69qcmLOqsumigOCS8CDHEo0bnI-D0Dr5znJp93uOL61mlaafGvMJXDhWQmS5neKKAY50HO8ilhFHaHI5rjQYgsGkR0MF76umBwNIw8i1kxrcEw9PgM6QyeGQFLWaEDk7tDGPOW2y1dFyvtRT8UabE1yZQ1i0kp4naAahwaVCSRswegvKQb3V_jMJSY07Rs"/>
+<div class="absolute bottom-0 right-0 bg-success-green p-1 rounded-tl-lg">
+<span class="material-symbols-outlined text-white text-[16px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-title-md text-on-surface">Moses Okello</h4>
+<span class="inline-block px-2 py-0.5 bg-trust-blue text-on-secondary-fixed-variant font-label-caps text-[10px] rounded-full mt-1 uppercase">Elite Technician</span>
+</div>
+<div class="text-right">
+<div class="flex items-center text-primary">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-title-md ml-1">4.9</span>
+</div>
+<p class="font-label-caps text-[10px] text-on-surface-variant">(124 Reviews)</p>
+</div>
+</div>
+<div class="mt-3 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-caps text-on-surface-variant text-[10px]">TRUST SCORE</span>
+<span class="font-title-md text-success-green">98/100</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-label-caps text-on-surface-variant text-[10px]">STARTING FROM</span>
+<span class="font-title-md text-on-surface">UGX 50,000</span>
+</div>
+</div>
+</div>
+</div>
+<div class="border-t border-border-subtle p-3 bg-surface-container-lowest flex gap-2">
+<button class="flex-1 font-label-caps py-2 rounded-lg border border-border-subtle text-on-surface-variant hover:bg-surface-container-low transition-colors active:scale-95">View Profile</button>
+<button class="flex-[1.5] font-label-caps py-2 rounded-lg bg-primary text-white hover:opacity-90 transition-opacity shadow-sm active:scale-95">Book Now</button>
+</div>
+</div>
+<!-- Tech Card 2 -->
+<div class="bg-canvas-white rounded-xl border border-border-subtle shadow-[0_4px_20px_rgba(0,0,0,0.04)] overflow-hidden">
+<div class="flex p-4 gap-4">
+<div class="relative w-24 h-24 rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A portrait of a skilled African female electrician in a professional grey work uniform, holding a multimeter and looking focused. The lighting is soft and professional, highlighting her expertise. The environment is a clean, modern workshop with subtle indigo accents in the background, maintaining a corporate and minimalist aesthetic of technical reliability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuplBTU0SULNIiGdmT3xvIVJHI-ScdrmkzB50MzbqQORxzax6VWXG3h3M1UdZ6ZTUXYyQK-Eh0snltdgu7V4NTH1fr5AdlPJJG0banQ0QlC93NLnY5H1TuRqN_O4qSrLxQX2WAVsoc5b6YVumL0WW7qIaGNSCWgKTf5pdbfSPGz6VIIo8d0SW-GXgUSqQPYhJBZc7NXIdATwDmUIJIQRpsYQPR3KHGjhE71MnfgQ2Rm-eJ1bNdNOhadun1G027_deXoxt7T1GP97s"/>
+<div class="absolute bottom-0 right-0 bg-success-green p-1 rounded-tl-lg">
+<span class="material-symbols-outlined text-white text-[16px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-title-md text-on-surface">Sarah Nalubega</h4>
+<span class="inline-block px-2 py-0.5 bg-secondary-container text-on-secondary-container font-label-caps text-[10px] rounded-full mt-1 uppercase">Master Electrician</span>
+</div>
+<div class="text-right">
+<div class="flex items-center text-primary">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-title-md ml-1">4.8</span>
+</div>
+<p class="font-label-caps text-[10px] text-on-surface-variant">(92 Reviews)</p>
+</div>
+</div>
+<div class="mt-3 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-caps text-on-surface-variant text-[10px]">TRUST SCORE</span>
+<span class="font-title-md text-success-green">95/100</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-label-caps text-on-surface-variant text-[10px]">STARTING FROM</span>
+<span class="font-title-md text-on-surface">UGX 45,000</span>
+</div>
+</div>
+</div>
+</div>
+<div class="border-t border-border-subtle p-3 bg-surface-container-lowest flex gap-2">
+<button class="flex-1 font-label-caps py-2 rounded-lg border border-border-subtle text-on-surface-variant hover:bg-surface-container-low transition-colors active:scale-95">View Profile</button>
+<button class="flex-[1.5] font-label-caps py-2 rounded-lg bg-primary text-white hover:opacity-90 transition-opacity shadow-sm active:scale-95">Book Now</button>
+</div>
+</div>
+<!-- Tech Card 3 -->
+<div class="bg-canvas-white rounded-xl border border-border-subtle shadow-[0_4px_20px_rgba(0,0,0,0.04)] overflow-hidden">
+<div class="flex p-4 gap-4">
+<div class="relative w-24 h-24 rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A portrait of a senior electrical engineer with decades of experience, shown in a high-key studio setting. He wears a professional uniform and safety glasses, exuding trust and seasoned expertise. The background is a clean white with subtle cool grey shadows, matching the minimalist corporate style of the platform. Lighting is bright and even, highlighting technical professionalism." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqsRtdFby30ViE2cd8o8fH0LzBX8Jqi2o4TFjxiHv87lepBMZsuvIKZMQ6ammvZhzWdWuul-tsvkGaya3TnlTT7dl1gZob7qvSlQ5DRJNFzf-90f80wpoe5pG0lLTmEYonFCSvw4IcMTszzz-2lT_pKTRhtp29aSq-IltPilHgoWla6bijaTKaCY2GilF3ME4XYEFpkKecHAi1OwJMO4nawXEUk86i1g1xxQ4H76_gVDxR9CwieK7Km8DD_OcIj9rWp2vEnVDkYm4"/>
+<div class="absolute bottom-0 right-0 bg-success-green p-1 rounded-tl-lg">
+<span class="material-symbols-outlined text-white text-[16px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-title-md text-on-surface">James Mukasa</h4>
+<span class="inline-block px-2 py-0.5 bg-trust-blue text-on-secondary-fixed-variant font-label-caps text-[10px] rounded-full mt-1 uppercase">Elite Technician</span>
+</div>
+<div class="text-right">
+<div class="flex items-center text-primary">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-title-md ml-1">5.0</span>
+</div>
+<p class="font-label-caps text-[10px] text-on-surface-variant">(215 Reviews)</p>
+</div>
+</div>
+<div class="mt-3 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-caps text-on-surface-variant text-[10px]">TRUST SCORE</span>
+<span class="font-title-md text-success-green">100/100</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-label-caps text-on-surface-variant text-[10px]">STARTING FROM</span>
+<span class="font-title-md text-on-surface">UGX 75,000</span>
+</div>
+</div>
+</div>
+</div>
+<div class="border-t border-border-subtle p-3 bg-surface-container-lowest flex gap-2">
+<button class="flex-1 font-label-caps py-2 rounded-lg border border-border-subtle text-on-surface-variant hover:bg-surface-container-low transition-colors active:scale-95">View Profile</button>
+<button class="flex-[1.5] font-label-caps py-2 rounded-lg bg-primary text-white hover:opacity-90 transition-opacity shadow-sm active:scale-95">Book Now</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Trust Indicator Section -->
+<section class="mt-12 px-gutter-mobile mb-8">
+<div class="bg-primary-fixed p-6 rounded-xl flex items-center gap-4">
+<div class="h-12 w-12 bg-white rounded-full flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl">verified_user</span>
+</div>
+<div>
+<h4 class="font-title-md text-primary">FixNow Guarantee</h4>
+<p class="font-body-sm text-primary-fixed-dim">All electrical fixes come with a 30-day labor warranty and vetted professional support.</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Shell -->
+<nav class="fixed bottom-0 w-full z-50 bg-canvas-white shadow-[0_-4px_20px_rgba(0,0,0,0.04)] border-t border-border-subtle flex justify-around items-center h-16 w-full px-2 pb-safe">
+<a class="flex flex-col items-center justify-center text-secondary px-3 py-1 hover:opacity-80 transition-opacity active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-caps text-label-caps mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary bg-primary-fixed rounded-xl px-3 py-1 transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-caps text-label-caps mt-1">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary px-3 py-1 hover:opacity-80 transition-opacity active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">build</span>
+<span class="font-label-caps text-label-caps mt-1">Jobs</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary px-3 py-1 hover:opacity-80 transition-opacity active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-label-caps text-label-caps mt-1">Messages</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary px-3 py-1 hover:opacity-80 transition-opacity active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-caps text-label-caps mt-1">Profile</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interaction for booking buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const ripple = document.createElement('span');
+                ripple.style.position = 'absolute';
+                ripple.style.width = '100px';
+                ripple.style.height = '100px';
+                ripple.style.background = 'rgba(255,255,255,0.3)';
+                ripple.style.borderRadius = '50%';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.style.transform = 'translate(-50%, -50%) scale(0)';
+                ripple.style.animation = 'ripple 0.6s linear';
+                ripple.style.pointerEvents = 'none';
+                
+                this.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+    </script>
+<style>
+        @keyframes ripple {
+            to { transform: translate(-50%, -50%) scale(4); opacity: 0; }
+        }
+    </style>
+</body></html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Booking Confirmed | FixNow</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#c6bfff",
+                        "on-primary-fixed-variant": "#3e28bd",
+                        "tertiary-container": "#994500",
+                        "on-error-container": "#93000a",
+                        "inverse-surface": "#2f3130",
+                        "on-error": "#ffffff",
+                        "outline-variant": "#c8c4d7",
+                        "on-tertiary-container": "#ffcdb1",
+                        "on-background": "#1a1c1c",
+                        "surface-bright": "#faf9f8",
+                        "error": "#ba1a1a",
+                        "ink-black": "#000000",
+                        "on-tertiary": "#ffffff",
+                        "success-green": "#1aae39",
+                        "on-surface": "#1a1c1c",
+                        "on-secondary": "#ffffff",
+                        "surface-container-low": "#f4f3f2",
+                        "on-secondary-fixed-variant": "#314865",
+                        "secondary": "#49607e",
+                        "primary": "#3d27bc",
+                        "outline": "#787586",
+                        "border-subtle": "#e5e7eb",
+                        "inverse-primary": "#c6bfff",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb68d",
+                        "surface": "#faf9f8",
+                        "inverse-on-surface": "#f1f0ef",
+                        "on-secondary-fixed": "#001c37",
+                        "background": "#faf9f8",
+                        "secondary-container": "#c4dcff",
+                        "surface-gray": "#f6f5f4",
+                        "on-tertiary-fixed-variant": "#763300",
+                        "surface-container": "#efeeed",
+                        "tertiary-fixed": "#ffdbc9",
+                        "surface-container-high": "#e9e8e7",
+                        "primary-fixed": "#e4dfff",
+                        "on-surface-variant": "#474554",
+                        "surface-container-highest": "#e3e2e1",
+                        "surface-tint": "#5746d5",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#321200",
+                        "secondary-fixed": "#d2e4ff",
+                        "canvas-white": "#ffffff",
+                        "surface-variant": "#e3e2e1",
+                        "primary-container": "#5645d4",
+                        "trust-blue": "#b2d5ff",
+                        "on-primary-fixed": "#150066",
+                        "on-secondary-container": "#49617f",
+                        "tertiary": "#743300",
+                        "surface-dim": "#dadad9",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#d7d2ff",
+                        "secondary-fixed-dim": "#b0c8eb"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter-desktop": "24px",
+                        "base": "4px",
+                        "gutter-mobile": "16px",
+                        "margin-safe": "20px",
+                        "section-gap": "64px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "title-md": ["Inter"],
+                        "mono-label": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "title-md": ["20px", { "lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "mono-label": ["13px", { "lineHeight": "1.0", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        @keyframes scaleIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        @keyframes drawCheck {
+            from { stroke-dashoffset: 100; }
+            to { stroke-dashoffset: 0; }
+        }
+        .animate-scale-in { animation: scaleIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+        .check-path { stroke-dasharray: 100; stroke-dashoffset: 100; animation: drawCheck 0.6s 0.3s ease-in-out forwards; }
+        
+        body { background-color: #ffffff; color: #1a1c1c; -webkit-font-smoothing: antialiased; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-canvas-white">
+<!-- Top Navigation Bar (Hidden on Success Screen based on Shell Visibility Rules) -->
+<!-- Content starts here -->
+<main class="min-h-screen flex flex-col items-center justify-center px-gutter-mobile md:px-gutter-desktop py-10 max-w-2xl mx-auto">
+<!-- Success Animation -->
+<div class="mb-8 animate-scale-in flex flex-col items-center">
+<div class="w-24 h-24 bg-success-green/10 rounded-full flex items-center justify-center mb-6">
+<svg class="w-12 h-12 text-success-green" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewbox="0 0 24 24">
+<path class="check-path" d="M20 6L9 17L4 12"></path>
+</svg>
+</div>
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface text-center mb-2">Booking Confirmed!</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant text-center max-w-md">
+                Moses Okello is scheduled to arrive on <span class="font-semibold text-on-surface">Oct 25 at 11:30 AM.</span>
+</p>
+</div>
+<!-- Job Summary Card -->
+<div class="w-full bg-canvas-white border border-border-subtle rounded-xl p-6 shadow-sm mb-8 transition-all hover:shadow-md">
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 rounded-full overflow-hidden border-2 border-primary-fixed">
+<img alt="Moses Okello" class="w-full h-full object-cover" data-alt="A professional headshot of a friendly Ugandan male technician wearing a clean indigo work uniform. He is smiling warmly against a soft-focus background of a modern residential neighborhood in Kampala. The lighting is bright and natural, reflecting a high-end service platform's clean and professional aesthetic with sharp details and vibrant colors." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDV-II9UwL-xPmZ5QtktwrYC9ykgp1Bo7eWIuOk6n5nHvgjSvwhEbxeUZ9x15Vi8_9CVUA66MLCljPv780T5F5ENPLzjhjjIKOUxijyiP9DKfHd8hYV9wNpahqWeOv7KmvMCSPfyQoHgBBDmWflkiCV4mO580Lxfr8uo6OODWnBEIh4su5Egg2WsBHdQpC-DVkzYtfbIqSZW_e44SeJTHs28jol9ALTz_lkc8vRM00U5iPuXaktRkgPhz2H13Ykzv0EDWStKn94Yi4"/>
+</div>
+<div>
+<div class="flex items-center gap-1.5 mb-0.5">
+<span class="font-title-md text-title-md text-on-surface">Moses Okello</span>
+<span class="material-symbols-outlined text-success-green text-[18px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="bg-primary-fixed text-on-primary-fixed px-2 py-0.5 rounded-full font-label-caps text-label-caps uppercase">Elite Technician</span>
+</div>
+</div>
+</div>
+<div class="text-right">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase block mb-1">Estimated Cost</span>
+<span class="font-title-md text-title-md text-primary">UGX 120,000</span>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex items-start gap-4">
+<div class="mt-1 w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">build</span>
+</div>
+<div>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase block">Service</span>
+<p class="font-body-lg text-body-lg text-on-surface font-medium">Full House Wiring</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="mt-1 w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">location_on</span>
+</div>
+<div>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase block">Location</span>
+<p class="font-body-lg text-body-lg text-on-surface font-medium">Nakasero, Kampala</p>
+</div>
+</div>
+</div>
+</div>
+<!-- FixNow Guarantee Reminder -->
+<div class="w-full bg-trust-blue/10 border border-trust-blue/20 rounded-lg p-4 mb-10 flex items-start gap-3">
+<span class="material-symbols-outlined text-on-secondary-fixed-variant text-[20px]" style="font-variation-settings: 'FILL' 1;">security</span>
+<p class="font-body-sm text-body-sm text-on-secondary-fixed-variant">
+<strong class="font-semibold">FixNow Guarantee:</strong> Your service is covered. We only release payment when the fix is verified to your satisfaction.
+            </p>
+</div>
+<!-- Action Buttons -->
+<div class="w-full flex flex-col gap-4">
+<button class="w-full bg-primary text-on-primary py-4 rounded-lg font-title-md text-title-md transition-all active:scale-[0.98] hover:bg-primary-container shadow-sm flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">near_me</span>
+                Track Technician
+            </button>
+<button class="w-full bg-canvas-white border border-border-subtle text-on-surface py-4 rounded-lg font-title-md text-title-md transition-all hover:bg-surface-container-low flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">grid_view</span>
+                Go to Dashboard
+            </button>
+</div>
+</main>
+<!-- Map Context (Uber-inspired subtle background element) -->
+<div class="fixed inset-0 -z-10 opacity-5 pointer-events-none overflow-hidden">
+<div class="absolute inset-0 grayscale contrast-125 scale-110" data-location="Kampala" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCtNzlkgbV2H2KVl3LeLWNO759TgRHBisbChu3xuXhZlYc90YhZERpI0CsMZ3gG_ki6R8lxBRff5O0ZfAKyhDzvn-f44s4tkVBJ9MrHcwGLw5LQHVpJjAQgre9WFGK9kbzu-345BkBFQ3DoBS3NnsLzeABtj1pEALXTZCsqD9V_nBnxV6ieA5eLzogJNSJJfOR_txRahOtzSci8ucoDw1z1NR0QVm0ivZqihZPrPNsnEiSdt9KwlQhYzoD7Ozww8Dav4aXvU0IoCz8'); background-size: cover; background-position: center;">
+</div>
+</div>
+<!-- Micro-interaction JavaScript -->
+<script>
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('mousedown', () => {
+                button.style.transform = 'scale(0.97)';
+            });
+            button.addEventListener('mouseup', () => {
+                button.style.transform = 'scale(1)';
+            });
+            button.addEventListener('mouseleave', () => {
+                button.style.transform = 'scale(1)';
+            });
+        });
+
+        // Simple fade-in sequence for card content
+        window.addEventListener('DOMContentLoaded', () => {
+            const card = document.querySelector('.bg-canvas-white.border');
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                card.style.transition = 'all 0.6s ease-out';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, 300);
+        });
+    </script>
+</body></html>

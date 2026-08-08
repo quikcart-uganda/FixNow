@@ -1,0 +1,512 @@
+/* FixNow premium splash — brand tokens only (no QuikCart colors/fonts/marks). */
+:root {
+  --fn-splash-blue: #004ac6;
+  --fn-splash-blue-bright: #2563eb;
+  --fn-splash-indigo: #3d27bc;
+  --fn-splash-admin: #003ec7;
+  --fn-splash-sky: #b2d5ff;
+  --fn-splash-ink: #0a1628;
+  --fn-splash-cream: #f7f9fb;
+  --fn-splash-muted: rgba(247, 249, 251, 0.78);
+  --fn-splash-accent: #ffcc00;
+  --fn-splash-success: #1aae39;
+  --fn-splash-warn: #f59e0b;
+  --fn-splash-error: #ef4444;
+  --fn-splash-leave-ms: 420ms;
+}
+
+/*
+ * Boot-lock styles. The primary definitions live inline in index.html so the
+ * splash paints on the first frame; these mirror them so behaviour is identical
+ * if useSplashController re-applies `fixnow-splash-boot` after React mounts.
+ */
+html.fixnow-splash-boot,
+body.fixnow-splash-boot {
+  min-height: 100%;
+  overflow: hidden !important;
+}
+
+/* Keep the shell hidden until the splash releases. */
+body.fixnow-splash-boot #root {
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+.fixnow-splash {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483000;
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow: hidden;
+  isolation: isolate;
+  color: var(--fn-splash-cream);
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  background:
+    radial-gradient(circle at 18% 16%, rgba(178, 213, 255, 0.28), transparent 34%),
+    radial-gradient(circle at 82% 22%, rgba(255, 204, 0, 0.12), transparent 28%),
+    radial-gradient(circle at 48% 88%, rgba(37, 99, 235, 0.35), transparent 38%),
+    linear-gradient(145deg, #002a74 0%, #004ac6 42%, #2563eb 78%, #3d27bc 130%);
+  opacity: 1;
+  transition: opacity var(--fn-splash-leave-ms) ease, visibility var(--fn-splash-leave-ms) ease;
+}
+
+.fixnow-splash[data-role='customer'] {
+  background:
+    radial-gradient(circle at 18% 16%, rgba(198, 191, 255, 0.28), transparent 34%),
+    radial-gradient(circle at 80% 24%, rgba(255, 204, 0, 0.1), transparent 28%),
+    linear-gradient(145deg, #1a0d6e 0%, #3d27bc 48%, #5645d4 100%);
+}
+
+.fixnow-splash[data-role='technician'] {
+  background:
+    radial-gradient(circle at 18% 16%, rgba(178, 213, 255, 0.26), transparent 34%),
+    radial-gradient(circle at 82% 22%, rgba(255, 204, 0, 0.1), transparent 28%),
+    linear-gradient(145deg, #002a74 0%, #004ac6 48%, #1d4ed8 100%);
+}
+
+.fixnow-splash[data-role='admin'] {
+  background:
+    radial-gradient(circle at 20% 18%, rgba(183, 196, 255, 0.24), transparent 34%),
+    linear-gradient(145deg, #001a5c 0%, #003ec7 50%, #0052ff 100%);
+}
+
+.fixnow-splash[data-theme='light'] {
+  color: var(--fn-splash-ink);
+  background:
+    radial-gradient(circle at 16% 12%, rgba(0, 74, 198, 0.1), transparent 36%),
+    radial-gradient(circle at 86% 18%, rgba(178, 213, 255, 0.45), transparent 30%),
+    linear-gradient(160deg, #ffffff 0%, #eff6ff 48%, #f7f9fb 100%);
+}
+
+.fixnow-splash[data-theme='dark'] {
+  background:
+    radial-gradient(circle at 20% 18%, rgba(37, 99, 235, 0.35), transparent 34%),
+    linear-gradient(150deg, #06101f 0%, #0a1628 48%, #102a56 100%);
+}
+
+.fixnow-splash::before,
+.fixnow-splash::after {
+  content: '';
+  position: absolute;
+  inset: -18%;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 30% 35%, rgba(178, 213, 255, 0.22), transparent 30%),
+    radial-gradient(circle at 70% 60%, rgba(37, 99, 235, 0.2), transparent 28%);
+  filter: blur(48px);
+  animation: fnSplashGlow 6s ease-in-out infinite alternate;
+}
+
+.fixnow-splash::after {
+  inset: -8%;
+  z-index: -1;
+  background:
+    linear-gradient(112deg, transparent 20%, rgba(255, 255, 255, 0.08) 42%, transparent 62%);
+  filter: blur(18px);
+  animation: fnSplashSheen 5.4s ease-in-out infinite;
+}
+
+.fixnow-splash.is-leaving {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.fixnow-splash-shell {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 20px;
+  width: min(92vw, 420px);
+  padding: 28px 20px;
+  text-align: center;
+  animation: fnSplashEnter 720ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.fixnow-splash-shell::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  width: clamp(240px, 56vw, 480px);
+  height: clamp(240px, 56vw, 480px);
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.14), rgba(178, 213, 255, 0.08) 40%, transparent 68%);
+  filter: blur(12px);
+  animation: fnSplashAura 5.5s ease-in-out infinite;
+}
+
+.fixnow-splash[data-theme='light'] .fixnow-splash-shell::before {
+  background: radial-gradient(circle, rgba(0, 74, 198, 0.12), rgba(178, 213, 255, 0.16) 40%, transparent 68%);
+}
+
+.fixnow-splash-logo-wrap {
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+.fixnow-splash-logo-wrap::before {
+  content: '';
+  position: absolute;
+  width: clamp(132px, 28vw, 180px);
+  height: clamp(132px, 28vw, 180px);
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.28), rgba(178, 213, 255, 0.18) 42%, transparent 68%);
+  filter: blur(10px);
+  animation: fnSplashPulse 2.2s ease-in-out infinite;
+}
+
+.fixnow-splash-mark {
+  position: relative;
+  width: clamp(84px, 20vw, 112px);
+  height: clamp(84px, 20vw, 112px);
+  display: grid;
+  place-items: center;
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(239, 246, 255, 0.94));
+  box-shadow:
+    0 28px 70px rgba(0, 26, 92, 0.35),
+    inset 0 -8px 20px rgba(37, 99, 235, 0.12);
+  transform-origin: center;
+  animation: fnSplashLogo 2.6s ease-in-out infinite;
+}
+
+.fixnow-splash[data-theme='light'] .fixnow-splash-mark {
+  border-color: rgba(0, 74, 198, 0.14);
+  box-shadow: 0 18px 40px rgba(0, 74, 198, 0.18);
+}
+
+.fixnow-splash-mark img {
+  width: clamp(52px, 12vw, 72px);
+  height: clamp(52px, 12vw, 72px);
+  object-fit: contain;
+  display: block;
+}
+
+.fixnow-splash-word {
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0;
+  margin: 0;
+  font-size: clamp(42px, 11vw, 64px);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  text-shadow: 0 16px 32px rgba(0, 26, 92, 0.28);
+}
+
+.fixnow-splash-word .fn-fix {
+  color: #ffffff;
+}
+
+.fixnow-splash-word .fn-now {
+  color: var(--fn-splash-accent);
+}
+
+.fixnow-splash[data-theme='light'] .fixnow-splash-word .fn-fix {
+  color: var(--fn-splash-blue);
+}
+
+.fixnow-splash[data-theme='light'] .fixnow-splash-word .fn-now {
+  color: var(--fn-splash-blue-bright);
+}
+
+.fixnow-splash[data-role='customer'] .fixnow-splash-word .fn-now {
+  color: #c6bfff;
+}
+
+.fixnow-splash[data-theme='light'][data-role='customer'] .fixnow-splash-word .fn-fix {
+  color: var(--fn-splash-indigo);
+}
+
+.fixnow-splash[data-theme='light'][data-role='customer'] .fixnow-splash-word .fn-now {
+  color: #5645d4;
+}
+
+.fixnow-splash-tagline {
+  margin: -4px 0 0;
+  min-height: 24px;
+  color: var(--fn-splash-muted);
+  font-size: clamp(14px, 3.6vw, 17px);
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.fixnow-splash[data-theme='light'] .fixnow-splash-tagline {
+  color: #434655;
+}
+
+.fixnow-splash-loader {
+  width: min(220px, 56vw);
+  display: grid;
+  gap: 12px;
+  justify-items: center;
+}
+
+.fixnow-splash-loader-track {
+  width: 100%;
+  height: 5px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.fixnow-splash[data-theme='light'] .fixnow-splash-loader-track {
+  background: rgba(0, 74, 198, 0.12);
+}
+
+.fixnow-splash-loader-track > span {
+  display: block;
+  width: 42%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #ffffff, var(--fn-splash-sky), var(--fn-splash-accent));
+  animation: fnSplashLoad 1.15s ease-in-out infinite;
+}
+
+.fixnow-splash[data-theme='light'] .fixnow-splash-loader-track > span {
+  background: linear-gradient(90deg, var(--fn-splash-blue), var(--fn-splash-blue-bright), var(--fn-splash-sky));
+}
+
+.fixnow-splash-loader-label {
+  color: rgba(247, 249, 251, 0.78);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.fixnow-splash[data-theme='light'] .fixnow-splash-loader-label {
+  color: #737686;
+}
+
+.fixnow-splash-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  background: rgba(255, 255, 255, 0.12);
+  color: rgba(247, 249, 251, 0.92);
+}
+
+.fixnow-splash[data-theme='light'] .fixnow-splash-status {
+  background: rgba(0, 74, 198, 0.08);
+  color: var(--fn-splash-blue);
+}
+
+.fixnow-splash-status[data-state='ok'] {
+  color: #bdffdb;
+  background: rgba(26, 174, 57, 0.2);
+}
+
+.fixnow-splash-status[data-state='degraded'] {
+  color: #ffe8b8;
+  background: rgba(245, 158, 11, 0.22);
+}
+
+.fixnow-splash-status[data-state='offline'],
+.fixnow-splash-status[data-state='error'] {
+  color: #ffdad6;
+  background: rgba(239, 68, 68, 0.22);
+}
+
+.fixnow-splash[data-theme='light'] .fixnow-splash-status[data-state='ok'] {
+  color: #006242;
+  background: rgba(26, 174, 57, 0.12);
+}
+
+.fixnow-splash[data-theme='light'] .fixnow-splash-status[data-state='degraded'] {
+  color: #92400e;
+  background: rgba(245, 158, 11, 0.14);
+}
+
+.fixnow-splash[data-theme='light'] .fixnow-splash-status[data-state='offline'],
+.fixnow-splash[data-theme='light'] .fixnow-splash-status[data-state='error'] {
+  color: #93000a;
+  background: rgba(239, 68, 68, 0.12);
+}
+
+.fixnow-splash-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: currentColor;
+  flex: 0 0 auto;
+}
+
+.fixnow-splash-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 4px;
+}
+
+.fixnow-splash-btn {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 12px 20px;
+  transition: transform 160ms ease, background 160ms ease, color 160ms ease;
+}
+
+.fixnow-splash-btn:active {
+  transform: scale(0.98);
+}
+
+.fixnow-splash-btn--primary {
+  background: #ffffff;
+  color: var(--fn-splash-blue);
+}
+
+.fixnow-splash[data-role='customer'] .fixnow-splash-btn--primary {
+  color: var(--fn-splash-indigo);
+}
+
+.fixnow-splash[data-theme='light'] .fixnow-splash-btn--primary {
+  background: var(--fn-splash-blue);
+  color: #ffffff;
+}
+
+.fixnow-splash-btn--ghost {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.fixnow-splash[data-theme='light'] .fixnow-splash-btn--ghost {
+  background: transparent;
+  color: var(--fn-splash-blue);
+  border-color: rgba(0, 74, 198, 0.24);
+}
+
+.fixnow-splash-page {
+  position: relative;
+  min-height: 100dvh;
+  width: 100%;
+}
+
+.fixnow-splash-page .fixnow-splash {
+  position: absolute;
+}
+
+@keyframes fnSplashEnter {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fnSplashLogo {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.045);
+  }
+}
+
+@keyframes fnSplashPulse {
+  0%,
+  100% {
+    opacity: 0.7;
+    transform: scale(0.92);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes fnSplashLoad {
+  0% {
+    transform: translateX(-115%);
+  }
+  100% {
+    transform: translateX(245%);
+  }
+}
+
+@keyframes fnSplashAura {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(0.96);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes fnSplashGlow {
+  from {
+    transform: rotate(0deg) scale(1);
+  }
+  to {
+    transform: rotate(10deg) scale(1.06);
+  }
+}
+
+@keyframes fnSplashSheen {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(0.97);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+@media (max-width: 720px) {
+  .fixnow-splash::before,
+  .fixnow-splash::after,
+  .fixnow-splash-shell::before,
+  .fixnow-splash-logo-wrap::before {
+    animation: none !important;
+    filter: none !important;
+  }
+
+  .fixnow-splash-shell {
+    transform: translateY(-2vh);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fixnow-splash,
+  .fixnow-splash::before,
+  .fixnow-splash::after,
+  .fixnow-splash-shell,
+  .fixnow-splash-shell::before,
+  .fixnow-splash-logo-wrap::before,
+  .fixnow-splash-mark,
+  .fixnow-splash-loader-track > span {
+    animation: none !important;
+    transition-duration: 120ms !important;
+  }
+}

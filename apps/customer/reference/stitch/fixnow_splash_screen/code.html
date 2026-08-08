@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FixNow | Splash Screen</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed-dim": "#c6bfff",
+                    "on-primary-fixed-variant": "#3e28bd",
+                    "tertiary-container": "#994500",
+                    "on-error-container": "#93000a",
+                    "inverse-surface": "#2f3130",
+                    "on-error": "#ffffff",
+                    "outline-variant": "#c8c4d7",
+                    "on-tertiary-container": "#ffcdb1",
+                    "on-background": "#1a1c1c",
+                    "surface-bright": "#faf9f8",
+                    "error": "#ba1a1a",
+                    "ink-black": "#000000",
+                    "on-tertiary": "#ffffff",
+                    "success-green": "#1aae39",
+                    "on-surface": "#1a1c1c",
+                    "on-secondary": "#ffffff",
+                    "surface-container-low": "#f4f3f2",
+                    "on-secondary-fixed-variant": "#314865",
+                    "secondary": "#49607e",
+                    "primary": "#3d27bc",
+                    "outline": "#787586",
+                    "border-subtle": "#e5e7eb",
+                    "inverse-primary": "#c6bfff",
+                    "on-primary": "#ffffff",
+                    "tertiary-fixed-dim": "#ffb68d",
+                    "surface": "#faf9f8",
+                    "inverse-on-surface": "#f1f0ef",
+                    "on-secondary-fixed": "#001c37",
+                    "background": "#faf9f8",
+                    "secondary-container": "#c4dcff",
+                    "surface-gray": "#f6f5f4",
+                    "on-tertiary-fixed-variant": "#763300",
+                    "surface-container": "#efeeed",
+                    "tertiary-fixed": "#ffdbc9",
+                    "surface-container-high": "#e9e8e7",
+                    "primary-fixed": "#e4dfff",
+                    "on-surface-variant": "#474554",
+                    "surface-container-highest": "#e3e2e1",
+                    "surface-tint": "#5746d5",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-fixed": "#321200",
+                    "secondary-fixed": "#d2e4ff",
+                    "canvas-white": "#ffffff",
+                    "surface-variant": "#e3e2e1",
+                    "primary-container": "#5645d4",
+                    "trust-blue": "#b2d5ff",
+                    "on-primary-fixed": "#150066",
+                    "on-secondary-container": "#49617f",
+                    "tertiary": "#743300",
+                    "surface-dim": "#dadad9",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-container": "#d7d2ff",
+                    "secondary-fixed-dim": "#b0c8eb"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter-desktop": "24px",
+                    "base": "4px",
+                    "gutter-mobile": "16px",
+                    "margin-safe": "20px",
+                    "section-gap": "64px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "title-md": ["Inter"],
+                    "mono-label": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "display-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "title-md": ["20px", {"lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "mono-label": ["13px", {"lineHeight": "1.0", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        .shimmer-bar {
+            position: relative;
+            overflow: hidden;
+        }
+        .shimmer-bar::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            animation: shimmer 1.5s infinite;
+        }
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-bright flex flex-col items-center justify-center min-h-screen selection:bg-primary-fixed-dim">
+<!-- Splash Screen Container -->
+<main class="relative flex flex-col items-center justify-between w-full h-screen max-w-lg px-gutter-mobile py-24">
+<!-- Empty Top Spacer -->
+<div></div>
+<!-- Center Identity -->
+<div class="flex flex-col items-center text-center fade-in-up" style="animation-delay: 0.1s;">
+<!-- Logo Icon Representation -->
+<div class="w-20 h-20 mb-6 bg-primary rounded-xl flex items-center justify-center shadow-lg transform rotate-3 hover:rotate-0 transition-transform duration-500">
+<span class="material-symbols-outlined text-on-primary text-[40px]" data-icon="build" style="font-variation-settings: 'FILL' 1;">build</span>
+</div>
+<!-- Brand Name from JSON -->
+<h1 class="font-display-lg text-display-lg text-primary tracking-tight mb-2">
+                FixNow
+            </h1>
+<!-- Tagline -->
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-[280px]">
+                Trusted Technicians Near You
+            </p>
+</div>
+<!-- Bottom Loading Section -->
+<div class="w-full flex flex-col items-center gap-6 fade-in-up" style="animation-delay: 0.4s;">
+<!-- Progress Bar -->
+<div class="w-48 h-[2px] bg-outline-variant rounded-full overflow-hidden">
+<div class="h-full bg-primary w-0 transition-all duration-[3000ms] ease-in-out" id="progress-indicator"></div>
+</div>
+<!-- Status Label -->
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-widest">
+                Connecting to Network
+            </span>
+</div>
+</main>
+<!-- Background Atmospheric Element (Subtle Gradient) -->
+<div class="fixed inset-0 -z-10 pointer-events-none">
+<div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary opacity-[0.03] blur-[100px] rounded-full"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-trust-blue opacity-[0.05] blur-[100px] rounded-full"></div>
+</div>
+<script>
+        // Progress bar simulation
+        window.addEventListener('DOMContentLoaded', () => {
+            const bar = document.getElementById('progress-indicator');
+            setTimeout(() => {
+                bar.style.width = '100%';
+            }, 100);
+
+            // Optional: Redirect simulation or interaction after loading
+            /*
+            setTimeout(() => {
+                console.log('App ready');
+                // document.body.classList.add('fade-out');
+            }, 3500);
+            */
+        });
+
+        // Add a subtle parallax effect to the logo on mouse move
+        document.addEventListener('mousemove', (e) => {
+            const logo = document.querySelector('.w-20.h-20');
+            if (logo) {
+                const x = (window.innerWidth / 2 - e.pageX) / 50;
+                const y = (window.innerHeight / 2 - e.pageY) / 50;
+                logo.style.transform = `rotate(3deg) translate(${x}px, ${y}px)`;
+            }
+        });
+    </script>
+</body></html>

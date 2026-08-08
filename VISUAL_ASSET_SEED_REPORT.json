@@ -1,0 +1,18 @@
+{
+  "startedAt": "2026-07-28T12:37:38.768Z",
+  "dryRun": false,
+  "cloudName": "nkcltsv9",
+  "uploaded": 0,
+  "reused": 65,
+  "failed": [],
+  "catalogKeys": 65,
+  "db": {
+    "categoriesUpdated": 0,
+    "promotionsUpdated": 0,
+    "sponsoredUpdated": 4,
+    "offersUpdated": 8,
+    "contentUpdated": 0,
+    "knowledgeCreated": 0
+  },
+  "finishedAt": "2026-07-28T12:38:40.817Z"
+}

@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#d2e4ff",
+                        "on-tertiary-fixed": "#321200",
+                        "surface-tint": "#5746d5",
+                        "error-container": "#ffdad6",
+                        "surface-container-highest": "#e3e2e1",
+                        "on-surface-variant": "#474554",
+                        "trust-blue": "#b2d5ff",
+                        "primary-container": "#5645d4",
+                        "surface-variant": "#e3e2e1",
+                        "canvas-white": "#ffffff",
+                        "secondary-fixed-dim": "#b0c8eb",
+                        "on-primary-container": "#d7d2ff",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary": "#743300",
+                        "surface-dim": "#dadad9",
+                        "on-secondary-container": "#49617f",
+                        "on-primary-fixed": "#150066",
+                        "secondary-container": "#c4dcff",
+                        "background": "#faf9f8",
+                        "surface-container": "#efeeed",
+                        "on-tertiary-fixed-variant": "#763300",
+                        "surface-gray": "#f6f5f4",
+                        "primary-fixed": "#e4dfff",
+                        "surface-container-high": "#e9e8e7",
+                        "tertiary-fixed": "#ffdbc9",
+                        "outline": "#787586",
+                        "on-primary": "#ffffff",
+                        "inverse-primary": "#c6bfff",
+                        "border-subtle": "#e5e7eb",
+                        "surface": "#faf9f8",
+                        "tertiary-fixed-dim": "#ffb68d",
+                        "on-secondary-fixed": "#001c37",
+                        "inverse-on-surface": "#f1f0ef",
+                        "outline-variant": "#c8c4d7",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#2f3130",
+                        "tertiary-container": "#994500",
+                        "on-error-container": "#93000a",
+                        "primary-fixed-dim": "#c6bfff",
+                        "on-primary-fixed-variant": "#3e28bd",
+                        "on-background": "#1a1c1c",
+                        "on-tertiary-container": "#ffcdb1",
+                        "on-tertiary": "#ffffff",
+                        "ink-black": "#000000",
+                        "error": "#ba1a1a",
+                        "surface-bright": "#faf9f8",
+                        "secondary": "#49607e",
+                        "primary": "#3d27bc",
+                        "on-secondary-fixed-variant": "#314865",
+                        "surface-container-low": "#f4f3f2",
+                        "on-secondary": "#ffffff",
+                        "on-surface": "#1a1c1c",
+                        "success-green": "#1aae39"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-safe": "20px",
+                        "section-gap": "64px",
+                        "gutter-mobile": "16px",
+                        "gutter-desktop": "24px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter"],
+                        "mono-label": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "title-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-caps": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700" }],
+                        "mono-label": ["13px", { "lineHeight": "1.0", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "title-md": ["20px", { "lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-lg overflow-x-hidden pb-24">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-50 flex justify-between items-center px-gutter-mobile h-14 w-full bg-canvas-white border-b border-border-subtle">
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-title-md text-title-md text-primary">FixNow</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">share</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden border border-border-subtle">
+<img class="w-full h-full object-cover" data-alt="A professional close-up headshot of a smiling young male professional in a clean, minimalist studio setting. The lighting is soft and even, highlighting a friendly and reliable demeanor. The background is a neutral, light gray, maintaining a modern and high-end corporate aesthetic with a focus on trust and approachability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDE-d4nnhcCpf9Synh29xL1Iu-tC-bRbJxmVCkWA8DvxTPGE19CqytBzjUqHS6b_J85eNTY6wvIaH3BQRiSf-y71m7hqinK-fr8PI-H6iV3XHoW5Jez_YokVRlNOw0he8s4LRjaBUFkdWxHWPA-lhEJoQmBcR-FeN17HsfSeYKJLaKFAqxCAFkXWCs9c4X2zWvLjdyr9AGE7y3YfA0GJaBTQEH0s1j6EvVa3pYOvdtnE0Cux0tYmfP3p-jiJkdLF4BUEkct6HkNOb8"/>
+</div>
+</div>
+</header>
+<main class="max-w-md mx-auto">
+<!-- Hero Section -->
+<section class="relative">
+<div class="h-48 w-full overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A wide-angle, high-resolution photograph of a professional technician's organized workspace featuring precision tools, high-end electronics, and a clean workbench. The lighting is bright and technical, emphasizing a sterile and expert environment. The color palette is dominated by whites and grays with subtle metallic accents, conveying a sense of master craftsmanship and professional reliability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmClntxoduKOUC3LZ2zDuGT1jAuhiJwRFvBt0li-W4yzmOZ1kVGrv1Y54IGjFM7f-Ny8isywvxZ27rCF3C-wT1BgPqpegaB0---K4y2gflXidAsKX6ooAUHh4g1Uwjohb_ifMS0fKhV3yJhzuZgLT-vxC1c2xjv5ey0n7RSXBK9NfkoSkaDYas6QKqcVHmPQm77Mfelkj_rzs18Stm5YWN1bLeqOuPhyWZAkXb4aE453lVnZKXjy9Ywz9ICVuRyjfyi2w3AjKMEXw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+</div>
+<div class="px-gutter-mobile -mt-12 relative z-10">
+<div class="flex items-end gap-4">
+<div class="relative">
+<div class="w-24 h-24 rounded-xl border-4 border-canvas-white shadow-sm overflow-hidden bg-canvas-white">
+<img class="w-full h-full object-cover" data-alt="A high-quality portrait of a seasoned Ugandan technician with a confident, expert gaze, wearing a clean, branded FixNow polo shirt. The setting is a bright, modern workshop with subtle bokeh of tools in the background. The aesthetic is professional and trustworthy, emphasizing human-centric service and technical mastery in a well-lit environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKjsSokOlzi-fFVXJrdMN-jcvHw78v8wxnUSqHgljIHSD8UQNgwWUE6NEwPhmmqH63MAuA3XMy1hE2TpRuEJG63Fl8TKyyXsc3xquiFPfijMb2H6Oz6EEEYCJSxfzbiYe86QZIALa5L11HpI_p5IV-0Ek4BFaDfQUG7UcaZ5MGMz60XgZKU_KFjPn-sG0Ux0KiM2ZuzFZaOFJaNrchfuPc0mpj89F_6KDwORbHeN9Pfbvt02Zg9Jie-erQrZOODSK92Af7WgDg-Tc"/>
+</div>
+<div class="absolute -bottom-1 -right-1 bg-success-green text-white w-7 h-7 rounded-full flex items-center justify-center border-2 border-canvas-white">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<div class="mb-1">
+<div class="flex items-center gap-2">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Ivan Suna</h2>
+</div>
+<div class="flex items-center gap-2 bg-primary-container/10 px-2 py-0.5 rounded-full w-fit">
+<span class="material-symbols-outlined text-primary text-[14px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="text-label-caps font-label-caps text-primary uppercase">Master Technician</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Identity & Status Row -->
+<section class="px-gutter-mobile mt-4 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-label-caps font-label-caps text-on-surface-variant uppercase">Trust Score</span>
+<div class="flex items-baseline gap-1">
+<span class="text-display-lg-mobile font-display-lg text-primary">98</span>
+<span class="text-body-sm font-body-sm text-on-surface-variant">/ 100</span>
+</div>
+</div>
+<div class="flex gap-2">
+<div class="bg-secondary-container px-3 py-2 rounded-lg flex flex-col items-center min-w-[70px]">
+<span class="material-symbols-outlined text-on-secondary-container">workspace_premium</span>
+<span class="text-label-caps font-label-caps text-on-secondary-container mt-1">ELITE</span>
+</div>
+<div class="bg-surface-container px-3 py-2 rounded-lg flex flex-col items-center min-w-[70px]">
+<span class="material-symbols-outlined text-on-surface-variant">history</span>
+<span class="text-label-caps font-label-caps text-on-surface-variant mt-1">5Y EXP</span>
+</div>
+</div>
+</section>
+<!-- Highlights Pills -->
+<section class="px-gutter-mobile mt-6 flex gap-2 overflow-x-auto hide-scrollbar">
+<div class="flex items-center gap-1.5 px-3 py-1.5 bg-canvas-white border border-border-subtle rounded-full whitespace-nowrap">
+<span class="material-symbols-outlined text-success-green text-[18px]">verified_user</span>
+<span class="text-body-sm font-body-sm text-on-surface-variant">Verified ID</span>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1.5 bg-canvas-white border border-border-subtle rounded-full whitespace-nowrap">
+<span class="material-symbols-outlined text-primary text-[18px]">psychology</span>
+<span class="text-body-sm font-body-sm text-on-surface-variant">Skills Verified</span>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1.5 bg-canvas-white border border-border-subtle rounded-full whitespace-nowrap">
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]">task_alt</span>
+<span class="text-body-sm font-body-sm text-on-surface-variant">150+ Jobs Done</span>
+</div>
+</section>
+<!-- Action Row -->
+<section class="px-gutter-mobile mt-8 flex gap-3">
+<button class="flex-1 flex items-center justify-center gap-2 h-12 bg-canvas-white border border-border-subtle rounded-lg font-title-md text-on-surface hover:bg-surface-container transition-all active:scale-95">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span>Message</span>
+</button>
+<button class="flex-[2] flex items-center justify-center gap-2 h-12 bg-primary text-on-primary rounded-lg font-title-md shadow-sm hover:opacity-90 transition-all active:scale-95">
+<span class="material-symbols-outlined">bolt</span>
+<span>Request Service</span>
+</button>
+</section>
+<!-- Trust Metrics Grid -->
+<section class="px-gutter-mobile mt-8">
+<div class="grid grid-cols-3 gap-4 p-4 bg-canvas-white border border-border-subtle rounded-xl shadow-[0px_4px_20px_rgba(0,0,0,0.04)]">
+<div class="flex flex-col items-center text-center">
+<span class="text-title-md font-title-md text-on-surface">99%</span>
+<span class="text-label-caps font-label-caps text-on-surface-variant uppercase mt-1">Punctual</span>
+</div>
+<div class="flex flex-col items-center text-center border-x border-border-subtle">
+<span class="text-title-md font-title-md text-on-surface">15m</span>
+<span class="text-label-caps font-label-caps text-on-surface-variant uppercase mt-1">Response</span>
+</div>
+<div class="flex flex-col items-center text-center">
+<span class="text-title-md font-title-md text-on-surface">100%</span>
+<span class="text-label-caps font-label-caps text-on-surface-variant uppercase mt-1">Reliable</span>
+</div>
+</div>
+</section>
+<!-- Proof of Work (Gallery) -->
+<section class="mt-8">
+<div class="px-gutter-mobile flex justify-between items-center mb-4">
+<h3 class="font-title-md text-title-md text-on-surface">Proof of Work</h3>
+<button class="text-primary text-body-sm font-semibold">See All</button>
+</div>
+<div class="flex gap-4 overflow-x-auto px-gutter-mobile hide-scrollbar">
+<!-- Gallery Item 1 -->
+<div class="flex-shrink-0 w-72 bg-canvas-white border border-border-subtle rounded-xl overflow-hidden shadow-sm">
+<div class="grid grid-cols-2 gap-px bg-border-subtle h-40">
+<div class="relative">
+<img class="w-full h-full object-cover" data-alt="A detailed before photo showing a tangled mess of electrical wiring in a commercial electrical panel. The lighting is realistic and harsh, emphasizing the complexity and disarray of the initial state. The overall tone is technical and illustrative of a problem needing a professional fix." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFEVEUEOVdLW71bzEOeNkCRdNpCwR25ARGzPR5u7EiKQ3OtuhN1gQArr62-9j9GHPkehr0JEJFIU-Fu9C5u2Vr_jeDhkIyvWx8pYMsyUWrvCG__On7CqDop7gB1HTofNI6ZshNgzdKxIn8yBq-PrOCSMzp-59NzMwrb89oh0hjge0yshHmWBn-1WliqmalYp0uaXIqSly_gz_rFx1jKlA0ei-g2xhaCYNroP0nYt5AVWayqWAUDf3EqrtQNG8U2TigvViSoY0NzZs"/>
+<span class="absolute top-2 left-2 bg-black/60 text-white text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">Before</span>
+</div>
+<div class="relative">
+<img class="w-full h-full object-cover" data-alt="A clean, highly organized electrical panel after professional cable management. Wires are perfectly color-coded and zip-tied with precision. The lighting is bright and clear, highlighting the technical proficiency and safety standards achieved. The image demonstrates master-level electrical work." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC02SW2dzdv9NOQW5rLLPUr1j_qP7QAm5mZ3g6C9eyh3cX3NJ0UuyURgnCLkzDTTU1I5MSRwsY-DmIC_WFpvkhE9MD_45wB2Cl1ZWNlkEOPX8DZVWQeGnjpv40bRIsueVqr_x80BHrC0QaXjicKc3ImvRg-HPJtla5oJeKg9wUK16Mxwg7Fh0BqZExc1M69cYWy5vf2KKWCZcSB22EVumkMoXUMpXPiP_8elEJWGET7OftsgraYLy-5mZ68K6agDRCRCTHHv-tjUBw"/>
+<span class="absolute top-2 left-2 bg-success-green/80 text-white text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">After</span>
+</div>
+</div>
+<div class="p-3">
+<h4 class="font-body-lg font-semibold text-on-surface">Complex Wiring Fix</h4>
+<p class="text-body-sm text-on-surface-variant mt-1">Full rewiring for a 3-bedroom apartment.</p>
+</div>
+</div>
+<!-- Gallery Item 2 -->
+<div class="flex-shrink-0 w-72 bg-canvas-white border border-border-subtle rounded-xl overflow-hidden shadow-sm">
+<div class="grid grid-cols-2 gap-px bg-border-subtle h-40">
+<div class="relative">
+<img class="w-full h-full object-cover" data-alt="A close-up photograph of a damaged bathroom floor with cracked tiles and visible water leaks. The lighting is natural and depicts a common household maintenance issue. The setting is a standard domestic bathroom, focusing on the texture of the damage." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNapvL3sfBWLIqXWrhtzc1jJigUXAfwJemmZANkzXPlflO2k6DBHho_Y2gz9IctmBmvXGRFySnUz_1Mcw5ygF9y98LT_0OAvLheKk77eEUpPN6mGU0_IvcrXlrgMx6z_-HjajfIJIfB23yDayCaLUgB8XloECkfHsAsD3z52-OnYaVbm19stvJqBkIg2CgpX7dMJbVUN9T6MUtjeZhhDMSkiu6XNv7V6zFy-Yauf4Fuirz2sTT8J97AYr1anF7QHNCqjfSqCGaKlk"/>
+<span class="absolute top-2 left-2 bg-black/60 text-white text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">Before</span>
+</div>
+<div class="relative">
+<img class="w-full h-full object-cover" data-alt="A professionally renovated bathroom floor with pristine tiling and clean grout lines. The lighting is bright and airy, creating a high-end spa-like atmosphere. The craftsmanship is flawless, showing a significant improvement in aesthetics and utility." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdA1QG9SoWYNppN0xOMkfhV6r5XRL1cKZ8wh19Ykf5hx644oW1diCF3rnU4a9M3B9qGBjPEEs1J_wdyHVvKEB85GpJRkB4frIw5xGZKVaL4YnSZK5YAvdznFCZMXmGXTlU6RhpRbvf1l4OCdrgZONJC6UjdiIE_kQVPSL38KLrKNS3oCJanll28X68yp04lveYjpyCjDOLNPSE3TsqYKJ8xB51bJM-H9giiGAuRiwKPUHUCU_7XlzvMo028zC1yq6QPB97qFtSOws"/>
+<span class="absolute top-2 left-2 bg-success-green/80 text-white text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">After</span>
+</div>
+</div>
+<div class="p-3">
+<h4 class="font-body-lg font-semibold text-on-surface">Bathroom Tile Restoration</h4>
+<p class="text-body-sm text-on-surface-variant mt-1">Leak repair and premium retiling.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Badges & Achievements -->
+<section class="px-gutter-mobile mt-8">
+<h3 class="font-title-md text-title-md text-on-surface mb-4">Badges</h3>
+<div class="flex flex-wrap gap-3">
+<div class="flex items-center gap-2 bg-tertiary-fixed px-3 py-2 rounded-lg border border-tertiary/10">
+<span class="material-symbols-outlined text-tertiary-container" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span class="text-body-sm font-semibold text-on-tertiary-fixed-variant">Community Favorite</span>
+</div>
+<div class="flex items-center gap-2 bg-secondary-fixed px-3 py-2 rounded-lg border border-secondary/10">
+<span class="material-symbols-outlined text-on-secondary-fixed-variant" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<span class="text-body-sm font-semibold text-on-secondary-fixed-variant">Fast Responder</span>
+</div>
+</div>
+</section>
+<!-- Reviews Section -->
+<section class="px-gutter-mobile mt-8">
+<div class="flex justify-between items-center mb-4">
+<div class="flex items-center gap-2">
+<h3 class="font-title-md text-title-md text-on-surface">Reviews</h3>
+<div class="flex items-center gap-0.5 text-tertiary">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold">4.9</span>
+</div>
+</div>
+<button class="text-primary text-body-sm font-semibold">142 Reviews</button>
+</div>
+<!-- Review Card -->
+<div class="space-y-4">
+<div class="p-4 bg-canvas-white border border-border-subtle rounded-xl shadow-sm">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A portrait of a satisfied female customer with a bright, joyful expression. The lighting is warm and natural, suggesting a domestic setting. The photo is high-key and modern, maintaining the clean visual language of the application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoHWTiBV8_1ZWj_wA4CyktgG8UFy7DkEmo_LdusHXeAjR5oOjiQ1UhaidKEP9M4DvFjVeoA2nkjxFZO4-q6p39VGGq2Rs_igZs-SgL3gpxsDRC4BVhYwZV_-gSqROQuW-itnY0mEDy0zQ01Nh8TGU_cGHD5lQ9WFq-crenOD-3MnuNwUd6Zy9JszEjO4b6rlL_rgI6iek5MZ0eSQChBgRmQWyjwzJMetD3Fx4HRmhtYaN-bCVouIstUXQHNobRl4hx0oqoTmK0x30"/>
+</div>
+<div>
+<h5 class="text-body-lg font-semibold text-on-surface">Sarah Nalubega</h5>
+<p class="text-label-caps font-label-caps text-on-surface-variant uppercase">2 days ago</p>
+</div>
+</div>
+<div class="flex text-tertiary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<p class="text-body-sm text-on-surface leading-relaxed">
+                        "Ivan was incredibly professional and arrived exactly on time. He fixed our complex wiring issue in half the time we expected. Highly recommend for any electrical work!"
+                    </p>
+</div>
+<div class="p-4 bg-canvas-white border border-border-subtle rounded-xl shadow-sm opacity-60">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A candid, high-quality photograph of a middle-aged male customer in a bright home environment, looking pleased. The aesthetic is realistic and clean, perfectly matching the UI's light mode and minimalist professional style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7_lKHkuIhiTvPYEbTz_QIbz3Hk3_4VNvsRZO_XHXjxAL4mNFiAmmr-HS21iaMfHp8PvZa29-kj6A7eUOBEqA6mkYcH-wHe9yBJyBbrmRD7X1KbP78BR8UHKn4kaDHD8GkP8AoJMVA8pABx1O4QV4_99LEILsaS2BJV1d3m62kPWiAmaPCMenO2AdaHpUGbuJPiOwZ-CcKmnlE0NVXG74qDk0Gw2qfEBMg871ZsLiUE0BsgnqkDsOt50G1UdmBy3DGVzBsDaItXho"/>
+</div>
+<div>
+<h5 class="text-body-lg font-semibold text-on-surface">David Kato</h5>
+<p class="text-label-caps font-label-caps text-on-surface-variant uppercase">1 week ago</p>
+</div>
+</div>
+<div class="flex text-tertiary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<p class="text-body-sm text-on-surface leading-relaxed">
+                        "Excellent service. Ivan fixed a leak that two other plumbers couldn't identify. Very thorough and explained everything clearly."
+                    </p>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Filtered for focused Task journey but kept as anchor for main nav) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 pb-safe h-16 md:hidden bg-canvas-white border-t border-border-subtle shadow-sm">
+<a class="flex flex-col items-center justify-center text-on-surface-variant transition-colors hover:text-primary" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-label-caps font-label-caps uppercase mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant transition-colors hover:text-primary" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="text-label-caps font-label-caps uppercase mt-1">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant transition-colors hover:text-primary" href="#">
+<span class="material-symbols-outlined">build</span>
+<span class="text-label-caps font-label-caps uppercase mt-1">Jobs</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant transition-colors hover:text-primary" href="#">
+<span class="material-symbols-outlined">chat</span>
+<span class="text-label-caps font-label-caps uppercase mt-1">Messages</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary font-semibold" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="text-label-caps font-label-caps uppercase mt-1">Profile</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction: Subtle parallax on hero image
+        window.addEventListener('scroll', () => {
+            const scroll = window.pageYOffset;
+            const heroImage = document.querySelector('section.relative img');
+            if (heroImage) {
+                heroImage.style.transform = `translateY(${scroll * 0.4}px)`;
+            }
+        });
+
+        // Hover lift effect on cards
+        document.querySelectorAll('.proof-card').forEach(card => {
+            card.addEventListener('touchstart', () => {
+                card.style.transform = 'scale(0.98)';
+            });
+            card.addEventListener('touchend', () => {
+                card.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body></html>

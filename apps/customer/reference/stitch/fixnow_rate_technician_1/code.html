@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Rate Experience - FixNow</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-background": "#1a1c1c",
+                    "secondary-fixed": "#d2e4ff",
+                    "on-tertiary-container": "#ffcdb1",
+                    "tertiary-fixed": "#ffdbc9",
+                    "on-secondary": "#ffffff",
+                    "outline-variant": "#c8c4d7",
+                    "outline": "#787586",
+                    "on-tertiary-fixed-variant": "#763300",
+                    "on-surface-variant": "#474554",
+                    "background": "#faf9f8",
+                    "on-error": "#ffffff",
+                    "trust-blue": "#b2d5ff",
+                    "tertiary-fixed-dim": "#ffb68d",
+                    "surface-variant": "#e3e2e1",
+                    "on-tertiary-fixed": "#321200",
+                    "tertiary": "#743300",
+                    "surface-container-high": "#e9e8e7",
+                    "canvas-white": "#ffffff",
+                    "primary": "#3d27bc",
+                    "error": "#ba1a1a",
+                    "inverse-surface": "#2f3130",
+                    "on-tertiary": "#ffffff",
+                    "secondary-fixed-dim": "#b0c8eb",
+                    "surface-tint": "#5746d5",
+                    "tertiary-container": "#994500",
+                    "secondary": "#49607e",
+                    "on-secondary-container": "#49617f",
+                    "primary-fixed": "#e4dfff",
+                    "surface": "#faf9f8",
+                    "on-primary-fixed": "#150066",
+                    "on-error-container": "#93000a",
+                    "primary-fixed-dim": "#c6bfff",
+                    "on-primary": "#ffffff",
+                    "surface-dim": "#dadad9",
+                    "surface-container-highest": "#e3e2e1",
+                    "on-surface": "#1a1c1c",
+                    "surface-container": "#efeeed",
+                    "surface-bright": "#faf9f8",
+                    "inverse-primary": "#c6bfff",
+                    "border-subtle": "#e5e7eb",
+                    "surface-container-low": "#f4f3f2",
+                    "on-primary-container": "#d7d2ff",
+                    "inverse-on-surface": "#f1f0ef",
+                    "success-green": "#1aae39",
+                    "ink-black": "#000000",
+                    "secondary-container": "#c4dcff",
+                    "surface-gray": "#f6f5f4"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter-mobile": "16px",
+                    "gutter-desktop": "24px",
+                    "margin-safe": "20px",
+                    "base": "4px",
+                    "section-gap": "64px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "title-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "mono-label": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "display-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "title-md": ["20px", {"lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "mono-label": ["13px", {"lineHeight": "1.0", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .star-active { font-variation-settings: 'FILL' 1; color: #3d27bc; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Custom focused state for recommendation toggles */
+        .rec-btn-active {
+            border-color: #3d27bc !important;
+            background-color: #e4dfff !important;
+            color: #3d27bc !important;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-lg min-h-screen flex flex-col">
+<!-- Top Navigation Header (Suppressed BottomNavBar because this is a focused task) -->
+<header class="fixed top-0 w-full z-50 bg-canvas-white shadow-sm border-b border-border-subtle h-14 flex items-center justify-between px-gutter-mobile">
+<button aria-label="Go back" class="p-2 -ml-2 hover:bg-surface-container-low transition-colors rounded-full active:scale-95 duration-150">
+<span class="material-symbols-outlined text-on-surface-variant">close</span>
+</button>
+<h1 class="font-title-md text-title-md text-primary">Rate Experience</h1>
+<div class="w-10"></div> <!-- Spacer for balance -->
+</header>
+<!-- Main Content Area -->
+<main class="flex-grow pt-20 pb-24 px-gutter-mobile max-w-lg mx-auto w-full">
+<!-- Technician Summary Card -->
+<section class="mb-8">
+<div class="bg-canvas-white border border-border-subtle rounded-xl p-4 shadow-[0_4px_20px_rgba(0,0,0,0.04)] flex items-center space-x-4">
+<div class="w-16 h-16 rounded-full overflow-hidden border-2 border-primary-fixed shrink-0">
+<img alt="Moses Okello" class="w-full h-full object-cover" data-alt="A professional, friendly close-up portrait of a skilled Ugandan technician named Moses. He is wearing a clean, branded work uniform. The lighting is bright and natural, reflecting a trustworthy and professional marketplace aesthetic. The background is a soft-focus workshop environment with subtle indigo accents, maintaining a high-end corporate minimalist style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvGVrAOUXV7NJ2uY4mDfL1O22NEEZ605i5A0xgrbLcM4qTvZoz_p68clhVZPaI4J7u5kz7-0GrLNuSuc-fpHXW0uILlSDidV0MlGsRXwF0fhJYRItx62f0M7mvGN7lFSvJvYB9vfg-3RWkBoLs9V8-pM75AVlk5B8L4BoG11w4ilSLypqrCVRSiBub7geXCgRgxbfMflEALBa0LO9MSjWp3skK3Y_vsv8VfjUMGPdrEzw88beXNsi58ug2uqDochl_OnYs9q0S2HY"/>
+</div>
+<div class="flex-grow">
+<h2 class="font-title-md text-title-md text-on-background">Moses Okello</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+                        Master Electrician
+                        <span class="material-symbols-outlined text-success-green text-[16px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+</p>
+</div>
+</div>
+</section>
+<!-- Overall Satisfaction -->
+<section class="text-center mb-10">
+<h3 class="font-label-caps text-label-caps text-secondary mb-4">OVERALL SATISFACTION</h3>
+<div class="flex justify-center space-x-2 mb-3" id="rating-stars">
+<button class="star-btn active:scale-90 transition-transform" data-index="1"><span class="material-symbols-outlined text-4xl text-outline-variant">star</span></button>
+<button class="star-btn active:scale-90 transition-transform" data-index="2"><span class="material-symbols-outlined text-4xl text-outline-variant">star</span></button>
+<button class="star-btn active:scale-90 transition-transform" data-index="3"><span class="material-symbols-outlined text-4xl text-outline-variant">star</span></button>
+<button class="star-btn active:scale-90 transition-transform" data-index="4"><span class="material-symbols-outlined text-4xl text-outline-variant">star</span></button>
+<button class="star-btn active:scale-90 transition-transform" data-index="5"><span class="material-symbols-outlined text-4xl text-outline-variant">star</span></button>
+</div>
+<div class="flex justify-between px-4">
+<span class="font-mono-label text-mono-label text-outline">Poor</span>
+<span class="font-mono-label text-mono-label text-outline" id="rating-label">Tap to rate</span>
+<span class="font-mono-label text-mono-label text-outline">Excellent</span>
+</div>
+</section>
+<!-- Recommendation -->
+<section class="mb-10">
+<h3 class="font-title-md text-title-md text-on-background text-center mb-6">Would you recommend Moses?</h3>
+<div class="flex gap-4">
+<button class="flex-1 flex flex-col items-center justify-center py-4 px-2 border border-border-subtle rounded-xl bg-canvas-white hover:bg-surface-container-low transition-all active:scale-95 duration-150 group" id="rec-yes">
+<span class="material-symbols-outlined text-3xl mb-1 text-secondary group-[.rec-btn-active]:text-primary">thumb_up</span>
+<span class="font-label-caps text-label-caps">Yes, Recommend</span>
+</button>
+<button class="flex-1 flex flex-col items-center justify-center py-4 px-2 border border-border-subtle rounded-xl bg-canvas-white hover:bg-surface-container-low transition-all active:scale-95 duration-150 group" id="rec-no">
+<span class="material-symbols-outlined text-3xl mb-1 text-secondary group-[.rec-btn-active]:text-primary">thumb_down</span>
+<span class="font-label-caps text-label-caps">No, Not Recommend</span>
+</button>
+</div>
+</section>
+<!-- Detailed Feedback Form -->
+<section class="space-y-6 mb-10">
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant block ml-1">WHAT DID YOU LIKE ABOUT THE SERVICE?</label>
+<textarea class="w-full bg-surface-container-low border border-border-subtle rounded-lg p-4 font-body-sm text-body-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-outline-variant" placeholder="E.g. Punctual, neat workspace, very professional..." rows="3"></textarea>
+</div>
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant block ml-1">SUGGESTIONS FOR IMPROVEMENT</label>
+<textarea class="w-full bg-surface-container-low border border-border-subtle rounded-lg p-4 font-body-sm text-body-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-outline-variant" placeholder="Anything Moses could do better next time?" rows="3"></textarea>
+</div>
+<div class="bg-primary-fixed/30 rounded-lg p-4 flex items-start space-x-3">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">info</span>
+<p class="font-body-sm text-body-sm text-on-primary-fixed-variant leading-tight">
+                    Your feedback helps the community stay safe and helps Moses grow his professional reputation on FixNow.
+                </p>
+</div>
+</section>
+</main>
+<!-- Bottom Submit Action -->
+<footer class="fixed bottom-0 w-full bg-canvas-white px-gutter-mobile py-4 border-t border-border-subtle z-50">
+<button class="w-full bg-primary text-on-primary font-title-md text-title-md py-4 rounded-xl shadow-lg active:scale-95 transition-all duration-150">
+            Submit Review
+        </button>
+</footer>
+<script>
+        // Star Rating Logic
+        const stars = document.querySelectorAll('.star-btn');
+        const label = document.getElementById('rating-label');
+        const labels = ["", "Poor", "Fair", "Good", "Very Good", "Excellent"];
+
+        stars.forEach((star, index) => {
+            star.addEventListener('click', () => {
+                const rating = index + 1;
+                updateStars(rating);
+                label.innerText = labels[rating];
+                label.classList.remove('text-outline');
+                label.classList.add('text-primary', 'font-bold');
+            });
+        });
+
+        function updateStars(rating) {
+            stars.forEach((star, index) => {
+                const icon = star.querySelector('.material-symbols-outlined');
+                if (index < rating) {
+                    icon.classList.add('star-active');
+                    icon.classList.remove('text-outline-variant');
+                } else {
+                    icon.classList.remove('star-active');
+                    icon.classList.add('text-outline-variant');
+                }
+            });
+        }
+
+        // Recommendation Toggle Logic
+        const btnYes = document.getElementById('rec-yes');
+        const btnNo = document.getElementById('rec-no');
+
+        btnYes.addEventListener('click', () => {
+            btnYes.classList.add('rec-btn-active');
+            btnNo.classList.remove('rec-btn-active');
+        });
+
+        btnNo.addEventListener('click', () => {
+            btnNo.classList.add('rec-btn-active');
+            btnYes.classList.remove('rec-btn-active');
+        });
+
+        // Simple haptic-like effect for the submit button
+        const submitBtn = document.querySelector('footer button');
+        submitBtn.addEventListener('click', () => {
+            submitBtn.innerHTML = '<span class="flex items-center justify-center gap-2"><span class="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></span> Submitting...</span>';
+            setTimeout(() => {
+                submitBtn.innerHTML = '<span class="flex items-center justify-center gap-2"><span class="material-symbols-outlined">check_circle</span> Sent!</span>';
+                submitBtn.classList.replace('bg-primary', 'bg-success-green');
+            }, 1200);
+        });
+    </script>
+</body></html>

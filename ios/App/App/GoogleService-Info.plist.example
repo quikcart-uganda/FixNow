@@ -1,0 +1,7 @@
+# Place the real GoogleService-Info.plist from Firebase Console at
+# ios/App/App/GoogleService-Info.plist. Required for APNs via FCM on iOS.
+#
+# Also enable Push Notifications + Associated Domains on the App ID in
+# Apple Developer, and set the App.entitlements aps-environment to
+# "production" for App Store / TestFlight builds.
+BUNDLE_ID=com.fixnow.app

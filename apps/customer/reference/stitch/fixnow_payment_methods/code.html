@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Saved Payment Methods - FixNow</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed": "#e4dfff",
+                    "tertiary-fixed": "#ffdbc9",
+                    "surface-container-high": "#e9e8e7",
+                    "secondary-container": "#c4dcff",
+                    "background": "#faf9f8",
+                    "on-tertiary-fixed-variant": "#763300",
+                    "surface-container": "#efeeed",
+                    "surface-gray": "#f6f5f4",
+                    "on-primary-container": "#d7d2ff",
+                    "secondary-fixed-dim": "#b0c8eb",
+                    "tertiary": "#743300",
+                    "surface-dim": "#dadad9",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-container": "#49617f",
+                    "on-primary-fixed": "#150066",
+                    "secondary-fixed": "#d2e4ff",
+                    "surface-tint": "#5746d5",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-fixed": "#321200",
+                    "surface-container-highest": "#e3e2e1",
+                    "on-surface-variant": "#474554",
+                    "trust-blue": "#b2d5ff",
+                    "primary-container": "#5645d4",
+                    "surface-variant": "#e3e2e1",
+                    "canvas-white": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "ink-black": "#000000",
+                    "error": "#ba1a1a",
+                    "surface-bright": "#faf9f8",
+                    "secondary": "#49607e",
+                    "primary": "#3d27bc",
+                    "surface-container-low": "#f4f3f2",
+                    "on-secondary-fixed-variant": "#314865",
+                    "success-green": "#1aae39",
+                    "on-surface": "#1a1c1c",
+                    "on-secondary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "outline-variant": "#c8c4d7",
+                    "inverse-surface": "#2f3130",
+                    "primary-fixed-dim": "#c6bfff",
+                    "on-primary-fixed-variant": "#3e28bd",
+                    "tertiary-container": "#994500",
+                    "on-error-container": "#93000a",
+                    "on-background": "#1a1c1c",
+                    "on-tertiary-container": "#ffcdb1",
+                    "tertiary-fixed-dim": "#ffb68d",
+                    "surface": "#faf9f8",
+                    "on-secondary-fixed": "#001c37",
+                    "inverse-on-surface": "#f1f0ef",
+                    "outline": "#787586",
+                    "on-primary": "#ffffff",
+                    "inverse-primary": "#c6bfff",
+                    "border-subtle": "#e5e7eb"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-safe": "20px",
+                    "section-gap": "64px",
+                    "gutter-desktop": "24px",
+                    "base": "4px",
+                    "gutter-mobile": "16px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "title-md": ["Inter"],
+                    "mono-label": ["Inter"],
+                    "headline-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                    "title-md": ["20px", {"lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "mono-label": ["13px", {"lineHeight": "1.0", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .card-base {
+            background-color: #ffffff;
+            border: 1px solid #E5E7EB;
+            box-shadow: 0px 4px 20px rgba(0,0,0,0.04);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .card-base:active {
+            transform: scale(0.98);
+            box-shadow: 0px 2px 10px rgba(0,0,0,0.02);
+        }
+        .safe-area-bottom {
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-lg text-body-lg min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-50 flex justify-between items-center px-gutter-mobile md:px-gutter-desktop h-14 md:h-16 w-full max-w-7xl mx-auto bg-canvas-white dark:bg-background border-b border-border-subtle dark:border-outline-variant">
+<div class="flex items-center gap-4">
+<button aria-label="Go back" class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-title-md text-title-md text-primary dark:text-inverse-primary">Payment Methods</h1>
+</div>
+<div class="flex items-center">
+<div class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center overflow-hidden border border-outline-variant">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A professional close-up studio portrait of a young Ugandan male customer service lead, wearing a clean white shirt, with a soft-focus background of a modern tech office in Kampala. The lighting is bright and airy, following a minimalist corporate aesthetic with soft indigo accents in the surroundings." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0fI5Jt-3Sqj-wC3OaM8OcPb2uxcARFwJC47YnF1LfcFzy0MLQL8TIVgS54nXwr5-y4ipqoQcL1Jq1AytKvkVeUNQxBBWcf8AFf3Sxx21jeJtdhRWVgQfmicyq-FTL1znhMyubZ91ENgcsH5pnB0apNMq9ktDfW0as-u-uOZYJraf59iWV6lM-Vk9v-JE6YVTkNpo1yRUoVPzmgV2ubgaKHK8FF0yHO2IYlxcIZX-9NfjhH2Tw-jLrv9iU7uSeBES5JIYJ_RyAj3A"/>
+</div>
+</div>
+</header>
+<main class="flex-grow w-full max-w-md mx-auto px-gutter-mobile py-6 flex flex-col gap-6">
+<!-- Primary Action -->
+<button class="w-full bg-primary text-on-primary py-4 px-6 rounded-lg font-title-md text-title-md flex items-center justify-center gap-2 hover:opacity-90 active:scale-95 transition-all shadow-sm">
+<span class="material-symbols-outlined">add_circle</span>
+            Add New Method
+        </button>
+<!-- Credit/Debit Cards Section -->
+<section class="flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<h2 class="font-label-caps text-label-caps text-outline uppercase tracking-widest">Cards</h2>
+<span class="text-[10px] text-outline">SECURE STORAGE</span>
+</div>
+<!-- Visa Card (Default) -->
+<div class="card-base p-4 rounded-xl flex items-center gap-4 relative">
+<div class="w-12 h-8 flex items-center justify-center border border-border-subtle rounded bg-canvas-white p-1">
+<img alt="Visa Logo" class="w-full object-contain" data-alt="A high-quality digital vector of the Visa logo displayed on a clean, professional white background. The blue and gold colors are sharp and vibrant, representing global financial trust and security. The design is minimalist and aligned with a premium banking application interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzHVF3A-1GdMIjHdzG-UbK9Hy9C6KaH4rqG6Kpp-BcxQFvn1YE0OABlvJHh6ErkXsYE4tcV5QE6LmK_FpDF8aFMdZUkBsTLVhinsKo7vxm4K-2PSo_P3JLrVNOAkwzkLd0sAIFzAt8fOPQtjtlPbRdxqhUTNy2ccbx-wfTW4xstnLuOzyA5V_yw4NXy4mMNUnxxJGYLWb35PVf2YS24bqVMeOUPC3xSOdYKpfhTbUZJ_RzoWJI3rm6gNEWNsCl7sfinD42KouqHMk"/>
+</div>
+<div class="flex-grow">
+<div class="flex items-center gap-2">
+<p class="font-title-md text-body-lg text-on-surface font-semibold">Visa •••• 4242</p>
+<span class="bg-primary-fixed text-on-primary-fixed-variant px-2 py-0.5 rounded-full font-label-caps text-[10px]">DEFAULT</span>
+</div>
+<p class="text-body-sm text-on-surface-variant">Expires 12/26</p>
+</div>
+<button class="w-10 h-10 flex items-center justify-center text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<!-- Mastercard -->
+<div class="card-base p-4 rounded-xl flex items-center gap-4">
+<div class="w-12 h-8 flex items-center justify-center border border-border-subtle rounded bg-canvas-white p-1">
+<img alt="Mastercard Logo" class="w-full object-contain" data-alt="The iconic Mastercard logo featuring interlocking red and orange circles, presented in a crisp, high-resolution graphic format. The background is a stark, clean white, emphasizing the bold colors of the brand identity. This visual is designed for a high-end fintech user interface focusing on technical precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9xQvRGQmX-eBr1KI_nUrx9DnP3i4yeC9oi_naJ2Q3EQ9-LNWosYZ4rDbqockPDTEoQPackduPHpnABYI7YP_atwq6ER5VYWB92kdOnsS6chVTlvl-1w51EU8ZmIITxW7le6eo__9P7d52qBmi04fn2PYTKP2r-U0p4wdodx9HgcR2Cc1QycknjYwaoihKabhcMv1yLxMnZlMMICFBkfaLKRd0K592-wcikL6Rg89dJ2O0ZkGmU63LzCazgXJulzQFWAyuUbXFLMY"/>
+</div>
+<div class="flex-grow">
+<p class="font-title-md text-body-lg text-on-surface font-semibold">Mastercard •••• 8812</p>
+<p class="text-body-sm text-on-surface-variant">Expires 09/25</p>
+</div>
+<button class="w-10 h-10 flex items-center justify-center text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</section>
+<!-- Mobile Money Section -->
+<section class="flex flex-col gap-4">
+<h2 class="font-label-caps text-label-caps text-outline uppercase tracking-widest">Mobile Money Wallets</h2>
+<!-- MTN Mobile Money -->
+<div class="card-base p-4 rounded-xl flex items-center gap-4">
+<div class="w-12 h-12 flex items-center justify-center bg-[#FFCC00] rounded-lg overflow-hidden border border-[#e0b400]">
+<img alt="MTN Logo" class="w-8 h-8 object-contain" data-alt="The MTN Mobile Money logo, featuring the distinctive yellow background and blue wordmark, rendered as a clean, high-contrast mobile app icon. The style is modern and flat, representing the primary mobile financial service in Uganda, set against a bright, professional layout." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZITHxBbjovCCGGaEmBKTvdmm5qlDFgrRIDhRjMclsmCtlRhaGVIPpdevVzW86k6nolvoldDAtdSd5IXTIE-fETQHhXQj67RjUjzVBnUlU3Ag_Vj9cQ5VS-Bw3ntb0xfeOZ8CRC9SeWHYbMZEoMfiEtq1SNbJJ06Axh-YUX3vHL28E2MWofUmof-PrTMqlih7f1jgHmO7or9L_iCpVD240AF6SOahze7jSHsFCkCPd6l72OBX2HL8xmbfH2EVs28vymEPqCe5sTRI"/>
+</div>
+<div class="flex-grow">
+<p class="font-title-md text-body-lg text-on-surface font-semibold">MTN MoMo •••• 123</p>
+<p class="text-body-sm text-on-surface-variant">Suna Ivan</p>
+</div>
+<button class="w-10 h-10 flex items-center justify-center text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<!-- Airtel Money -->
+<div class="card-base p-4 rounded-xl flex items-center gap-4">
+<div class="w-12 h-12 flex items-center justify-center bg-[#FF0000] rounded-lg overflow-hidden border border-[#cc0000]">
+<img alt="Airtel Logo" class="w-8 h-8 object-contain" data-alt="The Airtel Money logo, with its signature red and white graphic elements, presented as a vibrant and clear digital asset. The icon is sharp and optimized for mobile viewing, conveying reliability and speed for telecommunications-based financial transactions in an African market context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlJwVe0U5q2cxAHzQVMe09ZRy-pQJNU6TOWvLVq7rggnZmpT6o468_t0snsxrTcs77s2Dn7FjriwlGM2sMeFdsv1PPOx_F8UXzZ15X4a9MhE1wJ_nk5Q8TnwuOg_rxVT7IpD1SmdSO8pMnP-Uy_-kpi85Hst6ERqY9yZMaMnsZPImqAqNa9xEXNG7x7ga2zeU36H3Zc8c3VaF5tXlsIm2lnK2i9HVNMcx6QmJ7LFviWiiAfAlvSzh5ygUcl7LxQxMZEQKpQp5uWGI"/>
+</div>
+<div class="flex-grow">
+<p class="font-title-md text-body-lg text-on-surface font-semibold">Airtel Money •••• 456</p>
+<p class="text-body-sm text-on-surface-variant">Suna Ivan</p>
+</div>
+<button class="w-10 h-10 flex items-center justify-center text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</section>
+<!-- Trust Badge -->
+<footer class="mt-auto pt-8 flex flex-col items-center gap-4 opacity-60">
+<div class="flex items-center gap-2 px-4 py-2 bg-surface-container rounded-full border border-border-subtle">
+<span class="material-symbols-outlined text-success-green text-[18px]">verified_user</span>
+<p class="font-label-caps text-label-caps text-on-surface-variant">SSL SECURED &amp; ENCRYPTED</p>
+</div>
+<p class="text-[11px] text-center text-outline max-w-[240px]">
+                FixNow does not store your full card details. All transactions are processed via bank-grade secure gateways.
+            </p>
+</footer>
+</main>
+<!-- Bottom Navigation Shell -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 pb-safe h-16 md:hidden bg-canvas-white dark:bg-background border-t border-border-subtle dark:border-outline-variant shadow-sm">
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-container-low dark:hover:bg-surface-variant transition-colors group">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-caps text-label-caps mt-1">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-container-low dark:hover:bg-surface-variant transition-colors group">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-caps text-label-caps mt-1">Search</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-container-low dark:hover:bg-surface-variant transition-colors group">
+<span class="material-symbols-outlined">build</span>
+<span class="font-label-caps text-label-caps mt-1">Jobs</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-container-low dark:hover:bg-surface-variant transition-colors group">
+<span class="material-symbols-outlined">chat</span>
+<span class="font-label-caps text-label-caps mt-1">Messages</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary dark:text-inverse-primary font-semibold hover:bg-surface-container-low dark:hover:bg-surface-variant transition-colors group">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-caps text-label-caps mt-1">Profile</span>
+</button>
+</nav>
+<!-- Navigation Drawer (Desktop Placeholder Logic) -->
+<aside class="fixed inset-y-0 left-0 z-[60] w-80 max-w-[80vw] bg-canvas-white dark:bg-background rounded-r-xl shadow-lg -translate-x-full transition-transform duration-300 ease-in-out md:hidden" id="nav-drawer">
+<div class="p-6 flex flex-col h-full">
+<div class="flex items-center gap-4 mb-8">
+<div class="w-14 h-14 rounded-full bg-surface-container flex items-center justify-center overflow-hidden border-2 border-primary">
+<img alt="User profile picture" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1uCHFgcA50F6qWWgM1pLGqd1cKCWuTHT-CZxMOL4-HE9OLQQJEkY_CRs8ZUKd49RPRvISTJdlEqG9kxxge6vucKkILvMtEmRTuH6bf4Uez5vHlIauIBRn0YYF-XIqWMq2Ooshvobdgu4DTsOO9AAqyE17Nj-Hrxe2h8pgHlwvlau14xGAagChcmSiHbOT_OX2eNC7_gGVFetrSDIsUgj0e1_WGYq8IAiCmLQK9FcyV-crHPe5p0KoTtblMu0BqUWVJo0f1IR2GM8"/>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-on-surface">Suna Ivan</h3>
+<p class="text-body-sm text-primary font-medium">Elite Member</p>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<a class="flex items-center gap-4 p-3 rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors" href="#">
+<span class="material-symbols-outlined">engineering</span>
+<span class="font-body-lg text-body-lg">Browse Technicians</span>
+</a>
+<a class="flex items-center gap-4 p-3 rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors" href="#">
+<span class="material-symbols-outlined">event_available</span>
+<span class="font-body-lg text-body-lg">My Bookings</span>
+</a>
+<a class="flex items-center gap-4 p-3 bg-primary-container text-on-primary-container rounded-lg font-bold" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">payments</span>
+<span class="font-body-lg text-body-lg">Payment Methods</span>
+</a>
+<a class="flex items-center gap-4 p-3 rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-body-lg text-body-lg">Help Center</span>
+</a>
+</div>
+</div>
+</aside>
+<script>
+        // Simple micro-interaction for the "Add New Method" button
+        const addBtn = document.querySelector('button.bg-primary');
+        addBtn.addEventListener('click', () => {
+            addBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> Processing...';
+            setTimeout(() => {
+                addBtn.innerHTML = '<span class="material-symbols-outlined">add_circle</span> Add New Method';
+            }, 1500);
+        });
+
+        // Toggle Drawer logic (for demo purposes)
+        const menuBtn = document.querySelector('button[aria-label="Go back"]');
+        const drawer = document.getElementById('nav-drawer');
+        let drawerOpen = false;
+
+        // Note: Real "Back" logic would be window.history.back(), 
+        // but adding drawer toggle for navigation completeness
+        menuBtn.addEventListener('click', (e) => {
+            // If it was a real back button we'd use history, 
+            // but let's make it interactive for this UI mockup.
+            console.log("Navigating back...");
+        });
+    </script>
+</body></html>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Legacy Capacitor splash logo. Official blue rounded plate with white mark.
+  Wrench at 58% of the plate — CENTER (not CENTER_CROP) for sharp density scaling.
+-->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#004AC6" />
+            <corners android:radius="28dp" />
+            <size
+                android:width="120dp"
+                android:height="120dp" />
+            <stroke
+                android:width="1dp"
+                android:color="#47FFFFFF" />
+        </shape>
+    </item>
+    <item
+        android:drawable="@drawable/ic_fixnow_mark"
+        android:gravity="center"
+        android:width="70dp"
+        android:height="70dp" />
+</layer-list>

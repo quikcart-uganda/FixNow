@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Payment - FixNow</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .payment-option-active {
+            border-color: #3d27bc;
+            background-color: #f4f3f2;
+        }
+        .custom-radio-checked {
+            background-color: #3d27bc;
+            box-shadow: inset 0 0 0 3px #ffffff;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#49617f",
+                        "trust-blue": "#b2d5ff",
+                        "on-tertiary-container": "#ffcdb1",
+                        "on-primary": "#ffffff",
+                        "on-primary-container": "#d7d2ff",
+                        "secondary-fixed-dim": "#b0c8eb",
+                        "on-tertiary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "surface-gray": "#f6f5f4",
+                        "on-surface": "#1a1c1c",
+                        "tertiary-fixed-dim": "#ffb68d",
+                        "primary-container": "#5645d4",
+                        "tertiary": "#743300",
+                        "tertiary-fixed": "#ffdbc9",
+                        "on-tertiary-fixed": "#321200",
+                        "tertiary-container": "#994500",
+                        "primary-fixed-dim": "#c6bfff",
+                        "surface-bright": "#faf9f8",
+                        "border-subtle": "#e5e7eb",
+                        "on-error": "#ffffff",
+                        "surface-container-high": "#e9e8e7",
+                        "surface-tint": "#5746d5",
+                        "on-primary-fixed": "#150066",
+                        "secondary": "#49607e",
+                        "on-secondary-fixed-variant": "#314865",
+                        "outline-variant": "#c8c4d7",
+                        "inverse-surface": "#2f3130",
+                        "success-green": "#1aae39",
+                        "surface-variant": "#e3e2e1",
+                        "on-background": "#1a1c1c",
+                        "inverse-primary": "#c6bfff",
+                        "surface-container-highest": "#e3e2e1",
+                        "secondary-container": "#c4dcff",
+                        "primary-fixed": "#e4dfff",
+                        "surface-container-low": "#f4f3f2",
+                        "outline": "#787586",
+                        "primary": "#3d27bc",
+                        "error": "#ba1a1a",
+                        "surface-container": "#efeeed",
+                        "inverse-on-surface": "#f1f0ef",
+                        "surface": "#faf9f8",
+                        "on-surface-variant": "#474554",
+                        "on-secondary": "#ffffff",
+                        "ink-black": "#000000",
+                        "canvas-white": "#ffffff",
+                        "background": "#faf9f8",
+                        "on-secondary-fixed": "#001c37",
+                        "on-primary-fixed-variant": "#3e28bd",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed-variant": "#763300",
+                        "surface-dim": "#dadad9",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed": "#d2e4ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "section-gap": "64px",
+                        "gutter-desktop": "24px",
+                        "gutter-mobile": "16px",
+                        "base": "4px",
+                        "margin-safe": "20px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "title-md": ["Inter"],
+                        "mono-label": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-caps": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700" }],
+                        "body-sm": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "title-md": ["20px", { "lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "mono-label": ["13px", { "lineHeight": "1.0", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- Top AppBar (Back to Transactional Rule: No Global Nav) -->
+<header class="sticky top-0 z-50 bg-canvas-white border-b border-border-subtle h-14 md:h-16 flex items-center px-gutter-mobile md:px-gutter-desktop">
+<div class="flex items-center w-full max-w-7xl mx-auto">
+<button class="mr-4 p-2 -ml-2 hover:bg-surface-container rounded-full transition-colors active:scale-95">
+<span class="material-symbols-outlined text-on-surface" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-title-md text-title-md text-on-surface font-bold">Payment</h1>
+</div>
+</header>
+<main class="max-w-xl mx-auto px-gutter-mobile py-8 pb-32">
+<!-- Service Summary Card -->
+<section class="mb-8">
+<div class="bg-canvas-white rounded-xl p-5 border border-border-subtle shadow-[0px_4px_20px_rgba(0,0,0,0.04)]">
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-1">Service Details</p>
+<h2 class="font-title-md text-title-md text-on-surface font-bold mb-1">Full House Wiring</h2>
+<div class="flex items-center gap-2">
+<img alt="Moses Okello" class="w-6 h-6 rounded-full object-cover" data-alt="A professional technician named Moses Okello wearing a clean branded indigo uniform, smiling confidently with a blurred construction site background. The lighting is bright and professional, emphasizing trust and skill. The image has a modern, minimalist aesthetic consistent with a premium service platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA72lYeZSauvQLgsc5Gd7yq42GvsDS_wTTNIA9Nfl19jwyLSxNU6jzyHW8uXfsclOetosEhFH0Mzt2zHouw7sGbfqMBLPFE7Po27tnlpS2N-044EZ2zvT78RS_ws4JjxUPlrx88sYKB3XebL32fDMotKQoPoJfI83Uh1B7XRs-nwNxha9PKI57G_pJlH2XpsldD2_OjzsFtt-DpZ2kf0D5XWUAWsaGyGXiQZOCbl7H7KGFNqXLusGfqSrebnW_9XRx31s5LDnqJ3As"/>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Moses Okello</span>
+<span class="material-symbols-outlined text-success-green text-[16px]" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<div class="text-right">
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-1">Base Fee</p>
+<p class="font-title-md text-title-md text-primary font-bold">UGX 25,000</p>
+</div>
+</div>
+<div class="pt-4 border-t border-border-subtle flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="info">info</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">The base commitment fee ensures your slot is secured and covers the initial site assessment.</p>
+</div>
+</div>
+</section>
+<!-- Saved Payment Methods -->
+<section class="mb-10">
+<h3 class="font-body-lg text-body-lg font-bold text-on-surface mb-4">Saved Payment Methods</h3>
+<div class="space-y-4">
+<!-- MTN MoMo -->
+<div class="payment-option group cursor-pointer bg-canvas-white border border-border-subtle rounded-xl p-4 flex items-center justify-between transition-all duration-200 hover:border-primary/50 payment-option-active" id="payment-mtn" onclick="selectPayment('mtn')">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-yellow-400 rounded-lg flex items-center justify-center p-2">
+<img alt="MTN MoMo" class="w-full h-auto" data-alt="The official MTN Mobile Money logo featuring the iconic yellow background and blue lettering, presented as a clean vector graphic. The logo is centered and sharp, suitable for a high-end financial transaction interface with a minimalist clean-tech look." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBElWwu-iMDXrUpqPQsAE_o-aZm6PxmzgrTVcTAlq5t6AePnbxcyWYPeT7fiYI-XROizsgkcnW8uFKWa302dXjdmooKxl5Sx-VsG_Kxb2ccpYDDOnypNq52QdmNXRdoB_CatzB0bF9FbeiV_ma8BP5tFIFQ_J3Y2ov01SFrMQAEnr-GhSiUUTOrg7FUVhoao5QZu8LhYCtJs_uokLK-JJR4ZzvX0lle5k1BiK4ISFXR2KLHk34tNjWWjSUdriIJBa2oTK1fFJ3mo0o"/>
+</div>
+<div>
+<p class="font-body-lg text-body-lg font-semibold text-on-surface">MTN MoMo</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Ending in •••• 4321</p>
+</div>
+</div>
+<div class="w-6 h-6 rounded-full border-2 border-primary flex items-center justify-center custom-radio-checked" id="radio-mtn">
+<div class="w-2.5 h-2.5 rounded-full bg-white"></div>
+</div>
+</div>
+<!-- Airtel Money -->
+<div class="payment-option group cursor-pointer bg-canvas-white border border-border-subtle rounded-xl p-4 flex items-center justify-between transition-all duration-200 hover:border-primary/50" id="payment-airtel" onclick="selectPayment('airtel')">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center p-2">
+<img alt="Airtel Money" class="w-full h-auto" data-alt="The official Airtel Money logo with the distinctive red brand color and white typography. The image is rendered as a crisp, high-resolution vector icon on a clean background, designed for a professional mobile banking application interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAK-VA0PPdqWyaBxQ3Lg-wfTucgUeIODhyZcsGo9sQnNMBROtTueQ6DyrrA9Zp7kWinxW7QEvDKsofEXF3bSRYZygZqQl-UcHWesCdNRyaGZOzSponRhE10_wIT1vWYTG7jnbbYdpdeut3OlQYNx6CalUieprGMpYLW-Iave-P6gI9Kk-G7ZUR0M4T7rH29d746BHvqTdB0EMalXZla1PFD5YObglx_ott3ctvcCDtDDCdDfnpwB6mZSQN4qMk3JrNYsg6_eLaF95M"/>
+</div>
+<div>
+<p class="font-body-lg text-body-lg font-semibold text-on-surface">Airtel Money</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Linked to Suna Ivan</p>
+</div>
+</div>
+<div class="w-6 h-6 rounded-full border-2 border-outline flex items-center justify-center" id="radio-airtel">
+<div class="w-2.5 h-2.5 rounded-full bg-transparent"></div>
+</div>
+</div>
+</div>
+<!-- Add New Method -->
+<button class="mt-6 w-full flex items-center justify-center gap-2 py-4 border-2 border-dashed border-outline-variant rounded-xl text-on-surface-variant font-body-lg hover:border-primary hover:text-primary transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+<span class="font-semibold">Add New Payment Method</span>
+</button>
+</section>
+<!-- Trust Information -->
+<section class="flex flex-col items-center text-center gap-4 px-4">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-success-green" data-icon="encrypted" style="font-variation-settings: 'FILL' 1;">encrypted</span>
+<p class="font-label-caps text-label-caps uppercase">Secure Encrypted Payment</p>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-xs">
+                Your payment data is protected. FixNow uses bank-grade security to ensure your transactions are always safe.
+            </p>
+</section>
+</main>
+<!-- Fixed Bottom Footer -->
+<footer class="fixed bottom-0 left-0 w-full bg-canvas-white border-t border-border-subtle shadow-[0px_-4px_20px_rgba(0,0,0,0.04)] px-gutter-mobile py-4 z-50">
+<div class="max-w-xl mx-auto">
+<button class="w-full bg-primary text-on-primary h-14 rounded-lg font-title-md text-title-md font-bold flex items-center justify-center gap-3 shadow-lg hover:bg-primary-container transition-colors active:scale-95 duration-150">
+<span>Pay &amp; Confirm Booking</span>
+<span class="w-1.5 h-1.5 rounded-full bg-white/40"></span>
+<span>UGX 25,000</span>
+</button>
+<p class="text-center mt-3 font-label-caps text-[10px] text-on-surface-variant uppercase tracking-widest">
+                Payment processed by FixNow SecurePay
+            </p>
+</div>
+</footer>
+<script>
+        function selectPayment(method) {
+            // Reset all
+            document.querySelectorAll('.payment-option').forEach(el => {
+                el.classList.remove('payment-option-active');
+            });
+            document.querySelectorAll('.payment-option div[id^="radio-"]').forEach(el => {
+                el.classList.remove('custom-radio-checked', 'border-primary');
+                el.classList.add('border-outline');
+                el.querySelector('div').classList.replace('bg-white', 'bg-transparent');
+            });
+
+            // Set active
+            const activeEl = document.getElementById('payment-' + method);
+            const activeRadio = document.getElementById('radio-' + method);
+            
+            activeEl.classList.add('payment-option-active');
+            activeRadio.classList.add('custom-radio-checked', 'border-primary');
+            activeRadio.classList.remove('border-outline');
+            activeRadio.querySelector('div').classList.replace('bg-transparent', 'bg-white');
+            
+            // Haptic-like feedback interaction
+            activeEl.style.transform = "scale(0.98)";
+            setTimeout(() => {
+                activeEl.style.transform = "scale(1)";
+            }, 100);
+        }
+    </script>
+</body></html>

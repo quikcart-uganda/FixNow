@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-container": "#ffcdb1",
+                        "on-tertiary-fixed-variant": "#763300",
+                        "on-surface-variant": "#474554",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-bright": "#faf9f8",
+                        "surface-container-highest": "#e3e2e1",
+                        "secondary-fixed": "#d2e4ff",
+                        "on-tertiary-fixed": "#321200",
+                        "on-primary-fixed-variant": "#3e28bd",
+                        "primary-container": "#5645d4",
+                        "outline": "#787586",
+                        "inverse-primary": "#c6bfff",
+                        "ink-black": "#000000",
+                        "success-green": "#1aae39",
+                        "surface": "#faf9f8",
+                        "surface-container-high": "#e9e8e7",
+                        "tertiary-fixed-dim": "#ffb68d",
+                        "border-subtle": "#e5e7eb",
+                        "on-background": "#1a1c1c",
+                        "inverse-on-surface": "#f1f0ef",
+                        "secondary-fixed-dim": "#b0c8eb",
+                        "secondary": "#49607e",
+                        "on-secondary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "tertiary": "#743300",
+                        "on-primary": "#ffffff",
+                        "on-surface": "#1a1c1c",
+                        "on-secondary-fixed-variant": "#314865",
+                        "surface-variant": "#e3e2e1",
+                        "background": "#faf9f8",
+                        "trust-blue": "#b2d5ff",
+                        "inverse-surface": "#2f3130",
+                        "surface-dim": "#dadad9",
+                        "on-secondary-container": "#49617f",
+                        "on-tertiary": "#ffffff",
+                        "canvas-white": "#ffffff",
+                        "surface-tint": "#5746d5",
+                        "primary": "#3d27bc",
+                        "error-container": "#ffdad6",
+                        "outline-variant": "#c8c4d7",
+                        "primary-fixed-dim": "#c6bfff",
+                        "surface-gray": "#f6f5f4",
+                        "surface-container": "#efeeed",
+                        "secondary-container": "#c4dcff",
+                        "primary-fixed": "#e4dfff",
+                        "on-secondary-fixed": "#001c37",
+                        "on-primary-fixed": "#150066",
+                        "on-primary-container": "#d7d2ff",
+                        "surface-container-low": "#f4f3f2",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed": "#ffdbc9",
+                        "on-error-container": "#93000a",
+                        "tertiary-container": "#994500"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter-desktop": "24px",
+                        "base": "4px",
+                        "section-gap": "64px",
+                        "margin-safe": "20px",
+                        "gutter-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "title-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "mono-label": ["Inter"],
+                        "headline-lg-mobile": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "title-md": ["20px", {"lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "mono-label": ["13px", {"lineHeight": "1.0", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .chat-container::-webkit-scrollbar {
+            width: 4px;
+        }
+        .chat-container::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .chat-container::-webkit-scrollbar-thumb {
+            background: #e5e7eb;
+            border-radius: 10px;
+        }
+        .glass-blur {
+            backdrop-filter: blur(8px);
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body-lg text-on-surface min-h-screen flex flex-col items-center">
+<!-- Header Section (TopAppBar) -->
+<header class="sticky top-0 z-50 w-full max-w-2xl bg-canvas-white border-b border-border-subtle h-16 flex items-center px-gutter-mobile md:px-gutter-desktop shadow-sm">
+<div class="flex items-center gap-3 w-full">
+<button class="p-2 hover:bg-surface-container-low rounded-full transition-colors">
+<span class="material-symbols-outlined text-on-surface">arrow_back</span>
+</button>
+<div class="relative">
+<img alt="Moses Okello" class="w-10 h-10 rounded-full object-cover border border-border-subtle" data-alt="A professional headshot of a Ugandan man in his late 30s with a warm, confident expression. He is wearing a clean, branded work shirt for an electrical company. The lighting is bright and professional, set against a clean, blurred office background. The overall aesthetic is trustworthy and expert, matching a premium service platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAP9WkXiA6CriEoedpFJszmsCeLrtkPi-l5HVQOBoBimHyzUxs7qivslvhyfNrmhrl5oPbtDLNxt-bOHNV7ufrMiBcNz7PxqAL7yhC3W4G24uPzqI0-2jnhCb2mpSOyjQMzBO4aNX7v9k9JmtdckjT9fIH8Rscz8lPaXaxuD4WrU_cUxUyCMlq5_fEgnmJqTIEhcTXa3fr3yu5P9g_Xk2ULFEKBkSjSfdox4Og8MgQ4SQWSFZbtT5jesof-2QaCbkhw3GQLLmPV4D4"/>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-success-green border-2 border-white rounded-full"></div>
+</div>
+<div class="flex-1 flex flex-col overflow-hidden">
+<div class="flex items-center gap-2">
+<span class="font-title-md text-on-surface truncate leading-tight">Moses Okello</span>
+<span class="material-symbols-outlined text-success-green text-[16px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="bg-trust-blue text-on-secondary-fixed-variant text-[10px] px-1.5 py-0.5 rounded-full font-label-caps uppercase">Elite Technician</span>
+<span class="text-[11px] text-on-surface-variant font-mono-label">• Online</span>
+</div>
+</div>
+<button class="p-2 text-primary hover:bg-primary-fixed rounded-full transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">call</span>
+</button>
+</div>
+</header>
+<!-- Main Chat Log -->
+<main class="flex-1 w-full max-w-2xl px-gutter-mobile py-6 chat-container overflow-y-auto space-y-6">
+<!-- Day Divider -->
+<div class="flex justify-center">
+<span class="text-label-caps text-on-surface-variant bg-surface-container px-3 py-1 rounded-full">Today</span>
+</div>
+<!-- Incoming Message -->
+<div class="flex flex-col items-start max-w-[85%]">
+<div class="bg-surface-container-high text-on-surface-variant p-3 rounded-tr-xl rounded-br-xl rounded-bl-xl text-body-sm shadow-sm border border-border-subtle">
+                Hello! I'm on my way to your location. I should be there in about 15 minutes to take a look at that faulty panel.
+            </div>
+<span class="text-[10px] text-outline mt-1 ml-1 font-mono-label uppercase">09:42 AM</span>
+</div>
+<!-- Outgoing Message -->
+<div class="flex flex-col items-end max-w-[85%] ml-auto">
+<div class="bg-primary text-on-primary p-3 rounded-tl-xl rounded-br-xl rounded-bl-xl text-body-sm shadow-md">
+                Great, thanks Moses. The front gate is open, you can park in the driveway.
+            </div>
+<div class="flex items-center gap-1 mt-1 mr-1">
+<span class="text-[10px] text-outline font-mono-label uppercase">09:45 AM</span>
+<span class="material-symbols-outlined text-primary text-[14px]">done_all</span>
+</div>
+</div>
+<!-- System Alert / Status -->
+<div class="flex justify-center">
+<div class="flex items-center gap-2 text-label-caps text-outline bg-surface-container-lowest border border-border-subtle px-4 py-2 rounded-lg">
+<span class="material-symbols-outlined text-[16px]">engineering</span>
+<span>Job Started • 10:05 AM</span>
+</div>
+</div>
+<!-- Incoming Message with Attachment -->
+<div class="flex flex-col items-start max-w-[85%]">
+<div class="bg-surface-container-high text-on-surface-variant p-1 rounded-tr-xl rounded-br-xl rounded-bl-xl shadow-sm border border-border-subtle overflow-hidden">
+<div class="relative mb-2">
+<img alt="Circuit Breaker Panel" class="w-full h-auto rounded-lg object-cover" src="https://lh3.googleusercontent.com/aida/ADBb0ujEgUrm2OytoN_OtxKvP-a8Z8TrrNA18jJeDOtddIh5rHAgu3WqBEjsJhv5CWDhmVqARAqYtwyHq1GDGHLNUTRBYFDxjUS2shAv7bXCQwS_qj8VAVbPgz3N0xiBTnjmAOFTWaWDGLEZNWSXDLrMavjBcHd1IWh6HCmtZ30X43sU_9yY5aGbyvApsIYdIkjk9Tj6WuPJPWRnkg9x55vdxisOJn2PJiFOoqepJsYe9Jbiw7k3szXx9FVFKGg"/>
+</div>
+<div class="px-2 pb-2 text-body-sm">
+                    I've identified the issue in the main circuit breaker. One of the switches had a loose connection and was arcing. I've secured it and tested the load balancing. All clear now!
+                </div>
+</div>
+<span class="text-[10px] text-outline mt-1 ml-1 font-mono-label uppercase">11:20 AM</span>
+</div>
+<!-- Outgoing Message -->
+<div class="flex flex-col items-end max-w-[85%] ml-auto">
+<div class="bg-primary text-on-primary p-3 rounded-tl-xl rounded-br-xl rounded-bl-xl text-body-sm shadow-md">
+                That looks much better! Thank you for the quick fix and for the photo. Does this affect the kitchen appliances?
+            </div>
+<div class="flex items-center gap-1 mt-1 mr-1">
+<span class="text-[10px] text-outline font-mono-label uppercase">11:25 AM</span>
+<span class="material-symbols-outlined text-primary text-[14px]">done_all</span>
+</div>
+</div>
+<!-- Incoming Message -->
+<div class="flex flex-col items-start max-w-[85%]">
+<div class="bg-surface-container-high text-on-surface-variant p-3 rounded-tr-xl rounded-br-xl rounded-bl-xl text-body-sm shadow-sm border border-border-subtle">
+                Not at all, the kitchen is on a separate ring. This was only affecting the laundry area. Everything is safe and operational now. I'll finalize the report on the app.
+            </div>
+<span class="text-[10px] text-outline mt-1 ml-1 font-mono-label uppercase">11:28 AM</span>
+</div>
+</main>
+<!-- Message Input Bar -->
+<footer class="sticky bottom-0 w-full max-w-2xl bg-canvas-white border-t border-border-subtle p-4 pb-safe glass-blur">
+<div class="flex items-center gap-3">
+<button class="flex items-center justify-center w-10 h-10 rounded-full bg-surface-container-high text-on-surface-variant hover:bg-surface-container-highest transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined">add</span>
+</button>
+<div class="flex-1 relative">
+<input class="w-full bg-surface-gray border-none rounded-xl px-4 py-3 text-body-sm focus:ring-2 focus:ring-primary-fixed-dim transition-all placeholder:text-outline" placeholder="Type a message..." type="text"/>
+</div>
+<button class="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-on-primary shadow-md hover:opacity-90 active:scale-95 transition-all duration-150">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">send</span>
+</button>
+</div>
+</footer>
+<!-- Invisible Bottom Nav (Suppressed for focused chat view but mentioned in hierarchy) -->
+<!-- Navigation shell is suppressed here to prioritize the chat focused journey as per UI guidelines -->
+<script>
+        // Simple micro-interaction for the input field
+        const input = document.querySelector('input');
+        const sendBtn = document.querySelector('button .material-symbols-outlined[style*="send"]');
+
+        input.addEventListener('focus', () => {
+            input.parentElement.classList.add('scale-[1.01]');
+        });
+
+        input.addEventListener('blur', () => {
+            input.parentElement.classList.remove('scale-[1.01]');
+        });
+
+        // Auto-scroll to bottom of chat
+        const chatContainer = document.querySelector('main');
+        window.onload = () => {
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        };
+    </script>
+</body></html>

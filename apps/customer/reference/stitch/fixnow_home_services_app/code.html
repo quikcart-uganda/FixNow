@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>FixNow | Premium Home Services</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed": "#d2e4ff",
+                    "on-tertiary-fixed": "#321200",
+                    "surface-tint": "#5746d5",
+                    "error-container": "#ffdad6",
+                    "surface-container-highest": "#e3e2e1",
+                    "on-surface-variant": "#474554",
+                    "trust-blue": "#b2d5ff",
+                    "primary-container": "#5645d4",
+                    "surface-variant": "#e3e2e1",
+                    "canvas-white": "#ffffff",
+                    "secondary-fixed-dim": "#b0c8eb",
+                    "on-primary-container": "#d7d2ff",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary": "#743300",
+                    "surface-dim": "#dadad9",
+                    "on-secondary-container": "#49617f",
+                    "on-primary-fixed": "#150066",
+                    "secondary-container": "#c4dcff",
+                    "background": "#faf9f8",
+                    "surface-container": "#efeeed",
+                    "on-tertiary-fixed-variant": "#763300",
+                    "surface-gray": "#f6f5f4",
+                    "primary-fixed": "#e4dfff",
+                    "outline": "#787586",
+                    "on-primary": "#ffffff",
+                    "inverse-primary": "#c6bfff",
+                    "border-subtle": "#e5e7eb",
+                    "surface": "#faf9f8",
+                    "tertiary-fixed-dim": "#ffb68d",
+                    "on-secondary-fixed": "#001c37",
+                    "inverse-on-surface": "#f1f0ef",
+                    "outline-variant": "#c8c4d7",
+                    "on-error": "#ffffff",
+                    "inverse-surface": "#2f3130",
+                    "tertiary-container": "#994500",
+                    "on-error-container": "#93000a",
+                    "primary-fixed-dim": "#c6bfff",
+                    "on-primary-fixed-variant": "#3e28bd",
+                    "on-background": "#1a1c1c",
+                    "on-tertiary-container": "#ffcdb1",
+                    "on-tertiary": "#ffffff",
+                    "ink-black": "#000000",
+                    "error": "#ba1a1a",
+                    "surface-bright": "#faf9f8",
+                    "secondary": "#49607e",
+                    "primary": "#3d27bc",
+                    "on-secondary-fixed-variant": "#314865",
+                    "surface-container-low": "#f4f3f2",
+                    "on-secondary": "#ffffff",
+                    "on-surface": "#1a1c1c",
+                    "success-green": "#1aae39"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-safe": "20px",
+                    "section-gap": "64px",
+                    "gutter-mobile": "16px",
+                    "gutter-desktop": "24px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Inter"],
+                    "mono-label": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "title-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-caps": ["Inter"]
+            },
+            "fontSize": {
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                    "mono-label": ["13px", {"lineHeight": "1.0", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "title-md": ["20px", {"lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .fill-icon { font-variation-settings: 'FILL' 1; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-lg">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-50 flex justify-between items-center px-gutter-mobile h-14 w-full bg-canvas-white border-b border-border-subtle">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary cursor-pointer" data-icon="menu">menu</span>
+<h1 class="font-display-lg-mobile text-display-lg-mobile font-bold text-primary">FixNow</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="notifications">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-error rounded-full border border-canvas-white"></span>
+</div>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-border-subtle bg-surface-container">
+<img alt="Profile" class="w-full h-full object-cover" data-alt="A professional headshot of a young African man with a friendly and trustworthy expression. He is wearing a clean, modern white polo shirt. The background is a soft-focus corporate office environment with warm morning sunlight filtering through, maintaining a premium and minimalist aesthetic consistent with a high-end service platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLgl2DC2rPR-QzZi32usg7FLfpEbJsIftfRmDjqdzjpGFmGRXOdAgNWxg8KqkmI_uArXaxEu1EG0F-XcdJr2Lh67ndvkDfDq0-6ogijhVOjgOwALBe02ekUYu4-EXLqWpxlhm7dkSUK-cHD6-MK_WIcUtzonfbJg1Dpiyy9m6zjRBzVn5rbudtRrpLbu_e_1nT0RqllpYZD14UjGkvJQGsnP3qP3FAwB77Y56uNSvDvRvTWxFVdsKTuY3ymHz725Rc0uKmSC9LhgM"/>
+</div>
+</div>
+</header>
+<main class="pb-24">
+<!-- Greeting & Search -->
+<section class="px-gutter-mobile pt-6 pb-4">
+<div class="mb-6">
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-1">Welcome back,</p>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Hello, Suna Ivan</h2>
+</div>
+<div class="relative group">
+<div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline" data-icon="search">search</span>
+</div>
+<input class="w-full h-14 pl-12 pr-4 bg-surface-container-low border border-border-subtle rounded-full focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all text-body-lg placeholder:text-outline shadow-sm group-hover:shadow-md" placeholder="What needs fixing today?" type="text"/>
+</div>
+</section>
+<!-- Featured: AI Matching -->
+<section class="px-gutter-mobile mb-8">
+<div class="flex justify-between items-end mb-4">
+<h3 class="font-title-md text-title-md text-on-surface">Best Match For You</h3>
+<span class="font-label-caps text-label-caps text-primary cursor-pointer">AI RECOMMENDATION</span>
+</div>
+<div class="relative overflow-hidden bg-primary-container rounded-xl p-5 text-on-primary shadow-lg group">
+<div class="absolute top-0 right-0 p-4 opacity-10 scale-150 rotate-12">
+<span class="material-symbols-outlined text-[80px]" data-icon="verified_user">verified_user</span>
+</div>
+<div class="relative z-10 flex gap-4 items-center">
+<div class="w-20 h-20 rounded-lg overflow-hidden border-2 border-on-primary-container/30">
+<img alt="Technician" class="w-full h-full object-cover" data-alt="A focused African electrician working on a modern electrical panel with precision tools. He wears a professional navy blue jumpsuit with a subtle FixNow logo. The lighting is crisp and technical, highlighting the high-quality copper wiring. The overall mood conveys reliability, technical expertise, and professional service in a clean residential setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCenj7GUU5GA0SOAo2V1xkJBy_Zy0JEsvM3Nu9xHXm7FIVogwML6VgUG0NKx8Xz2Ed4qY1HQ2P306FUa54syUxvsuVuCq49SC0yIG9UXH3D7ZtOVvT0f1zjvAt7BcRTBPtE1dVmz4sC9Gq1b68ByXTWusPq-O93ATJZusStJCM1hg_xiy-yzs4J5yfBkhvvr_AqjNUhWA6-VWmJU9l2xk8C38e2UPk2olRtijgUGw2QrT93WyIJcgmSgtaP3xpLnbepXNVH9J9bwwA"/>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-1 mb-1">
+<h4 class="font-title-md text-title-md font-bold">Moses Okello</h4>
+<span class="material-symbols-outlined text-[16px] text-success-green bg-canvas-white rounded-full p-0.5" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-primary-container mb-2">Master Electrician • 4.98 Rating</p>
+<div class="flex gap-2">
+<span class="bg-white/20 px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider">98% Reliability</span>
+<span class="bg-white/20 px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider">Fastest Response</span>
+</div>
+</div>
+</div>
+<button class="mt-5 w-full bg-canvas-white text-primary font-bold py-3 rounded-lg active:scale-95 transition-transform">
+                    Book Moses Now
+                </button>
+</div>
+</section>
+<!-- Categories: Horizontal Scroll -->
+<section class="mb-8">
+<div class="px-gutter-mobile flex justify-between items-center mb-4">
+<h3 class="font-title-md text-title-md text-on-surface">Categories</h3>
+<span class="material-symbols-outlined text-outline cursor-pointer" data-icon="arrow_forward">arrow_forward</span>
+</div>
+<div class="flex overflow-x-auto no-scrollbar gap-4 px-gutter-mobile">
+<!-- Category Item -->
+<div class="flex flex-col items-center min-w-[72px] gap-2 group">
+<div class="w-16 h-16 rounded-2xl bg-surface-container-high flex items-center justify-center group-active:bg-secondary-container transition-colors">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="bolt">bolt</span>
+</div>
+<span class="font-label-caps text-[11px] text-on-surface-variant font-bold uppercase">Electricians</span>
+</div>
+<div class="flex flex-col items-center min-w-[72px] gap-2 group">
+<div class="w-16 h-16 rounded-2xl bg-surface-container-high flex items-center justify-center group-active:bg-secondary-container transition-colors">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="plumbing">plumbing</span>
+</div>
+<span class="font-label-caps text-[11px] text-on-surface-variant font-bold uppercase">Plumbers</span>
+</div>
+<div class="flex flex-col items-center min-w-[72px] gap-2 group">
+<div class="w-16 h-16 rounded-2xl bg-surface-container-high flex items-center justify-center group-active:bg-secondary-container transition-colors">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="imagesearch_roller">imagesearch_roller</span>
+</div>
+<span class="font-label-caps text-[11px] text-on-surface-variant font-bold uppercase">Painters</span>
+</div>
+<div class="flex flex-col items-center min-w-[72px] gap-2 group">
+<div class="w-16 h-16 rounded-2xl bg-surface-container-high flex items-center justify-center group-active:bg-secondary-container transition-colors">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="handyman">handyman</span>
+</div>
+<span class="font-label-caps text-[11px] text-on-surface-variant font-bold uppercase">General Fix</span>
+</div>
+<div class="flex flex-col items-center min-w-[72px] gap-2 group">
+<div class="w-16 h-16 rounded-2xl bg-surface-container-high flex items-center justify-center group-active:bg-secondary-container transition-colors">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="ac_unit">ac_unit</span>
+</div>
+<span class="font-label-caps text-[11px] text-on-surface-variant font-bold uppercase">AC Service</span>
+</div>
+</div>
+</section>
+<!-- Top Rated in Kampala -->
+<section class="mb-8">
+<div class="px-gutter-mobile flex justify-between items-center mb-4">
+<h3 class="font-title-md text-title-md text-on-surface">Top Rated in Kampala</h3>
+<span class="font-label-caps text-label-caps text-primary cursor-pointer">SEE ALL</span>
+</div>
+<div class="flex overflow-x-auto no-scrollbar gap-4 px-gutter-mobile pb-4">
+<!-- Technician Card -->
+<div class="min-w-[240px] bg-canvas-white rounded-xl border border-border-subtle shadow-sm overflow-hidden flex flex-col">
+<div class="h-32 relative">
+<img alt="Technician Portfolio" class="w-full h-full object-cover" data-alt="A macro shot of a meticulously organized tool chest with chrome-plated wrenches and professional plumbing equipment. The tools are clean and polished, reflecting a soft studio light. This image represents the high standards of a master plumber in Uganda, emphasizing precision, preparedness, and professional integrity in a minimalist corporate style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTFOSOwJdziRMEbscCyQuFwfUKMcN3zMAwykrAwT6aCcTDtHHPkH-A8bSLKMzSUb39rVUlqU4G4xdPBdt_84BnAW4NoOcZ-ZGaA3tdyZtAbLnpCeQrRR1fiFAowiGa4Nx2YvdyOi6D39-T0WmyVRdX-0DRTQ5uA0MwPlrQaLtL_qJAunCPG2VDYGj9xsv5NUJnJqP04-qTGGB6huSjmAhaIWAb-IlLRBBw74yioPJycIhaoKTpyyf8bW0uEMUUsdIsJ0xEKFtwWfA"/>
+<div class="absolute top-3 left-3 bg-trust-blue/90 text-on-secondary-fixed px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider backdrop-blur-sm">Elite Member</div>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start mb-2">
+<div>
+<h4 class="font-body-lg font-bold text-on-surface">Brian Katumba</h4>
+<p class="text-body-sm text-on-surface-variant">Senior Plumber</p>
+</div>
+<div class="flex items-center gap-0.5">
+<span class="material-symbols-outlined text-primary text-[16px] fill-icon" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-body-sm">4.9</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-2 border-t border-border-subtle pt-3 mt-1">
+<div class="text-center">
+<p class="text-[10px] text-outline font-bold uppercase">Trust Score</p>
+<p class="text-body-sm font-bold text-primary">99/100</p>
+</div>
+<div class="text-center border-l border-border-subtle">
+<p class="text-[10px] text-outline font-bold uppercase">Punctuality</p>
+<p class="text-body-sm font-bold text-success-green">100%</p>
+</div>
+</div>
+</div>
+</div>
+<div class="min-w-[240px] bg-canvas-white rounded-xl border border-border-subtle shadow-sm overflow-hidden flex flex-col">
+<div class="h-32 relative">
+<img alt="Technician Portfolio" class="w-full h-full object-cover" data-alt="A clean, minimalist close-up of a high-efficiency air conditioning unit's filter being carefully inspected by a technician's hand wearing a white glove. The setting is a bright, airy modern living room in Kampala. The image highlights maintenance, cleanliness, and technical precision, using a palette of whites, light grays, and the signature FixNow indigo accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGGHk6MMUewcN2g1PYfkFW3HviW8EkdCeURTVHc7U5wLKtIdgJSg4z0nLRDyb9gTnN_l7I9DBqffHfbFoGjlUT4VD1cH6CXomJtjPBhPBIwSk5lPSnw-_xg2O3oK3g_vQpKM-_x3yMZdzj8eGOR1kvAOvjEvn53CwoKbTZK3d_czi2AI_6hE5SIkRpyyFOE34fpGjq4wXTCBRF4BUrEd9Vc_hHsm1rld1vumQckd2d5Wr-xKkfB6XwGQcDsd9GIRdHsszLWPFy6fE"/>
+<div class="absolute top-3 left-3 bg-trust-blue/90 text-on-secondary-fixed px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider backdrop-blur-sm">Elite Member</div>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start mb-2">
+<div>
+<h4 class="font-body-lg font-bold text-on-surface">Sarah Namubiru</h4>
+<p class="text-body-sm text-on-surface-variant">AC Specialist</p>
+</div>
+<div class="flex items-center gap-0.5">
+<span class="material-symbols-outlined text-primary text-[16px] fill-icon" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-body-sm">5.0</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-2 border-t border-border-subtle pt-3 mt-1">
+<div class="text-center">
+<p class="text-[10px] text-outline font-bold uppercase">Trust Score</p>
+<p class="text-body-sm font-bold text-primary">97/100</p>
+</div>
+<div class="text-center border-l border-border-subtle">
+<p class="text-[10px] text-outline font-bold uppercase">Punctuality</p>
+<p class="text-body-sm font-bold text-success-green">98%</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Neighbors Recommend -->
+<section class="px-gutter-mobile mb-8">
+<div class="flex justify-between items-center mb-4">
+<h3 class="font-title-md text-title-md text-on-surface">Community Recommendations</h3>
+</div>
+<div class="space-y-3">
+<div class="bg-surface-gray rounded-xl p-4 flex gap-4 items-center">
+<div class="flex -space-x-3">
+<img alt="User" class="w-8 h-8 rounded-full border-2 border-canvas-white object-cover" data-alt="A detailed image of three diverse, happy neighbors in a modern residential garden in Kampala, sharing a friendly conversation. They are dressed in casual, high-quality attire. The scene is bathed in the golden hour light of late afternoon, creating a warm, community-focused atmosphere that emphasizes trust, safety, and local connection." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHrKo3q9d4GYq1P2lJ-NMIbznZuKds_S_zBrFzZ_kP2HLP3H9p6HYvj3nkFXk8mpbA9s4D4pfg4ifq-7pDaJsN-T0NYjyGO-NdfRDZ6F-JRrVNaMxv7USb_TTE5Dr__JrDqWXy3-jepB1Ya0VbKiY5YvUe6Ngij9xxZz8OkAK2Aphdb14jXWWnmdVnbOLGIpbkNt4SDIx4zao2kkXF_OfC8OcWkeYk6Z5elL-x0StoX1JS1nVscD7bg7rKfygDwmuqdQ4dlt8i6b0"/>
+<img alt="User" class="w-8 h-8 rounded-full border-2 border-canvas-white object-cover" data-alt="A detailed image of three diverse, happy neighbors in a modern residential garden in Kampala, sharing a friendly conversation. They are dressed in casual, high-quality attire. The scene is bathed in the golden hour light of late afternoon, creating a warm, community-focused atmosphere that emphasizes trust, safety, and local connection." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYwETutjHQMzN47ZknGRPN7TUC3jkMfhMhXH6Ms6FzpEpZxyrgju08l-ZiRETfq24FHZrHoe8mdqYhVI2lIQwIYbKszw98pTK4jcw1puOW76LFj3F8htQM0IRDPHDTRkq6t0Tq8bAuBu3i9_QCx0C6o0TiHluC3eCemANKownZtxGhSY5x2pcO7BTy748u3svQV4l8FGaIARa3_1KxyFzqkV4XawTEXBYDb4FEnPmLrIPmauNZmRwXDziSRXAVdsABTRcqNrJsz0U"/>
+<div class="w-8 h-8 rounded-full border-2 border-canvas-white bg-primary flex items-center justify-center text-[10px] text-on-primary font-bold">+12</div>
+</div>
+<div>
+<p class="text-body-sm text-on-surface">14 neighbors in <span class="font-bold">Nakasero</span> recommended <span class="font-bold text-primary">Moses Okello</span> recently.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- FixNow Guarantee Banner -->
+<section class="px-gutter-mobile mb-8">
+<div class="bg-surface-container-highest rounded-2xl overflow-hidden relative p-6 flex flex-col gap-2">
+<div class="absolute right-[-20px] bottom-[-20px] opacity-10">
+<span class="material-symbols-outlined text-[120px]" data-icon="shield">shield</span>
+</div>
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+<h3 class="font-title-md text-title-md text-on-surface font-extrabold uppercase tracking-tight">FixNow Guarantee</h3>
+</div>
+<p class="text-body-sm text-on-surface-variant pr-12">Every job booked through FixNow is protected by our $1,000 Service Bond. If it's not fixed right, we'll make it right.</p>
+<div class="mt-4">
+<a class="text-primary font-bold text-label-caps border-b-2 border-primary pb-0.5" href="#">LEARN MORE ABOUT TRUST &amp; SAFETY</a>
+</div>
+</div>
+</section>
+</main>
+<!-- FAB -->
+<button class="fixed right-6 bottom-24 w-14 h-14 bg-primary text-on-primary rounded-full shadow-lg flex items-center justify-center z-40 active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 pb-safe h-16 md:hidden bg-canvas-white border-t border-border-subtle shadow-sm">
+<a class="flex flex-col items-center justify-center text-primary font-semibold transition-transform duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined fill-icon" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-caps text-label-caps mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant transition-transform duration-150 active:scale-95 hover:bg-surface-container-low" href="#">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="font-label-caps text-label-caps mt-1">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant transition-transform duration-150 active:scale-95 hover:bg-surface-container-low" href="#">
+<span class="material-symbols-outlined" data-icon="build">build</span>
+<span class="font-label-caps text-label-caps mt-1">Jobs</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant transition-transform duration-150 active:scale-95 hover:bg-surface-container-low" href="#">
+<span class="material-symbols-outlined" data-icon="chat">chat</span>
+<span class="font-label-caps text-label-caps mt-1">Messages</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant transition-transform duration-150 active:scale-95 hover:bg-surface-container-low" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-caps text-label-caps mt-1">Profile</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interaction for search input
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('scale-[1.02]');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('scale-[1.02]');
+        });
+
+        // Atmosphere Effect: Subtle parallax on the AI Match card
+        const featuredCard = document.querySelector('.bg-primary-container');
+        document.addEventListener('mousemove', (e) => {
+            if (window.innerWidth > 768) {
+                const xAxis = (window.innerWidth / 2 - e.pageX) / 50;
+                const yAxis = (window.innerHeight / 2 - e.pageY) / 50;
+                featuredCard.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+            }
+        });
+    </script>
+</body></html>

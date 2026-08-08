@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Moses Okello - Reviews | FixNow</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed-dim": "#b0c8eb",
+                    "surface-gray": "#f6f5f4",
+                    "surface-container-lowest": "#ffffff",
+                    "on-error": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "outline-variant": "#c8c4d7",
+                    "surface-container-low": "#f4f3f2",
+                    "on-primary": "#ffffff",
+                    "background": "#faf9f8",
+                    "canvas-white": "#ffffff",
+                    "on-tertiary-fixed": "#321200",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed": "#ffdbc9",
+                    "primary-fixed-dim": "#c6bfff",
+                    "on-secondary-container": "#49617f",
+                    "primary-fixed": "#e4dfff",
+                    "surface-container-highest": "#e3e2e1",
+                    "tertiary": "#743300",
+                    "error": "#ba1a1a",
+                    "secondary-container": "#c4dcff",
+                    "on-surface-variant": "#474554",
+                    "on-surface": "#1a1c1c",
+                    "success-green": "#1aae39",
+                    "secondary-fixed": "#d2e4ff",
+                    "surface-container": "#efeeed",
+                    "tertiary-fixed-dim": "#ffb68d",
+                    "trust-blue": "#b2d5ff",
+                    "on-tertiary": "#ffffff",
+                    "on-background": "#1a1c1c",
+                    "tertiary-container": "#994500",
+                    "surface-container-high": "#e9e8e7",
+                    "on-error-container": "#93000a",
+                    "surface-bright": "#faf9f8",
+                    "surface": "#faf9f8",
+                    "on-tertiary-container": "#ffcdb1",
+                    "ink-black": "#000000",
+                    "on-primary-fixed-variant": "#3e28bd",
+                    "inverse-surface": "#2f3130",
+                    "on-secondary-fixed-variant": "#314865",
+                    "surface-tint": "#5746d5",
+                    "on-primary-container": "#d7d2ff",
+                    "primary-container": "#5645d4",
+                    "primary": "#3d27bc",
+                    "inverse-on-surface": "#f1f0ef",
+                    "surface-variant": "#e3e2e1",
+                    "surface-dim": "#dadad9",
+                    "on-secondary-fixed": "#001c37",
+                    "secondary": "#49607e",
+                    "outline": "#787586",
+                    "on-tertiary-fixed-variant": "#763300",
+                    "on-primary-fixed": "#150066",
+                    "inverse-primary": "#c6bfff",
+                    "border-subtle": "#e5e7eb"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter-mobile": "16px",
+                    "margin-safe": "20px",
+                    "gutter-desktop": "24px",
+                    "section-gap": "64px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "title-md": ["Inter"],
+                    "mono-label": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "headline-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "title-md": ["20px", {"lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "mono-label": ["13px", {"lineHeight": "1.0", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                    "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #faf9f8;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .glass-header {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(8px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-lg text-on-surface select-none">
+<!-- Top Navigation Bar -->
+<header class="glass-header sticky top-0 z-50 w-full flex justify-between items-center px-gutter-mobile h-14 border-b border-border-subtle">
+<button aria-label="Go back" class="w-10 h-10 flex items-center justify-start text-on-surface">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="font-title-md text-title-md text-on-surface">Reviews</h1>
+<button aria-label="Share" class="w-10 h-10 flex items-center justify-end text-on-surface">
+<span class="material-symbols-outlined">share</span>
+</button>
+</header>
+<main class="max-w-md mx-auto pb-40">
+<!-- Profile Summary Header -->
+<section class="bg-canvas-white px-gutter-mobile pt-6 pb-8 border-b border-border-subtle">
+<div class="flex items-center gap-4">
+<div class="relative">
+<img alt="Moses Okello" class="w-20 h-20 rounded-full object-cover border-2 border-primary-fixed-dim" data-alt="A professional close-up portrait of a mid-adult African man with a warm, confident expression. He is wearing a clean navy blue technician's uniform. The background is a bright, soft-focus modern workshop environment with natural sunlight. The image is crisp, professional, and follows a minimalist Corporate Modern aesthetic with high technical precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUinZ2n3CtYBqerFmZw25-j_EUjGuKeLo6uO1h5FV8Msv0_LmVLqY98iVb6Ymh4SvJwh7qZmMjx1RGLAfBP9L-_crhhtRNSDqrqftDhVpY-sQ9Mag5p0bSP-EDfLdEOOqP0l-8qDp9pos2JC-1F6wSeYsNgIgfwGfq8nUgWAJoG-fhKNfxdehM7rzgAXQTlF-NEvtAmt0kyN1ci7vUDdMWoovFz19o8hbtisvHAOFG5WCc8MBqXik5VG0nVJ1U6LngOeyvOTZl1Wc"/>
+<div class="absolute -bottom-1 -right-1 bg-success-green text-white rounded-full p-1 border-2 border-white flex items-center justify-center">
+<span class="material-symbols-outlined !text-[14px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<div class="flex flex-col">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Moses Okello</h2>
+<div class="flex items-center gap-2 mt-1">
+<span class="bg-trust-blue/20 text-on-secondary-fixed-variant px-3 py-1 rounded-full font-label-caps text-[10px] tracking-widest uppercase flex items-center gap-1">
+<span class="material-symbols-outlined !text-[12px]" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+                            Elite Technician
+                        </span>
+<span class="font-body-sm text-on-surface-variant">Master Electrician</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Rating Summary Section -->
+<section class="bg-canvas-white px-gutter-mobile py-8 space-y-8">
+<div class="flex items-start gap-8">
+<div class="flex flex-col items-center justify-center">
+<div class="text-[56px] font-bold leading-none text-on-surface">4.9</div>
+<div class="flex mt-2 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<div class="font-body-sm text-on-surface-variant mt-2">142 reviews</div>
+</div>
+<div class="flex-1 space-y-2">
+<!-- Star Breakdown Bars -->
+<div class="flex items-center gap-3">
+<span class="font-mono-label text-on-surface-variant w-4">5</span>
+<div class="flex-1 h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[92%] rounded-full"></div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="font-mono-label text-on-surface-variant w-4">4</span>
+<div class="flex-1 h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[6%] rounded-full"></div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="font-mono-label text-on-surface-variant w-4">3</span>
+<div class="flex-1 h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[2%] rounded-full"></div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="font-mono-label text-on-surface-variant w-4">2</span>
+<div class="flex-1 h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[0%] rounded-full"></div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="font-mono-label text-on-surface-variant w-4">1</span>
+<div class="flex-1 h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[0%] rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Specific Rating Categories -->
+<div class="grid grid-cols-2 gap-4">
+<div class="p-4 rounded-xl border border-border-subtle bg-surface-container-lowest">
+<div class="font-label-caps text-on-surface-variant mb-1">QUALITY</div>
+<div class="flex items-center justify-between">
+<span class="font-title-md text-on-surface">4.9</span>
+<span class="material-symbols-outlined text-primary !text-[18px]" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</div>
+</div>
+<div class="p-4 rounded-xl border border-border-subtle bg-surface-container-lowest">
+<div class="font-label-caps text-on-surface-variant mb-1">PROFESSIONALISM</div>
+<div class="flex items-center justify-between">
+<span class="font-title-md text-on-surface">5.0</span>
+<span class="material-symbols-outlined text-primary !text-[18px]" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+</div>
+</div>
+<div class="p-4 rounded-xl border border-border-subtle bg-surface-container-lowest">
+<div class="font-label-caps text-on-surface-variant mb-1">COMMUNICATION</div>
+<div class="flex items-center justify-between">
+<span class="font-title-md text-on-surface">4.8</span>
+<span class="material-symbols-outlined text-primary !text-[18px]" style="font-variation-settings: 'FILL' 1;">chat_bubble</span>
+</div>
+</div>
+<div class="p-4 rounded-xl border border-border-subtle bg-surface-container-lowest">
+<div class="font-label-caps text-on-surface-variant mb-1">TIMELINESS</div>
+<div class="flex items-center justify-between">
+<span class="font-title-md text-on-surface">4.9</span>
+<span class="material-symbols-outlined text-primary !text-[18px]" style="font-variation-settings: 'FILL' 1;">schedule</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Filters -->
+<div class="px-gutter-mobile py-4 flex gap-2 overflow-x-auto hide-scrollbar">
+<button class="whitespace-nowrap px-4 py-2 bg-primary text-white rounded-full font-body-sm">All Reviews</button>
+<button class="whitespace-nowrap px-4 py-2 bg-white border border-border-subtle text-on-surface rounded-full font-body-sm">With Photos</button>
+<button class="whitespace-nowrap px-4 py-2 bg-white border border-border-subtle text-on-surface rounded-full font-body-sm">Top Rated</button>
+<button class="whitespace-nowrap px-4 py-2 bg-white border border-border-subtle text-on-surface rounded-full font-body-sm">Recent</button>
+</div>
+<!-- Review List -->
+<section class="px-gutter-mobile space-y-4 pt-2">
+<!-- Card 1 -->
+<div class="p-5 bg-canvas-white rounded-xl border border-border-subtle shadow-[0px_4px_20px_rgba(0,0,0,0.04)] transition-transform active:scale-[0.98]">
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-fixed-dim flex items-center justify-center font-bold text-primary">SN</div>
+<div>
+<div class="font-title-md !text-[16px] text-on-surface">Sarah N.</div>
+<div class="flex items-center gap-1 mt-0.5">
+<span class="bg-success-green/10 text-success-green px-1.5 py-0.5 rounded font-label-caps text-[10px] flex items-center gap-0.5">
+<span class="material-symbols-outlined !text-[12px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                    Verified Booking
+                                </span>
+</div>
+</div>
+</div>
+<span class="font-body-sm text-on-surface-variant">2 days ago</span>
+</div>
+<div class="flex mb-3 text-primary">
+<span class="material-symbols-outlined !text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined !text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined !text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined !text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined !text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-lg text-on-surface-variant leading-relaxed">
+                    Moses was incredibly professional and arrived exactly on time. He fixed our complex wiring issue in half the time we expected. Highly recommend for any electrical work!
+                </p>
+<div class="mt-4 flex gap-2">
+<div class="w-16 h-16 rounded-lg bg-surface-container overflow-hidden">
+<img alt="Repair photo" class="w-full h-full object-cover" data-alt="A clean, professionally installed electrical breaker panel in a modern residential home. The wiring is neatly organized and secured, showing high technical precision and order. Soft daylight from a nearby window illuminates the metallic surface, creating a bright and trustworthy atmosphere in the minimalist utility space." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWijx-l38bdGzkR1r6tZT9cms4v9At6lXHMdC68vqpvFFeQ68OtkViZOvOG-ZTBbcDFmPM3_icI8fA1r7EvKpCX2icsWMu2GiWjqLBkwaQurzf06n5OBcdm6wAgq2uPNBhr4Nerq9wKYoQu-QZvoTD0-RdwQmQfb_qXmPwumldNjIdtBSTCEG3U90K1MfOLGHkCYrrlvfE5gj2BjYHU6VQqHjgVKSQ2dKNERg2ZeNVV9yWI7jT1x2LsfBWRNzEeQ78OsvflMZHT1Q"/>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="p-5 bg-canvas-white rounded-xl border border-border-subtle shadow-[0px_4px_20px_rgba(0,0,0,0.04)]">
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center font-bold text-secondary">DK</div>
+<div>
+<div class="font-title-md !text-[16px] text-on-surface">David K.</div>
+<div class="flex items-center gap-1 mt-0.5">
+<span class="bg-success-green/10 text-success-green px-1.5 py-0.5 rounded font-label-caps text-[10px] flex items-center gap-0.5">
+<span class="material-symbols-outlined !text-[12px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                    Verified Booking
+                                </span>
+</div>
+</div>
+</div>
+<span class="font-body-sm text-on-surface-variant">1 week ago</span>
+</div>
+<div class="flex mb-3 text-primary">
+<span class="material-symbols-outlined !text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined !text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined !text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined !text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined !text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-lg text-on-surface-variant leading-relaxed">
+                    Very reliable and explained everything before starting. It's hard to find good electricians in Kampala but Moses is definitely one of the best. Five stars.
+                </p>
+</div>
+<!-- Card 3 -->
+<div class="p-5 bg-canvas-white rounded-xl border border-border-subtle shadow-[0px_4px_20px_rgba(0,0,0,0.04)]">
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed flex items-center justify-center font-bold text-tertiary">JA</div>
+<div>
+<div class="font-title-md !text-[16px] text-on-surface">Jennifer A.</div>
+<div class="flex items-center gap-1 mt-0.5">
+<span class="bg-success-green/10 text-success-green px-1.5 py-0.5 rounded font-label-caps text-[10px] flex items-center gap-0.5">
+<span class="material-symbols-outlined !text-[12px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                    Verified Booking
+                                </span>
+</div>
+</div>
+</div>
+<span class="font-body-sm text-on-surface-variant">2 weeks ago</span>
+</div>
+<div class="flex mb-3 text-primary">
+<span class="material-symbols-outlined !text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined !text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined !text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined !text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined !text-[18px]" style="font-variation-settings: 'FILL' 0;">star</span>
+</div>
+<p class="font-body-lg text-on-surface-variant leading-relaxed">
+                    Great service. He helped install outdoor security lighting and did a very clean job. Pricing was fair and transparent.
+                </p>
+</div>
+</section>
+</main>
+<!-- Sticky Bottom Action Bar -->
+<div class="fixed bottom-16 left-0 w-full z-40 px-gutter-mobile pb-4 pt-4 bg-canvas-white/80 backdrop-blur-md border-t border-border-subtle md:hidden">
+<div class="flex items-center justify-between gap-4 max-w-md mx-auto">
+<div class="flex flex-col">
+<span class="font-label-caps text-on-surface-variant">STARTING AT</span>
+<span class="font-title-md text-on-surface">UGX 150k</span>
+</div>
+<button class="flex-1 h-12 bg-primary text-white rounded-full font-title-md !text-[16px] flex items-center justify-center shadow-lg active:scale-95 transition-transform">
+                Book Moses Now
+            </button>
+</div>
+</div>
+<!-- Bottom Navigation Bar (Shared Component) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 pb-safe h-16 bg-canvas-white border-t border-border-subtle shadow-sm md:hidden">
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-colors w-1/5 py-1">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-caps text-[10px]">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-colors w-1/5 py-1">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-caps text-[10px]">Search</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-colors w-1/5 py-1">
+<span class="material-symbols-outlined">build</span>
+<span class="font-label-caps text-[10px]">Jobs</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-colors w-1/5 py-1">
+<span class="material-symbols-outlined">chat</span>
+<span class="font-label-caps text-[10px]">Messages</span>
+</div>
+<div class="flex flex-col items-center justify-center text-primary font-semibold w-1/5 py-1">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-caps text-[10px]">Profile</span>
+</div>
+</nav>
+<script>
+        // Micro-interactions
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('touchstart', () => {
+                button.classList.add('opacity-80');
+            });
+            button.addEventListener('touchend', () => {
+                button.classList.remove('opacity-80');
+            });
+        });
+    </script>
+</body></html>

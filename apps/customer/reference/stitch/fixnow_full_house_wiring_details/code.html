@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Service Details - Full House Wiring</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "canvas-white": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "surface-tint": "#5746d5",
+                    "secondary": "#49607e",
+                    "on-tertiary-fixed-variant": "#763300",
+                    "on-background": "#1a1c1c",
+                    "outline": "#787586",
+                    "on-surface-variant": "#474554",
+                    "on-primary-container": "#d7d2ff",
+                    "outline-variant": "#c8c4d7",
+                    "on-secondary": "#ffffff",
+                    "secondary-container": "#c4dcff",
+                    "on-primary": "#ffffff",
+                    "surface-dim": "#dadad9",
+                    "secondary-fixed": "#d2e4ff",
+                    "inverse-on-surface": "#f1f0ef",
+                    "tertiary": "#743300",
+                    "error": "#ba1a1a",
+                    "primary-fixed": "#e4dfff",
+                    "on-tertiary-container": "#ffcdb1",
+                    "on-surface": "#1a1c1c",
+                    "on-secondary-container": "#49617f",
+                    "on-tertiary": "#ffffff",
+                    "secondary-fixed-dim": "#b0c8eb",
+                    "surface": "#faf9f8",
+                    "on-tertiary-fixed": "#321200",
+                    "on-secondary-fixed": "#001c37",
+                    "primary-container": "#5645d4",
+                    "surface-gray": "#f6f5f4",
+                    "surface-container-highest": "#e3e2e1",
+                    "primary": "#3d27bc",
+                    "on-secondary-fixed-variant": "#314865",
+                    "surface-container-low": "#f4f3f2",
+                    "on-error": "#ffffff",
+                    "surface-bright": "#faf9f8",
+                    "tertiary-fixed-dim": "#ffb68d",
+                    "on-primary-fixed": "#150066",
+                    "surface-container": "#efeeed",
+                    "border-subtle": "#e5e7eb",
+                    "primary-fixed-dim": "#c6bfff",
+                    "tertiary-fixed": "#ffdbc9",
+                    "background": "#faf9f8",
+                    "inverse-surface": "#2f3130",
+                    "inverse-primary": "#c6bfff",
+                    "surface-container-high": "#e9e8e7",
+                    "success-green": "#1aae39",
+                    "ink-black": "#000000",
+                    "surface-variant": "#e3e2e1",
+                    "trust-blue": "#b2d5ff",
+                    "tertiary-container": "#994500",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-fixed-variant": "#3e28bd",
+                    "on-error-container": "#93000a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "section-gap": "64px",
+                    "margin-safe": "20px",
+                    "base": "4px",
+                    "gutter-mobile": "16px",
+                    "gutter-desktop": "24px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "title-md": ["Inter"],
+                    "mono-label": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                    "title-md": ["20px", {"lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "mono-label": ["13px", {"lineHeight": "1.0", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-canvas-white text-on-surface font-body-lg">
+<!-- Navigation Bar -->
+<header class="sticky top-0 z-50 flex justify-between items-center px-gutter-mobile md:px-gutter-desktop h-14 md:h-16 w-full max-w-7xl mx-auto bg-canvas-white border-b border-border-subtle">
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-on-surface">arrow_back</span>
+</button>
+<h1 class="font-title-md text-title-md text-on-surface">Service Details</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container">
+<span class="material-symbols-outlined">share</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+</div>
+</header>
+<main class="max-w-4xl mx-auto px-gutter-mobile md:px-gutter-desktop pb-32">
+<!-- Hero Section -->
+<section class="mt-8">
+<div class="relative w-full aspect-video md:aspect-[21/9] rounded-xl overflow-hidden mb-6 shadow-sm border border-border-subtle">
+<img class="w-full h-full object-cover" data-alt="A professional electrician meticulously installing complex copper wiring inside a modern residential wall junction box. The scene is brightly lit with clean, high-key natural light, emphasizing technical precision and safety. The surrounding walls are a crisp, minimalist white, and the tools used are organized and modern. The overall aesthetic is clean, corporate, and highly professional, reflecting the FixNow brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNudXudNz0Nv0SU4Xc02DibnLTMrRXxck-SVdvjIhia1FynJr9y43xvFuxwknP25MiP7qPjQdjoihYd42mDfbkCmIumsDYB2FzUh0b39bkH43bzqvzR8q_eRTRmCdx-dLYXmPTp9TJmqwIdaEGrISys7gM0sp7hd2duoq8UxEgZ_9JV3lgNjlE8euRGu_Or3XkH37z0fGEvud09cCzUd8Q-joIanttWHENQNG0SF7nxx4IMLYgy7Q1In_M7lkwiJJWeZZ-jY4dNBg"/>
+</div>
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-ink-black mb-2">Full House Wiring</h2>
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-2 px-3 py-1 bg-trust-blue/20 rounded-full">
+<span class="material-symbols-outlined text-[18px] text-primary" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-mono-label text-mono-label text-primary uppercase tracking-wider">ELITE Technician</span>
+</div>
+<span class="text-on-surface-variant">•</span>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px] text-yellow-500" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-title-md text-body-lg font-bold">4.9</span>
+<span class="text-on-surface-variant text-body-sm">(124 reviews)</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3 p-3 border border-border-subtle rounded-xl bg-surface-bright">
+<img class="w-12 h-12 rounded-full object-cover border-2 border-primary" data-alt="A professional portrait of Moses Okello, a technician in his late 30s with a confident and friendly expression. He wears a clean, branded navy blue polo shirt. The background is a soft-focus workshop setting with warm, professional lighting. The image conveys reliability, experience, and approachable expertise in the electrical field, aligned with the premium FixNow service standards." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaLLdPndFVNfBCN4a8Sl-aCAZAnb71bUiOqsv3Xue7a8CIZgNWYaYLDU6IR5obs7Ne7zg_yaM8oP0SG_BDpT-kPJwlTuqIvfUqfVW1RXiaTXBqVgNJtgvFvJfupQKAZXbF454rc6DajwEHKFqKTJmsOfQk9fgzEVYQcY2qNZbn4XQbIEOXvpP1ssmagu_otuAKTN0MAwHFthRzdbEIJEZP6-rEKbnEq_Qn5B6oXIjU0BRe11cJq-vc0bRqWCrIm6MPCVEQRQeXPKw"/>
+<div>
+<p class="font-title-md text-body-lg text-ink-black leading-tight">Moses Okello</p>
+<p class="text-on-surface-variant text-body-sm">Certified Master Electrician</p>
+</div>
+</div>
+</div>
+</section>
+<hr class="my-8 border-border-subtle"/>
+<!-- Description Section -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="md:col-span-2">
+<h3 class="font-title-md text-title-md text-ink-black mb-4">Service Description</h3>
+<p class="text-on-surface-variant text-body-lg leading-relaxed">
+                    A comprehensive electrical solution for new residential properties or major renovations. This service covers the complete lifecycle of electrical installation, ensuring your home meets all safety standards and power requirements. Moses specializes in high-durability wiring that prevents common faults and ensures longevity for all household appliances.
+                </p>
+<!-- Sub-tasks -->
+<div class="mt-8">
+<h4 class="font-label-caps text-label-caps text-on-surface-variant mb-4">WHAT'S INCLUDED</h4>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="flex items-start gap-3 p-4 bg-surface-container-low rounded-xl border border-border-subtle/50">
+<span class="material-symbols-outlined text-primary">architecture</span>
+<div>
+<p class="font-title-md text-body-lg text-ink-black">Circuit Design</p>
+<p class="text-on-surface-variant text-body-sm">Optimal load distribution for every room.</p>
+</div>
+</div>
+<div class="flex items-start gap-3 p-4 bg-surface-container-low rounded-xl border border-border-subtle/50">
+<span class="material-symbols-outlined text-primary">settings_input_component</span>
+<div>
+<p class="font-title-md text-body-lg text-ink-black">Conduit Pipe Laying</p>
+<p class="text-on-surface-variant text-body-sm">Precise wall chasing and pipe installation.</p>
+</div>
+</div>
+<div class="flex items-start gap-3 p-4 bg-surface-container-low rounded-xl border border-border-subtle/50">
+<span class="material-symbols-outlined text-primary">cable</span>
+<div>
+<p class="font-title-md text-body-lg text-ink-black">Wire Pulling</p>
+<p class="text-on-surface-variant text-body-sm">Installation of high-grade copper wiring.</p>
+</div>
+</div>
+<div class="flex items-start gap-3 p-4 bg-surface-container-low rounded-xl border border-border-subtle/50">
+<span class="material-symbols-outlined text-primary">power</span>
+<div>
+<p class="font-title-md text-body-lg text-ink-black">Final Fittings</p>
+<p class="text-on-surface-variant text-body-sm">Sockets, switches, and DB installation.</p>
+</div>
+</div>
+<div class="flex items-start gap-3 p-4 bg-surface-container-low rounded-xl border border-border-subtle/50 col-span-full">
+<span class="material-symbols-outlined text-primary">fact_check</span>
+<div>
+<p class="font-title-md text-body-lg text-ink-black">Final Testing</p>
+<p class="text-on-surface-variant text-body-sm">Voltage checks, earthing verification, and safety sign-off.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Cost Breakdown Card -->
+<aside class="h-fit sticky top-24">
+<div class="p-6 bg-surface-bright border border-border-subtle rounded-xl shadow-sm">
+<h3 class="font-title-md text-title-md text-ink-black mb-2">Estimated Labor</h3>
+<div class="flex items-baseline gap-1 mb-4">
+<span class="text-primary font-bold text-headline-lg-mobile">UGX 150k</span>
+<span class="text-on-surface-variant text-body-sm"> - 400k</span>
+</div>
+<div class="space-y-3 mb-6">
+<div class="flex justify-between text-body-sm">
+<span class="text-on-surface-variant">Base Rate (1-2 Rooms)</span>
+<span class="text-on-surface font-semibold">150,000</span>
+</div>
+<div class="flex justify-between text-body-sm">
+<span class="text-on-surface-variant">Complex/Large (3+ Rooms)</span>
+<span class="text-on-surface font-semibold">400,000+</span>
+</div>
+</div>
+<div class="p-4 bg-surface-container-highest/30 rounded-lg border-l-4 border-primary mb-6">
+<p class="text-body-sm italic text-on-secondary-fixed-variant">
+                            "Labor costs only. Materials like conduits, wires, and DB are provided by the client or invoiced separately."
+                        </p>
+</div>
+<button class="w-full py-4 bg-primary text-on-primary rounded-lg font-bold hover:bg-primary-container transition-all active:scale-95 flex items-center justify-center gap-2">
+                        Book This Service
+                        <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</aside>
+</section>
+<section class="mt-section-gap">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-ink-black">Proof of Work</h3>
+<div class="flex gap-2">
+<button class="w-8 h-8 rounded-full border border-border-subtle flex items-center justify-center hover:bg-surface-container" id="prev-gallery">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded-full border border-border-subtle flex items-center justify-center hover:bg-surface-container" id="next-gallery">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="flex gap-4 overflow-x-auto hide-scrollbar snap-x scroll-smooth pb-4" id="gallery-container">
+<div class="flex-none w-72 md:w-80 aspect-square rounded-xl overflow-hidden snap-start shadow-sm border border-border-subtle">
+<img class="w-full h-full object-cover" data-alt="A close-up photograph of a perfectly organized residential distribution board with neatly labeled breakers and clean wire routing. The lighting is bright and clear, showcasing professional cable management skills. The overall aesthetic is one of extreme technical precision and order, reflecting the reliable service of Moses Okello in a modern home environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgb4wyWmPbuxqdbJPmOOOuHvKEOgA1hKY16TTwnifrOkAkhIRIsfAVZcIWRQR8X1SMaMkVtNa8h_gaEigLAg80EoeBGfelm-JF6JTg_ehsbhjuh7arX-2oS7FvobSidITLKDvQ-82McswvFnAOT3WpC_gMyTjPcB23ibV3wYkPW6FU8P9Z54xG6j0n7JhEhh4s3kyapetEKH78fbUcszTW6df72Cek03lLSGjkybwF0_RLMgmq7jueYZV-WPFmbYQbRNBM7HeSP8Y"/>
+</div>
+<div class="flex-none w-72 md:w-80 aspect-square rounded-xl overflow-hidden snap-start shadow-sm border border-border-subtle">
+<img class="w-full h-full object-cover" data-alt="A technician installing high-quality chrome electrical sockets on a freshly painted white wall. The focus is on the steady hands and the clean finish of the installation. The lighting is soft and natural, emphasizing the 'human connection' and the finishing touches of a premium home renovation project in Kampala." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9Ax83g0EvCg7nseXkWdK4slSyg223bohiJ_zLUYW7_OrJMc1MPb5H2L9kLLJyAI71S_YjPA_W5AkQOTPf5GRIkXUzE669PGoxY882XDG9yKMkQehplL9pRwNFdkj-TsSZK7n_ajT4RX3OL2G2ZLOpPlWCG8Tk89G0W-huKdlmvt6r_zZkxWq9a6q34LmQN3UkxL37OOktIBDdcIMYgaUDknE25Xpt29YqxZAjehV-iQAyNou_J7vkHRsuVzopAHh6AkQBe3Xqwd0"/>
+</div>
+<div class="flex-none w-72 md:w-80 aspect-square rounded-xl overflow-hidden snap-start shadow-sm border border-border-subtle">
+<img class="w-full h-full object-cover" data-alt="Wide shot of a modern living room ceiling with integrated LED strip lighting and recessed spotlights, showcasing a completed full house wiring project. The lighting creates a warm, luxurious atmosphere. The design is minimalist and sophisticated, demonstrating the high-end capabilities of Moses's electrical installations." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBy7hrXzYnPpvGWjw-ccuRGGVu170jwk49Zpqi7BtpbZ2sGbZOeyEsGlfvk3wElS64uru7CK87CJuB65whrPSfqTdD6UfYW-1nGsx1A4CluzdHPRS2pPEwCUEKiN_FsKFn9KZT4P6Jf14M3jVopCEFKZHmX2CzLvx6A5FHOinefzcuKTYZL9KZOiUNUv69dRiBB8hQXKsLEjyo80o9rzNXaYlGszb7XON6VU4akvA3x5lqOsZbdjkIY9_DRGq8n9PMiEdpsmrInAa0"/>
+</div>
+<div class="flex-none w-72 md:w-80 aspect-square rounded-xl overflow-hidden snap-start shadow-sm border border-border-subtle">
+<img class="w-full h-full object-cover" data-alt="Close-up of a digital multimeter being used to test a newly installed circuit. The screen shows a stable voltage reading, indicating safety and reliability. The scene is shot in a bright, modern interior with technical precision as the core visual theme. This represents the 'Final Testing' phase of the service." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVIGF8tqSaB_KF1CSfoW-cVtvokz1xvTXYanogaGihqTX_VnJEL2VpR2SRxF0s9oNgzd20VgElWzoypwwAwCjwXGEE0sKt5kXGhFrNrPPl6ZLKhQHFdlU1dUWx5fU9VnCGeOFWW9CV1BdFe5lzQcHm89obm-fOjAICBbwiLWLuQl8Ivxpxtrtg5B8VeQcQ8AOuL8I8ymJS32qgIjTB5Oc1BqVLSttsOdrOUVxFeJy83S7gbHDN4RlIWgUADxXx51tiRYL-xdu63Xg"/>
+</div>
+</div>
+</section>
+<!-- Reputation & Trust -->
+<section class="mt-section-gap p-8 bg-primary/5 rounded-2xl border border-primary/10">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+<div>
+<span class="material-symbols-outlined text-primary text-4xl mb-2">verified_user</span>
+<p class="font-title-md text-title-md text-ink-black">Insured Work</p>
+<p class="text-on-surface-variant text-body-sm">Every installation is covered up to UGX 5M</p>
+</div>
+<div>
+<span class="material-symbols-outlined text-primary text-4xl mb-2">timer</span>
+<p class="font-title-md text-title-md text-ink-black">On-Time Guarantee</p>
+<p class="text-on-surface-variant text-body-sm">Moses arrives within 30 mins of scheduled time</p>
+</div>
+<div>
+<span class="material-symbols-outlined text-primary text-4xl mb-2">workspace_premium</span>
+<p class="font-title-md text-title-md text-ink-black">1-Year Warranty</p>
+<p class="text-on-surface-variant text-body-sm">On all labor and wiring connections</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Mobile Action Bar (Visible only on mobile) -->
+<div class="fixed bottom-0 left-0 w-full z-50 bg-canvas-white border-t border-border-subtle p-4 md:hidden">
+<div class="flex items-center justify-between gap-4 max-w-7xl mx-auto">
+<div>
+<p class="text-on-surface-variant text-label-caps uppercase tracking-tight">STARTING FROM</p>
+<p class="text-primary font-bold text-title-md">UGX 150,000</p>
+</div>
+<button class="flex-1 py-4 bg-primary text-on-primary rounded-lg font-bold shadow-lg hover:bg-primary-container transition-all active:scale-95">
+                Book Service
+            </button>
+</div>
+</div>
+<script>
+        const container = document.getElementById('gallery-container');
+        const prevBtn = document.getElementById('prev-gallery');
+        const nextBtn = document.getElementById('next-gallery');
+
+        nextBtn.addEventListener('click', () => {
+            container.scrollBy({ left: 300, behavior: 'smooth' });
+        });
+
+        prevBtn.addEventListener('click', () => {
+            container.scrollBy({ left: -300, behavior: 'smooth' });
+        });
+
+        // Simple parallax hover effect for cards
+        document.querySelectorAll('.rounded-xl').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                
+                card.style.transition = 'transform 0.1s ease-out';
+                // card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+            });
+        });
+    </script>
+</body></html>

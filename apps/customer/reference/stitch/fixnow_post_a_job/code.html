@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FixNow | Post a Job</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .step-transition {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(229, 231, 235, 0.5);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#d2e4ff",
+                        "on-tertiary-fixed": "#321200",
+                        "surface-tint": "#5746d5",
+                        "error-container": "#ffdad6",
+                        "surface-container-highest": "#e3e2e1",
+                        "on-surface-variant": "#474554",
+                        "trust-blue": "#b2d5ff",
+                        "primary-container": "#5645d4",
+                        "surface-variant": "#e3e2e1",
+                        "canvas-white": "#ffffff",
+                        "secondary-fixed-dim": "#b0c8eb",
+                        "on-primary-container": "#d7d2ff",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary": "#743300",
+                        "surface-dim": "#dadad9",
+                        "on-secondary-container": "#49617f",
+                        "on-primary-fixed": "#150066",
+                        "secondary-container": "#c4dcff",
+                        "background": "#faf9f8",
+                        "surface-container": "#efeeed",
+                        "on-tertiary-fixed-variant": "#763300",
+                        "surface-gray": "#f6f5f4",
+                        "primary-fixed": "#e4dfff",
+                        "surface-container-high": "#e9e8e7",
+                        "tertiary-fixed": "#ffdbc9",
+                        "outline": "#787586",
+                        "on-primary": "#ffffff",
+                        "inverse-primary": "#c6bfff",
+                        "border-subtle": "#e5e7eb",
+                        "surface": "#faf9f8",
+                        "tertiary-fixed-dim": "#ffb68d",
+                        "on-secondary-fixed": "#001c37",
+                        "inverse-on-surface": "#f1f0ef",
+                        "outline-variant": "#c8c4d7",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#2f3130",
+                        "tertiary-container": "#994500",
+                        "on-error-container": "#93000a",
+                        "primary-fixed-dim": "#c6bfff",
+                        "on-primary-fixed-variant": "#3e28bd",
+                        "on-background": "#1a1c1c",
+                        "on-tertiary-container": "#ffcdb1",
+                        "on-tertiary": "#ffffff",
+                        "ink-black": "#000000",
+                        "error": "#ba1a1a",
+                        "surface-bright": "#faf9f8",
+                        "secondary": "#49607e",
+                        "primary": "#3d27bc",
+                        "on-secondary-fixed-variant": "#314865",
+                        "surface-container-low": "#f4f3f2",
+                        "on-secondary": "#ffffff",
+                        "on-surface": "#1a1c1c",
+                        "success-green": "#1aae39"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-safe": "20px",
+                        "section-gap": "64px",
+                        "gutter-mobile": "16px",
+                        "gutter-desktop": "24px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "title-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-caps": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen font-body-lg">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-50 flex justify-between items-center px-gutter-mobile md:px-gutter-desktop h-14 md:h-16 w-full max-w-7xl mx-auto bg-canvas-white border-b border-border-subtle">
+<div class="flex items-center gap-4">
+<button class="p-2 -ml-2 rounded-full hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-primary">close</span>
+</button>
+<h1 class="font-bold text-display-lg-mobile md:text-title-md text-primary">FixNow</h1>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold text-xs">1</div>
+<span class="text-primary font-bold">Details</span>
+</div>
+<div class="w-8 h-[2px] bg-outline-variant"></div>
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full border-2 border-outline-variant flex items-center justify-center text-outline font-bold text-xs">2</div>
+<span class="text-outline">Schedule</span>
+</div>
+<div class="w-8 h-[2px] bg-outline-variant"></div>
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full border-2 border-outline-variant flex items-center justify-center text-outline font-bold text-xs">3</div>
+<span class="text-outline">Confirm</span>
+</div>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-container-high overflow-hidden border border-border-subtle">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A clean, professional studio headshot of a person with a friendly expression. They are positioned against a minimalist, light gray background that emphasizes the modern, clean aesthetic of the corporate marketplace UI. The lighting is soft and even, highlighting professional approachability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcNUbYt_tdst_9sDYcTbUmdBRZaXih124i-EODdtCsNRiAMPmOQmVUp0wYkjEF0gISZB7JaNntuuWEdU4vEnms0NmyQ2T5dzkhLoR4pwzDwoYSRRp_Ie7fu8UJjOx3LjC9oqVu-jIk5wsKCT51TPuih88qqwpkegW0eebVa0jaYL0c1OlFplnXUtwN0Pt1s9QsMUIiJfm8nAM8X4_HdA1eoqmJRKN5TnuUyee76R1bAg6uLB2tyMBGAoA4VITxh1OzSfq7Gst-ths"/>
+</div>
+</header>
+<main class="max-w-3xl mx-auto px-gutter-mobile md:px-gutter-desktop pt-8 pb-32">
+<!-- Progress Bar Mobile -->
+<div class="md:hidden w-full bg-surface-container h-1 rounded-full mb-8 overflow-hidden">
+<div class="bg-primary h-full w-1/3 transition-all duration-500" id="mobile-progress"></div>
+</div>
+<div id="step-container">
+<!-- STEP 1: Category Selection -->
+<section class="step-transition" id="step-1">
+<div class="mb-8">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg mb-2">What do you need help with?</h2>
+<p class="text-on-surface-variant">Select a category to help us find the right expert for you.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-12">
+<!-- Category Card -->
+<button class="category-card flex flex-col items-center justify-center p-6 bg-canvas-white border border-border-subtle rounded-xl hover:border-primary hover:shadow-lg transition-all group active:scale-95" onclick="selectCategory('plumbing')">
+<div class="w-16 h-16 rounded-full bg-surface-container-low flex items-center justify-center mb-4 group-hover:bg-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-3xl text-on-surface-variant group-hover:text-primary">plumbing</span>
+</div>
+<span class="font-semibold text-on-surface">Plumbing</span>
+</button>
+<button class="category-card flex flex-col items-center justify-center p-6 bg-canvas-white border border-border-subtle rounded-xl hover:border-primary hover:shadow-lg transition-all group active:scale-95" onclick="selectCategory('electrical')">
+<div class="w-16 h-16 rounded-full bg-surface-container-low flex items-center justify-center mb-4 group-hover:bg-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-3xl text-on-surface-variant group-hover:text-primary">electrical_services</span>
+</div>
+<span class="font-semibold text-on-surface">Electrical</span>
+</button>
+<button class="category-card flex flex-col items-center justify-center p-6 bg-canvas-white border border-border-subtle rounded-xl hover:border-primary hover:shadow-lg transition-all group active:scale-95" onclick="selectCategory('cleaning')">
+<div class="w-16 h-16 rounded-full bg-surface-container-low flex items-center justify-center mb-4 group-hover:bg-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-3xl text-on-surface-variant group-hover:text-primary">cleaning_services</span>
+</div>
+<span class="font-semibold text-on-surface">Cleaning</span>
+</button>
+<button class="category-card flex flex-col items-center justify-center p-6 bg-canvas-white border border-border-subtle rounded-xl hover:border-primary hover:shadow-lg transition-all group active:scale-95" onclick="selectCategory('carpentry')">
+<div class="w-16 h-16 rounded-full bg-surface-container-low flex items-center justify-center mb-4 group-hover:bg-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-3xl text-on-surface-variant group-hover:text-primary">carpenter</span>
+</div>
+<span class="font-semibold text-on-surface">Carpentry</span>
+</button>
+<button class="category-card flex flex-col items-center justify-center p-6 bg-canvas-white border border-border-subtle rounded-xl hover:border-primary hover:shadow-lg transition-all group active:scale-95" onclick="selectCategory('ac')">
+<div class="w-16 h-16 rounded-full bg-surface-container-low flex items-center justify-center mb-4 group-hover:bg-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-3xl text-on-surface-variant group-hover:text-primary">ac_unit</span>
+</div>
+<span class="font-semibold text-on-surface">AC Repair</span>
+</button>
+<button class="category-card flex flex-col items-center justify-center p-6 bg-canvas-white border border-border-subtle rounded-xl hover:border-primary hover:shadow-lg transition-all group active:scale-95" onclick="selectCategory('more')">
+<div class="w-16 h-16 rounded-full bg-surface-container-low flex items-center justify-center mb-4 group-hover:bg-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-3xl text-on-surface-variant group-hover:text-primary">grid_view</span>
+</div>
+<span class="font-semibold text-on-surface">Others</span>
+</button>
+</div>
+<div class="flex justify-end">
+<button class="px-8 py-4 bg-primary text-on-primary rounded-lg font-bold text-body-lg hover:bg-primary-container transition-all active:scale-95 shadow-md" onclick="nextStep(2)">
+                        Continue
+                    </button>
+</div>
+</section>
+<!-- STEP 2: Description & Photos -->
+<section class="hidden step-transition opacity-0 translate-y-8" id="step-2">
+<div class="mb-8">
+<button class="flex items-center gap-1 text-primary font-semibold mb-4 hover:underline" onclick="nextStep(1)">
+<span class="material-symbols-outlined text-sm">arrow_back</span>
+                        Back to category
+                    </button>
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg mb-2">Describe the problem</h2>
+<p class="text-on-surface-variant">The more details you provide, the more accurate the quotes you'll receive.</p>
+</div>
+<div class="space-y-6">
+<!-- Text Area -->
+<div class="relative">
+<label class="block font-label-caps text-label-caps text-on-surface-variant mb-2">PROBLEM DESCRIPTION</label>
+<textarea class="w-full bg-surface-container-low border border-border-subtle rounded-xl p-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-outline" id="description" placeholder="Tell us exactly what's wrong (e.g., 'Kitchen sink is leaking from the main pipe')" rows="5"></textarea>
+<!-- AI Suggestions Pill -->
+<div class="mt-3 flex flex-wrap gap-2">
+<span class="text-body-sm text-on-surface-variant italic py-1">Try adding:</span>
+<button class="px-3 py-1 bg-secondary-fixed text-on-secondary-fixed text-xs font-medium rounded-full hover:bg-secondary-container transition-colors">When it started</button>
+<button class="px-3 py-1 bg-secondary-fixed text-on-secondary-fixed text-xs font-medium rounded-full hover:bg-secondary-container transition-colors">Appliance brand</button>
+<button class="px-3 py-1 bg-secondary-fixed text-on-secondary-fixed text-xs font-medium rounded-full hover:bg-secondary-container transition-colors">Specific location</button>
+</div>
+</div>
+<!-- Photo Upload -->
+<div>
+<label class="block font-label-caps text-label-caps text-on-surface-variant mb-2">PHOTOS (OPTIONAL)</label>
+<div class="border-2 border-dashed border-outline-variant rounded-xl p-8 flex flex-col items-center justify-center bg-surface-container-lowest hover:bg-surface-container-low transition-colors cursor-pointer group">
+<div class="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary">add_a_photo</span>
+</div>
+<p class="text-body-lg font-semibold text-on-surface">Click or drag photos here</p>
+<p class="text-body-sm text-on-surface-variant">Max 5 photos (JPEG, PNG)</p>
+</div>
+</div>
+<!-- Confidence Indicator -->
+<div class="flex items-start gap-4 p-4 bg-trust-blue/20 rounded-xl border border-trust-blue/30">
+<div class="mt-1">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+<div>
+<p class="text-body-lg font-bold text-primary">Confidence Indicator</p>
+<p class="text-body-sm text-on-surface-variant">Technicians usually respond in <span class="font-bold text-primary">10 minutes</span> for this category in your area.</p>
+</div>
+</div>
+</div>
+<div class="mt-12 flex justify-between items-center">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-canvas-white bg-surface-container-high overflow-hidden">
+<img alt="Tech 1" class="w-full h-full object-cover" data-alt="A portrait of a professional electrician wearing a clean navy blue uniform, smiling at the camera in a modern, well-lit indoor environment. The lighting is bright and professional, conveying reliability and high-quality service consistent with the indigo-themed brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKA9s20RAqpbgd4F6GkEBTXM1LAN2w7wWnYEAigXS4XCayxHmsXexngTE2Ajz-OqloxVKcid09Zgad5_-theX2C7-Pk1ynwECrORX17VJu3EwbsAo-gPE41xtGeo_-VHwVw9jChLv_3n_U0dVsL2TygGqX9wPgS6RNvahAr3_8vz2OJawhg9BmcTZiHbHQzKwmColx6Jq2xywyIBoCm8mQvm42rEk_4hUdLZSF1kEUdWHd8M123Js1eENcQMuAOC9YhgGEqBAibYo"/>
+</div>
+<div class="w-8 h-8 rounded-full border-2 border-canvas-white bg-surface-container-high overflow-hidden">
+<img alt="Tech 2" class="w-full h-full object-cover" data-alt="A portrait of a skilled carpenter in work attire, looking focused and professional. He is in a clean, organized workshop with soft daylight streaming in. The atmosphere is calm and trustworthy, highlighting the expert human element of the marketplace." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYqfEUr3AxwaikCvl2T6w8uWejKnYTFuREbF4ImUKaGuBJUdOwVu4D9t7SOE4XV5aoweD3oIBiH1wnsz2gH050KjNJXil1iI_Qq7Qc0QX42AR-c45U0oXn8-FAMDIicg4AHahfRtSv2fsXXlCNRf2dScS72e9B17xQK_wTDr0Ot-tL-rQYWY2h7gvkvSW5HmM_O831GtSKncNCAFSZyfocHmjSb3JSAYq0nYNzx3m1wfkgH7Vi3u5TFuvBD-fkBxyKbpIkfnxI9ks"/>
+</div>
+<div class="w-8 h-8 rounded-full border-2 border-canvas-white bg-surface-container-high overflow-hidden">
+<img alt="Tech 3" class="w-full h-full object-cover" data-alt="A professional plumber in a clean uniform holding a wrench, smiling confidently. The setting is a modern home with bright, clean interior lighting. The overall visual style is corporate modern, emphasizing professionalism and technical reliability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnrMVZE1u7qtX4luSJ_wg3TMREPLKxo65Mf9P3J-TnQVTVY9GDkRQQTCwaFyobYCCE0brnyM7_Xp6Pbh93qAmq-isd0Z_zLhqNCrFKpk-1sN0rJmN1veFwmsupy5wseaoCFmqCiNQXQAblYK3yD0JxUD7J4C4f_GbpfH0_9uQqT-BYIeZLxv16sy8dhBCx-N90ObMVnOJvlFu_bDJI2Z_n5JnIeOJg5TP9S5MzSTkRhq_hq6Ty3wVU30_nHI8XPdztc18plBkF9GM"/>
+</div>
+<div class="flex items-center justify-center w-8 h-8 rounded-full border-2 border-canvas-white bg-primary text-on-primary text-[10px] font-bold">
+                            +12
+                        </div>
+</div>
+<button class="px-8 py-4 bg-primary text-on-primary rounded-lg font-bold text-body-lg hover:bg-primary-container transition-all active:scale-95 shadow-md" onclick="nextStep(3)">
+                        Review &amp; Post
+                    </button>
+</div>
+</section>
+<!-- STEP 3: Success/Confirmation Animation Feel -->
+<section class="hidden step-transition opacity-0 translate-y-8 text-center py-12" id="step-3">
+<div class="w-24 h-24 bg-success-green/10 text-success-green rounded-full flex items-center justify-center mx-auto mb-6 scale-0 animate-[bounce-in_0.5s_ease-out_forwards]">
+<span class="material-symbols-outlined text-5xl" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg mb-4">Job Posted Successfully!</h2>
+<p class="text-on-surface-variant max-w-md mx-auto mb-10">We've notified 12 top-rated technicians in your area. You'll receive quotes in your message center shortly.</p>
+<div class="bg-canvas-white border border-border-subtle rounded-2xl p-6 text-left shadow-sm max-w-sm mx-auto mb-10">
+<div class="flex items-center justify-between mb-4">
+<span class="font-label-caps text-label-caps text-outline">JOB DETAILS</span>
+<span class="text-xs font-bold text-primary">ID: #FX-9283</span>
+</div>
+<div class="flex items-center gap-4 mb-3">
+<div class="w-10 h-10 rounded-lg bg-primary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">plumbing</span>
+</div>
+<div>
+<p class="font-bold">Plumbing Fix</p>
+<p class="text-body-sm text-on-surface-variant">Kampala, Central District</p>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-4 max-w-sm mx-auto">
+<button class="w-full py-4 bg-primary text-on-primary rounded-lg font-bold text-body-lg hover:bg-primary-container transition-all active:scale-95">
+                        Go to Messages
+                    </button>
+<button class="w-full py-4 bg-canvas-white text-on-surface border border-border-subtle rounded-lg font-bold text-body-lg hover:bg-surface-container transition-all active:scale-95">
+                        View My Jobs
+                    </button>
+</div>
+</section>
+</div>
+</main>
+<!-- Bottom Navigation Shell (Mobile only) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 pb-safe h-16 md:hidden bg-canvas-white border-t border-border-subtle">
+<button class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-semibold mt-1">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">search</span>
+<span class="text-[10px] font-semibold mt-1">Search</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary font-bold">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+<span class="text-[10px] mt-1">Post</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">chat</span>
+<span class="text-[10px] font-semibold mt-1">Messages</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-semibold mt-1">Profile</span>
+</button>
+</nav>
+<script>
+        function nextStep(step) {
+            const steps = [1, 2, 3];
+            const currentStep = document.querySelector('section:not(.hidden)');
+            
+            // Hide all steps
+            steps.forEach(s => {
+                const el = document.getElementById(`step-${s}`);
+                el.classList.add('hidden', 'opacity-0', 'translate-y-8');
+            });
+
+            // Show current step with animation
+            const target = document.getElementById(`step-${step}`);
+            target.classList.remove('hidden');
+            
+            // Tiny delay for DOM paint to trigger transition
+            setTimeout(() => {
+                target.classList.remove('opacity-0', 'translate-y-8');
+            }, 10);
+
+            // Update Progress Bar
+            const progress = document.getElementById('mobile-progress');
+            if (step === 1) progress.style.width = '33%';
+            if (step === 2) progress.style.width = '66%';
+            if (step === 3) progress.style.width = '100%';
+        }
+
+        function selectCategory(cat) {
+            // Visual feedback
+            const cards = document.querySelectorAll('.category-card');
+            cards.forEach(c => c.classList.remove('border-primary', 'bg-primary-fixed/30', 'ring-2', 'ring-primary'));
+            
+            event.currentTarget.classList.add('border-primary', 'bg-primary-fixed/30', 'ring-2', 'ring-primary');
+            
+            // Auto advance or wait for continue? Let's wait for the continue button for better UX on mobile
+            // But let's scroll the button into view if it was hidden
+        }
+
+        // Animation keyframes injected via JS for simplicity
+        const style = document.createElement('style');
+        style.innerHTML = `
+            @keyframes bounce-in {
+                0% { transform: scale(0); opacity: 0; }
+                70% { transform: scale(1.2); opacity: 1; }
+                100% { transform: scale(1); opacity: 1; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body></html>

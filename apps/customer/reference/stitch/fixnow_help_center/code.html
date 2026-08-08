@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FixNow Help Center</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed": "#ffdbc9",
+                      "on-surface-variant": "#474554",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary-container": "#994500",
+                      "inverse-surface": "#2f3130",
+                      "surface-container-highest": "#e3e2e1",
+                      "canvas-white": "#ffffff",
+                      "surface-container-high": "#e9e8e7",
+                      "on-secondary-container": "#49617f",
+                      "background": "#faf9f8",
+                      "on-secondary-fixed-variant": "#314865",
+                      "on-primary-fixed": "#150066",
+                      "surface-dim": "#dadad9",
+                      "on-error-container": "#93000a",
+                      "on-secondary": "#ffffff",
+                      "error": "#ba1a1a",
+                      "on-surface": "#1a1c1c",
+                      "on-error": "#ffffff",
+                      "surface-bright": "#faf9f8",
+                      "primary-container": "#5645d4",
+                      "border-subtle": "#e5e7eb",
+                      "primary-fixed": "#e4dfff",
+                      "surface": "#faf9f8",
+                      "secondary-container": "#c4dcff",
+                      "secondary-fixed": "#d2e4ff",
+                      "primary-fixed-dim": "#c6bfff",
+                      "ink-black": "#000000",
+                      "on-secondary-fixed": "#001c37",
+                      "on-tertiary-fixed-variant": "#763300",
+                      "on-tertiary-fixed": "#321200",
+                      "on-tertiary-container": "#ffcdb1",
+                      "surface-variant": "#e3e2e1",
+                      "surface-tint": "#5746d5",
+                      "inverse-primary": "#c6bfff",
+                      "trust-blue": "#b2d5ff",
+                      "outline-variant": "#c8c4d7",
+                      "secondary-fixed-dim": "#b0c8eb",
+                      "tertiary": "#743300",
+                      "outline": "#787586",
+                      "on-primary-container": "#d7d2ff",
+                      "error-container": "#ffdad6",
+                      "on-primary": "#ffffff",
+                      "inverse-on-surface": "#f1f0ef",
+                      "tertiary-fixed-dim": "#ffb68d",
+                      "on-background": "#1a1c1c",
+                      "on-tertiary": "#ffffff",
+                      "surface-gray": "#f6f5f4",
+                      "surface-container-low": "#f4f3f2",
+                      "primary": "#3d27bc",
+                      "on-primary-fixed-variant": "#3e28bd",
+                      "surface-container": "#efeeed",
+                      "success-green": "#1aae39",
+                      "secondary": "#49607e"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-safe": "20px",
+                      "gutter-mobile": "16px",
+                      "base": "4px",
+                      "gutter-desktop": "24px",
+                      "section-gap": "64px"
+              },
+              "fontFamily": {
+                      "title-md": ["Inter"],
+                      "body-sm": ["Inter"],
+                      "mono-label": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "label-caps": ["Inter"]
+              },
+              "fontSize": {
+                      "title-md": ["20px", {"lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "mono-label": ["13px", {"lineHeight": "1.0", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                      "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                      "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface dark:bg-surface-dim border-b border-subtle dark:border-outline-variant flex items-center px-gutter-mobile h-14 w-full">
+<button aria-label="Go back" class="mr-4 p-2 active:scale-95 transition-transform hover:bg-surface-container-high transition-colors rounded-full">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-title-md text-title-md font-semibold text-on-surface dark:text-inverse-on-surface">Help Center</h1>
+</header>
+<main class="flex-grow pt-14 pb-20">
+<!-- Hero Search Section -->
+<section class="bg-surface-container-low px-gutter-mobile py-10 md:py-16 text-center">
+<div class="max-w-3xl mx-auto">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-ink-black mb-6">How can we help you today?</h2>
+<div class="relative max-w-xl mx-auto">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+<input class="w-full h-14 pl-12 pr-4 bg-canvas-white border border-subtle rounded-xl shadow-sm focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all text-body-lg font-body-lg" placeholder="Search for FAQs, topics..." type="text"/>
+</div>
+</div>
+</section>
+<!-- Categories Content -->
+<div class="max-w-4xl mx-auto px-gutter-mobile py-8 space-y-12">
+<!-- Account Management -->
+<section aria-labelledby="cat-account">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-primary" data-icon="account_circle">account_circle</span>
+<h3 class="font-title-md text-title-md text-on-surface" id="cat-account">Account Management</h3>
+</div>
+<div class="bg-canvas-white rounded-xl border border-subtle overflow-hidden shadow-sm">
+<a class="flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors group" href="#">
+<span class="font-body-lg text-body-lg text-on-surface-variant">Login Issues</span>
+<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</a>
+<div class="h-[1px] bg-subtle mx-4"></div>
+<a class="flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors group" href="#">
+<span class="font-body-lg text-body-lg text-on-surface-variant">Updating Profile</span>
+<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</a>
+<div class="h-[1px] bg-subtle mx-4"></div>
+<a class="flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors group" href="#">
+<span class="font-body-lg text-body-lg text-on-surface-variant">Security &amp; Password</span>
+<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</a>
+</div>
+</section>
+<!-- Booking & Payments -->
+<section aria-labelledby="cat-booking">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-primary" data-icon="payments">payments</span>
+<h3 class="font-title-md text-title-md text-on-surface" id="cat-booking">Booking &amp; Payments</h3>
+</div>
+<div class="bg-canvas-white rounded-xl border border-subtle overflow-hidden shadow-sm">
+<a class="flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors group" href="#">
+<span class="font-body-lg text-body-lg text-on-surface-variant">How to Book</span>
+<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</a>
+<div class="h-[1px] bg-subtle mx-4"></div>
+<a class="flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors group" href="#">
+<span class="font-body-lg text-body-lg text-on-surface-variant">Payment Methods</span>
+<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</a>
+<div class="h-[1px] bg-subtle mx-4"></div>
+<a class="flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors group" href="#">
+<span class="font-body-lg text-body-lg text-on-surface-variant">Refund Policy</span>
+<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</a>
+</div>
+</section>
+<!-- Troubleshooting -->
+<section aria-labelledby="cat-trouble">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-primary" data-icon="build">build</span>
+<h3 class="font-title-md text-title-md text-on-surface" id="cat-trouble">Troubleshooting</h3>
+</div>
+<div class="bg-canvas-white rounded-xl border border-subtle overflow-hidden shadow-sm">
+<a class="flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors group" href="#">
+<span class="font-body-lg text-body-lg text-on-surface-variant">App Errors</span>
+<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</a>
+<div class="h-[1px] bg-subtle mx-4"></div>
+<a class="flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors group" href="#">
+<span class="font-body-lg text-body-lg text-on-surface-variant">Technician Issues</span>
+<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</a>
+<div class="h-[1px] bg-subtle mx-4"></div>
+<a class="flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors group" href="#">
+<span class="font-body-lg text-body-lg text-on-surface-variant">Reporting a Problem</span>
+<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</a>
+</div>
+</section>
+<!-- Contact Support Card -->
+<section class="mt-section-gap">
+<div class="bg-primary-container text-on-primary-container p-8 rounded-2xl relative overflow-hidden flex flex-col items-center text-center">
+<!-- Decorative background pattern -->
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+<svg class="h-full w-full" preserveaspectratio="none" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 100 Q 25 50 50 100 T 100 100" fill="transparent" stroke="white" stroke-width="2"></path>
+<path d="M0 80 Q 25 30 50 80 T 100 80" fill="transparent" stroke="white" stroke-width="2"></path>
+</svg>
+</div>
+<span class="material-symbols-outlined text-5xl mb-4" data-icon="support_agent">support_agent</span>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile font-bold mb-2">Still need help?</h2>
+<p class="font-body-lg text-body-lg mb-8 max-w-md opacity-90">Our friendly support team is available 24/7 to assist you with any questions or concerns.</p>
+<button class="bg-canvas-white text-primary px-8 py-3 rounded-lg font-title-md text-title-md hover:bg-surface-container-high transition-all active:scale-95 shadow-lg">
+                        Contact Us
+                    </button>
+</div>
+</section>
+</div>
+<!-- Footer -->
+<footer class="w-full mt-section-gap mb-16 bg-surface-container-low dark:bg-surface-container-lowest flex flex-col items-center py-8 px-gutter-mobile gap-4 text-center">
+<p class="font-title-md text-title-md font-bold text-ink-black">FixNow</p>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary underline transition-all" href="#">Contact Support</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary underline transition-all" href="#">Privacy Policy</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary underline transition-all" href="#">Terms of Service</a>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant opacity-70">© 2024 FixNow. Your trusted service partner.</p>
+</footer>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface dark:bg-surface-dim border-t border-subtle dark:border-outline-variant shadow-sm flex justify-around items-center h-16 px-gutter-mobile w-full">
+<a class="flex flex-col items-center justify-center text-on-secondary-container opacity-70 hover:opacity-100 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-caps text-label-caps">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-container opacity-70 hover:opacity-100 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="font-label-caps text-label-caps">Bookings</span>
+</a>
+<!-- ACTIVE TAB: Help Center corresponds to Help -->
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-3 py-1 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-label-caps text-label-caps">Help</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-container opacity-70 hover:opacity-100 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-caps text-label-caps">Profile</span>
+</a>
+</nav>
+<script>
+        // Simple search interactivity
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            const listItems = document.querySelectorAll('section a');
+            
+            listItems.forEach(item => {
+                const text = item.querySelector('span').textContent.toLowerCase();
+                if (text.includes(query)) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            // Hide section headers if no children are visible
+            const sections = document.querySelectorAll('section[aria-labelledby]');
+            sections.forEach(section => {
+                const visibleItems = Array.from(section.querySelectorAll('a')).filter(a => a.style.display !== 'none');
+                section.style.display = visibleItems.length > 0 ? 'block' : 'none';
+            });
+        });
+    </script>
+</body></html>

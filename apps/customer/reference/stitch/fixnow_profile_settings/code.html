@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Profile &amp; Settings - FixNow</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#efeeed",
+                        "surface-variant": "#e3e2e1",
+                        "tertiary-fixed-dim": "#ffb68d",
+                        "tertiary-container": "#994500",
+                        "surface-dim": "#dadad9",
+                        "surface": "#faf9f8",
+                        "success-green": "#1aae39",
+                        "surface-container-highest": "#e3e2e1",
+                        "secondary": "#49607e",
+                        "on-secondary-fixed": "#001c37",
+                        "on-tertiary-fixed": "#321200",
+                        "primary": "#3d27bc",
+                        "on-background": "#1a1c1c",
+                        "secondary-fixed": "#d2e4ff",
+                        "primary-container": "#5645d4",
+                        "inverse-primary": "#c6bfff",
+                        "on-secondary-fixed-variant": "#314865",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed": "#ffdbc9",
+                        "on-surface-variant": "#474554",
+                        "secondary-container": "#c4dcff",
+                        "surface-bright": "#faf9f8",
+                        "on-primary-fixed-variant": "#3e28bd",
+                        "primary-fixed-dim": "#c6bfff",
+                        "on-tertiary-container": "#ffcdb1",
+                        "secondary-fixed-dim": "#b0c8eb",
+                        "surface-container-low": "#f4f3f2",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-container": "#49617f",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "on-surface": "#1a1c1c",
+                        "ink-black": "#000000",
+                        "on-primary-container": "#d7d2ff",
+                        "border-subtle": "#e5e7eb",
+                        "surface-container-high": "#e9e8e7",
+                        "inverse-on-surface": "#f1f0ef",
+                        "outline-variant": "#c8c4d7",
+                        "on-primary-fixed": "#150066",
+                        "inverse-surface": "#2f3130",
+                        "trust-blue": "#b2d5ff",
+                        "surface-tint": "#5746d5",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#763300",
+                        "surface-container-lowest": "#ffffff",
+                        "error": "#ba1a1a",
+                        "tertiary": "#743300",
+                        "on-tertiary": "#ffffff",
+                        "surface-gray": "#f6f5f4",
+                        "primary-fixed": "#e4dfff",
+                        "canvas-white": "#ffffff",
+                        "background": "#faf9f8",
+                        "outline": "#787586"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter-mobile": "16px",
+                        "base": "4px",
+                        "gutter-desktop": "24px",
+                        "section-gap": "64px",
+                        "margin-safe": "20px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "mono-label": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "title-md": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "mono-label": ["13px", {"lineHeight": "1.0", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "title-md": ["20px", {"lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #5645d4;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #5645d4;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-lg min-h-screen pb-24">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-50 bg-canvas-white dark:bg-on-background border-b border-border-subtle dark:border-outline-variant shadow-sm flex items-center justify-between px-gutter-mobile h-14">
+<div class="flex items-center gap-2">
+<h1 class="font-title-md text-title-md text-on-surface">Profile</h1>
+</div>
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-low transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined text-error" data-icon="logout">logout</span>
+</button>
+</header>
+<main class="mt-14 max-w-xl mx-auto px-gutter-mobile py-8 space-y-10">
+<!-- Section 1: Profile Information -->
+<section class="space-y-8">
+<div class="flex flex-col items-center">
+<div class="relative group">
+<div class="w-28 h-28 rounded-full overflow-hidden border-2 border-primary-container shadow-md">
+<img alt="Suna Ivan Profile" class="w-full h-full object-cover" data-alt="A professional close-up portrait of a Ugandan man in his late 20s with a warm, confident expression. He is photographed in a minimalist studio setting with soft, high-key lighting that emphasizes a clean, corporate modern aesthetic. The background is a soft, muted grey that allows his professional attire to stand out. The image has a crisp, high-resolution finish consistent with a premium service platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFhYz3KBae1p4fIrfio1pC07RwdE4CJjmyI_ASFyGIyzuAmwOnAt-IXq51Mdhxnvz4UZU0UO3AMBjtcyQmwn04XEmqzJx_r6v9u3ElqULX_YexdQCvIp-dkm6PBfEh2iSwijGCvImVanic4bBqCjqMdB8Pd31xvoODgwPFCp8stPWk-3xvVSVGfO-BRqa66V-9p5yxISN8EVO-ozo-I28KjpQGVdf6PbXsU42lY016gCzaC9SZxso_o80B3I_5-8isxJSFsS1Gp3w"/>
+</div>
+<button class="absolute bottom-0 right-0 bg-primary text-white p-2 rounded-full shadow-lg border-2 border-white hover:bg-primary-container transition-transform active:scale-90">
+<span class="material-symbols-outlined text-sm" data-icon="edit">edit</span>
+</button>
+</div>
+</div>
+<div class="space-y-4">
+<div class="group">
+<label class="font-label-caps text-label-caps text-on-surface-variant block mb-2 px-1">Full Name</label>
+<div class="relative">
+<input class="w-full px-4 py-3 bg-white border border-border-subtle rounded-xl text-on-surface focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none transition-all shadow-sm" type="text" value="Suna Ivan"/>
+</div>
+</div>
+<div class="group">
+<label class="font-label-caps text-label-caps text-on-surface-variant block mb-2 px-1">Phone Number</label>
+<div class="relative">
+<input class="w-full px-4 py-3 bg-white border border-border-subtle rounded-xl text-on-surface focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none transition-all shadow-sm" type="tel" value="+256 701 234 567"/>
+</div>
+</div>
+<div class="group">
+<label class="font-label-caps text-label-caps text-on-surface-variant block mb-2 px-1">Email Address</label>
+<div class="relative">
+<input class="w-full px-4 py-3 bg-white border border-border-subtle rounded-xl text-on-surface focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none transition-all shadow-sm" type="email" value="suna.ivan@example.com"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Payment Methods -->
+<section class="space-y-4">
+<h2 class="font-title-md text-title-md text-on-surface">Payment Methods</h2>
+<div class="bg-white border border-border-subtle rounded-xl p-4 flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-4">
+<div class="w-12 h-8 bg-surface-container rounded-md flex items-center justify-center overflow-hidden border border-border-subtle">
+<img alt="Payment Logo" class="w-full h-full object-contain p-1" data-alt="A clean, minimalist representation of a mobile money payment logo on a white background. The style is flat and graphic, emphasizing corporate reliability and ease of transaction. Soft diffuse lighting ensures the branding is clear and professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfKU7u563GvU1fkCv5UFRZQ8t1TAQtu9l5-XKvxZEzAOOElNJai7ll5wXZdHOUGrCHpxEn6noD_nbkSdiHh0ZpblRXml1W-nNsRu5soYTT9e29F3UkY5iugxjGAizVgu0q_tMkGGlrqZCf29TFtTiZkQPaOSBSQ8IaqSTvlqV2N0R56kxyJ0UfnrKaFA6ed2KaI7razZfTSZL_0hcI-z-PTG8FZPK78gL-JsgpH6XcLo1UM0sLWCR3ZsSWdCtOA0xADd8lJ83UNcc"/>
+</div>
+<div>
+<p class="font-body-lg text-on-surface">MTN Mobile Money (.... 4321)</p>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-success-green text-[16px]" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-label-caps text-label-caps text-success-green">Verified</span>
+</div>
+</div>
+</div>
+<button class="text-primary font-label-caps text-label-caps hover:underline p-2">Manage</button>
+</div>
+</section>
+<!-- Section 3: Notification Settings -->
+<section class="space-y-4">
+<h2 class="font-title-md text-title-md text-on-surface">Notification Settings</h2>
+<div class="bg-white border border-border-subtle rounded-xl overflow-hidden shadow-sm divide-y divide-border-subtle">
+<div class="flex items-center justify-between p-4">
+<span class="font-body-lg text-on-surface">Job Status Updates</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="flex items-center justify-between p-4">
+<span class="font-body-lg text-on-surface">New Messages</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="flex items-center justify-between p-4">
+<span class="font-body-lg text-on-surface">Promotional Offers</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</section>
+</main>
+<!-- Fixed Footer Action -->
+<div class="fixed bottom-16 left-0 w-full p-gutter-mobile bg-gradient-to-t from-background to-transparent md:relative md:bottom-0 md:bg-none">
+<button class="w-full max-w-xl mx-auto block bg-primary-container text-white py-4 rounded-xl font-title-md text-title-md shadow-lg active:scale-95 transition-all hover:bg-primary duration-150">
+            Save Changes
+        </button>
+</div>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 bg-canvas-white dark:bg-on-background border-t border-border-subtle dark:border-outline-variant shadow-[0_-4px_20px_rgba(0,0,0,0.04)] flex justify-around items-center h-16 w-full px-2 pb-safe">
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim px-3 py-1 hover:opacity-80 transition-opacity active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-caps text-label-caps">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim px-3 py-1 hover:opacity-80 transition-opacity active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="font-label-caps text-label-caps">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim px-3 py-1 hover:opacity-80 transition-opacity active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="build">build</span>
+<span class="font-label-caps text-label-caps">Jobs</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim px-3 py-1 hover:opacity-80 transition-opacity active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+<span class="font-label-caps text-label-caps">Messages</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed bg-primary-fixed dark:bg-primary-container rounded-xl px-3 py-1 hover:opacity-80 transition-opacity active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-caps text-label-caps">Profile</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for input fields
+        const inputs = document.querySelectorAll('input[type="text"], input[type="tel"], input[type="email"]');
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.parentElement.classList.add('scale-[1.01]');
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.parentElement.classList.remove('scale-[1.01]');
+            });
+        });
+    </script>
+</body></html>

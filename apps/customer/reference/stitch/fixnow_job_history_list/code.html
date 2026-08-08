@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FixNow - Job History</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed-dim": "#b0c8eb",
+                    "on-tertiary": "#ffffff",
+                    "tertiary": "#743300",
+                    "ink-black": "#000000",
+                    "error": "#ba1a1a",
+                    "surface-dim": "#dadad9",
+                    "surface-container-highest": "#e3e2e1",
+                    "secondary-container": "#c4dcff",
+                    "on-surface-variant": "#474554",
+                    "inverse-primary": "#c6bfff",
+                    "trust-blue": "#b2d5ff",
+                    "on-tertiary-container": "#ffcdb1",
+                    "border-subtle": "#e5e7eb",
+                    "error-container": "#ffdad6",
+                    "on-surface": "#1a1c1c",
+                    "outline-variant": "#c8c4d7",
+                    "inverse-surface": "#2f3130",
+                    "surface-gray": "#f6f5f4",
+                    "tertiary-fixed": "#ffdbc9",
+                    "secondary": "#49607e",
+                    "surface-container-low": "#f4f3f2",
+                    "outline": "#787586",
+                    "surface-bright": "#faf9f8",
+                    "inverse-on-surface": "#f1f0ef",
+                    "primary": "#3d27bc",
+                    "on-tertiary-fixed": "#321200",
+                    "surface": "#faf9f8",
+                    "primary-fixed": "#e4dfff",
+                    "primary-fixed-dim": "#c6bfff",
+                    "on-secondary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "on-secondary-fixed-variant": "#314865",
+                    "on-primary-fixed-variant": "#3e28bd",
+                    "canvas-white": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#763300",
+                    "surface-container": "#efeeed",
+                    "success-green": "#1aae39",
+                    "secondary-fixed": "#d2e4ff",
+                    "on-background": "#1a1c1c",
+                    "on-primary-container": "#d7d2ff",
+                    "background": "#faf9f8",
+                    "surface-variant": "#e3e2e1",
+                    "primary-container": "#5645d4",
+                    "on-error": "#ffffff",
+                    "tertiary-fixed-dim": "#ffb68d",
+                    "tertiary-container": "#994500",
+                    "surface-container-high": "#e9e8e7",
+                    "on-secondary-container": "#49617f",
+                    "on-secondary-fixed": "#001c37",
+                    "on-primary-fixed": "#150066",
+                    "surface-tint": "#5746d5",
+                    "surface-container-lowest": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-safe": "20px",
+                    "base": "4px",
+                    "section-gap": "64px",
+                    "gutter-desktop": "24px",
+                    "gutter-mobile": "16px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "title-md": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "mono-label": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "title-md": ["20px", {"lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "mono-label": ["13px", {"lineHeight": "1.0", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .job-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .job-card:active {
+            transform: scale(0.98);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-lg">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-canvas-white shadow-sm border-b border-border-subtle flex items-center justify-between px-gutter-mobile h-14 w-full">
+<div class="flex items-center gap-4">
+<button class="active:scale-95 duration-150 hover:bg-surface-container-low rounded-full p-2 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">menu</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary">FixNow</h1>
+</div>
+<div class="flex items-center">
+<div class="w-8 h-8 rounded-full overflow-hidden border border-border-subtle active:scale-95 duration-150">
+<img alt="Profile" class="w-full h-full object-cover" data-alt="A clean, professional headshot of a person with a friendly expression, set against a soft, neutral studio background. The lighting is high-key and modern, reflecting a premium service environment. The person appears trustworthy and approachable, fitting the FixNow brand's emphasis on human connection and professional reliability in a corporate modern style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0v4H9d7MWKOipvm_n9OEZ0D3u7oKG1-cOtbkThxaxZ5tcRHqAuAm99hi8y1iOS6Q2iROlyHkRWiNNgo4iYD3tspj-EJY388I0VTdx65s_QteuIjno4gvSb8r3nxxui7jn8HwsUXG2ZoonzOb4LAdLqqn4WJK8l3-Tm0YpHsd1paVfxmN5H2fAN4KhfCliMR_CTnhfFbmM1NeNjVdIJE02FtlQe_xiHuLPgBuGlXfMyDazFCW_ITMyuqetrNmvUzpDWb4oFjTzdK4"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-14 pb-20 min-h-screen">
+<!-- Page Headline -->
+<section class="px-gutter-mobile pt-8 pb-4">
+<h2 class="font-headline-lg text-headline-lg text-on-background">Jobs</h2>
+<p class="font-body-sm text-on-surface-variant mt-1">Manage and track your service history.</p>
+</section>
+<!-- Status Filters -->
+<section class="sticky top-14 bg-background/95 backdrop-blur-md z-40 py-3 border-b border-border-subtle/50">
+<div class="flex gap-2 overflow-x-auto hide-scrollbar px-gutter-mobile">
+<button class="status-chip active-chip px-5 py-2 rounded-full font-label-caps text-label-caps transition-all whitespace-nowrap bg-primary text-on-primary" onclick="filterJobs('All')">
+                    All
+                </button>
+<button class="status-chip px-5 py-2 rounded-full font-label-caps text-label-caps transition-all whitespace-nowrap bg-surface-container text-on-surface-variant hover:bg-surface-container-high" onclick="filterJobs('Completed')">
+                    Completed
+                </button>
+<button class="status-chip px-5 py-2 rounded-full font-label-caps text-label-caps transition-all whitespace-nowrap bg-surface-container text-on-surface-variant hover:bg-surface-container-high" onclick="filterJobs('Cancelled')">
+                    Cancelled
+                </button>
+<button class="status-chip px-5 py-2 rounded-full font-label-caps text-label-caps transition-all whitespace-nowrap bg-surface-container text-on-surface-variant hover:bg-surface-container-high" onclick="filterJobs('Refunded')">
+                    Refunded
+                </button>
+</div>
+</section>
+<!-- Job Cards List -->
+<section class="px-gutter-mobile py-6 flex flex-col gap-4" id="job-list">
+<!-- Job Card 1 -->
+<div class="job-card bg-canvas-white border border-border-subtle rounded-xl shadow-[0px_4px_20px_rgba(0,0,0,0.04)] overflow-hidden" data-status="Completed">
+<div class="p-4">
+<div class="flex justify-between items-start mb-3">
+<div>
+<h3 class="font-title-md text-title-md text-on-surface">Full House Wiring</h3>
+<p class="font-body-sm text-on-surface-variant">Nov 12, 2023 • 09:00 AM</p>
+</div>
+<span class="px-3 py-1 rounded-full font-label-caps text-[10px] tracking-wider bg-success-green/10 text-success-green border border-success-green/20">
+                            COMPLETED
+                        </span>
+</div>
+<div class="flex items-center gap-3 py-3 border-y border-border-subtle/50 my-3">
+<img alt="Technician" class="w-10 h-10 rounded-full object-cover" data-alt="A professional technician wearing a clean indigo-colored uniform with a subtle FixNow logo, smiling confidently at the camera. The background is a brightly lit, modern workshop environment. The image is crisp with high technical precision, highlighting the expert and trustworthy nature of the service provider in a minimalist corporate style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGefGGsQ8JG0RQBFKYwh5m58DRl_ScVLVCeLDMTJ8m-MK1_WuvgI9Tdz9hZtlto-NBxA_shtYxJXrKmdpiO3MNkFFpV_pbwedyodRRmWtwx_mT8uRR_xeFXaiYTSvMIiw2PoOqdQIx1La_9GMXF1En4B6VP4iM4fb1KmpghrHuIiXaYn7xatlOEyBmBNRgJ9gu6IWVC7HiAEST-mW0RPHGCOKs7R8wTxaUiW_2JdR0UO4Jmpe7T6Il9Ay7Mihc0xmqVux8PKyaQbM"/>
+<div class="flex-1">
+<p class="font-mono-label text-mono-label text-on-surface">Ssebaana John</p>
+<div class="flex items-center gap-1 text-[11px] text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px] text-primary" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span>Elite Tier • 4.9 Rating</span>
+</div>
+</div>
+<div class="text-right">
+<p class="font-title-md text-title-md text-primary">UGX 240,000</p>
+</div>
+</div>
+<div class="flex gap-3 mt-4">
+<button class="flex-1 py-3 rounded-lg border border-border-subtle font-label-caps text-label-caps text-on-surface hover:bg-surface-container-low transition-colors active:scale-95 duration-150">
+                            VIEW INVOICE
+                        </button>
+<button class="flex-1 py-3 rounded-lg bg-primary font-label-caps text-label-caps text-on-primary hover:opacity-90 transition-opacity active:scale-95 duration-150">
+                            REBOOK SERVICE
+                        </button>
+</div>
+</div>
+</div>
+<!-- Job Card 2 -->
+<div class="job-card bg-canvas-white border border-border-subtle rounded-xl shadow-[0px_4px_20px_rgba(0,0,0,0.04)] overflow-hidden" data-status="Cancelled">
+<div class="p-4">
+<div class="flex justify-between items-start mb-3">
+<div>
+<h3 class="font-title-md text-title-md text-on-surface">AC Repair &amp; Service</h3>
+<p class="font-body-sm text-on-surface-variant">Oct 28, 2023 • 02:30 PM</p>
+</div>
+<span class="px-3 py-1 rounded-full font-label-caps text-[10px] tracking-wider bg-error/10 text-error border border-error/20">
+                            CANCELLED
+                        </span>
+</div>
+<div class="flex items-center gap-3 py-3 border-y border-border-subtle/50 my-3">
+<img alt="Technician" class="w-10 h-10 rounded-full object-cover" data-alt="A focused male technician holding a tablet, standing in a clean and well-lit corridor. He is wearing a professional grey polo shirt with meticulous stitching. The atmosphere is professional and high-tech, using soft cool-toned lighting to emphasize reliability and technical expertise within a modern minimalist aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeb45g3U2y4swCJwWfxN3RUj3NAjImGgBt-8Pnz2rvhcpM2xxc8rPKj_-7_eIUWn_tZ8ApBGudrC7T6F8KVdaLBrBtmPFPEyzRWFsio6Dy66ROkw5E4W0QpFWBb4KM5s6ouznqS6VGPM7GT_hRTip0wxfJk8ZK2jyNgaRSpWHyHXbyGUBd-I54a_68dDyJnksRnAlKcyQIEAxk7GyOsFBH9uDtZD-38Bxkwh5foluf0fOMwfNoOJKzg5jLZ2LfCVBjKbZ37bRKdBU"/>
+<div class="flex-1">
+<p class="font-mono-label text-mono-label text-on-surface">Namubiru Sarah</p>
+<div class="flex items-center gap-1 text-[11px] text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px] text-primary" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span>Pro Tier • 4.7 Rating</span>
+</div>
+</div>
+<div class="text-right">
+<p class="font-title-md text-title-md text-primary">UGX 85,000</p>
+</div>
+</div>
+<div class="flex gap-3 mt-4">
+<button class="flex-1 py-3 rounded-lg border border-border-subtle font-label-caps text-label-caps text-on-surface hover:bg-surface-container-low transition-colors active:scale-95 duration-150">
+                            VIEW INVOICE
+                        </button>
+<button class="flex-1 py-3 rounded-lg bg-primary font-label-caps text-label-caps text-on-primary hover:opacity-90 transition-opacity active:scale-95 duration-150">
+                            REBOOK SERVICE
+                        </button>
+</div>
+</div>
+</div>
+<!-- Job Card 3 -->
+<div class="job-card bg-canvas-white border border-border-subtle rounded-xl shadow-[0px_4px_20px_rgba(0,0,0,0.04)] overflow-hidden" data-status="Refunded">
+<div class="p-4">
+<div class="flex justify-between items-start mb-3">
+<div>
+<h3 class="font-title-md text-title-md text-on-surface">Kitchen Sink Fix</h3>
+<p class="font-body-sm text-on-surface-variant">Sep 15, 2023 • 11:15 AM</p>
+</div>
+<span class="px-3 py-1 rounded-full font-label-caps text-[10px] tracking-wider bg-outline/10 text-outline border border-outline/20">
+                            REFUNDED
+                        </span>
+</div>
+<div class="flex items-center gap-3 py-3 border-y border-border-subtle/50 my-3">
+<img alt="Technician" class="w-10 h-10 rounded-full object-cover" data-alt="A portrait of a skilled female worker with a warm, confident smile, set against a background of organized tools and equipment. She wears a clean, professional work vest. The lighting is soft and natural, creating an atmosphere of trust and human connection. The overall style is modern and uncluttered, emphasizing professional quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA15vZavSOyCuxXBWWCJynDgJBuky5FdmOrSdmQAchif9EAfBEU_EAb91pFUyQxDDEwRtGpijK_A9C6pC8RmcqKapr3VhWuaV4PJGF2czEpjJeoS5MWjh5SPuOKfJqgQnmYWWySlo2VMWo7OVKYsh3C3in5XkosaV3ffMZ3kN4gpqHNTBT_d9mfuB7WDAWLSXOV8oig_1JtOAxSdbo5mN20Zxi3uiL4r-KZhkiRxfksQHziwOoyd6WmJSRBL62E3wKz_ekRPhcu_Rk"/>
+<div class="flex-1">
+<p class="font-mono-label text-mono-label text-on-surface">Kato Michael</p>
+<div class="flex items-center gap-1 text-[11px] text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px] text-primary" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span>Verified • 4.5 Rating</span>
+</div>
+</div>
+<div class="text-right">
+<p class="font-title-md text-title-md text-primary">UGX 45,000</p>
+</div>
+</div>
+<div class="flex gap-3 mt-4">
+<button class="flex-1 py-3 rounded-lg border border-border-subtle font-label-caps text-label-caps text-on-surface hover:bg-surface-container-low transition-colors active:scale-95 duration-150">
+                            VIEW INVOICE
+                        </button>
+<button class="flex-1 py-3 rounded-lg bg-primary font-label-caps text-label-caps text-on-primary hover:opacity-90 transition-opacity active:scale-95 duration-150">
+                            REBOOK SERVICE
+                        </button>
+</div>
+</div>
+</div>
+<!-- Empty State Illustration Placeholder (Hidden by default) -->
+<div class="hidden flex-col items-center justify-center py-20 text-center px-8" id="empty-state">
+<span class="material-symbols-outlined text-[64px] text-outline-variant mb-4">history_toggle_off</span>
+<h3 class="font-title-md text-title-md text-on-surface">No matching jobs</h3>
+<p class="font-body-sm text-on-surface-variant mt-2">Try adjusting your filters to see more results.</p>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 bg-canvas-white shadow-[0_-4px_20px_rgba(0,0,0,0.04)] border-t border-border-subtle flex justify-around items-center h-16 w-full px-2 pb-safe">
+<a class="flex flex-col items-center justify-center text-secondary px-3 py-1 hover:opacity-80 transition-opacity active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-caps text-label-caps mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary px-3 py-1 hover:opacity-80 transition-opacity active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-caps text-label-caps mt-1">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary bg-primary-fixed rounded-xl px-3 py-1 hover:opacity-80 transition-opacity active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">build</span>
+<span class="font-label-caps text-label-caps mt-1">Jobs</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary px-3 py-1 hover:opacity-80 transition-opacity active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-label-caps text-label-caps mt-1">Messages</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary px-3 py-1 hover:opacity-80 transition-opacity active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-caps text-label-caps mt-1">Profile</span>
+</a>
+</nav>
+<script>
+        function filterJobs(status) {
+            const cards = document.querySelectorAll('.job-card');
+            const chips = document.querySelectorAll('.status-chip');
+            const emptyState = document.getElementById('empty-state');
+            let visibleCount = 0;
+
+            // Update UI for Chips
+            chips.forEach(chip => {
+                if (chip.textContent.trim() === status) {
+                    chip.classList.add('bg-primary', 'text-on-primary');
+                    chip.classList.remove('bg-surface-container', 'text-on-surface-variant');
+                } else {
+                    chip.classList.remove('bg-primary', 'text-on-primary');
+                    chip.classList.add('bg-surface-container', 'text-on-surface-variant');
+                }
+            });
+
+            // Filter Logic
+            cards.forEach(card => {
+                if (status === 'All' || card.getAttribute('data-status') === status) {
+                    card.classList.remove('hidden');
+                    visibleCount++;
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+
+            // Show Empty State if no jobs match
+            if (visibleCount === 0) {
+                emptyState.classList.remove('hidden');
+            } else {
+                emptyState.classList.add('hidden');
+            }
+        }
+    </script>
+</body></html>

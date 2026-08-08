@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Profile &amp; Settings - FixNow</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#efeeed",
+                        "surface-variant": "#e3e2e1",
+                        "tertiary-fixed-dim": "#ffb68d",
+                        "tertiary-container": "#994500",
+                        "surface-dim": "#dadad9",
+                        "surface": "#faf9f8",
+                        "success-green": "#1aae39",
+                        "surface-container-highest": "#e3e2e1",
+                        "secondary": "#49607e",
+                        "on-secondary-fixed": "#001c37",
+                        "on-tertiary-fixed": "#321200",
+                        "primary": "#3d27bc",
+                        "on-background": "#1a1c1c",
+                        "secondary-fixed": "#d2e4ff",
+                        "primary-container": "#5645d4",
+                        "inverse-primary": "#c6bfff",
+                        "on-secondary-fixed-variant": "#314865",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed": "#ffdbc9",
+                        "on-surface-variant": "#474554",
+                        "secondary-container": "#c4dcff",
+                        "surface-bright": "#faf9f8",
+                        "on-primary-fixed-variant": "#3e28bd",
+                        "primary-fixed-dim": "#c6bfff",
+                        "on-tertiary-container": "#ffcdb1",
+                        "secondary-fixed-dim": "#b0c8eb",
+                        "surface-container-low": "#f4f3f2",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-container": "#49617f",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "on-surface": "#1a1c1c",
+                        "ink-black": "#000000",
+                        "on-primary-container": "#d7d2ff",
+                        "border-subtle": "#e5e7eb",
+                        "surface-container-high": "#e9e8e7",
+                        "inverse-on-surface": "#f1f0ef",
+                        "outline-variant": "#c8c4d7",
+                        "on-primary-fixed": "#150066",
+                        "inverse-surface": "#2f3130",
+                        "trust-blue": "#b2d5ff",
+                        "surface-tint": "#5746d5",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#763300",
+                        "surface-container-lowest": "#ffffff",
+                        "error": "#ba1a1a",
+                        "tertiary": "#743300",
+                        "on-tertiary": "#ffffff",
+                        "surface-gray": "#f6f5f4",
+                        "primary-fixed": "#e4dfff",
+                        "canvas-white": "#ffffff",
+                        "background": "#faf9f8",
+                        "outline": "#787586"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter-mobile": "16px",
+                        "base": "4px",
+                        "gutter-desktop": "24px",
+                        "section-gap": "64px",
+                        "margin-safe": "20px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "mono-label": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "title-md": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "mono-label": ["13px", {"lineHeight": "1.0", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "title-md": ["20px", {"lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #5645d4;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #5645d4;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="text-on-surface font-body-lg min-h-screen pb-24 bg-canvas-white">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-50 bg-canvas-white dark:bg-on-background border-b border-border-subtle dark:border-outline-variant shadow-sm flex items-center justify-between px-gutter-mobile h-14">
+<div class="flex items-center gap-2">
+<h1 class="font-title-md text-title-md text-on-surface">Profile</h1>
+</div>
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-low transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined text-error" data-icon="logout">logout</span>
+</button>
+</header>
+<main class="mt-14 max-w-xl mx-auto px-gutter-mobile py-8 space-y-10"><!-- Section 1: Profile Information -->
+<section class="flex flex-col items-center space-y-4">
+<div class="relative">
+<div class="w-32 h-32 rounded-full overflow-hidden border-4 border-primary shadow-lg">
+<img alt="Suna Ivan Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFhYz3KBae1p4fIrfio1pC07RwdE4CJjmyI_ASFyGIyzuAmwOnAt-IXq51Mdhxnvz4UZU0UO3AMBjtcyQmwn04XEmqzJx_r6v9u3ElqULX_YexdQCvIp-dkm6PBfEh2iSwijGCvImVanic4bBqCjqMdB8Pd31xvoODgwPFCp8stPWk-3xvVSVGfO-BRqa66V-9p5yxISN8EVO-ozo-I28KjpQGVdf6PbXsU42lY016gCzaC9SZxso_o80B3I_5-8isxJSFsS1Gp3w"/>
+</div>
+<button class="absolute bottom-1 right-1 bg-primary text-white p-2 rounded-full shadow-lg border-2 border-canvas-white hover:bg-primary-container transition-transform active:scale-90">
+<span class="material-symbols-outlined text-sm">edit</span>
+</button>
+</div>
+<div class="text-center">
+<h2 class="font-headline-lg text-on-surface">Suna Ivan</h2>
+<div class="inline-flex items-center px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full mt-2">
+<span class="material-symbols-outlined text-sm mr-1">grade</span>
+<span class="font-label-caps">Elite Member</span>
+</div>
+</div>
+</section>
+<!-- Section 2: Account Details -->
+<section class="space-y-6">
+<div class="space-y-4">
+<div class="group">
+<label class="font-label-caps text-on-surface-variant block mb-2 px-1">Full Name</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">person</span>
+<input class="w-full pl-12 pr-4 py-3 bg-canvas-white border border-border-subtle rounded-xl text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" type="text" value="Suna Ivan"/>
+</div>
+</div>
+<div class="group">
+<label class="font-label-caps text-on-surface-variant block mb-2 px-1">Phone Number</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">phone</span>
+<input class="w-full pl-12 pr-4 py-3 bg-canvas-white border border-border-subtle rounded-xl text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" type="tel" value="+256 701 234 567"/>
+</div>
+</div>
+<div class="group">
+<label class="font-label-caps text-on-surface-variant block mb-2 px-1">Email Address</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">mail</span>
+<input class="w-full pl-12 pr-4 py-3 bg-canvas-white border border-border-subtle rounded-xl text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" type="email" value="suna.ivan@example.com"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Payment Methods -->
+<section class="space-y-4">
+<h3 class="font-title-md text-on-surface">Payment Methods</h3>
+<div class="bg-canvas-white border border-border-subtle rounded-xl p-4 flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-surface-container rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">account_balance_wallet</span>
+</div>
+<div>
+<p class="font-body-lg font-medium text-on-surface">MTN Mobile Money</p>
+<p class="font-body-sm text-on-surface-variant text-sm">Connected</p>
+</div>
+</div>
+<button class="text-primary font-semibold hover:bg-primary/5 px-4 py-2 rounded-lg transition-colors">Manage</button>
+</div>
+</section>
+<!-- Section 4: Notifications -->
+<section class="space-y-4">
+<h3 class="font-title-md text-on-surface">Notification Settings</h3>
+<div class="bg-canvas-white border border-border-subtle rounded-xl divide-y divide-border-subtle overflow-hidden">
+<div class="flex items-center justify-between p-4">
+<span class="font-body-lg">Job Status Updates</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-variant rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="flex items-center justify-between p-4">
+<span class="font-body-lg">New Messages</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-variant rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="flex items-center justify-between p-4">
+<span class="font-body-lg">Promotional Offers</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-variant rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</section></main>
+<!-- Fixed Footer Action -->
+<div class="fixed bottom-20 left-0 w-full px-gutter-mobile">
+<button class="w-full max-w-xl mx-auto block bg-primary text-white py-4 rounded-xl font-title-md shadow-lg active:scale-95 transition-all hover:brightness-110">
+        Save Changes
+    </button>
+</div>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 bg-canvas-white dark:bg-on-background border-t border-border-subtle dark:border-outline-variant shadow-[0_-4px_20px_rgba(0,0,0,0.04)] flex justify-around items-center h-16 w-full px-2 pb-safe">
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim px-3 py-1 hover:opacity-80 transition-opacity active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-caps text-label-caps">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim px-3 py-1 hover:opacity-80 transition-opacity active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="font-label-caps text-label-caps">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim px-3 py-1 hover:opacity-80 transition-opacity active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="build">build</span>
+<span class="font-label-caps text-label-caps">Jobs</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim px-3 py-1 hover:opacity-80 transition-opacity active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+<span class="font-label-caps text-label-caps">Messages</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed bg-primary-fixed dark:bg-primary-container rounded-xl px-3 py-1 hover:opacity-80 transition-opacity active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-caps text-label-caps">Profile</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for input fields
+        const inputs = document.querySelectorAll('input[type="text"], input[type="tel"], input[type="email"]');
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.parentElement.classList.add('scale-[1.01]');
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.parentElement.classList.remove('scale-[1.01]');
+            });
+        });
+    </script>
+</body></html>

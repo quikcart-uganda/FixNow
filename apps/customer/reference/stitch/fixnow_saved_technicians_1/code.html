@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Saved Technicians - FixNow</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error": "#ffffff",
+                        "outline-variant": "#c8c4d7",
+                        "primary-fixed-dim": "#c6bfff",
+                        "on-primary-fixed-variant": "#3e28bd",
+                        "tertiary-container": "#994500",
+                        "on-error-container": "#93000a",
+                        "inverse-surface": "#2f3130",
+                        "on-background": "#1a1c1c",
+                        "on-tertiary-container": "#ffcdb1",
+                        "ink-black": "#000000",
+                        "on-tertiary": "#ffffff",
+                        "surface-bright": "#faf9f8",
+                        "error": "#ba1a1a",
+                        "surface-container-low": "#f4f3f2",
+                        "on-secondary-fixed-variant": "#314865",
+                        "secondary": "#49607e",
+                        "primary": "#3d27bc",
+                        "success-green": "#1aae39",
+                        "on-surface": "#1a1c1c",
+                        "on-secondary": "#ffffff",
+                        "outline": "#787586",
+                        "on-primary": "#ffffff",
+                        "border-subtle": "#e5e7eb",
+                        "inverse-primary": "#c6bfff",
+                        "tertiary-fixed-dim": "#ffb68d",
+                        "surface": "#faf9f8",
+                        "on-secondary-fixed": "#001c37",
+                        "inverse-on-surface": "#f1f0ef",
+                        "secondary-container": "#c4dcff",
+                        "background": "#faf9f8",
+                        "on-tertiary-fixed-variant": "#763300",
+                        "surface-container": "#efeeed",
+                        "surface-gray": "#f6f5f4",
+                        "primary-fixed": "#e4dfff",
+                        "tertiary-fixed": "#ffdbc9",
+                        "surface-container-high": "#e9e8e7",
+                        "surface-tint": "#5746d5",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#321200",
+                        "secondary-fixed": "#d2e4ff",
+                        "on-surface-variant": "#474554",
+                        "surface-container-highest": "#e3e2e1",
+                        "primary-container": "#5645d4",
+                        "trust-blue": "#b2d5ff",
+                        "canvas-white": "#ffffff",
+                        "surface-variant": "#e3e2e1",
+                        "tertiary": "#743300",
+                        "surface-dim": "#dadad9",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#d7d2ff",
+                        "secondary-fixed-dim": "#b0c8eb",
+                        "on-primary-fixed": "#150066",
+                        "on-secondary-container": "#49617f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "section-gap": "64px",
+                        "margin-safe": "20px",
+                        "base": "4px",
+                        "gutter-desktop": "24px",
+                        "gutter-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter"],
+                        "title-md": ["Inter"],
+                        "mono-label": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "title-md": ["20px", {"lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "mono-label": ["13px", {"lineHeight": "1.0", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .filled-icon {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #faf9f8;
+        }
+        .glass-header {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-surface">
+<!-- Top Navigation Anchor -->
+<header class="sticky top-0 z-50 glass-header border-b border-border-subtle">
+<div class="flex justify-between items-center px-gutter-mobile md:px-gutter-desktop h-14 md:h-16 w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer">menu</span>
+<h1 class="font-title-md text-title-md text-primary">FixNow</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex items-center gap-6 mr-6">
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="#">Home</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="#">Search</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="#">Jobs</a>
+<a class="font-label-caps text-label-caps text-primary font-bold border-b-2 border-primary" href="#">Saved</a>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden border border-border-subtle">
+<img alt="User" data-alt="A professional headshot of a middle-aged man with a warm, friendly smile, set against a clean, out-of-focus modern office background. The lighting is soft and natural, emphasizing a high-trust, professional aesthetic. The image is crisp with high technical detail, following a minimalist corporate style with neutral tones and a slight indigo tint in the shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8Uv8ubHVgCq0ULI07fm5-dBqjOy18N9dqVvv39BhclWV_Xo5jXzzdQBpn5Rbiic8KU7m3rk8eWlLEXpeXNYfSbQ6W8ekcWO0M9t9jBAZJ0QRGJNLwD3oK0KdWJPSRNVuZK9In8rczk6hvDPaVEc5sAhZDjazN50IN-b6vecybVVk8xBWfHF8mf4BHwCfntzCnRCy3E_INzc9ilOQChgVgFrwWuqtbsfAM-NocfRNJo3xXQ1yM3SPmT8Su2nKLEjUFnagJ4QxIBmo"/>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-gutter-mobile md:px-gutter-desktop py-8 mb-20">
+<!-- Header & Search Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+<div class="space-y-2">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-ink-black">Saved Technicians</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Re-book your trusted pros or browse your favorites.</p>
+</div>
+<div class="relative w-full md:w-96">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full h-14 pl-12 pr-4 rounded-xl border border-border-subtle bg-white focus:ring-2 focus:ring-primary focus:border-transparent transition-all font-body-lg text-body-lg outline-none" placeholder="Search saved professionals..." type="text"/>
+</div>
+</div>
+<!-- Tab Toggle -->
+<div class="flex border-b border-border-subtle mb-10 overflow-x-auto">
+<button class="px-6 py-3 border-b-2 border-primary text-primary font-semibold text-body-lg whitespace-nowrap">Favorites</button>
+<button class="px-6 py-3 border-b-2 border-transparent text-on-surface-variant hover:text-primary transition-colors text-body-lg whitespace-nowrap">Previously Hired</button>
+</div>
+<!-- Content Grid (Asymmetric/Bento-inspired Layout) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Tech Card 1 -->
+<div class="bg-white rounded-xl border border-border-subtle shadow-[0px_4px_20px_rgba(0,0,0,0.04)] overflow-hidden flex flex-col hover:shadow-[0px_8px_30px_rgba(0,0,0,0.08)] transition-all duration-300">
+<div class="relative h-48 w-full group overflow-hidden">
+<img alt="Moses Okello" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A professional close-up of a skilled technician wearing a clean navy blue uniform, standing in a brightly lit modern utility room. He holds a digital multimeter with precision, looking confidently towards the camera. The lighting is high-key and professional, highlighting his expertise and the clean environment. The color palette features whites, grays, and FixNow indigo accents, creating a high-trust atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB67aBPNUbRmdeZjWVqOT0T7Mw38h7NqS_DfVQjkWWxeSw3SBeem-q7_Mx_EDWcjjxHfinA7an0u5mvq4oLCPki9eDB9CUDOSMCqobcTe-2_TsZJHTs6qS5jaiYUQ_X9ObqOCZYvQBKNUSGJRrdfXJyQD-nUbhZyHbuBxvLPS_IXZbInLFwfFYyBl9qnMRn7M7SsZjsXL64usOHgsHDvHGO8YJFEzXFO7xUAEFoPy7xqGMOqO6xjRr3hklcttSnsvL8P7VT2lc4bw4"/>
+<div class="absolute top-3 right-3">
+<button class="w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center text-error shadow-sm hover:scale-110 transition-transform">
+<span class="material-symbols-outlined filled-icon">favorite</span>
+</button>
+</div>
+<div class="absolute bottom-3 left-3 flex gap-2">
+<span class="px-2 py-1 bg-success-green/10 text-success-green rounded-lg flex items-center gap-1 font-label-caps text-[10px] backdrop-blur-md border border-success-green/20">
+<span class="material-symbols-outlined text-[14px] filled-icon">verified</span> VERIFIED
+                        </span>
+</div>
+</div>
+<div class="p-5 flex-grow">
+<div class="flex justify-between items-start mb-2">
+<div>
+<h3 class="font-title-md text-title-md text-ink-black">Moses Okello</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Master Electrician</p>
+</div>
+<div class="bg-trust-blue/10 px-2 py-1 rounded-lg">
+<span class="font-mono-label text-mono-label text-primary">Elite Pro</span>
+</div>
+</div>
+<div class="flex items-center gap-4 mb-4">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-tertiary-container text-[18px] filled-icon">star</span>
+<span class="font-bold text-body-sm">4.9</span>
+<span class="text-outline text-body-sm">(124)</span>
+</div>
+<div class="h-4 w-[1px] bg-border-subtle"></div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-[18px]">security</span>
+<span class="font-bold text-body-sm text-primary">98/100</span>
+</div>
+</div>
+<div class="flex flex-col gap-3 pt-2">
+<button class="w-full h-12 bg-primary text-white font-semibold rounded-lg hover:opacity-90 active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">event_repeat</span>
+                            Re-book Now
+                        </button>
+<div class="flex gap-2">
+<button class="flex-1 h-11 border border-border-subtle text-ink-black font-medium rounded-lg hover:bg-surface-container-low transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+                                Message
+                            </button>
+<button class="w-11 h-11 border border-border-subtle text-on-surface-variant rounded-lg hover:bg-surface-container-low transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Tech Card 2 -->
+<div class="bg-white rounded-xl border border-border-subtle shadow-[0px_4px_20px_rgba(0,0,0,0.04)] overflow-hidden flex flex-col hover:shadow-[0px_8px_30px_rgba(0,0,0,0.08)] transition-all duration-300">
+<div class="relative h-48 w-full group overflow-hidden">
+<img alt="Sarah Namuli" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A detailed portrait of a female plumber in her 30s, wearing a professional work vest and carrying a professional tool bag over her shoulder. She is standing in a clean, modern kitchen environment. The photography is sharp and high-contrast, with a shallow depth of field focusing on her determined yet friendly expression. The atmosphere is professional and dependable, using a clean corporate lighting setup." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXaFHGPM1gA-cwoZiSqhS3FaoINDHeNF2cISWhms4O5yHIUdoZp6aJSQcJB7MOn3AtR1u1X9hrLL0rcXTsjuthK5HcvOglFKo9Nj3p4kChssqbNPqSSIAARSWCerrvgSWPMKQyTsx3329Imyu0FAuLpkapye7IPD2aBNHEf93n556fa55cR6gEVbIIGMB-Jyij3_dRz0VJt1gdb42Bpnv8Ile--_5HFV4wr38tQ0FqSZYS66betrNBLjgisgip9zfpvJF-4aTW8BY"/>
+<div class="absolute top-3 right-3">
+<button class="w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center text-error shadow-sm hover:scale-110 transition-transform">
+<span class="material-symbols-outlined filled-icon">favorite</span>
+</button>
+</div>
+<div class="absolute bottom-3 left-3 flex gap-2">
+<span class="px-2 py-1 bg-success-green/10 text-success-green rounded-lg flex items-center gap-1 font-label-caps text-[10px] backdrop-blur-md border border-success-green/20">
+<span class="material-symbols-outlined text-[14px] filled-icon">verified</span> VERIFIED
+                        </span>
+</div>
+</div>
+<div class="p-5 flex-grow">
+<div class="flex justify-between items-start mb-2">
+<div>
+<h3 class="font-title-md text-title-md text-ink-black">Sarah Namuli</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Senior Plumber</p>
+</div>
+<div class="bg-trust-blue/10 px-2 py-1 rounded-lg">
+<span class="font-mono-label text-mono-label text-primary">Expert</span>
+</div>
+</div>
+<div class="flex items-center gap-4 mb-4">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-tertiary-container text-[18px] filled-icon">star</span>
+<span class="font-bold text-body-sm">4.8</span>
+<span class="text-outline text-body-sm">(89)</span>
+</div>
+<div class="h-4 w-[1px] bg-border-subtle"></div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-[18px]">security</span>
+<span class="font-bold text-body-sm text-primary">95/100</span>
+</div>
+</div>
+<div class="flex flex-col gap-3 pt-2">
+<button class="w-full h-12 bg-primary text-white font-semibold rounded-lg hover:opacity-90 active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">event_repeat</span>
+                            Re-book Now
+                        </button>
+<div class="flex gap-2">
+<button class="flex-1 h-11 border border-border-subtle text-ink-black font-medium rounded-lg hover:bg-surface-container-low transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+                                Message
+                            </button>
+<button class="w-11 h-11 border border-border-subtle text-on-surface-variant rounded-lg hover:bg-surface-container-low transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Tech Card 3 -->
+<div class="bg-white rounded-xl border border-border-subtle shadow-[0px_4px_20px_rgba(0,0,0,0.04)] overflow-hidden flex flex-col hover:shadow-[0px_8px_30px_rgba(0,0,0,0.08)] transition-all duration-300">
+<div class="relative h-48 w-full group overflow-hidden">
+<img alt="Ivan Kato" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A focused technician in a high-tech workshop setting, repairing a modern appliance. He wears specialized safety glasses and a professional gray work shirt with the FixNow logo. The background is a clean, organized workstation with various tools. The lighting is crisp and cool-toned, emphasizing precision and technical excellence. The style is minimalist and high-end, focusing on the quality of the service provided." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRi12hUoCOkGooqzbH3P9eKPAv5XD8aQkmeetZEuaLC8b4pOLfZdLnQ2axb84HX9yOoBs3i1Xx3D7fUasoVMZauhvF5Fn9rQLj-wU4XNXXTPX_SGtcBncabAVBV3DwsMQY8NNU58ubgMVqaHalQnc4LlSEgPmsf7C2Gj23y4goh5BbE9lPvGHRV37DdXzxVA8DMn8FgpohKiyZarKNipiNMUScENRJWqgJ8MPPfXhLhXi2WMXFYh9dDBMqFrn4tOoRoJrVfpLqIO4"/>
+<div class="absolute top-3 right-3">
+<button class="w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center text-error shadow-sm hover:scale-110 transition-transform">
+<span class="material-symbols-outlined filled-icon">favorite</span>
+</button>
+</div>
+<div class="absolute bottom-3 left-3 flex gap-2">
+<span class="px-2 py-1 bg-success-green/10 text-success-green rounded-lg flex items-center gap-1 font-label-caps text-[10px] backdrop-blur-md border border-success-green/20">
+<span class="material-symbols-outlined text-[14px] filled-icon">verified</span> VERIFIED
+                        </span>
+</div>
+</div>
+<div class="p-5 flex-grow">
+<div class="flex justify-between items-start mb-2">
+<div>
+<h3 class="font-title-md text-title-md text-ink-black">Ivan Kato</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">HVAC Specialist</p>
+</div>
+<div class="bg-trust-blue/10 px-2 py-1 rounded-lg">
+<span class="font-mono-label text-mono-label text-primary">Premier</span>
+</div>
+</div>
+<div class="flex items-center gap-4 mb-4">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-tertiary-container text-[18px] filled-icon">star</span>
+<span class="font-bold text-body-sm">5.0</span>
+<span class="text-outline text-body-sm">(56)</span>
+</div>
+<div class="h-4 w-[1px] bg-border-subtle"></div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-[18px]">security</span>
+<span class="font-bold text-body-sm text-primary">99/100</span>
+</div>
+</div>
+<div class="flex flex-col gap-3 pt-2">
+<button class="w-full h-12 bg-primary text-white font-semibold rounded-lg hover:opacity-90 active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">event_repeat</span>
+                            Re-book Now
+                        </button>
+<div class="flex gap-2">
+<button class="flex-1 h-11 border border-border-subtle text-ink-black font-medium rounded-lg hover:bg-surface-container-low transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+                                Message
+                            </button>
+<button class="w-11 h-11 border border-border-subtle text-on-surface-variant rounded-lg hover:bg-surface-container-low transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Empty State (Hidden by default, shown for demo purpose or search) -->
+<div class="hidden flex-col items-center justify-center py-20 text-center">
+<div class="w-24 h-24 bg-surface-container rounded-full flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-[48px] text-outline">favorite_border</span>
+</div>
+<h3 class="font-title-md text-title-md text-ink-black mb-2">No saved technicians yet</h3>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xs mx-auto mb-8">Start exploring top-rated professionals and save them for quick access later.</p>
+<button class="px-8 py-3 bg-primary text-white font-semibold rounded-xl hover:opacity-90 transition-opacity">Find a Technician</button>
+</div>
+</main>
+<!-- Bottom Navigation Shell -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 pb-safe h-16 md:hidden bg-white border-t border-border-subtle shadow-sm">
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-caps text-[10px] mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-caps text-[10px] mt-1">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">build</span>
+<span class="font-label-caps text-[10px] mt-1">Jobs</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary font-semibold" href="#">
+<span class="material-symbols-outlined filled-icon">favorite</span>
+<span class="font-label-caps text-[10px] mt-1">Saved</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-caps text-[10px] mt-1">Profile</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interaction for the tabs
+        const tabs = document.querySelectorAll('button.whitespace-nowrap');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => {
+                    t.classList.remove('border-primary', 'text-primary', 'font-semibold');
+                    t.classList.add('border-transparent', 'text-on-surface-variant');
+                });
+                tab.classList.remove('border-transparent', 'text-on-surface-variant');
+                tab.classList.add('border-primary', 'text-primary', 'font-semibold');
+            });
+        });
+
+        // Favorite toggle micro-interaction
+        const favButtons = document.querySelectorAll('.group button .filled-icon');
+        favButtons.forEach(btn => {
+            btn.parentElement.addEventListener('click', (e) => {
+                e.preventDefault();
+                const icon = btn;
+                if (icon.style.fontVariationSettings.includes("'FILL' 1")) {
+                    icon.style.fontVariationSettings = "'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24";
+                    icon.parentElement.classList.remove('text-error');
+                    icon.parentElement.classList.add('text-outline');
+                } else {
+                    icon.style.fontVariationSettings = "'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24";
+                    icon.parentElement.classList.add('text-error');
+                    icon.parentElement.classList.remove('text-outline');
+                }
+            });
+        });
+    </script>
+</body></html>

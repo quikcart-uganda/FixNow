@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>My Jobs - FixNow</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container": "#efeeed",
+                      "error": "#ba1a1a",
+                      "inverse-on-surface": "#f1f0ef",
+                      "background": "#faf9f8",
+                      "ink-black": "#000000",
+                      "canvas-white": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "surface": "#faf9f8",
+                      "on-surface-variant": "#474554",
+                      "secondary-fixed": "#d2e4ff",
+                      "surface-dim": "#dadad9",
+                      "on-error-container": "#93000a",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary-fixed-variant": "#763300",
+                      "on-primary-fixed-variant": "#3e28bd",
+                      "on-secondary-fixed": "#001c37",
+                      "inverse-surface": "#2f3130",
+                      "outline-variant": "#c8c4d7",
+                      "on-secondary-fixed-variant": "#314865",
+                      "secondary": "#49607e",
+                      "success-green": "#1aae39",
+                      "primary-fixed": "#e4dfff",
+                      "secondary-container": "#c4dcff",
+                      "surface-container-highest": "#e3e2e1",
+                      "inverse-primary": "#c6bfff",
+                      "surface-variant": "#e3e2e1",
+                      "on-background": "#1a1c1c",
+                      "primary": "#3d27bc",
+                      "outline": "#787586",
+                      "surface-container-low": "#f4f3f2",
+                      "tertiary-container": "#994500",
+                      "on-tertiary-fixed": "#321200",
+                      "tertiary-fixed": "#ffdbc9",
+                      "tertiary": "#743300",
+                      "surface-bright": "#faf9f8",
+                      "primary-fixed-dim": "#c6bfff",
+                      "surface-container-high": "#e9e8e7",
+                      "on-error": "#ffffff",
+                      "border-subtle": "#e5e7eb",
+                      "on-primary-fixed": "#150066",
+                      "surface-tint": "#5746d5",
+                      "on-tertiary-container": "#ffcdb1",
+                      "trust-blue": "#b2d5ff",
+                      "on-secondary-container": "#49617f",
+                      "on-primary-container": "#d7d2ff",
+                      "on-primary": "#ffffff",
+                      "surface-gray": "#f6f5f4",
+                      "error-container": "#ffdad6",
+                      "on-tertiary": "#ffffff",
+                      "secondary-fixed-dim": "#b0c8eb",
+                      "primary-container": "#5645d4",
+                      "tertiary-fixed-dim": "#ffb68d",
+                      "on-surface": "#1a1c1c"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter-mobile": "16px",
+                      "gutter-desktop": "24px",
+                      "section-gap": "64px",
+                      "margin-safe": "20px",
+                      "base": "4px"
+              },
+              "fontFamily": {
+                      "body-lg": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "body-sm": ["Inter"],
+                      "title-md": ["Inter"],
+                      "mono-label": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "label-caps": ["Inter"]
+              },
+              "fontSize": {
+                      "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                      "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "title-md": ["20px", {"lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "mono-label": ["13px", {"lineHeight": "1.0", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                      "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen pb-20">
+<!-- Top AppBar -->
+<header class="fixed top-0 w-full z-50 bg-canvas-white dark:bg-on-background border-b border-border-subtle dark:border-outline-variant shadow-sm flex items-center justify-between px-gutter-mobile h-14">
+<div class="flex items-center gap-4">
+<button class="text-primary dark:text-primary-fixed active:scale-95 duration-150">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary dark:text-primary-fixed">FixNow</h1>
+</div>
+<div class="h-8 w-8 rounded-full bg-surface-container overflow-hidden border border-border-subtle">
+<img alt="User avatar" data-alt="A professional studio portrait of a young adult with a friendly expression, styled in a clean corporate-modern aesthetic. The lighting is soft and even against a neutral, high-key background. The overall look is professional, emphasizing reliability and tech-savviness, consistent with a high-end service marketplace identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJhF9Dc90E4FZVg8ienuL9mXhCmm-LhsqGknX8Tnw6tDw3p4cWbHpriMaO6EYEueYzWl3HBCb_rYSyAX4L7h4lXLt4o0Va6yQk7AGRnrja-_5d62JdVIYeF8ymf2JnHSTuKrR8Gnd3ivuIrDH44OSXEY7omb5JfGvz-WFo-RwZY_z0dyi7v-1GEkher2O6EHlAU0iys1WMy7b910W3bbkWBikD-SJXcicBWeLCqEW4oTDEHsEwZ0j6H6d0A3gfGyqLUTJIcNg6fVA"/>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-20 px-gutter-mobile max-w-2xl mx-auto">
+<!-- Search Bar -->
+<div class="relative mb-6">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full h-14 pl-12 pr-4 rounded-xl border border-border-subtle bg-canvas-white focus:ring-2 focus:ring-primary focus:border-transparent transition-all shadow-sm font-body-lg text-body-lg" placeholder="Search your job history..." type="text"/>
+</div>
+<!-- Segmented Tab Control -->
+<div class="flex p-1 bg-surface-container-low rounded-xl mb-8 border border-border-subtle">
+<button class="flex-1 py-2 rounded-lg font-title-md text-title-md transition-all bg-canvas-white text-primary shadow-sm" id="tab-active" onclick="switchTab('active')">
+                Active
+            </button>
+<button class="flex-1 py-2 rounded-lg font-title-md text-title-md transition-all text-on-surface-variant" id="tab-completed" onclick="switchTab('completed')">
+                Completed
+            </button>
+</div>
+<!-- Jobs List Section -->
+<div class="space-y-4" id="jobs-container">
+<!-- Job Card 1 (In Progress) -->
+<div class="bg-canvas-white rounded-xl border border-border-subtle shadow-[0_4px_20px_rgba(0,0,0,0.04)] p-4 flex flex-col gap-4 active:scale-[0.98] transition-transform duration-150">
+<div class="flex justify-between items-start">
+<div class="space-y-1">
+<h3 class="font-title-md text-title-md text-ink-black">Kitchen Plumbing Leak</h3>
+<p class="font-label-caps text-label-caps text-outline uppercase tracking-wider">OCT 24, 2023</p>
+</div>
+<span class="px-3 py-1 bg-primary-fixed text-primary rounded-full font-label-caps text-label-caps">IN PROGRESS</span>
+</div>
+<div class="flex items-center justify-between py-2 border-t border-b border-border-subtle border-dashed">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-success-green" style="font-variation-settings: 'FILL' 1;">payments</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Payment: <span class="font-semibold text-ink-black">UGX 150,000</span></span>
+</div>
+<span class="font-label-caps text-label-caps bg-surface-container px-2 py-0.5 rounded text-secondary">UNPAID</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex -space-x-2">
+<img class="w-8 h-8 rounded-full border-2 border-canvas-white" data-alt="A small circular avatar of a professional technician wearing a clean blue uniform. The style is minimalist and high-contrast, representing expertise and approachability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcOVX6TU435Tcs7ePcds8mAcCkijbYcS9_RBXOyrZwSJupN85tmFC4hc_fG_7HCdi3QPkVYbQI16kLZ2kXi5sOP31X217XYP693YWNtJQePyB0AQni_FEBiOcdubSskUzuGgc9-BguO5OOfOmzk7w_zl17ezBL8l99Dj3vfuDtzDY81-ajvHAW5as9D1uWfc9rA302PPCdSS6ZXJ3JSC7O-8a1Qx8Rg6UZ7TnS-xOBwjOUuQrx5H9nztIpkbwc6uyfnXvXWbdpFj0"/>
+<div class="pl-4 flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant">TECHNICIAN</span>
+<span class="font-body-sm text-body-sm font-medium">John Mukasa</span>
+</div>
+</div>
+<button class="bg-primary text-on-primary px-4 py-2 rounded-lg font-label-caps text-label-caps hover:opacity-90 transition-opacity">VIEW DETAILS</button>
+</div>
+</div>
+<!-- Job Card 2 (Pending) -->
+<div class="bg-canvas-white rounded-xl border border-border-subtle shadow-[0_4px_20px_rgba(0,0,0,0.04)] p-4 flex flex-col gap-4 active:scale-[0.98] transition-transform duration-150">
+<div class="flex justify-between items-start">
+<div class="space-y-1">
+<h3 class="font-title-md text-title-md text-ink-black">Full House Wiring</h3>
+<p class="font-label-caps text-label-caps text-outline uppercase tracking-wider">OCT 22, 2023</p>
+</div>
+<span class="px-3 py-1 bg-tertiary-fixed text-tertiary rounded-full font-label-caps text-label-caps">PENDING</span>
+</div>
+<div class="flex items-center justify-between py-2 border-t border-b border-border-subtle border-dashed">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-success-green" style="font-variation-settings: 'FILL' 1;">payments</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Quote: <span class="font-semibold text-ink-black">UGX 850,000</span></span>
+</div>
+<span class="font-label-caps text-label-caps bg-surface-container px-2 py-0.5 rounded text-secondary">AWAITING</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-outline">person_search</span>
+</div>
+<span class="font-body-sm text-body-sm text-outline italic">Matching technician...</span>
+</div>
+<button class="bg-primary text-on-primary px-4 py-2 rounded-lg font-label-caps text-label-caps hover:opacity-90 transition-opacity">VIEW DETAILS</button>
+</div>
+</div>
+<!-- Empty State Illustration Placeholder (Hidden initially) -->
+<div class="hidden flex-col items-center justify-center py-12 text-center opacity-0 transition-opacity duration-300" id="completed-jobs">
+<div class="w-32 h-32 bg-surface-container rounded-full flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-primary text-5xl">task_alt</span>
+</div>
+<h4 class="font-title-md text-title-md text-ink-black">No completed jobs yet</h4>
+<p class="font-body-sm text-body-sm text-outline mt-2 px-8">Your finished service requests will appear here once the work is finalized.</p>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 bg-canvas-white dark:bg-on-background border-t border-border-subtle dark:border-outline-variant shadow-[0_-4px_20px_rgba(0,0,0,0.04)] flex justify-around items-center h-16 px-2 pb-safe">
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim px-3 py-1 hover:opacity-80 transition-opacity active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-caps text-label-caps">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim px-3 py-1 hover:opacity-80 transition-opacity active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-caps text-label-caps">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed bg-primary-fixed dark:bg-primary-container rounded-xl px-3 py-1 active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">build</span>
+<span class="font-label-caps text-label-caps">Jobs</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim px-3 py-1 hover:opacity-80 transition-opacity active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-label-caps text-label-caps">Messages</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim px-3 py-1 hover:opacity-80 transition-opacity active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-caps text-label-caps">Profile</span>
+</a>
+</nav>
+<script>
+        function switchTab(tab) {
+            const activeBtn = document.getElementById('tab-active');
+            const completedBtn = document.getElementById('tab-completed');
+            const activeContent = Array.from(document.querySelectorAll('#jobs-container > div:not(#completed-jobs)'));
+            const completedEmpty = document.getElementById('completed-jobs');
+
+            if (tab === 'active') {
+                activeBtn.className = 'flex-1 py-2 rounded-lg font-title-md text-title-md transition-all bg-canvas-white text-primary shadow-sm';
+                completedBtn.className = 'flex-1 py-2 rounded-lg font-title-md text-title-md transition-all text-on-surface-variant';
+                
+                activeContent.forEach(el => el.classList.remove('hidden'));
+                completedEmpty.classList.add('hidden');
+                completedEmpty.classList.remove('flex');
+            } else {
+                completedBtn.className = 'flex-1 py-2 rounded-lg font-title-md text-title-md transition-all bg-canvas-white text-primary shadow-sm';
+                activeBtn.className = 'flex-1 py-2 rounded-lg font-title-md text-title-md transition-all text-on-surface-variant';
+                
+                activeContent.forEach(el => el.classList.add('hidden'));
+                completedEmpty.classList.remove('hidden');
+                completedEmpty.classList.add('flex');
+                setTimeout(() => completedEmpty.classList.replace('opacity-0', 'opacity-100'), 50);
+            }
+        }
+    </script>
+</body></html>

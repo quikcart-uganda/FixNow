@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass-effect {
+            backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.8);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#efeeed",
+                        "error": "#ba1a1a",
+                        "inverse-on-surface": "#f1f0ef",
+                        "background": "#faf9f8",
+                        "ink-black": "#000000",
+                        "canvas-white": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "surface": "#faf9f8",
+                        "on-surface-variant": "#474554",
+                        "secondary-fixed": "#d2e4ff",
+                        "surface-dim": "#dadad9",
+                        "on-error-container": "#93000a",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed-variant": "#763300",
+                        "on-primary-fixed-variant": "#3e28bd",
+                        "on-secondary-fixed": "#001c37",
+                        "inverse-surface": "#2f3130",
+                        "outline-variant": "#c8c4d7",
+                        "on-secondary-fixed-variant": "#314865",
+                        "secondary": "#49607e",
+                        "success-green": "#1aae39",
+                        "primary-fixed": "#e4dfff",
+                        "secondary-container": "#c4dcff",
+                        "surface-container-highest": "#e3e2e1",
+                        "inverse-primary": "#c6bfff",
+                        "surface-variant": "#e3e2e1",
+                        "on-background": "#1a1c1c",
+                        "primary": "#3d27bc",
+                        "outline": "#787586",
+                        "surface-container-low": "#f4f3f2",
+                        "tertiary-container": "#994500",
+                        "on-tertiary-fixed": "#321200",
+                        "tertiary-fixed": "#ffdbc9",
+                        "tertiary": "#743300",
+                        "surface-bright": "#faf9f8",
+                        "primary-fixed-dim": "#c6bfff",
+                        "surface-container-high": "#e9e8e7",
+                        "on-error": "#ffffff",
+                        "border-subtle": "#e5e7eb",
+                        "on-primary-fixed": "#150066",
+                        "surface-tint": "#5746d5",
+                        "on-tertiary-container": "#ffcdb1",
+                        "trust-blue": "#b2d5ff",
+                        "on-secondary-container": "#49617f",
+                        "on-primary-container": "#d7d2ff",
+                        "on-primary": "#ffffff",
+                        "surface-gray": "#f6f5f4",
+                        "error-container": "#ffdad6",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed-dim": "#b0c8eb",
+                        "primary-container": "#5645d4",
+                        "tertiary-fixed-dim": "#ffb68d",
+                        "on-surface": "#1a1c1c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter-mobile": "16px",
+                        "gutter-desktop": "24px",
+                        "section-gap": "64px",
+                        "margin-safe": "20px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "title-md": ["Inter"],
+                        "mono-label": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-caps": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "title-md": ["20px", {"lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "mono-label": ["13px", {"lineHeight": "1.0", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen">
+<!-- Top Navigation Header -->
+<header class="fixed top-0 w-full z-50 bg-canvas-white shadow-sm border-b border-border-subtle flex items-center justify-between px-gutter-mobile h-14 md:h-16">
+<div class="flex items-center gap-4">
+<button class="hover:bg-surface-container-low p-2 rounded-full transition-colors active:scale-95">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-title-md text-title-md text-on-surface">Invoice</h1>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-outline text-sm">more_vert</span>
+</div>
+</header>
+<main class="pt-20 pb-24 max-w-lg mx-auto px-gutter-mobile">
+<!-- Job Hero Section -->
+<section class="mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
+<div class="flex justify-between items-start mb-2">
+<div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-ink-black mb-1">Full House Wiring</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Oct 24, 2023 • INV-882104</p>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1 bg-success-green/10 text-success-green rounded-full">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-label-caps text-label-caps uppercase">Paid</span>
+</div>
+</div>
+</section>
+<!-- Technician Detail Card -->
+<div class="bg-canvas-white rounded-xl border border-border-subtle p-4 mb-6 shadow-[0_4px_20px_rgba(0,0,0,0.04)] flex items-center gap-4">
+<div class="relative w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
+<img alt="Moses Okello" class="w-full h-full object-cover" data-alt="A professional headshot of a friendly Ugandan electrician named Moses Okello, smiling warmly at the camera. He is wearing a clean, branded navy blue work polo shirt. The lighting is bright and natural, set against a blurred modern architectural background with warm wooden accents. The image conveys high reliability, professionalism, and trustworthiness in a premium service marketplace context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrwZS4urhKqFcUDJBBit2X85Hua0fjUGB6UETgEnKSa2ObzxWdq9eYxZ7qbGAvw2luN8LUxbz42mQea2SSDusCp81fyWGKuAvFWzB5Yx52SWWc2-JPliH60YKyr7oHw7kIKPued_zH75HxA8TRyUpL5AN0o2XA_fod_XhAc0ORQHEiao87LlK9oCd-cKErW9s5S4CovWS_hgGjxcbyV4uN1tmEK4u3GFVRQxj9FetVHG4Ry7fdnEs4Jy7g-e2oA80Tamk8u___3f8"/>
+<div class="absolute bottom-0 right-0 w-4 h-4 bg-success-green border-2 border-white rounded-full"></div>
+</div>
+<div class="flex-grow">
+<h3 class="font-title-md text-title-md text-ink-black leading-none mb-1">Moses Okello</h3>
+<div class="flex items-center gap-2">
+<span class="bg-trust-blue/20 text-secondary font-label-caps text-[10px] px-2 py-0.5 rounded uppercase tracking-wider">Elite Technician</span>
+<div class="flex items-center text-tertiary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-mono-label text-mono-label ml-0.5">4.9</span>
+</div>
+</div>
+</div>
+<button class="p-2 text-primary hover:bg-primary/5 rounded-full transition-colors">
+<span class="material-symbols-outlined">chat_bubble</span>
+</button>
+</div>
+<!-- Service Breakdown -->
+<section class="bg-canvas-white rounded-xl border border-border-subtle overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.04)] mb-6">
+<div class="p-4 border-b border-border-subtle bg-surface-container-low">
+<h4 class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Service Breakdown</h4>
+</div>
+<div class="p-4 space-y-4">
+<div class="flex justify-between items-center">
+<span class="font-body-lg text-body-lg text-on-surface-variant">Base Labor</span>
+<span class="font-body-lg text-body-lg text-ink-black">UGX 150,000</span>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex flex-col">
+<span class="font-body-lg text-body-lg text-on-surface-variant">Materials</span>
+<span class="text-[11px] text-outline italic">Conduits, Distribution Board</span>
+</div>
+<span class="font-body-lg text-body-lg text-ink-black">UGX 85,000</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-body-lg text-body-lg text-on-surface-variant">Platform Fee</span>
+<span class="font-body-lg text-body-lg text-ink-black">UGX 5,000</span>
+</div>
+<div class="pt-4 mt-2 border-t border-dashed border-outline-variant flex justify-between items-center">
+<span class="font-title-md text-title-md text-ink-black">Total Amount</span>
+<span class="font-headline-lg-mobile text-headline-lg-mobile text-primary">UGX 240,000</span>
+</div>
+</div>
+</section>
+<!-- Payment Method -->
+<div class="bg-canvas-white rounded-xl border border-border-subtle p-4 mb-8 flex items-center justify-between shadow-[0_4px_20px_rgba(0,0,0,0.04)]">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-[#FFCC00]/10 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-[#E5B800]">account_balance_wallet</span>
+</div>
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-0.5">Payment Method</p>
+<p class="font-body-lg text-body-lg text-ink-black">MTN Mobile Money (•••• 4321)</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-success-green">verified_user</span>
+</div>
+<!-- Action Buttons -->
+<div class="space-y-4">
+<button class="w-full py-4 bg-primary text-white rounded-lg font-title-md text-title-md shadow-md active:scale-[0.98] transition-all hover:bg-primary-container">
+                Review This Technician
+            </button>
+<button class="w-full py-4 bg-white border border-border-subtle text-ink-black rounded-lg font-title-md text-title-md flex items-center justify-center gap-2 hover:bg-surface-container-low transition-colors active:scale-[0.98]">
+<span class="material-symbols-outlined">download</span>
+                Download Invoice
+            </button>
+</div>
+<p class="mt-8 text-center font-body-sm text-body-sm text-outline">
+            Need help with this job? <a class="text-primary font-semibold hover:underline" href="#">Contact Support</a>
+</p>
+</main>
+<!-- Bottom Navigation Shell (Consistent with Shared Components) -->
+<nav class="fixed bottom-0 w-full z-50 bg-canvas-white border-t border-border-subtle shadow-[0_-4px_20px_rgba(0,0,0,0.04)] flex justify-around items-center h-16 px-2 pb-safe md:hidden">
+<button class="flex flex-col items-center justify-center text-secondary px-3 py-1 hover:opacity-80 transition-opacity active:scale-90 duration-200">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-caps text-label-caps uppercase">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-secondary px-3 py-1 hover:opacity-80 transition-opacity active:scale-90 duration-200">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-caps text-label-caps uppercase">Search</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary bg-primary-fixed rounded-xl px-3 py-1 hover:opacity-80 transition-opacity active:scale-90 duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">build</span>
+<span class="font-label-caps text-label-caps uppercase">Jobs</span>
+</button>
+<button class="flex flex-col items-center justify-center text-secondary px-3 py-1 hover:opacity-80 transition-opacity active:scale-90 duration-200">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-label-caps text-label-caps uppercase">Messages</span>
+</button>
+<button class="flex flex-col items-center justify-center text-secondary px-3 py-1 hover:opacity-80 transition-opacity active:scale-90 duration-200">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-caps text-label-caps uppercase">Profile</span>
+</button>
+</nav>
+<script>
+        // Simple micro-interactions for buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', function() {
+                const originalScale = this.style.transform;
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = originalScale;
+                }, 100);
+            });
+        });
+    </script>
+</body></html>

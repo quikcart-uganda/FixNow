@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Job Offer - FixNow</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed-variant": "#314865",
+                    "on-primary-fixed-variant": "#3e28bd",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed-variant": "#763300",
+                    "canvas-white": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "surface": "#faf9f8",
+                    "primary-fixed": "#e4dfff",
+                    "on-secondary": "#ffffff",
+                    "primary-fixed-dim": "#c6bfff",
+                    "on-secondary-container": "#49617f",
+                    "on-secondary-fixed": "#001c37",
+                    "on-primary-fixed": "#150066",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-tint": "#5746d5",
+                    "background": "#faf9f8",
+                    "surface-variant": "#e3e2e1",
+                    "primary-container": "#5645d4",
+                    "surface-container": "#efeeed",
+                    "success-green": "#1aae39",
+                    "secondary-fixed": "#d2e4ff",
+                    "on-background": "#1a1c1c",
+                    "on-primary-container": "#d7d2ff",
+                    "tertiary-fixed-dim": "#ffb68d",
+                    "tertiary-container": "#994500",
+                    "surface-container-high": "#e9e8e7",
+                    "on-error": "#ffffff",
+                    "surface-container-highest": "#e3e2e1",
+                    "secondary-container": "#c4dcff",
+                    "on-surface-variant": "#474554",
+                    "inverse-primary": "#c6bfff",
+                    "surface-dim": "#dadad9",
+                    "trust-blue": "#b2d5ff",
+                    "secondary-fixed-dim": "#b0c8eb",
+                    "ink-black": "#000000",
+                    "error": "#ba1a1a",
+                    "on-tertiary": "#ffffff",
+                    "tertiary": "#743300",
+                    "surface-gray": "#f6f5f4",
+                    "tertiary-fixed": "#ffdbc9",
+                    "secondary": "#49607e",
+                    "surface-container-low": "#f4f3f2",
+                    "outline": "#787586",
+                    "inverse-surface": "#2f3130",
+                    "primary": "#3d27bc",
+                    "on-tertiary-fixed": "#321200",
+                    "surface-bright": "#faf9f8",
+                    "inverse-on-surface": "#f1f0ef",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-container": "#ffcdb1",
+                    "border-subtle": "#e5e7eb",
+                    "outline-variant": "#c8c4d7",
+                    "on-surface": "#1a1c1c"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "base": "4px",
+                    "margin-safe": "20px",
+                    "gutter-mobile": "16px",
+                    "gutter-desktop": "24px",
+                    "section-gap": "64px"
+            },
+            "fontFamily": {
+                    "title-md": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "mono-label": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "title-md": ["20px", {"lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "mono-label": ["13px", {"lineHeight": "1.0", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .safe-bottom { padding-bottom: calc(80px + env(safe-area-inset-bottom)); }
+        .glass-header { backdrop-filter: blur(8px); background-color: rgba(255, 255, 255, 0.8); }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-lg min-h-screen">
+<!-- Top App Bar -->
+<header class="w-full sticky top-0 z-40 glass-header border-b border-border-subtle">
+<div class="flex items-center px-gutter-mobile h-14 w-full max-w-7xl mx-auto justify-between">
+<div class="flex items-center gap-4">
+<button aria-label="Go back" class="flex items-center justify-center w-10 h-10 rounded-full active:opacity-70 transition-opacity hover:bg-surface-container-low">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-title-md text-title-md text-primary">Job Offer</h1>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant">share</button>
+</div>
+</header>
+<main class="max-w-md mx-auto px-gutter-mobile pt-6 safe-bottom">
+<!-- Hero Section / Job Title -->
+<section class="mb-6">
+<div class="relative w-full h-48 rounded-xl overflow-hidden mb-4 shadow-sm border border-border-subtle">
+<img alt="Job Type Thumbnail" class="w-full h-full object-cover" data-alt="A detailed, professional photograph of a residential electrical panel with perfectly organized wiring in vibrant red, blue, and yellow colors. The lighting is bright and clean, emphasizing technical precision and quality workmanship. The aesthetic is modern and corporate, reflecting a high-end service environment with a bright, airy light-mode feel." src="https://lh3.googleusercontent.com/aida/ADBb0ujEgUrm2OytoN_OtxKvP-a8Z8TrrNA18jJeDOtddIh5rHAgu3WqBEjsJhv5CWDhmVqARAqYtwyHq1GDGHLNUTRBYFDxjUS2shAv7bXCQwS_qj8VAVbPgz3N0xiBTnjmAOFTWaWDGLEZNWSXDLrMavjBcHd1IWh6HCmtZ30X43sU_9yY5aGbyvApsIYdIkjk9Tj6WuPJPWRnkg9x55vdxisOJn2PJiFOoqepJsYe9Jbiw7k3szXx9FVFKGg"/>
+<div class="absolute top-4 left-4">
+<span class="bg-primary-container text-on-primary-container px-3 py-1 rounded-full text-label-caps font-label-caps">ELECTRICAL</span>
+</div>
+</div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-background tracking-tight">Full House Wiring</h2>
+<div class="flex items-center gap-2 mt-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+<span class="text-body-sm font-body-sm">Posted 2 hours ago</span>
+</div>
+</section>
+<!-- Customer Card -->
+<section class="mb-6">
+<h3 class="text-label-caps font-label-caps text-on-surface-variant mb-3 uppercase">Customer</h3>
+<div class="bg-canvas-white p-4 rounded-xl border border-border-subtle shadow-[0px_4px_20px_rgba(0,0,0,0.04)] flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="relative">
+<img alt="Suna Ivan" class="w-12 h-12 rounded-full object-cover border border-border-subtle" data-alt="A professional and friendly headshot of a middle-aged East African man named Suna Ivan, smiling warmly at the camera. He is wearing a clean, casual polo shirt against a blurred, neutral office background. The lighting is soft and flattering, maintaining a high-key, professional marketplace aesthetic that builds trust and human connection." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbPltPKmc_E6hx_RV77tC3QAvZp_mKheHKnPmmj9tTPR9MRLP1IaWoa63conkP1CGgDyByvM22rWKuyZIxTVp-PsjdG-8Tnjj5rCZnwiitx3ggjDaEFJQOMxSl03GT43gqJl7fkh86Pc37uJ4Jv2pdnAR3SwGgJouWSj5ILwRfDGAAVYjtJe7KGw-lvvekey6MwGOGZidxk4-4vmpdoqHfuE_es8pSKhBRrTn6bDh4Uh0nhARJLcXcbaNiXr5GdiBhKENr5dGqEyg"/>
+<div class="absolute -bottom-1 -right-1 bg-success-green border-2 border-canvas-white w-4 h-4 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-[10px] text-white" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+</div>
+<div>
+<p class="font-title-md text-body-lg font-semibold text-on-background">Suna Ivan</p>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-tertiary text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-body-sm font-body-sm text-on-surface-variant">4.9/5 (12 Reviews)</span>
+</div>
+</div>
+</div>
+<button class="material-symbols-outlined text-primary p-2 hover:bg-surface-container rounded-full transition-colors">chat</button>
+</div>
+</section>
+<!-- Job Details Card -->
+<section class="mb-6">
+<h3 class="text-label-caps font-label-caps text-on-surface-variant mb-3 uppercase">Job Details</h3>
+<div class="bg-canvas-white p-5 rounded-xl border border-border-subtle shadow-[0px_4px_20px_rgba(0,0,0,0.04)]">
+<p class="text-body-lg text-on-surface leading-relaxed mb-4">
+                    Complete electrical layout and installation for a 3-bedroom residential property in Nsambya. Materials provided by client.
+                </p>
+<div class="grid grid-cols-2 gap-4 pt-4 border-t border-border-subtle">
+<div>
+<p class="text-label-caps font-label-caps text-on-surface-variant mb-1 uppercase">Duration</p>
+<p class="text-body-sm font-medium">Est. 5-7 Days</p>
+</div>
+<div>
+<p class="text-label-caps font-label-caps text-on-surface-variant mb-1 uppercase">Materials</p>
+<p class="text-body-sm font-medium">Client Provided</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Budget & Location Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+<!-- Proposed Budget -->
+<div class="bg-primary-container p-5 rounded-xl text-on-primary-container flex flex-col justify-between h-32">
+<p class="text-label-caps font-label-caps opacity-80 uppercase">Proposed Budget</p>
+<div>
+<span class="text-display-lg font-display-lg leading-none">UGX 450,000</span>
+<p class="text-body-sm opacity-90 mt-1">Fixed Price</p>
+</div>
+</div>
+<!-- Location Section -->
+<div class="bg-canvas-white p-5 rounded-xl border border-border-subtle shadow-[0px_4px_20px_rgba(0,0,0,0.04)] h-32 flex flex-col justify-between">
+<p class="text-label-caps font-label-caps text-on-surface-variant uppercase">Location</p>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary mt-1">location_on</span>
+<div>
+<p class="text-body-lg font-semibold text-on-background">Nsambya Estate</p>
+<p class="text-body-sm text-on-surface-variant">Plot 24, Kampala</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Map Snippet -->
+<section class="mb-6">
+<div class="w-full h-40 rounded-xl overflow-hidden border border-border-subtle relative group cursor-pointer">
+<img alt="Map Location" class="w-full h-full object-cover" data-location="Kampala" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHBKLpxqW7Ici0hXsJRH_0qgrXCCEwn277Lfy3NKFXbkLQns3VALCIXXzJmKLWcf0u22PS__QGjMBtnltDsnoX4juMmve6DVqvsA6FtiDqo8re-MKpyUVvazvaLqkdS-QT6iJObpGp3g0bO_o7wqx01QP9Pj6AIa8PEpEgnRmp1bKUlGvhUX8MFrSiEkyhADg_LO1S1vJjXzb2rTTTbCG2KTFrL2eU_F8axnHMLHE4BZvrYwZTUlEXTEOLv_zAHklTWVc_2agHoIc"/>
+<div class="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors"></div>
+<div class="absolute bottom-3 right-3 bg-white px-3 py-1.5 rounded-lg shadow-md flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary">directions</span>
+<span class="text-label-caps font-label-caps text-on-surface">View Map</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Action Bar -->
+<footer class="fixed bottom-0 left-0 w-full z-50 bg-canvas-white border-t border-border-subtle shadow-[0px_-4px_20px_rgba(0,0,0,0.04)]">
+<div class="flex items-center justify-between gap-4 px-gutter-mobile py-4 max-w-md mx-auto">
+<button class="flex-1 h-12 rounded-lg border border-border-subtle text-on-surface-variant font-semibold text-body-lg active:scale-95 transition-transform hover:bg-surface-container-low">
+                Decline
+            </button>
+<button class="flex-[2] h-12 rounded-lg bg-primary text-on-primary font-semibold text-body-lg active:scale-95 transition-transform shadow-md hover:bg-on-primary-fixed-variant">
+                Accept Offer
+            </button>
+</div>
+<div class="h-[env(safe-area-inset-bottom)]"></div>
+</footer>
+<!-- Success Toast (Hidden by default) -->
+<div class="fixed top-20 left-1/2 -translate-x-1/2 z-50 bg-on-surface text-canvas-white px-6 py-3 rounded-full font-body-sm shadow-xl flex items-center gap-3 opacity-0 pointer-events-none transition-all duration-300" id="toast">
+<span class="material-symbols-outlined text-success-green">check_circle</span>
+        Offer accepted successfully!
+    </div>
+<script>
+        // Simple Interaction Logic
+        const acceptBtn = document.querySelector('button:last-of-type');
+        const declineBtn = document.querySelector('button:first-of-type');
+        const toast = document.getElementById('toast');
+
+        acceptBtn.addEventListener('click', () => {
+            toast.style.opacity = '1';
+            toast.style.transform = 'translate(-50%, -10px)';
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translate(-50%, 0)';
+            }, 3000);
+        });
+
+        declineBtn.addEventListener('click', () => {
+            if(confirm('Are you sure you want to decline this high-value offer?')) {
+                window.history.back();
+            }
+        });
+    </script>
+</body></html>

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FixNow - Book Full House Wiring</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface-variant": "#474554",
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#994500",
+                        "on-surface": "#1a1c1c",
+                        "on-error": "#ffffff",
+                        "background": "#faf9f8",
+                        "surface-container": "#efeeed",
+                        "surface-bright": "#faf9f8",
+                        "on-error-container": "#93000a",
+                        "inverse-primary": "#c6bfff",
+                        "on-secondary-container": "#49617f",
+                        "on-tertiary-fixed-variant": "#763300",
+                        "trust-blue": "#b2d5ff",
+                        "primary-container": "#5645d4",
+                        "surface-container-high": "#e9e8e7",
+                        "secondary": "#49607e",
+                        "on-primary-container": "#d7d2ff",
+                        "on-background": "#1a1c1c",
+                        "canvas-white": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-tint": "#5746d5",
+                        "surface-gray": "#f6f5f4",
+                        "primary-fixed-dim": "#c6bfff",
+                        "secondary-container": "#c4dcff",
+                        "on-tertiary-fixed": "#321200",
+                        "inverse-surface": "#2f3130",
+                        "on-secondary-fixed-variant": "#314865",
+                        "surface-container-low": "#f4f3f2",
+                        "inverse-on-surface": "#f1f0ef",
+                        "on-primary-fixed": "#150066",
+                        "outline": "#787586",
+                        "surface-dim": "#dadad9",
+                        "success-green": "#1aae39",
+                        "on-secondary-fixed": "#001c37",
+                        "error-container": "#ffdad6",
+                        "border-subtle": "#e5e7eb",
+                        "primary": "#3d27bc",
+                        "tertiary": "#743300",
+                        "surface-container-highest": "#e3e2e1",
+                        "tertiary-fixed": "#ffdbc9",
+                        "primary-fixed": "#e4dfff",
+                        "outline-variant": "#c8c4d7",
+                        "secondary-fixed-dim": "#b0c8eb",
+                        "surface-variant": "#e3e2e1",
+                        "on-primary-fixed-variant": "#3e28bd",
+                        "tertiary-fixed-dim": "#ffb68d",
+                        "surface": "#faf9f8",
+                        "ink-black": "#000000",
+                        "secondary-fixed": "#d2e4ff",
+                        "on-tertiary-container": "#ffcdb1",
+                        "on-primary": "#ffffff",
+                        "error": "#ba1a1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter-desktop": "24px",
+                        "section-gap": "64px",
+                        "gutter-mobile": "16px",
+                        "base": "4px",
+                        "margin-safe": "20px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "title-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "mono-label": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "title-md": ["20px", {"lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "mono-label": ["13px", {"lineHeight": "1.0", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            user-select: none;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #faf9f8;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-50 flex justify-between items-center px-gutter-mobile md:px-gutter-desktop h-14 md:h-16 w-full max-w-7xl mx-auto bg-canvas-white border-b border-border-subtle">
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-surface-container-low rounded-full transition-colors active:opacity-80">
+<span class="material-symbols-outlined text-primary" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-title-md text-title-md text-primary">Book Service</h1>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A clean, professional headshot of a smiling young man in a corporate setting. He is wearing a minimalist dark blue shirt against a soft, bright, out-of-focus modern office background. The lighting is bright and airy, reflecting a high-end service platform aesthetic. The overall mood is trustworthy and approachable." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6BrLlQRl38_zCTb--gcVLh-2QoRAl78SrkoHdoNZjMGvbQL7KZdeA6QkdFx2NRWkU4hFLzWV8lsv6P13WXZau-0-FE-wLfPDHOLDz9fyRIn18T9xyDAL73d0j0pbFts_vHmvkuXzvJEeJgG7-7g8tFMPm9pCWB7qqvsv9qUNpEM5LdsF4PLVzTGVFa2jOUqPISEzWKoNHfKGEgDohntOB2b1aBicRqy9oRp6MtSSzWbgxG5QbQxNHfESWUW_77povMGq4LN3kCwE"/>
+</div>
+</div>
+</header>
+<main class="max-w-3xl mx-auto pb-32 pt-6 px-gutter-mobile md:px-0">
+<!-- Service Summary Header -->
+<section class="bg-canvas-white rounded-xl border border-border-subtle p-6 mb-8 shadow-sm">
+<div class="flex items-start justify-between">
+<div>
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-ink-black mb-1">Full House Wiring</h2>
+<div class="flex items-center gap-2 mb-3">
+<span class="font-body-lg text-body-lg text-on-surface-variant">Moses Okello</span>
+<div class="flex items-center bg-trust-blue/30 px-2 py-0.5 rounded text-[10px] font-bold text-primary uppercase tracking-wider">
+<span class="material-symbols-outlined text-[14px] mr-1" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+                            Elite
+                        </div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center text-success-green">
+<span class="material-symbols-outlined text-sm mr-1" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-mono-label text-mono-label font-bold">4.9</span>
+</div>
+<div class="h-4 w-px bg-border-subtle"></div>
+<div class="text-on-surface-variant font-body-sm text-body-sm">
+                            Range: <span class="font-bold text-on-surface">UGX 150k - 400k</span>
+</div>
+</div>
+</div>
+<div class="w-20 h-20 rounded-xl overflow-hidden border border-border-subtle">
+<img alt="Electrical Service" class="w-full h-full object-cover" data-alt="A detailed, close-up photograph of a professional electrician's hands working on a complex electrical circuit board. The lighting is precise and bright, highlighting the technical skill involved. The background is a clean, organized workshop space in a modern residential setting. The color palette is dominated by neutral tones with small accents of industrial colors." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDI3VZdskqxX-zxuGrhJcaR3VS-37VsSVUOXNfVVzKZ1lxcLm_vO_O7jFSk3N8l5bNTvXnzsxGZTeR1GBuMuxVk8ufuDgAKSa4I1wvGLI3ciLgwybDTm6uorHTRRWxEY9U9v095l6uPzmIvKHgiO_eBWXoPB7lmXDys27_2qHOfMFRaXXxxdP7bnezkBJd-Qk40BgWnPkmkKL14pzNnRmWrDdLASwyAlRlTpM1_8hVkAftQguSN9RCYheX3mH6h2cnoxWujyiUJIII"/>
+</div>
+</div>
+</section>
+<!-- Step 1: Select Service -->
+<section class="mb-section-gap">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant mb-4 flex items-center gap-2">
+<span class="bg-primary text-white w-5 h-5 rounded-full flex items-center justify-center text-[10px]">1</span>
+                SELECT SERVICE
+            </h3>
+<div class="space-y-3">
+<label class="flex items-center p-4 bg-primary/5 border-2 border-primary rounded-xl cursor-pointer transition-all">
+<input checked="" class="w-5 h-5 text-primary border-outline focus:ring-primary" name="service" type="radio"/>
+<div class="ml-4">
+<span class="block font-title-md text-body-lg text-primary">Full House Wiring</span>
+<span class="block text-on-surface-variant text-body-sm">Complete electrical layout and installation</span>
+</div>
+</label>
+<label class="flex items-center p-4 bg-canvas-white border border-border-subtle rounded-xl cursor-pointer hover:border-outline-variant transition-all">
+<input class="w-5 h-5 text-primary border-outline focus:ring-primary" name="service" type="radio"/>
+<div class="ml-4">
+<span class="block font-title-md text-body-lg text-on-surface">AC Repair &amp; Maintenance</span>
+<span class="block text-on-surface-variant text-body-sm">Cleaning, gas refill, and electrical fixes</span>
+</div>
+</label>
+<label class="flex items-center p-4 bg-canvas-white border border-border-subtle rounded-xl cursor-pointer hover:border-outline-variant transition-all">
+<input class="w-5 h-5 text-primary border-outline focus:ring-primary" name="service" type="radio"/>
+<div class="ml-4">
+<span class="block font-title-md text-body-lg text-on-surface">Circuit Board Fix</span>
+<span class="block text-on-surface-variant text-body-sm">Troubleshooting tripping breakers and panels</span>
+</div>
+</label>
+</div>
+</section>
+<!-- Step 2: Pick a Date -->
+<section class="mb-section-gap">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant mb-4 flex items-center gap-2">
+<span class="bg-primary text-white w-5 h-5 rounded-full flex items-center justify-center text-[10px]">2</span>
+                PICK A DATE
+            </h3>
+<div class="bg-canvas-white border border-border-subtle rounded-xl p-4 shadow-sm">
+<div class="flex items-center justify-between mb-6">
+<span class="font-title-md text-body-lg text-on-surface">October 2023</span>
+<div class="flex gap-2">
+<button class="p-1 hover:bg-surface-gray rounded-full"><span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span></button>
+<button class="p-1 hover:bg-surface-gray rounded-full"><span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span></button>
+</div>
+</div>
+<div class="grid grid-cols-7 text-center mb-2">
+<div class="text-on-surface-variant font-label-caps text-[10px]">S</div>
+<div class="text-on-surface-variant font-label-caps text-[10px]">M</div>
+<div class="text-on-surface-variant font-label-caps text-[10px]">T</div>
+<div class="text-on-surface-variant font-label-caps text-[10px]">W</div>
+<div class="text-on-surface-variant font-label-caps text-[10px]">T</div>
+<div class="text-on-surface-variant font-label-caps text-[10px]">F</div>
+<div class="text-on-surface-variant font-label-caps text-[10px]">S</div>
+</div>
+<div class="grid grid-cols-7 gap-1 text-center">
+<!-- Week 1 - Partial -->
+<div class="h-10 flex items-center justify-center text-outline/30 font-body-sm">26</div>
+<div class="h-10 flex items-center justify-center text-outline/30 font-body-sm">27</div>
+<div class="h-10 flex items-center justify-center text-outline/30 font-body-sm">28</div>
+<div class="h-10 flex items-center justify-center text-outline/30 font-body-sm">29</div>
+<div class="h-10 flex items-center justify-center text-outline/30 font-body-sm">30</div>
+<div class="h-10 flex items-center justify-center text-on-surface font-body-sm hover:bg-primary/10 rounded-full cursor-pointer">1</div>
+<div class="h-10 flex items-center justify-center text-on-surface font-body-sm hover:bg-primary/10 rounded-full cursor-pointer">2</div>
+<!-- Week 2 -->
+<div class="h-10 flex items-center justify-center text-on-surface font-body-sm hover:bg-primary/10 rounded-full cursor-pointer">3</div>
+<div class="h-10 flex items-center justify-center text-on-surface font-body-sm hover:bg-primary/10 rounded-full cursor-pointer">4</div>
+<div class="h-10 flex items-center justify-center relative">
+<span class="w-8 h-8 flex items-center justify-center bg-primary text-white rounded-full font-bold">5</span>
+<div class="absolute bottom-1 w-1 h-1 bg-white rounded-full"></div>
+</div>
+<div class="h-10 flex items-center justify-center text-on-surface font-body-sm hover:bg-primary/10 rounded-full cursor-pointer">6</div>
+<div class="h-10 flex items-center justify-center text-outline/40 font-body-sm bg-surface-gray rounded-full cursor-not-allowed line-through" title="Fully Booked">7</div>
+<div class="h-10 flex items-center justify-center text-on-surface font-body-sm hover:bg-primary/10 rounded-full cursor-pointer">8</div>
+<div class="h-10 flex items-center justify-center text-on-surface font-body-sm hover:bg-primary/10 rounded-full cursor-pointer">9</div>
+<!-- Week 3 -->
+<div class="h-10 flex items-center justify-center text-on-surface font-body-sm hover:bg-primary/10 rounded-full cursor-pointer">10</div>
+<div class="h-10 flex items-center justify-center text-outline/40 font-body-sm bg-surface-gray rounded-full cursor-not-allowed line-through">11</div>
+<div class="h-10 flex items-center justify-center text-on-surface font-body-sm hover:bg-primary/10 rounded-full cursor-pointer">12</div>
+<div class="h-10 flex items-center justify-center text-on-surface font-body-sm hover:bg-primary/10 rounded-full cursor-pointer">13</div>
+<div class="h-10 flex items-center justify-center text-on-surface font-body-sm hover:bg-primary/10 rounded-full cursor-pointer">14</div>
+<div class="h-10 flex items-center justify-center text-on-surface font-body-sm hover:bg-primary/10 rounded-full cursor-pointer">15</div>
+<div class="h-10 flex items-center justify-center text-on-surface font-body-sm hover:bg-primary/10 rounded-full cursor-pointer">16</div>
+</div>
+</div>
+</section>
+<!-- Step 3: Select a Time -->
+<section class="mb-section-gap">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant mb-4 flex items-center gap-2">
+<span class="bg-primary text-white w-5 h-5 rounded-full flex items-center justify-center text-[10px]">3</span>
+                SELECT A TIME
+            </h3>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+<button class="py-3 px-4 border border-border-subtle rounded-lg bg-canvas-white font-mono-label text-mono-label hover:border-primary hover:text-primary transition-all">09:00 AM</button>
+<button class="py-3 px-4 border-2 border-primary rounded-lg bg-primary/5 text-primary font-bold font-mono-label text-mono-label">11:30 AM</button>
+<button class="py-3 px-4 border border-border-subtle rounded-lg bg-canvas-white font-mono-label text-mono-label hover:border-primary hover:text-primary transition-all">02:00 PM</button>
+<button class="py-3 px-4 border border-border-subtle rounded-lg bg-canvas-white font-mono-label text-mono-label hover:border-primary hover:text-primary transition-all">04:30 PM</button>
+</div>
+</section>
+<!-- Step 4: Location & Notes -->
+<section class="mb-section-gap">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant mb-4 flex items-center gap-2">
+<span class="bg-primary text-white w-5 h-5 rounded-full flex items-center justify-center text-[10px]">4</span>
+                LOCATION &amp; NOTES
+            </h3>
+<div class="bg-canvas-white border border-border-subtle rounded-xl p-4 mb-4 shadow-sm flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container/30 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="location_on">location_on</span>
+</div>
+<div>
+<span class="block font-body-lg text-on-surface font-semibold">Nakasero, Kampala</span>
+<span class="block text-on-surface-variant text-body-sm">Plot 12, Lumumba Ave</span>
+</div>
+</div>
+<button class="text-primary font-label-caps text-label-caps hover:underline">CHANGE</button>
+</div>
+<div class="relative">
+<label class="block font-label-caps text-label-caps text-on-surface-variant mb-2 ml-1">DESCRIBE THE PROBLEM</label>
+<textarea class="w-full bg-surface-gray border border-border-subtle rounded-xl p-4 focus:ring-2 focus:ring-primary focus:border-primary text-body-lg" placeholder="e.g. My main circuit breaker keeps tripping when the laundry is on..." rows="4"></textarea>
+</div>
+</section>
+<!-- Step 5: Attach Photos -->
+<section class="mb-8">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant mb-4 flex items-center gap-2">
+<span class="bg-primary text-white w-5 h-5 rounded-full flex items-center justify-center text-[10px]">5</span>
+                ATTACH PHOTOS (OPTIONAL)
+            </h3>
+<div class="grid grid-cols-3 md:grid-cols-4 gap-4">
+<button class="aspect-square border-2 border-dashed border-border-subtle rounded-xl flex flex-col items-center justify-center text-on-surface-variant hover:border-primary hover:text-primary transition-all group">
+<span class="material-symbols-outlined text-3xl mb-1 group-hover:scale-110 transition-transform" data-icon="add_a_photo">add_a_photo</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Add Photo</span>
+</button>
+<div class="aspect-square rounded-xl overflow-hidden border border-border-subtle relative group">
+<img alt="Electrical Panel Preview" class="w-full h-full object-cover" data-alt="A high-resolution photograph of an open residential electrical panel with many circuit breakers. The wiring is neatly organized but complex. The lighting is neutral and clear, showing every detail for technical review. This image is part of a professional service booking flow on a clean, modern UI platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYBfpHAuaGYWEwCWUDz_DoPTDGD4NlAaRA9XEXGqCDo-OdoE2Q0s99_EOTQfDnobMwFE9eUY3wunz_NbxqOBlE2DFHe1Gf9XWESOSGu9siZ8R324gw67WlR11UyiKLchpF7Cvm56ezAMtO6vQSSAHnsRelBcI8ZGXaUEw2f2ByjYLFEesuKZMRYzsRfRHlvFk48zEHmFRcZw2iCerb9xdkgPZUtllBmewJNEVmQlWCR7W6QljvYZ-5508ggh_H8YgH3EA1C_FUAHs"/>
+<button class="absolute top-1 right-1 bg-ink-black/50 text-white p-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-sm" data-icon="close">close</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Sticky Footer -->
+<footer class="fixed bottom-0 left-0 w-full z-50 bg-canvas-white border-t border-border-subtle shadow-[0_-4px_20px_rgba(0,0,0,0.05)] px-gutter-mobile md:px-gutter-desktop py-4">
+<div class="max-w-3xl mx-auto flex items-center justify-between">
+<div>
+<span class="block text-on-surface-variant font-label-caps text-[10px]">BASE COMMITMENT FEE</span>
+<span class="text-title-md font-bold text-on-surface">UGX 25,000</span>
+</div>
+<button class="bg-primary text-white px-8 py-3 rounded-lg font-bold flex items-center gap-2 hover:opacity-90 active:scale-[0.98] transition-all shadow-lg shadow-primary/20">
+                Confirm Booking
+                <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</footer>
+<script>
+        // Micro-interactions for Radio Buttons
+        const radioLabels = document.querySelectorAll('label');
+        radioLabels.forEach(label => {
+            label.addEventListener('click', () => {
+                radioLabels.forEach(l => {
+                    l.classList.remove('bg-primary/5', 'border-primary');
+                    l.classList.add('bg-canvas-white', 'border-border-subtle');
+                    l.querySelector('div span:first-child').classList.replace('text-primary', 'text-on-surface');
+                });
+                label.classList.add('bg-primary/5', 'border-primary');
+                label.classList.remove('bg-canvas-white', 'border-border-subtle');
+                label.querySelector('div span:first-child').classList.replace('text-on-surface', 'text-primary');
+            });
+        });
+
+        // Micro-interactions for Time Slots
+        const timeSlots = document.querySelectorAll('.grid-cols-2 button, .md\\:grid-cols-4 button');
+        timeSlots.forEach(slot => {
+            slot.addEventListener('click', () => {
+                timeSlots.forEach(s => {
+                    s.classList.remove('border-2', 'border-primary', 'bg-primary/5', 'text-primary', 'font-bold');
+                    s.classList.add('border', 'border-border-subtle', 'bg-canvas-white');
+                });
+                slot.classList.add('border-2', 'border-primary', 'bg-primary/5', 'text-primary', 'font-bold');
+                slot.classList.remove('border', 'border-border-subtle', 'bg-canvas-white');
+            });
+        });
+    </script>
+</body></html>

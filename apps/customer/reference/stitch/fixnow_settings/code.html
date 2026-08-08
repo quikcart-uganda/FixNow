@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Profile Settings - FixNow</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #e5e7eb;
+            border-radius: 10px;
+        }
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #3d27bc;
+            background-color: #3d27bc;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #3d27bc;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed": "#001c37",
+                        "on-tertiary-fixed-variant": "#763300",
+                        "error-container": "#ffdad6",
+                        "success-green": "#1aae39",
+                        "on-secondary-fixed-variant": "#314865",
+                        "on-primary-fixed-variant": "#3e28bd",
+                        "on-surface-variant": "#474554",
+                        "error": "#ba1a1a",
+                        "ink-black": "#000000",
+                        "on-tertiary-fixed": "#321200",
+                        "secondary-container": "#c4dcff",
+                        "on-primary-fixed": "#150066",
+                        "on-error-container": "#93000a",
+                        "surface-bright": "#faf9f8",
+                        "trust-blue": "#b2d5ff",
+                        "on-error": "#ffffff",
+                        "surface-tint": "#5746d5",
+                        "border-subtle": "#e5e7eb",
+                        "surface-gray": "#f6f5f4",
+                        "on-surface": "#1a1c1c",
+                        "surface-container-high": "#e9e8e7",
+                        "tertiary-fixed": "#ffdbc9",
+                        "on-primary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "inverse-on-surface": "#f1f0ef",
+                        "on-tertiary": "#ffffff",
+                        "on-background": "#1a1c1c",
+                        "canvas-white": "#ffffff",
+                        "surface-dim": "#dadad9",
+                        "on-secondary-container": "#49617f",
+                        "inverse-primary": "#c6bfff",
+                        "tertiary-fixed-dim": "#ffb68d",
+                        "secondary": "#49607e",
+                        "background": "#faf9f8",
+                        "primary-fixed": "#e4dfff",
+                        "surface": "#faf9f8",
+                        "primary-container": "#5645d4",
+                        "primary": "#3d27bc",
+                        "surface-container": "#efeeed",
+                        "surface-container-low": "#f4f3f2",
+                        "on-primary-container": "#d7d2ff",
+                        "secondary-fixed": "#d2e4ff",
+                        "outline": "#787586",
+                        "secondary-fixed-dim": "#b0c8eb",
+                        "outline-variant": "#c8c4d7",
+                        "on-tertiary-container": "#ffcdb1",
+                        "surface-variant": "#e3e2e1",
+                        "tertiary": "#743300",
+                        "inverse-surface": "#2f3130",
+                        "surface-container-highest": "#e3e2e1",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-container": "#994500",
+                        "primary-fixed-dim": "#c6bfff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter-desktop": "24px",
+                        "base": "4px",
+                        "margin-safe": "20px",
+                        "section-gap": "64px",
+                        "gutter-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "mono-label": ["Inter"],
+                        "title-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-lg-mobile": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "mono-label": ["13px", {"lineHeight": "1.0", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "title-md": ["20px", {"lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-50 flex justify-between items-center px-gutter-mobile md:px-gutter-desktop h-14 md:h-16 w-full max-w-7xl mx-auto bg-canvas-white dark:bg-background border-b border-border-subtle dark:border-outline-variant">
+<div class="flex items-center gap-4">
+<button aria-label="Back" class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-title-md text-title-md text-primary dark:text-inverse-primary">Account Settings</h1>
+</div>
+<div class="flex items-center">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A professional close-up portrait of a Ugandan man with a friendly expression, wearing a clean white shirt against a neutral, high-key studio background. The lighting is soft and even, highlighting a polished and trustworthy appearance consistent with a premium service platform. The overall aesthetic is corporate minimalist, emphasizing reliability and human connection." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZnVRazUZ5Q0VB2XzC43Cl7UGwLLRttsXwtwzBLhLMUoO8Dr2rN4x_H9ZzBf9cYxFqlkGUl5SiD6APdMJGNS3V364VvUcZf1_bZGQGFR6aZoIzhAl3c-hImYMlY-y6LN3VaqB9SKn_9M_7ZvwacNU70cMwzSUt0oPhmEGHCbChacjG3zscPMCECXO--ZrTeRoX22VhH31_gB5FQWs43WrAeMpUMpBy8Tj6ykEGp41NlYAEVzMNAY2wza9Z_BntDcosThW_yK_4Q6Q"/>
+</div>
+</div>
+</header>
+<main class="flex-grow max-w-2xl mx-auto w-full px-gutter-mobile py-8 md:py-12 space-y-section-gap">
+<!-- Profile Photo Section -->
+<section class="flex flex-col items-center">
+<div class="relative group">
+<div class="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-canvas-white shadow-sm overflow-hidden bg-surface-container">
+<img alt="Suna Ivan" class="w-full h-full object-cover" data-alt="A detailed headshot of a professional African man named Suna Ivan, looking directly at the camera with a confident and warm smile. He is in a modern, brightly lit office environment with soft bokeh background. The image has a clean, high-contrast look that aligns with a professional corporate modern design system, focusing on clarity and approachability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuADJrINm2SyI0_miOIi_7QqoGZROz8GNVyBeO-oPqzLg0jtsutotusskF4Xe3LYy2y9SuF7hhERnteVe7lju4X930ffQcJIXUvgEinnJ7E2m0HxTqWpP7-6cTFPn94BWrHyRq3v_yVlJwacTxOkTAYKN9O-yi6SZJcl0Ap3B3dSzw_SOYSFqikaURrJzxHYOaFS6QAmf946szw3bk--IaWH2Gm2_5nm0KnroMhse3nMuP-BKcdEmSbjBE7S0H2ayEZp5Z2lQK6co9Y"/>
+</div>
+<button aria-label="Edit Profile Photo" class="absolute bottom-1 right-1 bg-primary text-on-primary w-10 h-10 rounded-full flex items-center justify-center shadow-lg hover:scale-105 transition-transform border-2 border-canvas-white">
+<span class="material-symbols-outlined text-sm">edit</span>
+</button>
+</div>
+<div class="mt-4 text-center">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg">Suna Ivan</h2>
+<span class="inline-flex items-center px-3 py-1 mt-1 rounded-full bg-trust-blue/20 text-primary font-mono-label text-mono-label">
+                    Elite Member
+                </span>
+</div>
+</section>
+<!-- Profile Information Group -->
+<section class="space-y-6">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Profile Information</h3>
+<div class="grid grid-cols-1 gap-6">
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant ml-1">Full Name</label>
+<input class="w-full h-14 px-4 rounded-lg border border-border-subtle bg-surface-container-lowest focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none font-body-lg text-body-lg shadow-sm" placeholder="Enter your full name" type="text" value="Suna Ivan"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant ml-1">Email</label>
+<input class="w-full h-14 px-4 rounded-lg border border-border-subtle bg-surface-container-lowest focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none font-body-lg text-body-lg shadow-sm" placeholder="Enter your email address" type="email" value="suna.ivan@email.ug"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant ml-1">Phone Number</label>
+<input class="w-full h-14 px-4 rounded-lg border border-border-subtle bg-surface-container-lowest focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none font-body-lg text-body-lg shadow-sm" placeholder="Enter your phone number" type="tel" value="+256 700 000 000"/>
+</div>
+</div>
+</section>
+<!-- Payment Methods Group -->
+<section class="space-y-4">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Payment Methods</h3>
+<div class="bg-canvas-white rounded-xl border border-border-subtle shadow-sm overflow-hidden">
+<!-- MTN Row -->
+<div class="flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-[#FFCC00] flex items-center justify-center overflow-hidden flex-shrink-0">
+<span class="font-bold text-black text-[10px]">MTN</span>
+</div>
+<div>
+<p class="font-body-lg text-body-lg font-semibold">MTN Mobile Money</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">•••• 4321</p>
+</div>
+</div>
+<span class="px-3 py-1 rounded-full bg-success-green/10 text-success-green font-mono-label text-mono-label">Connected</span>
+</div>
+<div class="h-px bg-border-subtle mx-4"></div>
+<!-- Airtel Row -->
+<div class="flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-[#FF0000] flex items-center justify-center overflow-hidden flex-shrink-0">
+<span class="font-bold text-white text-[10px]">Airtel</span>
+</div>
+<div>
+<p class="font-body-lg text-body-lg font-semibold">Airtel Money</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Not linked</p>
+</div>
+</div>
+<button class="text-primary font-mono-label text-mono-label font-bold hover:underline">Add</button>
+</div>
+</div>
+</section>
+<!-- Notifications Group -->
+<section class="space-y-4">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Notifications</h3>
+<div class="bg-canvas-white rounded-xl border border-border-subtle shadow-sm overflow-hidden px-4">
+<!-- Job Updates -->
+<div class="flex items-center justify-between py-5">
+<div>
+<p class="font-body-lg text-body-lg font-semibold">Job Updates</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Status changes and arrival times</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-high peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="h-px bg-border-subtle"></div>
+<!-- New Messages -->
+<div class="flex items-center justify-between py-5">
+<div>
+<p class="font-body-lg text-body-lg font-semibold">New Messages</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Direct chat with technicians</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-high peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="h-px bg-border-subtle"></div>
+<!-- Promotional Offers -->
+<div class="flex items-center justify-between py-5">
+<div>
+<p class="font-body-lg text-body-lg font-semibold">Promotional Offers</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Discounts and seasonal fix deals</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-high peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</section>
+<!-- Save Button -->
+<div class="pt-4 pb-24 md:pb-8">
+<button class="w-full h-14 bg-primary text-on-primary rounded-lg font-semibold font-title-md text-title-md shadow-md active:scale-95 transition-transform hover:bg-opacity-90">
+                Save Changes
+            </button>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 pb-safe h-16 md:hidden bg-canvas-white dark:bg-background border-t border-border-subtle dark:border-outline-variant shadow-sm">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-container-low dark:hover:bg-surface-variant transition-colors group" href="#">
+<span class="material-symbols-outlined text-2xl group-active:scale-95 transition-transform">home</span>
+<span class="font-label-caps text-label-caps">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-container-low dark:hover:bg-surface-variant transition-colors group" href="#">
+<span class="material-symbols-outlined text-2xl group-active:scale-95 transition-transform">search</span>
+<span class="font-label-caps text-label-caps">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-container-low dark:hover:bg-surface-variant transition-colors group" href="#">
+<span class="material-symbols-outlined text-2xl group-active:scale-95 transition-transform">build</span>
+<span class="font-label-caps text-label-caps">Jobs</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-container-low dark:hover:bg-surface-variant transition-colors group" href="#">
+<span class="material-symbols-outlined text-2xl group-active:scale-95 transition-transform">chat</span>
+<span class="font-label-caps text-label-caps">Messages</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary dark:text-inverse-primary font-semibold group" href="#">
+<span class="material-symbols-outlined text-2xl group-active:scale-95 transition-transform" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-caps text-label-caps">Profile</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interaction for the save button
+        document.querySelector('button.bg-primary').addEventListener('click', function() {
+            const btn = this;
+            const originalText = btn.innerText;
+            btn.innerText = 'Changes Saved!';
+            btn.classList.add('bg-success-green');
+            btn.classList.remove('bg-primary');
+            
+            setTimeout(() => {
+                btn.innerText = originalText;
+                btn.classList.remove('bg-success-green');
+                btn.classList.add('bg-primary');
+            }, 2000);
+        });
+
+        // Toggle functionality logic
+        const toggles = document.querySelectorAll('input[type="checkbox"]');
+        toggles.forEach(toggle => {
+            toggle.addEventListener('change', function() {
+                console.log('Preference updated');
+            });
+        });
+    </script>
+</body></html>
