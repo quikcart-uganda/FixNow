@@ -3,7 +3,7 @@
  * Distinct from Sandbox Management (which remains for settings + legacy demo dataset).
  */
 
-import { type HydratedDocument } from 'mongoose';
+import { Types, type HydratedDocument } from 'mongoose';
 import {
   CustomerProfile,
   Job,
@@ -1014,7 +1014,7 @@ export const seedPlatformService = {
       profile.verificationStatus = VERIFICATION_STATUS.APPROVED;
       profile.approvalSource = 'seed';
       profile.approvalReviewedAt = new Date();
-      profile.approvalReviewedBy = actor.userId as never;
+      profile.approvalReviewedBy = new Types.ObjectId(actor.userId);
       profile.approvalDeadlineAt = undefined;
       profile.accountStatus = ACCOUNT_STATUS.ACTIVE;
       user.accountStatus = ACCOUNT_STATUS.ACTIVE;

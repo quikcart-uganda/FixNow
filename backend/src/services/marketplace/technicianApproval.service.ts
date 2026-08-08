@@ -4,6 +4,7 @@
  * All timing is runtime-configurable (never hardcoded durations in business logic).
  */
 
+import { Types } from 'mongoose';
 import { PlatformSetting, TechnicianProfile, User } from '../../models/index.js';
 import { ACCOUNT_STATUS, VERIFICATION_STATUS } from '../../models/shared/enums.js';
 import { ROLES } from '../../constants/roles.js';
@@ -413,7 +414,7 @@ export async function reviewApproval(
   if (input.action === 'approve') {
     profile.verificationStatus = VERIFICATION_STATUS.APPROVED;
     profile.approvalReviewedAt = now;
-    profile.approvalReviewedBy = admin.userId as never;
+    profile.approvalReviewedBy = new Types.ObjectId(admin.userId);
     profile.approvalAdminNote = note;
     profile.approvalSource = 'admin';
     profile.approvalDeadlineAt = undefined;
@@ -430,7 +431,7 @@ export async function reviewApproval(
   } else if (input.action === 'reject') {
     profile.verificationStatus = VERIFICATION_STATUS.REJECTED;
     profile.approvalReviewedAt = now;
-    profile.approvalReviewedBy = admin.userId as never;
+    profile.approvalReviewedBy = new Types.ObjectId(admin.userId);
     profile.approvalAdminNote = note || 'More information is required before approval.';
     profile.approvalDeadlineAt = undefined;
     await profile.save();
@@ -447,7 +448,7 @@ export async function reviewApproval(
     profile.verificationStatus = VERIFICATION_STATUS.UNDER_REVIEW;
     profile.approvalAdminNote = note || 'Please update your profile with the requested information.';
     profile.approvalReviewedAt = now;
-    profile.approvalReviewedBy = admin.userId as never;
+    profile.approvalReviewedBy = new Types.ObjectId(admin.userId);
     await profile.save();
     await createDbNotification({
       userId: technicianUserId,

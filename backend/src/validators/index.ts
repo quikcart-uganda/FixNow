@@ -270,6 +270,33 @@ export const updateUserStatusSchema = z.object({
   reason: z.string().max(500).optional(),
 });
 
+/** Admin review actions for technician account approval workflow. */
+export const reviewTechnicianApprovalSchema = z.object({
+  action: z.enum([
+    'approve',
+    'reject',
+    'request_info',
+    'suspend',
+    'extend_deadline',
+    'force_manual',
+    'reset',
+  ]),
+  note: z.string().max(2000).optional(),
+  extendMinutes: z.number().int().positive().max(60 * 24 * 30).optional(),
+});
+
+/** Platform settings for automatic / manual technician approval. */
+export const updateTechnicianApprovalPolicySchema = z.object({
+  enforceApprovalGate: z.boolean().optional(),
+  automaticApprovalEnabled: z.boolean().optional(),
+  approvalDelayValue: z.number().positive().max(3650).optional(),
+  approvalDelayUnit: z.enum(['minutes', 'hours', 'days']).optional(),
+  adminReminderMinutes: z.array(z.number().int().positive().max(60 * 24 * 30)).max(20).optional(),
+  policyVersion: z.number().int().min(1).optional(),
+  reason: z.string().max(500).optional(),
+  recalculatePending: z.boolean().optional(),
+});
+
 export const updatePlatformSettingSchema = z.object({
   value: z.record(z.unknown()),
   scope: z.enum(['platform', 'customer', 'technician', 'admin']).optional(),

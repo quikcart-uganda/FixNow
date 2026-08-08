@@ -14,7 +14,7 @@ import { TechnicianProfile, User } from '../../../models/index.js';
 import { AppError } from '../../../utils/AppError.js';
 import { writeAuditLog } from '../../../utils/audit.js';
 import { emitFreeJobLimitUpdated, emitTechnicianUnlocked } from '../../../sockets/realtime.js';
-import { DEVELOPER_TECHNICIAN } from '../sandbox/seed/constants.js';
+import { DEVELOPER_TECHNICIAN } from './constants.js';
 import {
   activatePreviewSession,
   exitPreviewSession,

@@ -98,6 +98,16 @@ export interface ITechnicianProfile extends SoftDeleteFields, TimestampFields {
   leadCredits: number;
   academyProgressPercent: number;
   searchKeywords: string[];
+  /** Account-level approval workflow (distinct from document IdentityVerification). */
+  approvalSubmittedAt?: Date;
+  approvalDeadlineAt?: Date;
+  approvalMode?: 'automatic' | 'manual';
+  approvalPolicyVersion?: number;
+  approvalSource?: 'manual' | 'automatic' | 'escalated' | 'seed' | 'grandfather' | 'admin';
+  approvalReviewedAt?: Date;
+  approvalReviewedBy?: Types.ObjectId;
+  approvalAdminNote?: string;
+  approvalRemindersSent?: string[];
 }
 
 const technicianProfileSchema = createSchema<ITechnicianProfile>({
@@ -205,9 +215,22 @@ const technicianProfileSchema = createSchema<ITechnicianProfile>({
   leadCredits: { type: Number, default: 0, min: 0 },
   academyProgressPercent: { type: Number, default: 0, min: 0, max: 100 },
   searchKeywords: { type: [String], default: [] },
+  approvalSubmittedAt: { type: Date, index: true },
+  approvalDeadlineAt: { type: Date, index: true },
+  approvalMode: { type: String, enum: ['automatic', 'manual'], index: true },
+  approvalPolicyVersion: { type: Number, min: 1 },
+  approvalSource: {
+    type: String,
+    enum: ['manual', 'automatic', 'escalated', 'seed', 'grandfather', 'admin'],
+  },
+  approvalReviewedAt: { type: Date },
+  approvalReviewedBy: { type: 'ObjectId', ref: 'User' },
+  approvalAdminNote: { type: String, maxlength: 2000 },
+  approvalRemindersSent: { type: [String], default: [] },
 });
 
-technicianProfileSchema.index({ primaryCategoryId: 1, 'location.district': 1, trustScore: -1 });
+technicianProfileSchema.index({ verificationStatus: 1, approvalDeadlineAt: 1 });
+technicianProfileSchema.index({ verificationStatus: 1, accountStatus: 1 });
 technicianProfileSchema.index({ trustScore: -1, ratingAverage: -1 });
 technicianProfileSchema.index({ 'location.district': 1, isAvailableNow: 1 });
 technicianProfileSchema.index({ 'location.geo': '2dsphere' });

@@ -110,6 +110,8 @@ import {
   logoutSchema,
   switchRoleSchema,
   objectIdParamSchema,
+  reviewTechnicianApprovalSchema,
+  updateTechnicianApprovalPolicySchema,
   broadcastNotificationSchema,
   payForJobSchema,
   mobileMoneyAccountSchema,
@@ -183,7 +185,7 @@ apiRouter.delete('/customers/me/addresses/:id', authenticate, authorize(ROLES.CU
 apiRouter.get('/customers/me/jobs', authenticate, authorize(ROLES.CUSTOMER), customerController.jobHistory);
 
 // --- Technicians ---
-apiRouter.get('/technicians/search', technicianController.search);
+apiRouter.get('/technicians/search', optionalAuthenticate, technicianController.search);
 apiRouter.get('/technicians/me/profile', authenticate, authorize(ROLES.TECHNICIAN), technicianController.getProfile);
 apiRouter.patch('/technicians/me/profile', authenticate, authorize(ROLES.TECHNICIAN), technicianController.updateProfile);
 apiRouter.patch('/technicians/me/availability', authenticate, authorize(ROLES.TECHNICIAN), technicianController.updateAvailability);
@@ -195,7 +197,14 @@ apiRouter.post('/technicians/me/services', authenticate, authorize(ROLES.TECHNIC
 apiRouter.get('/technicians/me/dashboard', authenticate, authorize(ROLES.TECHNICIAN), technicianController.dashboard);
 apiRouter.get('/technicians/me/profile-completion', authenticate, authorize(ROLES.TECHNICIAN), technicianController.profileCompletion);
 apiRouter.post('/technicians/me/profile-completion/dismiss', authenticate, authorize(ROLES.TECHNICIAN), technicianController.dismissProfileReminder);
-apiRouter.get('/technicians/:id', validate(objectIdParamSchema, 'params'), technicianController.getPublicProfile);
+apiRouter.get('/technicians/me/approval', authenticate, authorize(ROLES.TECHNICIAN), technicianController.getApprovalStatus);
+apiRouter.post('/technicians/me/approval/submit', authenticate, authorize(ROLES.TECHNICIAN), technicianController.submitForApproval);
+apiRouter.get(
+  '/technicians/:id',
+  optionalAuthenticate,
+  validate(objectIdParamSchema, 'params'),
+  technicianController.getPublicProfile,
+);
 
 // --- Admins ---
 apiRouter.get('/admin/dashboard', authenticate, authorize(ROLES.ADMIN), requireCapability('CanViewReports'), adminController.getDashboard);
@@ -234,6 +243,25 @@ apiRouter.put('/admin/settings/free-jobs', authenticate, authorize(ROLES.ADMIN),
 apiRouter.get('/admin/technicians/:id/quota', authenticate, authorize(ROLES.ADMIN), requireCapability('CanManageUsers'), validate(objectIdParamSchema, 'params'), technicianQuotaController.getForTechnician);
 apiRouter.get('/admin/settings/profile-completion', authenticate, authorize(ROLES.ADMIN), requireCapability('CanManageSettings'), adminController.getProfileCompletionConfig);
 apiRouter.put('/admin/settings/profile-completion', authenticate, authorize(ROLES.ADMIN), requireCapability('CanManageSettings'), adminController.updateProfileCompletionConfig);
+apiRouter.get('/admin/settings/technician-approval', authenticate, authorize(ROLES.ADMIN), requireCapability('CanManageSettings'), adminController.getTechnicianApprovalPolicy);
+apiRouter.put(
+  '/admin/settings/technician-approval',
+  authenticate,
+  authorize(ROLES.ADMIN),
+  requireCapability('CanManageSettings'),
+  validate(updateTechnicianApprovalPolicySchema),
+  adminController.updateTechnicianApprovalPolicy,
+);
+apiRouter.get('/admin/technician-approvals', authenticate, authorize(ROLES.ADMIN), requireCapability('CanManageUsers'), adminController.listPendingTechnicianApprovals);
+apiRouter.post(
+  '/admin/technician-approvals/:id/review',
+  authenticate,
+  authorize(ROLES.ADMIN),
+  requireCapability('CanManageUsers'),
+  validate(objectIdParamSchema, 'params'),
+  validate(reviewTechnicianApprovalSchema),
+  adminController.reviewTechnicianApproval,
+);
 apiRouter.post('/technicians/me/unlock-request', authenticate, authorize(ROLES.TECHNICIAN), adminController.requestUnlock);
 apiRouter.get('/admin/jobs', authenticate, authorize(ROLES.ADMIN), requireCapability('CanManageSupport'), adminController.listJobs);
 apiRouter.get('/admin/applications', authenticate, authorize(ROLES.ADMIN), requireCapability('CanManageSupport'), adminController.listApplications);
@@ -283,9 +311,30 @@ apiRouter.post('/applications/:id/reject', authenticate, authorize(ROLES.CUSTOME
 apiRouter.post('/applications/:id/withdraw', authenticate, authorize(ROLES.TECHNICIAN), validate(objectIdParamSchema, 'params'), applicationController.withdraw);
 
 // --- Messages ---
-apiRouter.get('/conversations', authenticate, messageController.listConversations);
+apiRouter.get(
+  '/conversations',
+  authenticate,
+  async (req, res, next) => {
+    if (req.auth?.role === ROLES.ADMIN) {
+      return requireCapability('CanManageSupport')(req, res, next);
+    }
+    return next();
+  },
+  messageController.listConversations,
+);
 apiRouter.post('/conversations/job/:id', authenticate, validate(objectIdParamSchema, 'params'), messageController.ensureForJob);
-apiRouter.get('/conversations/:id', authenticate, validate(objectIdParamSchema, 'params'), messageController.getConversation);
+apiRouter.get(
+  '/conversations/:id',
+  authenticate,
+  async (req, res, next) => {
+    if (req.auth?.role === ROLES.ADMIN) {
+      return requireCapability('CanManageSupport')(req, res, next);
+    }
+    return next();
+  },
+  validate(objectIdParamSchema, 'params'),
+  messageController.getConversation,
+);
 apiRouter.get('/conversations/:id/messages', authenticate, validate(objectIdParamSchema, 'params'), messageController.listMessages);
 apiRouter.post('/conversations/:id/read', authenticate, validate(objectIdParamSchema, 'params'), messageController.markRead);
 apiRouter.post('/conversations/:id/archive', authenticate, validate(objectIdParamSchema, 'params'), messageController.archive);
@@ -316,13 +365,23 @@ apiRouter.patch('/reviews/:id', authenticate, validate(objectIdParamSchema, 'par
 apiRouter.post('/reviews/:id/flag', authenticate, validate(objectIdParamSchema, 'params'), validate(flagReviewSchema), reviewController.flag);
 apiRouter.get('/jobs/:id/reviews', authenticate, validate(objectIdParamSchema, 'params'), reviewController.listForJob);
 apiRouter.get('/reputation/me', authenticate, reviewController.reputation);
-apiRouter.get('/technicians/:id/reviews', validate(objectIdParamSchema, 'params'), reviewController.listForTechnician);
+apiRouter.get(
+  '/technicians/:id/reviews',
+  optionalAuthenticate,
+  validate(objectIdParamSchema, 'params'),
+  reviewController.listForTechnician,
+);
 apiRouter.get('/admin/reviews/analytics', authenticate, authorize(ROLES.ADMIN), reviewController.analytics);
 apiRouter.get('/admin/reviews', authenticate, authorize(ROLES.ADMIN), reviewController.adminList);
 apiRouter.post('/admin/reviews/:id/moderate', authenticate, authorize(ROLES.ADMIN), validate(objectIdParamSchema, 'params'), validate(moderateReviewSchema), reviewController.moderate);
 
 // --- Trust scores ---
-apiRouter.get('/technicians/:id/trust-score', validate(objectIdParamSchema, 'params'), trustController.getForTechnician);
+apiRouter.get(
+  '/technicians/:id/trust-score',
+  optionalAuthenticate,
+  validate(objectIdParamSchema, 'params'),
+  trustController.getForTechnician,
+);
 apiRouter.post('/technicians/:id/trust-score/recompute', authenticate, authorize(ROLES.ADMIN), validate(objectIdParamSchema, 'params'), trustController.recompute);
 
 // --- Portfolio ---
@@ -778,6 +837,13 @@ apiRouter.post(
   requireSuperAdmin(),
   seedPlatformController.archive,
 );
+apiRouter.post(
+  '/admin/seed-platform/restore',
+  authenticate,
+  authorize(ROLES.ADMIN),
+  requireSuperAdmin(),
+  seedPlatformController.restore,
+);
 apiRouter.get(
   '/admin/seed-platform/export',
   authenticate,
@@ -883,6 +949,13 @@ apiRouter.get(
   authorize(ROLES.ADMIN),
   requireSuperAdmin(),
   seedPlatformController.listSeedScenarios,
+);
+apiRouter.post(
+  '/admin/seed-platform/scenarios/enabled',
+  authenticate,
+  authorize(ROLES.ADMIN),
+  requireSuperAdmin(),
+  seedPlatformController.setSeedScenarioEnabled,
 );
 apiRouter.post(
   '/admin/seed-platform/scenarios/generate',
