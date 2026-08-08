@@ -19,6 +19,36 @@ function circuitSnap(c: { name: string; state: () => string }) {
   return { name: c.name, state: c.state() };
 }
 
+/** Classify Mongo target without leaking credentials — used by /diagnostics. */
+function describeMongoTargetSafe(uri: string | undefined): {
+  kind: 'atlas' | 'local' | 'other' | 'missing';
+  host: string | null;
+  dbName: string | null;
+} {
+  if (!uri?.trim()) {
+    return { kind: 'missing', host: null, dbName: null };
+  }
+  try {
+    const parsed = new URL(uri);
+    const host = parsed.host || null;
+    const dbName =
+      parsed.pathname && parsed.pathname !== '/'
+        ? parsed.pathname.replace(/^\//, '').split('?')[0] || null
+        : null;
+    const isLocal =
+      Boolean(host && (/^localhost(?::|$)/i.test(host) || /^127\.0\.0\.1(?::|$)/.test(host)));
+    const isAtlas =
+      parsed.protocol === 'mongodb+srv:' || /\.mongodb\.net(?::|$)/i.test(host || '');
+    return {
+      kind: isLocal ? 'local' : isAtlas ? 'atlas' : 'other',
+      host,
+      dbName,
+    };
+  } catch {
+    return { kind: 'other', host: null, dbName: null };
+  }
+}
+
 export function getBackendDiagnostics() {
   const mem = process.memoryUsage();
   const io = getSocketServer();
@@ -43,6 +73,8 @@ export function getBackendDiagnostics() {
     mongodb: {
       state: MONGO_READY[mongoState] ?? 'unknown',
       ready: mongoState === 1,
+      /** Secret-free target classification for deployment validation (never includes credentials). */
+      target: describeMongoTargetSafe(env.MONGODB_URI),
     },
     sockets: {
       engineClients: io?.engine?.clientsCount ?? 0,

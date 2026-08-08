@@ -119,9 +119,13 @@ Missing any of the above causes **runtime** failures after a successful git fetc
 | Identified branch mismatch `master` vs `clean-master` | Done |
 | Added `render.yaml` with `branch: clean-master`, `rootDir: backend` | Done |
 | Documented Render Dashboard branch change | Done (operator must apply) |
+| Local commit of audit artifacts | Done — `3d0447e` on `clean-master` |
+| Push to `origin/clean-master` | Attempted — first try failed (`Could not resolve host: github.com`); retry separately |
 | Application / business / UI / DB code | **Not modified** |
 | Force push / history rewrite / new long-lived branch | **Not done** |
 | Did **not** recreate remote `master` | Intentional — would add a second deploy target and confuse defaults |
+
+**Why not `origin/master`:** that ref does not exist on GitHub. Creating it would be a new branch. The correct publish target is **`origin/clean-master`**.
 
 ---
 
