@@ -1,0 +1,58 @@
+# FixNow — Render Blueprint (optional)
+# Docs: https://render.com/docs/blueprint-spec
+#
+# CRITICAL: GitHub default (and only) branch is `clean-master`.
+# There is no `master` branch on origin. Services that still
+# deploy from `master` fail with:
+#   "failed to fetch commit or branch from GitHub"
+#
+# If this service already exists in the Render Dashboard, also set:
+#   Settings → Branch → clean-master
+# Blueprint alone does not always rewrite an existing service's branch.
+
+services:
+  - type: web
+    name: fixnow-api
+    runtime: node
+    plan: free
+    region: oregon
+    rootDir: backend
+    branch: clean-master
+    autoDeploy: true
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: APP_ENV
+        value: production
+      - key: HOST
+        value: "0.0.0.0"
+      - key: API_PREFIX
+        value: /api/v1
+      - key: BACKEND_PUBLIC_URL
+        value: https://fixnow-dpjg.onrender.com
+      - key: API_BASE_URL
+        value: https://fixnow-dpjg.onrender.com/api/v1
+      - key: SOCKET_PUBLIC_URL
+        value: https://fixnow-dpjg.onrender.com
+      - key: WEBHOOK_BASE_URL
+        value: https://fixnow-dpjg.onrender.com
+      # Secrets — set in Render Dashboard (do not put real values here)
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_ACCESS_SECRET
+        sync: false
+      - key: JWT_REFRESH_SECRET
+        sync: false
+      - key: CORS_ORIGINS
+        sync: false
+      - key: EMAIL_PROVIDER
+        sync: false
+      - key: RESEND_API_KEY
+        sync: false
+      - key: EMAIL_FROM
+        sync: false
+      - key: SMS_PROVIDER
+        sync: false
